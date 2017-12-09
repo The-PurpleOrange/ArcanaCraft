@@ -1,0 +1,20 @@
+{
+  "result": {
+    "item": "arcanacraft:red_coal"
+  },
+  "pattern": [
+    "rrr",
+    "rcr",
+    "rrr"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "r": {
+      "item": "minecraft:redstone"
+    },
+    "c": {
+      "item": "minecraft:coal",
+      "data": 0
+    }
+  }
+}
