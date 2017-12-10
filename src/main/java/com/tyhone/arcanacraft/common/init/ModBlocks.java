@@ -6,6 +6,8 @@ import java.util.List;
 
 import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.common.blocks.base.ModBlockBase;
+import com.tyhone.arcanacraft.common.blocks.blocks.BlockAlchemicStone;
+import com.tyhone.arcanacraft.common.blocks.blocks.BlockAlchemicalCoal;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockRedCoal;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockDeconstructionTable;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockLensReceptacle;
@@ -18,8 +20,10 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class ModBlocks {
 
 	private static final List<ModBlockBase> BLOCKS = new ArrayList<>();
-	
+
 	public static final ModBlockBase RED_COAL_BLOCK = new BlockRedCoal();
+	public static final ModBlockBase ALCHEMICAL_COAL_BLOCK = new BlockAlchemicalCoal();
+	public static final ModBlockBase ALCHEMIC_STONE = new BlockAlchemicStone();
 	
 
 	public static final ModBlockBase LENS_RECEPTACLE = new BlockLensReceptacle();

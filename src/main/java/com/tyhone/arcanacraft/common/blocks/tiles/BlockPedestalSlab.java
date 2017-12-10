@@ -1,7 +1,6 @@
 package com.tyhone.arcanacraft.common.blocks.tiles;
 
 import com.tyhone.arcanacraft.common.blocks.base.ModBlockTileEntityBase;
-import com.tyhone.arcanacraft.common.tileentity.TileEntityPedestal;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityPedestalSlab;
 
 import net.minecraft.block.state.IBlockState;
@@ -11,14 +10,24 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockPedestalSlab extends ModBlockTileEntityBase {
 	
+	protected static final AxisAlignedBB PEDESTAL_PLATE_AABB = new AxisAlignedBB(0.0625F, 0.0F, 0.0625F, 0.9375F, 0.3125F, 0.9375F);
+    
 	public BlockPedestalSlab() {
 		super("pedestal_slab");
 	}
+	
+    @Override
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
+    {
+        return PEDESTAL_PLATE_AABB;
+    }
 	
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {

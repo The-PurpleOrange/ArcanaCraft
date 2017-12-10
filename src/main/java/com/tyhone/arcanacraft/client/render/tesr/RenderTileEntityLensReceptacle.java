@@ -33,7 +33,7 @@ public class RenderTileEntityLensReceptacle extends TileEntitySpecialRenderer{
 
             double sysTime = Minecraft.getSystemTime()/800D;
 	        GlStateManager.rotate(90F, 1, 0, 0);
-            GlStateManager.rotate((float)(((sysTime*40D)%360)), 0, 0, 1);
+            GlStateManager.rotate((float)(((sysTime*10D)%360)), 0, 0, 1);
 
             float scale = itemStack.getItem() instanceof ItemBlock ? 0.65F : 0.5F;
             GlStateManager.scale(scale, scale, scale);
