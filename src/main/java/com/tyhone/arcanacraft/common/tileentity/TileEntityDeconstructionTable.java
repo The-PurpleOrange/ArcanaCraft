@@ -1,10 +1,12 @@
 package com.tyhone.arcanacraft.common.tileentity;
 
 import com.tyhone.arcanacraft.api.recipe.RecipeDeconstructionTable;
+import com.tyhone.arcanacraft.common.init.ModBlocks;
 import com.tyhone.arcanacraft.common.tileentity.base.ModTileEntityBase;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
 
 public class TileEntityDeconstructionTable extends ModTileEntityBase implements ITickable{
@@ -12,14 +14,12 @@ public class TileEntityDeconstructionTable extends ModTileEntityBase implements 
 	private ItemStack stack = ItemStack.EMPTY;
 	private int workTime = 0;
 	
-	private ItemStack lens = ItemStack.EMPTY;
-	
 	@Override
 	public void update(){
 		if(!getWorld().isRemote){
 			boolean isDirty = false;
 			if(stack!=ItemStack.EMPTY){
-				RecipeDeconstructionTable recipe = RecipeDeconstructionTable.getRecipe(stack, lens);
+				RecipeDeconstructionTable recipe = RecipeDeconstructionTable.getRecipe(stack, getLens());
 				if(recipe != null){
 					if(workTime<recipe.getDeconstrutionTime()){
 						workTime++;
@@ -38,6 +38,13 @@ public class TileEntityDeconstructionTable extends ModTileEntityBase implements 
 		}
 	}
 	
+	private ItemStack getLens(){
+		if(world.getTileEntity(pos.add(0, 1, 0)) instanceof TileEntityLensReceptacle){
+			TileEntityLensReceptacle receptacle = (TileEntityLensReceptacle) world.getTileEntity(pos.add(0, 1, 0));
+			return receptacle.getStack();
+		}
+		return ItemStack.EMPTY;
+	}
 	
 	public ItemStack getStack() {
 		return stack;

@@ -1,9 +1,9 @@
 package com.tyhone.arcanacraft.common.blocks.tiles;
 
-import com.tyhone.arcanacraft.api.util.ItemStackUtil;
+import com.tyhone.arcanacraft.api.item.IFocusLens;
 import com.tyhone.arcanacraft.common.blocks.base.ModBlockTileEntityBase;
 import com.tyhone.arcanacraft.common.init.ModBlocks;
-import com.tyhone.arcanacraft.common.tileentity.TileEntityDeconstructionTable;
+import com.tyhone.arcanacraft.common.tileentity.TileEntityLensReceptacle;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
@@ -15,15 +15,15 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockDeconstructionTable extends ModBlockTileEntityBase{
+public class BlockLensReceptacle extends ModBlockTileEntityBase{
 
-	public BlockDeconstructionTable() {
-		super("deconstruction_table");
+	public BlockLensReceptacle() {
+		super("lens_receptacle");
 	}
 
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		return new TileEntityDeconstructionTable();
+		return new TileEntityLensReceptacle();
 	}
 	
 	@Override
@@ -47,21 +47,20 @@ public class BlockDeconstructionTable extends ModBlockTileEntityBase{
 	 @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
         if (!world.isRemote) {
-        	TileEntityDeconstructionTable te = (TileEntityDeconstructionTable) world.getTileEntity(pos);
+            TileEntityLensReceptacle te = (TileEntityLensReceptacle) world.getTileEntity(pos);
             if (te.getStack().isEmpty()) {
                 if (!player.getHeldItem(hand).isEmpty()) {
-                	if(ItemStackUtil.simpleAreStacksEqual(player.getHeldItem(hand), new ItemStack(ModBlocks.LENS_RECEPTACLE)) && side == EnumFacing.UP){
-                		return false;
+                	if(player.getHeldItem(hand).getItem() instanceof IFocusLens){
+	                	ItemStack itemStack = player.getHeldItem(hand).copy();
+	                	itemStack.setCount(1);
+	                    te.setStack(itemStack);
+	                    if(player.getHeldItem(hand).getCount()>1){
+	                    	player.getHeldItem(hand).setCount(player.getHeldItem(hand).getCount() - 1);
+	                    } else{
+	                    	player.setHeldItem(hand, ItemStack.EMPTY);
+	                    }
+	                    player.openContainer.detectAndSendChanges();
                 	}
-                	ItemStack itemStack = player.getHeldItem(hand).copy();
-                	itemStack.setCount(1);
-                    te.setStack(itemStack);
-                    if(player.getHeldItem(hand).getCount()>1){
-                    	player.getHeldItem(hand).setCount(player.getHeldItem(hand).getCount() - 1);
-                    } else{
-                    	player.setHeldItem(hand, ItemStack.EMPTY);
-                    }
-                    player.openContainer.detectAndSendChanges();
                 }
             } else {
                 ItemStack stack = te.getStack();
@@ -76,6 +75,11 @@ public class BlockDeconstructionTable extends ModBlockTileEntityBase{
         }
         
         return true;
+    }
+	
+	@Override
+	public boolean canPlaceBlockAt(World worldIn, BlockPos pos){
+       return (worldIn.getBlockState(pos).getBlock().isReplaceable(worldIn, pos) && (worldIn.getBlockState(pos.add(0, -1, 0)).getBlock() == ModBlocks.DECONSTRUCTION_TABLE));
     }
 	
 }

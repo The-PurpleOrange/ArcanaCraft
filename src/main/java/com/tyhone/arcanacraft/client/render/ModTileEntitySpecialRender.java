@@ -1,9 +1,11 @@
 package com.tyhone.arcanacraft.client.render;
 
 import com.tyhone.arcanacraft.client.render.tesr.RenderTileEntityDeconstructionTable;
+import com.tyhone.arcanacraft.client.render.tesr.RenderTileEntityLensReceptacle;
 import com.tyhone.arcanacraft.client.render.tesr.RenderTileEntityPedestal;
 import com.tyhone.arcanacraft.client.render.tesr.RenderTileEntityPedestalSlab;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityDeconstructionTable;
+import com.tyhone.arcanacraft.common.tileentity.TileEntityLensReceptacle;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityPedestal;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityPedestalSlab;
 
@@ -18,6 +20,7 @@ public class ModTileEntitySpecialRender {
 		RenderItem renderItem = Minecraft.getMinecraft().getRenderItem();
 
 
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityLensReceptacle.class, new RenderTileEntityLensReceptacle(renderManager, renderItem));
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityDeconstructionTable.class, new RenderTileEntityDeconstructionTable(renderManager, renderItem));
 		
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPedestal.class, new RenderTileEntityPedestal(renderManager, renderItem));
