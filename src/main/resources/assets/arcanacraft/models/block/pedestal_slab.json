@@ -1,0 +1,35 @@
+ {
+    "textures": {
+        "baseSide": "arcanacraft:models/pedestal_slab/pedestal_slab_base_side",
+        "baseTop": "arcanacraft:models/pedestal_slab/pedestal_slab_base",
+        "beacon": "arcanacraft:models/pedestal_slab/pedestal_slab_beacon"
+    },
+    "elements": [
+        {
+            "name": "bottom",
+            "from": [ 1.0, 0.0, 1.0 ], 
+            "to": [ 15.0, 4.0, 15.0 ], 
+            "faces": {
+                "north": { "texture": "#baseSide", "uv": [ 0.0, 0.0, 14.0, 4.0 ] },
+                "east": { "texture": "#baseSide", "uv": [ 0.0, 0.0, 14.0, 4.0 ] },
+                "south": { "texture": "#baseSide", "uv": [ 0.0, 0.0, 14.0, 4.0 ] },
+                "west": { "texture": "#baseSide", "uv": [ 0.0, 0.0, 14.0, 4.0 ] },
+                "up": { "texture": "#baseTop", "uv": [ 0.0, 0.0, 14.0, 14.0 ] },
+                "down": { "texture": "#baseTop", "uv": [ 0.0, 0.0, 14.0, 14.0 ] }
+            }
+        },
+        {
+            "name": "beacon",
+            "from": [ 5.0, 4.0, 5.0 ], 
+            "to": [ 11.0, 5.0, 11.0 ], 
+            "faces": {
+                "north": { "texture": "#baseSide", "uv": [ 1.0, 1.0, 7.0, 2.0 ] },
+                "east": { "texture": "#baseSide", "uv": [ 1.0, 1.0, 7.0, 2.0 ] },
+                "south": { "texture": "#baseSide", "uv": [ 1.0, 1.0, 7.0, 2.0 ] },
+                "west": { "texture": "#baseSide", "uv": [ 1.0, 1.0, 7.0, 2.0 ] },
+                "up": { "texture": "#beacon", "uv": [ 0.0, 0.0, 6.0, 6.0 ] },
+                "down": { "texture": "#beacon", "uv": [ 0.0, 0.0, 6.0, 6.0 ] }
+            }
+        }
+    ]
+}

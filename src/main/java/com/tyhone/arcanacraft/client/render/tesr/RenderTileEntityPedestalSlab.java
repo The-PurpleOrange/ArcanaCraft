@@ -16,9 +16,9 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 
-public class RenderTileEntityPedestal extends TileEntitySpecialRenderer{
+public class RenderTileEntityPedestalSlab extends TileEntitySpecialRenderer{
 	
-	public RenderTileEntityPedestal(RenderManager renderManager, RenderItem renderItem){	
+	public RenderTileEntityPedestalSlab(RenderManager renderManager, RenderItem renderItem){	
 	}
 	
 	@Override
@@ -29,7 +29,7 @@ public class RenderTileEntityPedestal extends TileEntitySpecialRenderer{
 		if(itemStack != null && itemStack.getCount()>0){ //Check if there is an item in slot 0
 			
             GlStateManager.pushMatrix();
-            GlStateManager.translate((float)x+0.5F, (float)y+1.35F, (float)z+0.5F);
+            GlStateManager.translate((float)x+0.5F, (float)y+0.65F, (float)z+0.5F);
 
             double sysTime = Minecraft.getSystemTime()/800D;
             GlStateManager.translate(0D, Math.sin(sysTime%(2*Math.PI))*0.065, 0D);
@@ -44,7 +44,7 @@ public class RenderTileEntityPedestal extends TileEntitySpecialRenderer{
                 renderItemInWorld(itemStack);
             }
             catch(Exception e){
-                Arcanacraft.logger.log(Level.ERROR, "Something went wrong trying to render an item in a Pedestal! The item is "+itemStack.getItem().getRegistryName()+"! - " +  e);
+                Arcanacraft.logger.log(Level.ERROR, "Something went wrong trying to render an item in a Pedestal Slab! The item is "+itemStack.getItem().getRegistryName()+"! - " +  e);
             }
 
             GlStateManager.popMatrix();

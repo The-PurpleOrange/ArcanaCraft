@@ -1,28 +1,133 @@
 package com.tyhone.arcanacraft.common.items.base;
 
-import org.apache.logging.log4j.Level;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.common.init.ModItems;
+import com.tyhone.arcanacraft.common.util.ResourceLocationHelper;
 
+import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ModItemBase extends Item{
+
+//Uses temporary Pahicode from Pahimar for Item Variants, will be replaced in future
+public class ModItemBase extends Item implements IItemVariantHolder<ModItemBase>{
 	
-	public ModItemBase(String regName){
+	private final String BASE_NAME;
+	private final String[] VARIANTS;
+	
+	public ModItemBase(String name){
 		super();
-		setRegistryName(regName);
-		setUnlocalizedName(Arcanacraft.MODID + "." + getRegistryName());
+		setRegistryName(name);
+		//setUnlocalizedName(Arcanacraft.MODID + "." + name);
+        this.setCreativeTab(CreativeTabs.MATERIALS);
+		setMaxStackSize(64);
+		setNoRepair();
+        setMaxDamage(0);
+		
+		BASE_NAME = name;
+		VARIANTS = new String[0];
+		setHasSubtypes(false);
 		
 		ModItems.register(this);
 	}
 	
+	public ModItemBase(String name, String[] variants){
+		super();
+		setRegistryName(name);
+		//setUnlocalizedName(Arcanacraft.MODID + "." + name);
+        this.setCreativeTab(CreativeTabs.MATERIALS);
+		setMaxStackSize(64);
+		setNoRepair();
+        setMaxDamage(0);
+		
+		BASE_NAME = name;
+		if(variants.length>0){
+			ArrayList<String> variantList = new ArrayList<>();
+			for(String a:variants){
+				variantList.add(name + "_" + a);
+			}
+			String[] variantArray = variantList.toArray(new String[0]); 
+			
+			VARIANTS = variantArray;
+			setHasSubtypes(true);
+		}
+		else{
+			VARIANTS = new String[0];
+			setHasSubtypes(false);
+		}
+		
+		
+		ModItems.register(this);
+	}
+	
+	public String getUnlocalizedName(ItemStack stack)
+    {
+		if(getHasSubtypes() && stack.getMetadata() < VARIANTS.length){
+			return (Arcanacraft.MODID + "." + VARIANTS[stack.getMetadata()]);
+		}
+		else{
+			return Arcanacraft.MODID + "." + BASE_NAME;
+		}
+    }
+	
+	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items)
+    {
+		if(this.isInCreativeTab(tab)){
+			if(getHasSubtypes() && VARIANTS.length>0){
+				for(int i = 0; i<VARIANTS.length;i++){
+	                items.add(new ItemStack(this, 1, i));
+				}
+			}
+			else{
+				super.getSubItems(tab, items);
+	        }
+		}
+    }
+	
 	@SideOnly(Side.CLIENT)
-	public void initModel(){
-		ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+	public void initModelsAndVariants(){
+		
+		if(getCustomMeshDefinition() != null){
+			for(int i = 0; i < VARIANTS.length; i++){
+				ModelBakery.registerItemVariants(this, ResourceLocationHelper.getModelResourceLocation(VARIANTS[i]));
+			}
+			
+			ModelLoader.setCustomMeshDefinition(this, getCustomMeshDefinition());
+		}
+		
+		else{
+			if(getHasSubtypes() && VARIANTS.length>0){
+				List<ModelResourceLocation> modelResources = new ArrayList<>();
+				
+				for(int i = 0; i < VARIANTS.length; i++){
+                    modelResources.add(ResourceLocationHelper.getModelResourceLocation(VARIANTS[i]));
+				}
+				
+				ModelBakery.registerItemVariants(this, modelResources.toArray(new ModelResourceLocation[0]));
+                ModelLoader.setCustomMeshDefinition(this, itemStack -> modelResources.get(itemStack.getMetadata()));
+            }
+            else {
+                ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName().toString()));
+            }
+		}
+	}
+
+	@Override
+	public ModItemBase getItem() {
+		return this;
+	}
+
+	@Override
+	public String[] getVariants() {
+		return VARIANTS;
 	}
 }

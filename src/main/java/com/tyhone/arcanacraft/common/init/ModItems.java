@@ -6,18 +6,18 @@ import java.util.List;
 
 import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.common.items.base.ModItemBase;
+import com.tyhone.arcanacraft.common.items.items.ItemLens;
 import com.tyhone.arcanacraft.common.items.items.ItemRedCoal;
 
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 @GameRegistry.ObjectHolder(Arcanacraft.MODID)
 public class ModItems {
 	
 	private static final List<ModItemBase> ITEMS = new ArrayList<>();
-	
+
 	public static final ModItemBase RED_COAL = new ItemRedCoal();
+	public static final ModItemBase LENS = new ItemLens();
 	
 	private ModItems() {}
 	

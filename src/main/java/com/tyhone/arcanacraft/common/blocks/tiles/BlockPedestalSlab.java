@@ -2,6 +2,7 @@ package com.tyhone.arcanacraft.common.blocks.tiles;
 
 import com.tyhone.arcanacraft.common.blocks.base.ModBlockTileEntityBase;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityPedestal;
+import com.tyhone.arcanacraft.common.tileentity.TileEntityPedestalSlab;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
@@ -13,15 +14,15 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockPedestal extends ModBlockTileEntityBase{
-
-	public BlockPedestal() {
-		super("pedestal");
+public class BlockPedestalSlab extends ModBlockTileEntityBase {
+	
+	public BlockPedestalSlab() {
+		super("pedestal_slab");
 	}
-
+	
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		return new TileEntityPedestal();
+		return new TileEntityPedestalSlab();
 	}
 	
 	@Override
@@ -45,7 +46,7 @@ public class BlockPedestal extends ModBlockTileEntityBase{
 	 @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
         if (!world.isRemote) {
-            TileEntityPedestal te = (TileEntityPedestal) world.getTileEntity(pos);
+            TileEntityPedestalSlab te = (TileEntityPedestalSlab) world.getTileEntity(pos);
             if (te.getStack().isEmpty()) {
                 if (!player.getHeldItem(hand).isEmpty()) {
                 	ItemStack itemStack = player.getHeldItem(hand).copy();
@@ -72,5 +73,4 @@ public class BlockPedestal extends ModBlockTileEntityBase{
         
         return true;
     }
-	
 }

@@ -5,6 +5,7 @@ import java.io.File;
 import com.tyhone.arcanacraft.Config;
 import com.tyhone.arcanacraft.common.init.ModBlocks;
 import com.tyhone.arcanacraft.common.init.ModItems;
+import com.tyhone.arcanacraft.common.init.ModRecipes;
 import com.tyhone.arcanacraft.common.init.ModTileEntities;
 
 import net.minecraft.block.Block;
@@ -32,7 +33,7 @@ public class CommonProxy {
     }
 
     public void init(FMLInitializationEvent e) {
-    	
+    	ModRecipes.init();
     }
 
     public void postInit(FMLPostInitializationEvent e) {

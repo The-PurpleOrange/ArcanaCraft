@@ -1,0 +1,75 @@
+{
+    "__comment": "Model generated using MrCrayfish's Model Creator (http://mrcrayfish.com/modelcreator/)",
+    "textures": {
+        "side": "arcanacraft:models/deconstruction_table/table_base",
+        "top": "arcanacraft:models/deconstruction_table/table_top",
+        "bottom": "arcanacraft:models/deconstruction_table/table_bottom"
+    },
+    "elements": [
+        {
+            "name": "topnw",
+            "from": [ 0.0, 15.0, 0.0 ], 
+            "to": [ 3.0, 16.0, 3.0 ], 
+            "faces": {
+                "north": { "texture": "#side", "uv": [ 0.0, 0.0, 3.0, 1.0 ] },
+                "east": { "texture": "#side", "uv": [ 0.0, 0.0, 3.0, 1.0 ] },
+                "south": { "texture": "#side", "uv": [ 0.0, 0.0, 3.0, 1.0 ] },
+                "west": { "texture": "#side", "uv": [ 0.0, 0.0, 3.0, 1.0 ] },
+                "up": { "texture": "#top", "uv": [ 0.0, 0.0, 3.0, 3.0 ] },
+                "down": { "texture": "#top", "uv": [ 0.0, 0.0, 3.0, 3.0 ], "cullface": "down" }
+            }
+        },
+        {
+            "name": "topsw",
+            "from": [ 0.0, 15.0, 13.0 ], 
+            "to": [ 3.0, 16.0, 16.0 ], 
+            "faces": {
+                "north": { "texture": "#side", "uv": [ 0.0, 0.0, 3.0, 1.0 ] },
+                "east": { "texture": "#side", "uv": [ 0.0, 0.0, 3.0, 1.0 ] },
+                "south": { "texture": "#side", "uv": [ 0.0, 0.0, 3.0, 1.0 ] },
+                "west": { "texture": "#side", "uv": [ 0.0, 0.0, 3.0, 1.0 ] },
+                "up": { "texture": "#top", "uv": [ 0.0, 0.0, 3.0, 3.0 ] },
+                "down": { "texture": "#top", "uv": [ 0.0, 0.0, 3.0, 3.0 ], "cullface": "down" }
+            }
+        },
+        {
+            "name": "topse",
+            "from": [ 13.0, 15.0, 13.0 ], 
+            "to": [ 16.0, 16.0, 16.0 ], 
+            "faces": {
+                "north": { "texture": "#side", "uv": [ 0.0, 0.0, 3.0, 1.0 ] },
+                "east": { "texture": "#side", "uv": [ 0.0, 0.0, 3.0, 1.0 ] },
+                "south": { "texture": "#side", "uv": [ 0.0, 0.0, 3.0, 1.0 ] },
+                "west": { "texture": "#side", "uv": [ 0.0, 0.0, 3.0, 1.0 ] },
+                "up": { "texture": "#top", "uv": [ 0.0, 0.0, 3.0, 3.0 ] },
+                "down": { "texture": "#top", "uv": [ 0.0, 0.0, 3.0, 3.0 ], "cullface": "down" }
+            }
+        },
+        {
+            "name": "topne",
+            "from": [ 13.0, 15.0, 0.0 ], 
+            "to": [ 16.0, 16.0, 3.0 ], 
+            "faces": {
+                "north": { "texture": "#side", "uv": [ 0.0, 0.0, 3.0, 1.0 ] },
+                "east": { "texture": "#side", "uv": [ 0.0, 0.0, 3.0, 1.0 ] },
+                "south": { "texture": "#side", "uv": [ 0.0, 0.0, 3.0, 1.0 ] },
+                "west": { "texture": "#side", "uv": [ 0.0, 0.0, 3.0, 1.0 ] },
+                "up": { "texture": "#top", "uv": [ 0.0, 0.0, 3.0, 3.0 ] },
+                "down": { "texture": "#top", "uv": [ 0.0, 0.0, 3.0, 3.0 ], "cullface": "down" }
+            }
+        },
+        {
+            "name": "cubeBase",
+            "from": [ 0.0, 0.0, 0.0 ], 
+            "to": [ 16.0, 15.0, 16.0 ], 
+            "faces": {
+                "north": { "texture": "#side", "uv": [ 0.0, 1.0, 16.0, 16.0 ] },
+                "east": { "texture": "#side", "uv": [ 0.0, 1.0, 16.0, 16.0 ] },
+                "south": { "texture": "#side", "uv": [ 0.0, 1.0, 16.0, 16.0 ] },
+                "west": { "texture": "#side", "uv": [ 0.0, 1.0, 16.0, 16.0 ] },
+                "up": { "texture": "#top", "uv": [ 0.0, 0.0, 16.0, 16.0 ] },
+                "down": { "texture": "#bottom", "uv": [ 0.0, 0.0, 16.0, 16.0 ] }
+            }
+        }
+    ]
+}

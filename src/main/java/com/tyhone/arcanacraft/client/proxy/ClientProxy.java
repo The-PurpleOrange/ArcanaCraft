@@ -37,7 +37,7 @@ public class ClientProxy extends CommonProxy {
     @SubscribeEvent
     public static void registerModels(ModelRegistryEvent event) {
         ModBlocks.getBlocks().forEach(ModBlockBase::initItemModel);
-        ModItems.getItems().forEach(ModItemBase::initModel);
+        ModItems.getItems().forEach(ModItemBase::initModelsAndVariants);
     }
 
 }
