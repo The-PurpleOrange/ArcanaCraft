@@ -1,5 +1,6 @@
 package com.tyhone.arcanacraft.client.proxy;
 
+import com.tyhone.arcanacraft.client.render.ModTileEntitySpecialRender;
 import com.tyhone.arcanacraft.common.blocks.base.ModBlockBase;
 import com.tyhone.arcanacraft.common.init.ModBlocks;
 import com.tyhone.arcanacraft.common.init.ModItems;
@@ -19,6 +20,8 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void preInit(FMLPreInitializationEvent e) {
         super.preInit(e);
+        
+        ModTileEntitySpecialRender.preInit();
     }
 
     @Override

@@ -5,6 +5,7 @@ import java.io.File;
 import com.tyhone.arcanacraft.Config;
 import com.tyhone.arcanacraft.common.init.ModBlocks;
 import com.tyhone.arcanacraft.common.init.ModItems;
+import com.tyhone.arcanacraft.common.init.ModTileEntities;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -31,6 +32,7 @@ public class CommonProxy {
     }
 
     public void init(FMLInitializationEvent e) {
+    	
     }
 
     public void postInit(FMLPostInitializationEvent e) {
@@ -44,6 +46,8 @@ public class CommonProxy {
     	for(Block block : ModBlocks.getBlocks()){
 			event.getRegistry().register(block);
     	}
+    	
+    	ModTileEntities.register();
     }
     
     @SubscribeEvent
