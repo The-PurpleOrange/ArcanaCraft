@@ -40,7 +40,7 @@ public class ModItemBase extends Item implements IItemVariantHolder<ModItemBase>
 		ModItems.register(this);
 	}
 	
-	public ModItemBase(String name, String[] variants){
+	public ModItemBase(String name, ArrayList<String> variants){
 		super();
 		setRegistryName(name);
 		//setUnlocalizedName(Arcanacraft.MODID + "." + name);
@@ -50,11 +50,9 @@ public class ModItemBase extends Item implements IItemVariantHolder<ModItemBase>
         setMaxDamage(0);
 		
 		BASE_NAME = name;
-		if(variants.length>0){
+		if(variants.size()>0){
 			ArrayList<String> variantList = new ArrayList<>();
-			for(String a:variants){
-				variantList.add(name + "_" + a);
-			}
+			variants.forEach(a -> variantList.add(name + "_" + a));
 			String[] variantArray = variantList.toArray(new String[0]); 
 			
 			VARIANTS = variantArray;

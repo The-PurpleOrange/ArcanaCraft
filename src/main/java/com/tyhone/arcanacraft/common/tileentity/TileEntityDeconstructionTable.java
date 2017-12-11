@@ -1,15 +1,17 @@
 package com.tyhone.arcanacraft.common.tileentity;
 
 import com.tyhone.arcanacraft.api.recipe.RecipeDeconstructionTable;
-import com.tyhone.arcanacraft.common.init.ModBlocks;
 import com.tyhone.arcanacraft.common.tileentity.base.ModTileEntityBase;
+import com.tyhone.arcanacraft.common.util.BlockUtils;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
 public class TileEntityDeconstructionTable extends ModTileEntityBase implements ITickable{
+
 
 	private ItemStack stack = ItemStack.EMPTY;
 	private int workTime = 0;
@@ -26,7 +28,7 @@ public class TileEntityDeconstructionTable extends ModTileEntityBase implements 
 						isDirty=true;
 					}
 					else{
-						setStack(recipe.getOutputs().copy());
+						setStack(recipe.getOutput().copy());
 						workTime=0;
 						isDirty=true;
 					}

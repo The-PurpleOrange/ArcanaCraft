@@ -10,9 +10,11 @@ import com.tyhone.arcanacraft.common.blocks.blocks.BlockAlchemicStone;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockAlchemicalCoal;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockRedCoal;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockDeconstructionTable;
+import com.tyhone.arcanacraft.common.blocks.tiles.BlockInfusionAltar;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockLensReceptacle;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockPedestal;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockPedestalSlab;
+import com.tyhone.arcanacraft.common.blocks.tiles.BlockSoulAltar;
 
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -28,6 +30,9 @@ public class ModBlocks {
 
 	public static final ModBlockBase LENS_RECEPTACLE = new BlockLensReceptacle();
 	public static final ModBlockBase DECONSTRUCTION_TABLE = new BlockDeconstructionTable();
+
+	public static final ModBlockBase INFUSION_ALTAR = new BlockInfusionAltar();
+	public static final ModBlockBase SOUL_ALTAR = new BlockSoulAltar();
 	
 	public static final ModBlockBase PEDESTAL = new BlockPedestal();
 	public static final ModBlockBase PEDESTAL_SLAB = new BlockPedestalSlab();
