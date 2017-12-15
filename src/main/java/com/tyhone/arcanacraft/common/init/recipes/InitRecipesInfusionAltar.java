@@ -10,6 +10,6 @@ import net.minecraft.item.ItemStack;
 
 public class InitRecipesInfusionAltar {
 	public static void initInfusionAltarRecipes(){
-		ArcanacraftCraftingManager.registerInfusionRecipes(new ItemStack(ModItems.ALCHEMICAL_COAL), new ItemStack(Blocks.GLASS), new ItemStack(Blocks.SOUL_SAND), new ItemStack(Blocks.SOUL_SAND), new ItemStack(Blocks.SOUL_SAND), new ItemStack(Blocks.SOUL_SAND), new ItemStack(Blocks.SOUL_SAND));
+		ArcanacraftCraftingManager.registerInfusionRecipes(new ItemStack(ModItems.SOUL, 1, ItemMetaUtil.soul("raging")), new ItemStack(Blocks.GLASS), new ItemStack(Blocks.SOUL_SAND), new ItemStack(Blocks.SOUL_SAND), new ItemStack(Blocks.SOUL_SAND), new ItemStack(Blocks.SOUL_SAND), new ItemStack(Blocks.SOUL_SAND));
 	}
 }

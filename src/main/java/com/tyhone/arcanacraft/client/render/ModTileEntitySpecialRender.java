@@ -2,12 +2,14 @@ package com.tyhone.arcanacraft.client.render;
 
 import com.tyhone.arcanacraft.client.render.tesr.RenderTileEntityDeconstructionTable;
 import com.tyhone.arcanacraft.client.render.tesr.RenderTileEntityInfusionAltar;
+import com.tyhone.arcanacraft.client.render.tesr.RenderTileEntityJar;
 import com.tyhone.arcanacraft.client.render.tesr.RenderTileEntityLensReceptacle;
 import com.tyhone.arcanacraft.client.render.tesr.RenderTileEntityPedestal;
 import com.tyhone.arcanacraft.client.render.tesr.RenderTileEntityPedestalSlab;
 import com.tyhone.arcanacraft.client.render.tesr.RenderTileEntitySoulAltar;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityDeconstructionTable;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityInfusionAltar;
+import com.tyhone.arcanacraft.common.tileentity.TileEntityJar;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityLensReceptacle;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityPedestal;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityPedestalSlab;
@@ -29,7 +31,8 @@ public class ModTileEntitySpecialRender {
 
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityInfusionAltar.class, new RenderTileEntityInfusionAltar(renderManager, renderItem));
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySoulAltar.class, new RenderTileEntitySoulAltar(renderManager, renderItem));
-		
+
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityJar.class, new RenderTileEntityJar(renderManager, renderItem));
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPedestal.class, new RenderTileEntityPedestal(renderManager, renderItem));
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPedestalSlab.class, new RenderTileEntityPedestalSlab(renderManager, renderItem));
 	}
