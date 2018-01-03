@@ -6,6 +6,7 @@ import com.tyhone.arcanacraft.common.init.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
@@ -14,21 +15,22 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ModBlockBase extends Block {
 
 	public ModBlockBase(String regName) {
-		super(Material.ROCK);
-		setRegistryName(regName);
-		setUnlocalizedName(Arcanacraft.MODID + "." + getRegistryName());
-		
-		ModBlocks.register(this);
+		this(regName, Material.ROCK);
 	}
 	
 	public ModBlockBase(String regName, Material material) {
-		super(Material.ROCK);
+		super(material);
 		setRegistryName(regName);
-		setUnlocalizedName(Arcanacraft.MODID + "." + getRegistryName());
+		setUnlocalizedName(regName);
+        this.setCreativeTab(CreativeTabs.MATERIALS);
 
 		ModBlocks.register(this);
 	}
 	
+	@Override
+	public String getUnlocalizedName(){
+		return Arcanacraft.MODID + "." + getRegistryName();
+	}
 	
 	@SideOnly(Side.CLIENT)
 	public void initItemModel() {

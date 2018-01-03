@@ -1,0 +1,16 @@
+{
+    "ambientocclusion": false,
+    "textures": {
+        "all": "arcanacraft:blocks/chalk_block/bone/chalkBoneBlock2",
+        "particle": "arcanacraft:blocks/chalk_block/bone/chalkBoneBlock2"
+    },
+    "elements": [
+        {   "from": [ 2, 0.25, 2 ],
+            "to": [ 14, 0.25, 14 ],
+            "shade": false,
+            "faces": {
+                "up":    { "uv": [ 2, 2, 14, 14 ], "texture": "all"}
+            }
+        }
+    ]
+}

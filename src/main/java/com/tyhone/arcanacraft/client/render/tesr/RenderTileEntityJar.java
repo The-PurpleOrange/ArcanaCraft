@@ -21,10 +21,6 @@ import net.minecraft.util.ResourceLocation;
 
 public class RenderTileEntityJar extends TileEntitySpecialRenderer{
 	
-	private static final ResourceLocation CIRCLE_INNER = new ResourceLocation(Arcanacraft.MODID + ":textures/models/activation_circle/activation_circle_inner.png");
-	private static final ResourceLocation CIRCLE_OUTER = new ResourceLocation(Arcanacraft.MODID + ":textures/models/activation_circle/activation_circle_body.png");
-	
-	
 	public RenderTileEntityJar(RenderManager renderManager, RenderItem renderItem){	
 	}
 	
@@ -45,7 +41,7 @@ public class RenderTileEntityJar extends TileEntitySpecialRenderer{
 			//Render smooth stuff
 		    RenderHelper.disableStandardItemLighting();
 		    GlStateManager.enableBlend();
-		    GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+		    //GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 
 		    /*if(Minecraft.isAmbientOcclusionEnabled()) {
 		      GL11.glShadeModel(GL11.GL_SMOOTH);
@@ -56,8 +52,8 @@ public class RenderTileEntityJar extends TileEntitySpecialRenderer{
 
 		    GlStateManager.translate(x, y+1, z);
 		    
-			buffer.begin(GL11.GL_QUADS, DefaultVertexFormats.BLOCK);
-			buffer.color(255, 0, 0, 255);
+			buffer.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION);
+			buffer.color(255, 0, 0, 150);
 
 		    buildQuad(buffer, 0, 0, 0, 1, 1, 1, EnumFacing.DOWN);
 		    buildQuad(buffer, 0, 0, 0, 1, 1, 1, EnumFacing.UP);

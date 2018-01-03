@@ -1,9 +1,8 @@
 package com.tyhone.arcanacraft.common.util;
 
-import org.apache.logging.log4j.Level;
-
-import com.tyhone.arcanacraft.Arcanacraft;
+import com.tyhone.arcanacraft.common.blocks.base.ModBlockEnum;
 import com.tyhone.arcanacraft.common.init.ModBlocks;
+import com.tyhone.arcanacraft.common.items.base.ModItemBlockEnum;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
@@ -14,9 +13,9 @@ public class BlockUtils {
 	
 	private BlockUtils() {}
 	
-	/*public static ItemBlock getItemBlockFor(Block block){
+	public static ItemBlock getItemBlockFor(Block block){
 		return block instanceof ModBlockEnum ? new ModItemBlockEnum((ModBlockEnum) block) : new ItemBlock(block);
-	}*/
+	}
 	
 	public static boolean checkIfPedestal(World world, BlockPos pos){
 		if(world.getBlockState(pos).getBlock() == ModBlocks.PEDESTAL){

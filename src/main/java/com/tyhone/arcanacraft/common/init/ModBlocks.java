@@ -8,6 +8,7 @@ import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.common.blocks.base.ModBlockBase;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockAlchemicStone;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockAlchemicalCoal;
+import com.tyhone.arcanacraft.common.blocks.blocks.BlockChalk;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockRedCoal;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockDeconstructionTable;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockInfusionAltar;
@@ -27,7 +28,8 @@ public class ModBlocks {
 	public static final ModBlockBase RED_COAL_BLOCK = new BlockRedCoal();
 	public static final ModBlockBase ALCHEMICAL_COAL_BLOCK = new BlockAlchemicalCoal();
 	public static final ModBlockBase ALCHEMIC_STONE = new BlockAlchemicStone();
-	
+
+	public static final ModBlockBase CHALK_BLOCK = new BlockChalk();
 
 	public static final ModBlockBase LENS_RECEPTACLE = new BlockLensReceptacle();
 	public static final ModBlockBase DECONSTRUCTION_TABLE = new BlockDeconstructionTable();

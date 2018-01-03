@@ -18,8 +18,6 @@ public class Names {
         public static final ArrayList<String> DUST = al("blood", "bone", "charcoal", "iron", "gold", "magicite");
         public static final ArrayList<String> CRYSTAL = al("blood", "gold", "iron", "magicite");
         public static final ArrayList<String> ITEM = al("bone_ash", "clean_flesh");
-        public static final ArrayList<String> TINKTURE = EnumTinktures.getAllNames();
-		//public static final ArrayList<String> TINKTURE = al("impirus", "amnis", "rebus", "locus");
      
 	}
 	

@@ -2,11 +2,17 @@ package com.tyhone.arcanacraft.common.proxy;
 
 import java.io.File;
 
+import org.apache.logging.log4j.Level;
+
+import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.Config;
+import com.tyhone.arcanacraft.common.blocks.base.ModBlockEnum;
 import com.tyhone.arcanacraft.common.init.ModBlocks;
+import com.tyhone.arcanacraft.common.init.ModCustomRegistries;
 import com.tyhone.arcanacraft.common.init.ModItems;
 import com.tyhone.arcanacraft.common.init.ModRecipes;
 import com.tyhone.arcanacraft.common.init.ModTileEntities;
+import com.tyhone.arcanacraft.common.util.BlockUtils;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -29,7 +35,10 @@ public class CommonProxy {
         File directory = e.getModConfigurationDirectory();
         config = new Configuration(new File(directory.getPath(), "modtut.cfg"));
         Config.readConfig();
-
+        
+        //Custom test
+        ModCustomRegistries.register();
+        
     }
 
     public void init(FMLInitializationEvent e) {
@@ -55,7 +64,9 @@ public class CommonProxy {
     public static void registerItems(RegistryEvent.Register<Item> event) {
     	ModItems.getItems().forEach(event.getRegistry()::register);
 		for(Block block : ModBlocks.getBlocks()){
-			event.getRegistry().register(new ItemBlock(block).setRegistryName(block.getRegistryName()));
+			event.getRegistry().register(BlockUtils.getItemBlockFor(block).setRegistryName(block.getRegistryName()));
+			//event.getRegistry().register(new ItemBlock(block).setRegistryName(block.getRegistryName()));
+			
 		}
     }
 

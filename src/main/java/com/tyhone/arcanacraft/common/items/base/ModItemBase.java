@@ -27,7 +27,6 @@ public class ModItemBase extends Item implements IItemVariantHolder<ModItemBase>
 	public ModItemBase(String name){
 		super();
 		setRegistryName(name);
-		//setUnlocalizedName(Arcanacraft.MODID + "." + name);
         this.setCreativeTab(CreativeTabs.MATERIALS);
 		setMaxStackSize(64);
 		setNoRepair();
@@ -43,7 +42,6 @@ public class ModItemBase extends Item implements IItemVariantHolder<ModItemBase>
 	public ModItemBase(String name, ArrayList<String> variants){
 		super();
 		setRegistryName(name);
-		//setUnlocalizedName(Arcanacraft.MODID + "." + name);
         this.setCreativeTab(CreativeTabs.MATERIALS);
 		setMaxStackSize(64);
 		setNoRepair();
@@ -66,7 +64,8 @@ public class ModItemBase extends Item implements IItemVariantHolder<ModItemBase>
 		
 		ModItems.register(this);
 	}
-	
+
+	@Override
 	public String getUnlocalizedName(ItemStack stack)
     {
 		if(getHasSubtypes() && stack.getMetadata() < VARIANTS.length){
@@ -76,7 +75,8 @@ public class ModItemBase extends Item implements IItemVariantHolder<ModItemBase>
 			return Arcanacraft.MODID + "." + BASE_NAME;
 		}
     }
-	
+
+	@Override
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items)
     {
 		if(this.isInCreativeTab(tab)){
