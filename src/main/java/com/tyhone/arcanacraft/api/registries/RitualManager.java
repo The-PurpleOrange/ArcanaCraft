@@ -1,23 +1,23 @@
 package com.tyhone.arcanacraft.api.registries;
 
-import com.tyhone.arcanacraft.api.ritual.IRitual;
+import com.tyhone.arcanacraft.api.ritual.RitualBase;
 
 public class RitualManager {
 	
 	String ritualName;
-	Class ritualClass;
+	RitualBase ritual;
 	
-	public RitualManager(String ritualName, Class ritualClass){
+	public RitualManager(String ritualName, RitualBase ritualClass){
 		this.ritualName = ritualName;
-		this.ritualClass = ritualClass;
+		this.ritual = ritualClass;
 	}
 	
 	public String getRitualName(){
 		return ritualName;
 	}
 	
-	public Class GetRitualClass(){
-		return ritualClass;
+	public RitualBase GetRitual(){
+		return ritual;
 	}
 
 }

@@ -6,7 +6,7 @@ import java.util.List;
 import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.api.registries.RitualManager;
 import com.tyhone.arcanacraft.api.registries.RitualRegistry;
-import com.tyhone.arcanacraft.api.ritual.IRitual;
+import com.tyhone.arcanacraft.api.ritual.RitualBase;
 import com.tyhone.arcanacraft.api.util.ItemStackUtil;
 
 import net.minecraft.item.ItemStack;
@@ -85,7 +85,6 @@ public class RecipeRitualCircle {
 	
 	public boolean matchesBlocks(List<ItemStack> blocks) {
 		List<ItemStack> inputsRequired = new ArrayList(blockPosList);
-		Arcanacraft.logger.info(inputsRequired.size()+":"+blocks.size());
 		boolean flag = true;
 		for(int i = 0; i < inputsRequired.size(); i++){
 			if(areBlocksEqual(blocks.get(i), inputsRequired.get(i))==false){
@@ -172,10 +171,10 @@ public class RecipeRitualCircle {
 
 
 
-	public Class<? extends IRitual> getRitual(String ritualName) {
+	public RitualBase getRitual(String ritualName) {
 		for(RitualManager ritual : RitualRegistry.getRitualList()){
 			if(ritualName == ritual.getRitualName()){
-				return ritual.GetRitualClass();
+				return ritual.GetRitual();
 			}
 		}
 		return null;

@@ -1,17 +1,17 @@
 package com.tyhone.arcanacraft.common.rituals;
 
-import com.tyhone.arcanacraft.Arcanacraft;
+import java.util.Random;
+
 import com.tyhone.arcanacraft.api.ritual.RitualBase;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class RitualSummonRain extends RitualBase{
+public class RitualClearWeather extends RitualBase{
 
-	private String ritualName = "summon_rain";
+	private String ritualName = "clear_weather";
+    public final Random rand = new Random();
 	
 	@Override
 	public String getRitualName() {
@@ -21,7 +21,10 @@ public class RitualSummonRain extends RitualBase{
 	@Override
 	public boolean preformRitual(World world, EntityPlayer player, BlockPos Pos) {
 		if(!world.isRemote){
-			world.getWorldInfo().setRaining(true);
+			world.getWorldInfo().setRaining(false);
+			world.getWorldInfo().setThundering(false);
+			world.getWorldInfo().setRainTime(rand.nextInt(168000) + 12000);
+			world.getWorldInfo().setThunderTime(rand.nextInt(168000) + 12000);
 		}
 		return true;
 	}

@@ -2,24 +2,31 @@ package com.tyhone.arcanacraft.common.init.rituals;
 
 import com.tyhone.arcanacraft.api.recipe.ArcanacraftRitualManager;
 import com.tyhone.arcanacraft.api.registries.RitualRegistry;
+import com.tyhone.arcanacraft.api.ritual.RitualBase;
 import com.tyhone.arcanacraft.common.init.ModBlocks;
-import com.tyhone.arcanacraft.common.init.ModItems;
+import com.tyhone.arcanacraft.common.rituals.RitualClearWeather;
 import com.tyhone.arcanacraft.common.rituals.RitualSummonRain;
 import com.tyhone.arcanacraft.common.util.ItemMetaUtil;
 
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 public class InitBasicRitualCircle {
 
+	private static final RitualBase RitualSummonRain = new RitualSummonRain();
+	private static final RitualBase RitualClearWeather = new RitualClearWeather();
+
 	public static void register(){
-		initWeatherRituals();
+		initSummonRain();
+		initClearWeather();
 	}
 	
-	private static void initWeatherRituals(){
+	private static void initSummonRain(){
 		ArcanacraftRitualManager.registerRitualCircle(
-			"summon_rain",
+				RitualSummonRain.getRitualName(),
 			new ItemStack[]{
-					new ItemStack(ModItems.RED_COAL, 1)
+					new ItemStack(Items.DYE, 1, 4)
 			},
 			new Object[]{
 					" HGH ",
@@ -33,7 +40,29 @@ public class InitBasicRitualCircle {
 					'C', new ItemStack(ModBlocks.RITUAL_CIRCLE)
 			});
 		
-		RitualRegistry.registerRitual("summon_rain", RitualSummonRain.class);
+		RitualRegistry.registerRitual(RitualSummonRain);
+		
+	}
+	
+	private static void initClearWeather(){
+		ArcanacraftRitualManager.registerRitualCircle(
+			RitualClearWeather.getRitualName(),
+			new ItemStack[]{
+					new ItemStack(Blocks.GLASS, 1)
+			},
+			new Object[]{
+					" HGH ",
+					"HB BH",
+					"G C G",
+					"HB BH",
+					" HGH ",
+					'H', new ItemStack(ModBlocks.CHALK_BLOCK, 1, ItemMetaUtil.chalk("bone")),
+					'B', new ItemStack(ModBlocks.CHALK_BLOCK, 1, ItemMetaUtil.chalk("charcoal")),
+					'G', new ItemStack(ModBlocks.CHALK_BLOCK, 1, ItemMetaUtil.chalk("lapis")),
+					'C', new ItemStack(ModBlocks.RITUAL_CIRCLE)
+			});
+		
+		RitualRegistry.registerRitual(RitualClearWeather);
 		
 	}
 }

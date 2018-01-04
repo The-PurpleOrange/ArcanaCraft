@@ -1,13 +1,13 @@
 package com.tyhone.arcanacraft.common.tileentity;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.api.recipe.RecipeRitualCircle;
+import com.tyhone.arcanacraft.api.ritual.RitualBase;
 import com.tyhone.arcanacraft.api.util.ItemStackUtil;
+import com.tyhone.arcanacraft.common.rituals.RitualSummonRain;
 import com.tyhone.arcanacraft.common.tileentity.base.ModTileEntityBase;
 
 import net.minecraft.block.Block;
@@ -77,10 +77,8 @@ public class TileEntityRitualCircle extends ModTileEntityBase {
 			for(EntityItem ei : eItems){
 				ei.setDead();
 			}
-			Class ritualClass = recipe.getRitual(recipe.getRitualName());
-			
-			ritualClass.preformRitual(worldObj, player, this.getPos());
-			Arcanacraft.logger.info("It worked my god");
+			RitualBase ritual = recipe.getRitual(recipe.getRitualName());
+			ritual.preformRitual(worldObj, player, this.getPos());
 		}
 	}
 }
