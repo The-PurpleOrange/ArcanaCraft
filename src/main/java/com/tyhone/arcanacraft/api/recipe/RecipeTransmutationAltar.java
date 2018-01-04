@@ -1,6 +1,7 @@
 package com.tyhone.arcanacraft.api.recipe;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.apache.logging.log4j.Level;
@@ -10,47 +11,34 @@ import com.tyhone.arcanacraft.api.util.ItemStackUtil;
 
 import net.minecraft.item.ItemStack;
 
-public class RecipeInfusionAltar {
+public class RecipeTransmutationAltar {
 	
 	ItemStack output;
-	ItemStack infusionItem;
 	ArrayList<ItemStack> inputs;
 	
-	public RecipeInfusionAltar(ItemStack output, ItemStack infusionItem, ItemStack[] inputs){
+	public RecipeTransmutationAltar(ItemStack output, ItemStack[] inputs){
 		
-		if(inputs == null || inputs.length>5){
-			Arcanacraft.logger.log(Level.ERROR ,"Invalid infusion recipe added for: " + output);
+		if(inputs == null || inputs.length>4){
+			Arcanacraft.logger.log(Level.ERROR ,"Invalid transmutation recipe added for: " + output);
 		}
 		
 		this.output = output;
-		this.infusionItem = infusionItem;
-		
-		ArrayList<ItemStack> inputsToSet = new ArrayList();
-		for(ItemStack input : inputs) {
-			inputsToSet.add(input);
-		}
 
-		this.inputs = inputsToSet;
+		this.inputs = new ArrayList<ItemStack>(Arrays.asList(inputs));
 	}
 
-	public List<ItemStack> getInputs() {
+	public ArrayList<ItemStack> getInputs() {
 		return new ArrayList(inputs);
 	}
 
 	public ItemStack getOutput() {
 		return this.output;
 	}
-
-	public ItemStack getInfusionItem() {
-		return this.infusionItem;
-	}
 	
-	public static RecipeInfusionAltar getRecipe(ItemStack infusionItem, ArrayList<ItemStack> inputs){
-		for(RecipeInfusionAltar recipe : ArcanacraftCraftingManager.getInfusionAltarRecipes()){
-			if(ItemStackUtil.simpleAreStackSizeEqual(recipe.infusionItem, infusionItem)){
-				if(doInputsMatch(recipe.inputs, inputs)){
-					return recipe;
-				}
+	public static RecipeTransmutationAltar getRecipe(ArrayList<ItemStack> inputs){
+		for(RecipeTransmutationAltar recipe : ArcanacraftCraftingManager.getTransmutationAltarRecipes()){
+			if(doInputsMatch(recipe.getInputs(), inputs)){
+				return recipe;
 			}
 		}
 		return null;

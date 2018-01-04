@@ -23,7 +23,7 @@ public class RecipeHammer {
 	}
 	
 	public static RecipeHammer getRecipe(ItemStack input){
-		for(RecipeHammer recipe : ArcanacraftCraftingManager.hanmmerRecipes){
+		for(RecipeHammer recipe : ArcanacraftCraftingManager.getHammerRecipes()){
 			if(ItemStackUtil.simpleAreStacksEqual(recipe.input, input)){
 				return recipe;
 			}

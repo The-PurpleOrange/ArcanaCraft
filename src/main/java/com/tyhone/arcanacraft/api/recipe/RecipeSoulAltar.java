@@ -46,7 +46,7 @@ public class RecipeSoulAltar {
 	}
 	
 	public static RecipeSoulAltar getRecipe(ItemStack infusionItem, ArrayList<ItemStack> inputs){
-		for(RecipeSoulAltar recipe : ArcanacraftCraftingManager.soulAltarRecipes){
+		for(RecipeSoulAltar recipe : ArcanacraftCraftingManager.getSoulInfusionAltarRecipes()){
 			if(ItemStackUtil.simpleAreStackSizeEqual(recipe.infusionItem, infusionItem)){
 				if(doInputsMatch(recipe.inputs, inputs)){
 					return recipe;

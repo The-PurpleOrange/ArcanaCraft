@@ -3,14 +3,19 @@ package com.tyhone.arcanacraft.api.recipe;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.Level;
+
+import com.tyhone.arcanacraft.Arcanacraft;
+
 import net.minecraft.item.ItemStack;
 
 public class ArcanacraftCraftingManager {
 
-	public static List<RecipeDeconstructionTable> decontructionTableRecipes = new ArrayList<RecipeDeconstructionTable>();
-	public static List<RecipeHammer> hanmmerRecipes = new ArrayList<RecipeHammer>();
-	public static List<RecipeInfusionAltar> infusionAltarRecipes = new ArrayList<RecipeInfusionAltar>();
-	public static List<RecipeSoulAltar> soulAltarRecipes = new ArrayList<RecipeSoulAltar>();
+	private static List<RecipeDeconstructionTable> decontructionTableRecipes = new ArrayList<RecipeDeconstructionTable>();
+	private static List<RecipeHammer> hanmmerRecipes = new ArrayList<RecipeHammer>();
+	private static List<RecipeTransmutationAltar> transmutationAltarRecipes = new ArrayList<RecipeTransmutationAltar>();
+	private static List<RecipeInfusionAltar> infusionAltarRecipes = new ArrayList<RecipeInfusionAltar>();
+	private static List<RecipeSoulAltar> soulAltarRecipes = new ArrayList<RecipeSoulAltar>();
 	
 	//DECONSTRUCTOR RECIPES
 	public static RecipeDeconstructionTable registerLensDeconstructionRecipe(ItemStack lens, ItemStack itemOutput, ItemStack itemInputs, double deconstructTime) {
@@ -42,6 +47,21 @@ public class ArcanacraftCraftingManager {
 	}
 	public static List<RecipeHammer> getHammerRecipes(){
 		return hanmmerRecipes;
+	}
+
+	//TRANSMUTATION RECIPES
+	public static RecipeTransmutationAltar registerTransmutationRecipes(ItemStack output, ItemStack ... inputs) {
+		if(inputs == null || inputs.length>4){
+			Arcanacraft.logger.log(Level.ERROR ,"Invalid transmutation recipe added for: " + output);
+			return null;
+		}
+		RecipeTransmutationAltar recipe = new RecipeTransmutationAltar(output, inputs);
+		transmutationAltarRecipes.add(recipe);
+		return recipe;
+	}
+	
+	public static List<RecipeTransmutationAltar> getTransmutationAltarRecipes(){
+		return transmutationAltarRecipes;
 	}
 
 	//INFUSION RECIPES

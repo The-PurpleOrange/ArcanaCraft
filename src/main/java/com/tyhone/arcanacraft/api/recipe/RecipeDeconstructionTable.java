@@ -39,7 +39,7 @@ public class RecipeDeconstructionTable {
 	}
 	
 	public static RecipeDeconstructionTable getRecipe(ItemStack input, ItemStack lens){
-		for(RecipeDeconstructionTable recipe : ArcanacraftCraftingManager.decontructionTableRecipes){
+		for(RecipeDeconstructionTable recipe : ArcanacraftCraftingManager.getDeconstructionRecipes()){
 			if(ItemStackUtil.simpleAreStackSizeEqual(recipe.input, input)){
 				if(ItemStackUtil.simpleAreStackSizeEqual(recipe.lens, lens)){
 					return recipe;

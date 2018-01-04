@@ -1,7 +1,7 @@
 package com.tyhone.arcanacraft.common.items.items;
 
 import com.tyhone.arcanacraft.api.item.IEssenceVessel;
-import com.tyhone.arcanacraft.api.registries.Registry;
+import com.tyhone.arcanacraft.api.registries.TinktureManager;
 import com.tyhone.arcanacraft.common.items.base.ModItemBase;
 
 import net.minecraft.item.ItemStack;
@@ -10,7 +10,7 @@ import net.minecraft.util.math.MathHelper;
 public class ItemTinkture extends ModItemBase implements IEssenceVessel{
 	
 	public ItemTinkture() {
-		super("tinkture", Registry.getTinktureNames());
+		super("tinkture", TinktureManager.getTinktureNames());
 	}
 
 	@Override
@@ -20,7 +20,7 @@ public class ItemTinkture extends ModItemBase implements IEssenceVessel{
 
 	@Override
 	public String getFluidType(ItemStack stack) {
-		return Registry.getTinktureNameFromMeta(stack.getMetadata());
+		return TinktureManager.getTinktureNameFromMeta(stack.getMetadata());
 	}
 	
 	/*@Override

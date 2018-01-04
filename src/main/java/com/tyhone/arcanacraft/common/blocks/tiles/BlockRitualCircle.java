@@ -1,6 +1,7 @@
 package com.tyhone.arcanacraft.common.blocks.tiles;
 
 import com.tyhone.arcanacraft.common.blocks.base.ModBlockTileEntityBase;
+import com.tyhone.arcanacraft.common.tileentity.TileEntityPedestal;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityRitualCircle;
 
 import net.minecraft.block.state.IBlockState;
@@ -42,7 +43,10 @@ public class BlockRitualCircle extends ModBlockTileEntityBase{
 
 	@Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
-
+		if (!world.isRemote) {
+			TileEntityRitualCircle te = (TileEntityRitualCircle) world.getTileEntity(pos);
+			te.onActivated(player, world);
+		}
         return true;
     }
 	

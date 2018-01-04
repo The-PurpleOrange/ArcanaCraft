@@ -3,7 +3,7 @@ package com.tyhone.arcanacraft.api.registries;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Registry {
+public class TinktureManager {
 	
 	public static List<RegistryTinktureType> tinktureTypeList = new ArrayList<RegistryTinktureType>();
 	

@@ -11,6 +11,7 @@ import com.tyhone.arcanacraft.common.init.ModBlocks;
 import com.tyhone.arcanacraft.common.init.ModCustomRegistries;
 import com.tyhone.arcanacraft.common.init.ModItems;
 import com.tyhone.arcanacraft.common.init.ModRecipes;
+import com.tyhone.arcanacraft.common.init.ModRituals;
 import com.tyhone.arcanacraft.common.init.ModTileEntities;
 import com.tyhone.arcanacraft.common.util.BlockUtils;
 
@@ -43,6 +44,7 @@ public class CommonProxy {
 
     public void init(FMLInitializationEvent e) {
     	ModRecipes.init();
+    	ModRituals.init();
     }
 
     public void postInit(FMLPostInitializationEvent e) {

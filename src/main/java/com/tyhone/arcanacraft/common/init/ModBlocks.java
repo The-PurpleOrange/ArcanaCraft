@@ -16,7 +16,9 @@ import com.tyhone.arcanacraft.common.blocks.tiles.BlockJar;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockLensReceptacle;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockPedestal;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockPedestalSlab;
+import com.tyhone.arcanacraft.common.blocks.tiles.BlockRitualCircle;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockSoulAltar;
+import com.tyhone.arcanacraft.common.blocks.tiles.BlockTransmutationAltar;
 
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -31,9 +33,12 @@ public class ModBlocks {
 
 	public static final ModBlockBase CHALK_BLOCK = new BlockChalk();
 
+	public static final ModBlockBase RITUAL_CIRCLE = new BlockRitualCircle();
+	
 	public static final ModBlockBase LENS_RECEPTACLE = new BlockLensReceptacle();
 	public static final ModBlockBase DECONSTRUCTION_TABLE = new BlockDeconstructionTable();
 
+	public static final ModBlockBase TRANSMUTATION_ALTAR = new BlockTransmutationAltar();
 	public static final ModBlockBase INFUSION_ALTAR = new BlockInfusionAltar();
 	public static final ModBlockBase SOUL_ALTAR = new BlockSoulAltar();
 
