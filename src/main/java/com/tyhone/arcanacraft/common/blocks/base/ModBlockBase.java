@@ -29,11 +29,11 @@ public class ModBlockBase extends Block {
 	
 	@Override
 	public String getUnlocalizedName(){
-		return Arcanacraft.MODID + "." + getRegistryName();
+		return /*Arcanacraft.MODID + "." +*/ getRegistryName().toString();
 	}
 	
 	@SideOnly(Side.CLIENT)
 	public void initItemModel() {
-		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName().toString()));
 	}
 }

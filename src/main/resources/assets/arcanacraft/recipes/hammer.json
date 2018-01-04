@@ -1,0 +1,23 @@
+{
+  "result": {
+    "item": "arcanacraft:hammer"
+  },
+  "pattern": [
+    " ib",
+    " si",
+    "s  "
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "s": {
+      "item": "minecraft:stick"
+    },
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "b": {
+      "item": "arcanacraft:item",
+      "data": 0
+    }
+  }
+}

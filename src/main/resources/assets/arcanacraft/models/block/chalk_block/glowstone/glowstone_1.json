@@ -1,8 +1,8 @@
 {
     "ambientocclusion": false,
     "textures": {
-        "all": "arcanacraft:blocks/chalk_block/bone/chalkBoneBlock0",
-        "particle": "arcanacraft:blocks/chalk_block/bone/chalkBoneBlock0"
+        "all": "arcanacraft:blocks/chalk_block/glowstone/glowstone_1",
+        "particle": "arcanacraft:blocks/chalk_block/glowstone/glowstone_1"
     },
     "elements": [
         {   "from": [ 2, 0.25, 2 ],

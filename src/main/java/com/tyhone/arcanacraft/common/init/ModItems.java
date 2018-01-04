@@ -8,6 +8,7 @@ import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.common.items.base.ModItemBase;
 import com.tyhone.arcanacraft.common.items.items.ItemAlchemicDust;
 import com.tyhone.arcanacraft.common.items.items.ItemAlchemicalCoal;
+import com.tyhone.arcanacraft.common.items.items.ItemChalk;
 import com.tyhone.arcanacraft.common.items.items.ItemDust;
 import com.tyhone.arcanacraft.common.items.items.ItemEssence;
 import com.tyhone.arcanacraft.common.items.items.ItemHammer;
@@ -34,6 +35,7 @@ public class ModItems {
 	public static final ModItemBase ESSENCE = new ItemEssence();
 	public static final ModItemBase INGOT = new ItemIngot();
 	public static final ModItemBase ITEM = new ItemItem();
+	public static final ModItemBase CHALK = new ItemChalk();
 	public static final ModItemBase TINKTURE = new ItemTinkture();
 	
 	public static final ModItemBase HAMMER = new ItemHammer();

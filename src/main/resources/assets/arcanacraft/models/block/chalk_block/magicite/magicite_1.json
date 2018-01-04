@@ -1,8 +1,8 @@
 {
     "ambientocclusion": false,
     "textures": {
-        "all": "arcanacraft:blocks/chalk_block/lapis/chalkLapisBlock0",
-        "particle": "arcanacraft:blocks/chalk_block/lapis/chalkLapisBlock0"
+        "all": "arcanacraft:blocks/chalk_block/magicite/magicite_1",
+        "particle": "arcanacraft:blocks/chalk_block/magicite/magicite_1"
     },
     "elements": [
         {   "from": [ 2, 0.25, 2 ],

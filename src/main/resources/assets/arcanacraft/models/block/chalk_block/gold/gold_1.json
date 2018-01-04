@@ -1,8 +1,8 @@
 {
     "ambientocclusion": false,
     "textures": {
-        "all": "arcanacraft:blocks/chalk_block/gold/chalkGoldBlock",
-        "particle": "arcanacraft:blocks/chalk_block/gold/chalkGoldBlock"
+        "all": "arcanacraft:blocks/chalk_block/gold/gold_1",
+        "particle": "arcanacraft:blocks/chalk_block/gold/gold_1"
     },
     "elements": [
         {   "from": [ 2, 0.25, 2 ],

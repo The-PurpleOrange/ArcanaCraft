@@ -21,34 +21,25 @@ public class TileEntityInfusionAltar extends ModTileEntityBase implements ITicka
 	
 	private final BlockPos PEDESTAL_ALL_SEARCH_POS[][] = {
 			{
-    			getPos().add(3, 0, 0),
-    			getPos().add(1, 0, 3),
-    			getPos().add(1, 0, -3),
-    			getPos().add(-3, 0, 2),
-    			getPos().add(-3, 0, -2)
-			},
-			{
-				getPos().add(-3, 0, 0),
-				getPos().add(-1, 0, 3),
-				getPos().add(-1, 0, -3),
-				getPos().add(3, 0, 2),
-				getPos().add(3, 0, -2)
-			},
-			{
-				getPos().add(0, 0, 3),
-				getPos().add(3, 0, 1),
-				getPos().add(-3, 0, 1),
-				getPos().add(2, 0, -3),
-				getPos().add(-2, 0, -3)
-			},
-			{
-				getPos().add(0, 0, -3),
-				getPos().add(3, 0, -1),
-				getPos().add(-3, 0, -1),
-				getPos().add(2, 0, 3),
-				getPos().add(-2, 0, 3)
+    			getPos().add(4, 0, -1),
+    			getPos().add(4, 0, 1),
+    			getPos().add(-4, 0, -1),
+    			getPos().add(-4, 0, 1),
+    			getPos().add(-1, 0, 4),
+    			getPos().add(1, 0, 4),
+    			getPos().add(-1, 0, -4),
+    			getPos().add(1, 0, -4)
 			}
 		};
+	
+	private final BlockPos JAR_ALL_SEARCH_POS[][] = {
+			{
+				getPos().add(2, 1, 2),
+				getPos().add(2, 1, -2),
+				getPos().add(-2, 1, 2),
+				getPos().add(-2, 1, -2)
+			}
+	};
 	
 	@Override
 	public void update(){
@@ -127,6 +118,33 @@ public class TileEntityInfusionAltar extends ModTileEntityBase implements ITicka
     }
 	
 	private boolean checkforPedestals(BlockPos[] searchPos){
+		boolean matches = true;
+		
+		for(int i = 1; i < searchPos.length; i++){
+			if(!BlockUtils.checkIfPedestal(world, PosUtil.combinePos(pos, searchPos[i]))){
+				matches = false;
+				break;
+			}
+		}
+		if(matches){
+			return true;
+		}
+		return false;
+	}
+
+	public BlockPos[] getJars(World world){    	
+		for(BlockPos[] searchPos : JAR_ALL_SEARCH_POS){
+			if(BlockUtils.checkIfPedestal(world, PosUtil.combinePos(pos, searchPos[0]))){
+				if(checkforJars(searchPos)){
+					return searchPos;
+				}
+				return null;
+			}
+		}
+    	return null;
+    }
+	
+	private boolean checkforJars(BlockPos[] searchPos){
 		boolean matches = true;
 		
 		for(int i = 1; i < searchPos.length; i++){

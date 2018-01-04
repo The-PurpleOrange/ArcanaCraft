@@ -6,55 +6,31 @@
   },
   "variants": {
    	"variant=gold": [
-    	{ "model": "arcanacraft:chalk_block/gold/chalkGoldBlock" }
+    	{ "model": "arcanacraft:chalk_block/gold/gold_1" }
 	],
    	"variant=bone": [
-	    { "model": "arcanacraft:chalk_block/bone/chalkBoneBlock0" },
-		{ "model": "arcanacraft:chalk_block/bone/chalkBoneBlock1" },
-		{ "model": "arcanacraft:chalk_block/bone/chalkBoneBlock2" },
-		{ "model": "arcanacraft:chalk_block/bone/chalkBoneBlock3" }
+	    { "model": "arcanacraft:chalk_block/bone/bone_1" }
 	],
 	"variant=charcoal": [
-	    { "model": "arcanacraft:chalk_block/charcoal/chalkCharcoalBlock0" },
-		{ "model": "arcanacraft:chalk_block/charcoal/chalkCharcoalBlock2" },
-		{ "model": "arcanacraft:chalk_block/charcoal/chalkCharcoalBlock1" },
-		{ "model": "arcanacraft:chalk_block/charcoal/chalkCharcoalBlock3" }
+	    { "model": "arcanacraft:chalk_block/charcoal/charcoal_1" }
 	],
 	"variant=glowstone": [
-	    { "model": "arcanacraft:chalk_block/glowstone/chalkGlowstoneBlock0" },
-		{ "model": "arcanacraft:chalk_block/glowstone/chalkGlowstoneBlock1" },
-		{ "model": "arcanacraft:chalk_block/glowstone/chalkGlowstoneBlock2" },
-		{ "model": "arcanacraft:chalk_block/glowstone/chalkGlowstoneBlock3" }
+	    { "model": "arcanacraft:chalk_block/glowstone/glowstone_1" }
 	],
 	"variant=blood": [
-	    { "model": "arcanacraft:chalk_block/blood/chalkBloodBlock0" },
-		{ "model": "arcanacraft:chalk_block/blood/chalkBloodBlock1" },
-		{ "model": "arcanacraft:chalk_block/blood/chalkBloodBlock2" },
-		{ "model": "arcanacraft:chalk_block/blood/chalkBloodBlock3" }
+	    { "model": "arcanacraft:chalk_block/blood/blood_1" }
 	],
 	"variant=copper": [
-	    { "model": "arcanacraft:chalk_block/copper/chalkCopperBlock0" },
-		{ "model": "arcanacraft:chalk_block/copper/chalkCopperBlock1" },
-		{ "model": "arcanacraft:chalk_block/copper/chalkCopperBlock2" },
-		{ "model": "arcanacraft:chalk_block/copper/chalkCopperBlock3" }
+	    { "model": "arcanacraft:chalk_block/copper/copper_1" }
 	],
 	"variant=silver": [
-	    { "model": "arcanacraft:chalk_block/silver/chalkSilverBlock0" },
-		{ "model": "arcanacraft:chalk_block/silver/chalkSilverBlock1" },
-		{ "model": "arcanacraft:chalk_block/silver/chalkSilverBlock2" },
-		{ "model": "arcanacraft:chalk_block/silver/chalkSilverBlock3" }
+	    { "model": "arcanacraft:chalk_block/silver/silver_1" }
 	],
 	"variant=magicite": [
-	    { "model": "arcanacraft:chalk_block/magicite/chalkMagiciteBlock0" },
-		{ "model": "arcanacraft:chalk_block/magicite/chalkMagiciteBlock1" },
-		{ "model": "arcanacraft:chalk_block/magicite/chalkMagiciteBlock2" },
-		{ "model": "arcanacraft:chalk_block/magicite/chalkMagiciteBlock3" }
+	    { "model": "arcanacraft:chalk_block/magicite/magicite_1" }
 	],
 	"variant=lapis": [
-	    { "model": "arcanacraft:chalk_block/lapis/chalkLapisBlock0" },
-		{ "model": "arcanacraft:chalk_block/lapis/chalkLapisBlock1" },
-		{ "model": "arcanacraft:chalk_block/lapis/chalkLapisBlock2" },
-		{ "model": "arcanacraft:chalk_block/lapis/chalkLapisBlock3" }
-		]
+	    { "model": "arcanacraft:chalk_block/lapis/lapis_1" }
+	]
 	}
 }

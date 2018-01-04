@@ -6,7 +6,17 @@
     "model": "arcanacraft:alchemic_stone"
   },
   "variants": {
-    "normal": [{}],
-    "inventory": [{}]
+    "variant=uniform": [
+      { "model": "arcanacraft:alchemic_stone/uniform" }
+  ],
+    "variant=smooth": [
+      { "model": "arcanacraft:alchemic_stone/smooth" }
+  ],
+  "variant=tile": [
+      { "model": "arcanacraft:alchemic_stone/tile" }
+  ],
+  "variant=smooth_tile": [
+      { "model": "arcanacraft:alchemic_stone/smooth_tile" }
+  ]
   }
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.tyhone.arcanacraft.common.blocks.base.IEnumMeta;
 import com.tyhone.arcanacraft.common.blocks.base.ModBlockEnum;
+import com.tyhone.arcanacraft.common.util.PosUtil;
 
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
@@ -12,6 +13,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -119,8 +121,8 @@ public class BlockChalk extends ModBlockEnum {
     
     @Override
 	public boolean canPlaceBlockAt(World worldIn, BlockPos pos){
-    	//return worldIn.isSideSolid(pos, EnumFacing.UP);
-    	return true;
+        return (worldIn.getBlockState(pos).getBlock().isReplaceable(worldIn, pos) && worldIn.isSideSolid(PosUtil.combinePos(pos, new BlockPos(0,-1,0)), EnumFacing.UP));
+    	//return true;
     }
     
 	@Override
