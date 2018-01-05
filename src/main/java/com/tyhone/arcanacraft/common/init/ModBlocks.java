@@ -6,10 +6,12 @@ import java.util.List;
 
 import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.common.blocks.base.ModBlockBase;
+import com.tyhone.arcanacraft.common.blocks.base.ModBlockTileEntityBase;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockAlchemicStone;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockAlchemicalCoal;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockChalk;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockRedCoal;
+import com.tyhone.arcanacraft.common.blocks.tiles.BlockAlchemicArray;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockDeconstructionTable;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockInfusionAltar;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockJar;
@@ -18,6 +20,7 @@ import com.tyhone.arcanacraft.common.blocks.tiles.BlockPedestal;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockPedestalSlab;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockRitualCircle;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockSoulAltar;
+import com.tyhone.arcanacraft.common.blocks.tiles.BlockSpiritSkull;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockTransmutationAltar;
 
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -33,6 +36,7 @@ public class ModBlocks {
 
 	public static final ModBlockBase CHALK_BLOCK = new BlockChalk();
 
+	public static final ModBlockBase ALCHEMIC_ARRAY = new BlockAlchemicArray();
 	public static final ModBlockBase RITUAL_CIRCLE = new BlockRitualCircle();
 	
 	public static final ModBlockBase LENS_RECEPTACLE = new BlockLensReceptacle();
@@ -45,6 +49,9 @@ public class ModBlocks {
 	public static final ModBlockBase JAR = new BlockJar();
 	public static final ModBlockBase PEDESTAL = new BlockPedestal();
 	public static final ModBlockBase PEDESTAL_SLAB = new BlockPedestalSlab();
+	
+
+	public static final ModBlockBase SPIRIT_SKULL_BLOCK = new BlockSpiritSkull();
 	
 	private ModBlocks() {}
 	

@@ -1,6 +1,7 @@
 package com.tyhone.arcanacraft.common.init;
 
 import com.tyhone.arcanacraft.Arcanacraft;
+import com.tyhone.arcanacraft.common.tileentity.TileEntityAlchemicArray;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityDeconstructionTable;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityInfusionAltar;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityJar;
@@ -9,6 +10,7 @@ import com.tyhone.arcanacraft.common.tileentity.TileEntityPedestal;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityPedestalSlab;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityRitualCircle;
 import com.tyhone.arcanacraft.common.tileentity.TileEntitySoulAltar;
+import com.tyhone.arcanacraft.common.tileentity.TileEntitySpiritSkull;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityTransmutationAltar;
 
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -18,6 +20,7 @@ public class ModTileEntities {
 	
 	public static void register(){
 
+		GameRegistry.registerTileEntity(TileEntityAlchemicArray.class, "alchemic_array");
 		GameRegistry.registerTileEntity(TileEntityRitualCircle.class, "ritual_circle");
 		
 		GameRegistry.registerTileEntity(TileEntityLensReceptacle.class, "lens_receptacle");
@@ -28,6 +31,9 @@ public class ModTileEntities {
 		GameRegistry.registerTileEntity(TileEntityJar.class, "jar");
 		GameRegistry.registerTileEntity(TileEntityPedestal.class, "pedestal");
 		GameRegistry.registerTileEntity(TileEntityPedestalSlab.class, "pedestal_slab");
+		
+
+		GameRegistry.registerTileEntity(TileEntitySpiritSkull.class, "block_spirit_skull");
 	}
 
 }

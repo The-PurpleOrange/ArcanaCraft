@@ -1,11 +1,12 @@
 package com.tyhone.arcanacraft.common.blocks.blocks;
 
-import java.util.List;
+import java.util.Random;
 
 import com.tyhone.arcanacraft.common.blocks.base.IEnumMeta;
 import com.tyhone.arcanacraft.common.blocks.base.ModBlockEnum;
 import com.tyhone.arcanacraft.common.util.PosUtil;
 
+import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -65,15 +66,22 @@ public class BlockChalk extends ModBlockEnum {
 	public static final PropertyEnum VARIANT = PropertyEnum.create("variant", EnumChalkType.class);
 	
 	public BlockChalk() {
-		super("chalk_block", EnumChalkType.VARIANTS);
+		super("chalk_block", Material.CIRCUITS, EnumChalkType.VARIANTS);
+		this.setHardness(0f);
         setDefaultState(getDefaultState().withProperty(VARIANT, EnumChalkType.CHARCOAL));
-        //this.setCreativeTab(null);
+        this.setCreativeTab(null);
 	}
 	
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
     {
         return CHALK_AABB;
+    }
+	
+	@Override
+	public AxisAlignedBB getCollisionBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
+    {
+        return null;
     }
 
     @Override
@@ -129,4 +137,15 @@ public class BlockChalk extends ModBlockEnum {
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, VARIANT);
 	}
+	
+
+    public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state)
+    {
+        return null;
+    }
+
+    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    {
+        return null;
+    }
 }

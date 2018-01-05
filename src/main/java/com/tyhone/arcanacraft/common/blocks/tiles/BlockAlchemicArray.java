@@ -1,8 +1,7 @@
 package com.tyhone.arcanacraft.common.blocks.tiles;
 
 import com.tyhone.arcanacraft.common.blocks.base.ModBlockTileEntityBase;
-import com.tyhone.arcanacraft.common.tileentity.TileEntityPedestal;
-import com.tyhone.arcanacraft.common.tileentity.TileEntityRitualCircle;
+import com.tyhone.arcanacraft.common.tileentity.TileEntityAlchemicArray;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,13 +14,13 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockRitualCircle extends ModBlockTileEntityBase{
+public class BlockAlchemicArray extends ModBlockTileEntityBase{
+    
 
-	
 	protected static final AxisAlignedBB ARRAY = new AxisAlignedBB(0.0F, 0.0F, 0.0F, 1.0F, 0.0625F, 1.0F);
 	
-	public BlockRitualCircle() {
-		super("ritual_circle");
+	public BlockAlchemicArray() {
+		super("alchemic_array");
 	}
 	
 	@Override
@@ -38,14 +37,13 @@ public class BlockRitualCircle extends ModBlockTileEntityBase{
 
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		return new TileEntityRitualCircle();
+		return new TileEntityAlchemicArray();
 	}
 	
 	@Override
 	public int getMetaFromState(IBlockState state){
 		return 0;
 	}
-
     
 	@Override
 	public boolean isOpaqueCube(IBlockState state)
@@ -68,7 +66,7 @@ public class BlockRitualCircle extends ModBlockTileEntityBase{
 	@Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (!world.isRemote) {
-			TileEntityRitualCircle te = (TileEntityRitualCircle) world.getTileEntity(pos);
+			TileEntityAlchemicArray te = (TileEntityAlchemicArray) world.getTileEntity(pos);
 			te.onActivated(player, world);
 		}
         return true;

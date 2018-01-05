@@ -1,5 +1,6 @@
 package com.tyhone.arcanacraft.common.init;
 
+import com.tyhone.arcanacraft.common.init.recipes.InitRecipesAlchemicArray;
 import com.tyhone.arcanacraft.common.init.recipes.InitRecipesDeconstructionTable;
 import com.tyhone.arcanacraft.common.init.recipes.InitRecipesHammer;
 import com.tyhone.arcanacraft.common.init.recipes.InitRecipesInfusionAltar;
@@ -13,5 +14,6 @@ public class ModRecipes {
 		InitRecipesSoulAltar.initSoulAltarRecipes();
 		InitRecipesInfusionAltar.initInfusionAltarRecipes();
 		InitRecipesTransmutationAltar.initTransmutationAltarRecipes();
+		InitRecipesAlchemicArray.initAlchemicArrayRecipes();
 	}
 }

@@ -17,6 +17,7 @@ import com.tyhone.arcanacraft.common.items.items.ItemItem;
 import com.tyhone.arcanacraft.common.items.items.ItemLens;
 import com.tyhone.arcanacraft.common.items.items.ItemRedCoal;
 import com.tyhone.arcanacraft.common.items.items.ItemSoul;
+import com.tyhone.arcanacraft.common.items.items.ItemSpiritSkull;
 import com.tyhone.arcanacraft.common.items.items.ItemTinkture;
 
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -39,6 +40,8 @@ public class ModItems {
 	public static final ModItemBase TINKTURE = new ItemTinkture();
 	
 	public static final ModItemBase HAMMER = new ItemHammer();
+
+	public static final ModItemBase SPIRIT_SKULL = new ItemSpiritSkull();
 	
 	private ModItems() {}
 	

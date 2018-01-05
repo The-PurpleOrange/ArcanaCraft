@@ -1,6 +1,7 @@
 package com.tyhone.arcanacraft.api.recipe;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.apache.logging.log4j.Level;
@@ -10,47 +11,34 @@ import com.tyhone.arcanacraft.api.util.ItemStackUtil;
 
 import net.minecraft.item.ItemStack;
 
-public class RecipeSoulAltar {
+public class RecipeAlchemicArray {
 	
 	ItemStack output;
-	ItemStack infusionItem;
 	ArrayList<ItemStack> inputs;
 	
-	public RecipeSoulAltar(ItemStack output, ItemStack infusionItem, ItemStack[] inputs){
+	public RecipeAlchemicArray(ItemStack output, ItemStack[] inputs){
 		
-		if(inputs == null || inputs.length>5){
-			Arcanacraft.logger.log(Level.ERROR ,"Invalid soul infusion recipe added for: " + output.getDisplayName());
+		if(inputs == null){
+			Arcanacraft.logger.log(Level.ERROR ,"Invalid Alchemic Array recipe added for: " + output);
 		}
 		
 		this.output = output;
-		this.infusionItem = infusionItem;
-		
-		ArrayList<ItemStack> inputsToSet = new ArrayList();
-		for(ItemStack input : inputs) {
-			inputsToSet.add(input);
-		}
 
-		this.inputs = inputsToSet;
+		this.inputs = new ArrayList<ItemStack>(Arrays.asList(inputs));
 	}
 
-	public List<ItemStack> getInputs() {
+	public ArrayList<ItemStack> getInputs() {
 		return new ArrayList(inputs);
 	}
 
 	public ItemStack getOutput() {
 		return this.output;
 	}
-
-	public ItemStack getInfusionItem() {
-		return this.infusionItem;
-	}
 	
-	public static RecipeSoulAltar getRecipe(ItemStack infusionItem, ArrayList<ItemStack> inputs){
-		for(RecipeSoulAltar recipe : ArcanacraftCraftingManager.getSoulInfusionAltarRecipes()){
-			if(ItemStackUtil.simpleAreStackSizeEqual(recipe.infusionItem, infusionItem)){
-				if(doInputsMatch(recipe.inputs, inputs)){
-					return recipe;
-				}
+	public static RecipeAlchemicArray getRecipe(ArrayList<ItemStack> inputs){
+		for(RecipeAlchemicArray recipe : ArcanacraftCraftingManager.getAlchemicArrayRecipes()){
+			if(doInputsMatch(recipe.getInputs(), inputs)){
+				return recipe;
 			}
 		}
 		return null;

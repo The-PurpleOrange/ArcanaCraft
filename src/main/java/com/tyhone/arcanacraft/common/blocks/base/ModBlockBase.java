@@ -23,7 +23,8 @@ public class ModBlockBase extends Block {
 		setRegistryName(regName);
 		setUnlocalizedName(regName);
         this.setCreativeTab(CreativeTabs.MATERIALS);
-
+        this.setHardness(2f);
+        this.setResistance(10f);
 		ModBlocks.register(this);
 	}
 	

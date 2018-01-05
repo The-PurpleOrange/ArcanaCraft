@@ -13,6 +13,7 @@ public class ArcanacraftCraftingManager {
 
 	private static List<RecipeDeconstructionTable> decontructionTableRecipes = new ArrayList<RecipeDeconstructionTable>();
 	private static List<RecipeHammer> hanmmerRecipes = new ArrayList<RecipeHammer>();
+	private static List<RecipeAlchemicArray> alchemicalArrayRecipes = new ArrayList<RecipeAlchemicArray>();
 	private static List<RecipeTransmutationAltar> transmutationAltarRecipes = new ArrayList<RecipeTransmutationAltar>();
 	private static List<RecipeInfusionAltar> infusionAltarRecipes = new ArrayList<RecipeInfusionAltar>();
 	private static List<RecipeSoulAltar> soulAltarRecipes = new ArrayList<RecipeSoulAltar>();
@@ -49,6 +50,17 @@ public class ArcanacraftCraftingManager {
 		return hanmmerRecipes;
 	}
 
+	//ALCHEMICAL ARRAY RECIPES
+	public static RecipeAlchemicArray registerAlchemicArrayRecipe(ItemStack output, ItemStack ... inputs) {
+		RecipeAlchemicArray recipe = new RecipeAlchemicArray(output, inputs);
+		alchemicalArrayRecipes.add(recipe);
+		return recipe;
+	}
+	
+	public static List<RecipeAlchemicArray> getAlchemicArrayRecipes(){
+		return alchemicalArrayRecipes;
+	}
+
 	//TRANSMUTATION RECIPES
 	public static RecipeTransmutationAltar registerTransmutationRecipes(ItemStack output, ItemStack ... inputs) {
 		if(inputs == null || inputs.length>4){
@@ -65,7 +77,7 @@ public class ArcanacraftCraftingManager {
 	}
 
 	//INFUSION RECIPES
-	public static RecipeInfusionAltar registerInfusionRecipes(ItemStack output, ItemStack itemInfusionItem, ItemStack ... inputs) {
+	public static RecipeInfusionAltar registerInfusionRecipe(ItemStack output, ItemStack itemInfusionItem, ItemStack ... inputs) {
 		RecipeInfusionAltar recipe = new RecipeInfusionAltar(output, itemInfusionItem, inputs);
 		infusionAltarRecipes.add(recipe);
 		return recipe;
@@ -76,7 +88,7 @@ public class ArcanacraftCraftingManager {
 	}
 	
 	//SOUL RECIPES
-	public static RecipeSoulAltar registerSoulInfusionRecipes(ItemStack output, ItemStack itemInfusionItem, ItemStack ... inputs) {
+	public static RecipeSoulAltar registerSoulInfusionRecipe(ItemStack output, ItemStack itemInfusionItem, ItemStack ... inputs) {
 		RecipeSoulAltar recipe = new RecipeSoulAltar(output, itemInfusionItem, inputs);
 		soulAltarRecipes.add(recipe);
 		return recipe;
