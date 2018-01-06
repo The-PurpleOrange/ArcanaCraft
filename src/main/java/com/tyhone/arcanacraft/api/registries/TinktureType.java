@@ -17,7 +17,7 @@ public class TinktureType {
 		ModTinktureTypes.registerTinktureToList(this);
 	}
 
-	public String getFluidType(){
+	public String getTinktureName(){
 		return this.fluidType;
 	}
 	

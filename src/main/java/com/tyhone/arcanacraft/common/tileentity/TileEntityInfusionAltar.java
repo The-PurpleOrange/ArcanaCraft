@@ -44,6 +44,15 @@ public class TileEntityInfusionAltar extends ModTileEntityBase implements ITicka
 			}
 	};
 	
+	public boolean checkBuild(){
+		BlockPos[] pedestals = getPedestals(world);
+		BlockPos[] jars = getJars(world);
+		if(pedestals != null && jars != null){
+			return true;
+		}
+		return false;
+	}
+	
 	@Override
 	public void update(){
 		if(!getWorld().isRemote){
@@ -52,15 +61,19 @@ public class TileEntityInfusionAltar extends ModTileEntityBase implements ITicka
 				
 				BlockPos[] pedestals = getPedestals(world);
 				BlockPos[] jars = getJars(world);
-				if(pedestals != null){
+				if(pedestals != null && jars != null){
 	            	
 					ArrayList<ItemStack> pedestalsItemStacks = getPedestalItemStacks(pedestals);
+					ArrayList<TinktureStack> jarTinktureStacks = getJarsTinktureStacks(jars);
 					if(!pedestalsItemStacks.isEmpty()){
 		            	
-						RecipeInfusionAltar recipe = RecipeInfusionAltar.getRecipe(stack, pedestalsItemStacks);
+						RecipeInfusionAltar recipe = RecipeInfusionAltar.getRecipe(stack, pedestalsItemStacks, jarTinktureStacks);
 						if(recipe != null){
 							setStack(recipe.getOutput().copy());
 							emptyPedestals(pedestals);
+							for(TinktureStack tStack : recipe.getTInputs()){
+								emptyJars(jars, tStack.getTinktureType(), tStack.getAmount());
+							}
 							isDirty=true;
 						}
 					}
@@ -136,13 +149,13 @@ public class TileEntityInfusionAltar extends ModTileEntityBase implements ITicka
 		return false;
 	}
 	
-	public ArrayList<TinktureType> getJarsTinktureStacks(BlockPos[] jarPosList){
+	public ArrayList<TinktureStack> getJarsTinktureStacks(BlockPos[] jarPosList){
 
-		ArrayList<TinktureType> jarTinktureType = new ArrayList<TinktureType>();
+		ArrayList<TinktureStack> jarTinktureType = new ArrayList<TinktureStack>();
 		for(BlockPos jarPos : jarPosList){
 			TileEntity te = world.getTileEntity(PosUtil.combinePos(pos, jarPos));
 			if(te != null && (te instanceof TileEntityJar)){
-				jarTinktureType.add(((TileEntityJar) te).getFluidType());
+				jarTinktureType.add(new TinktureStack(((TileEntityJar) te).getFluidType(), ((TileEntityJar) te).getFluidLevel()));
 			}
 		}
 		
@@ -153,8 +166,10 @@ public class TileEntityInfusionAltar extends ModTileEntityBase implements ITicka
 		for(BlockPos jarPos : jarPosList){
 			TileEntity te = world.getTileEntity(PosUtil.combinePos(pos, jarPos));
 			if(te != null && (te instanceof TileEntityJar)){
-				if(((TileEntityJar) te).getFluidType() == type){
-					((TileEntityJar) te).removeFluid(-amount);
+				if(((TileEntityJar) te).getFluidType() != null && ((TileEntityJar) te).getFluidType() == type){
+					if(!((TileEntityJar) te).removeFluid(-amount)){
+						break;
+					}
 				}
 			}
 		}

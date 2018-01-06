@@ -14,6 +14,7 @@ public class ModTinktureTypes {
 	
 	private static final List<TinktureType> TINKTURE_TYPES = new ArrayList<>();
 
+	public static final TinktureType EMPTY = new TinktureType("empty", 0x000000);
 	public static final TinktureType IMPIRUS = new TinktureType("impirus", 0xed170b);
 	public static final TinktureType AMNIS = new TinktureType("amnis", 0x0a78ed);
 	public static final TinktureType REBUS = new TinktureType("rebus", 0x239909);

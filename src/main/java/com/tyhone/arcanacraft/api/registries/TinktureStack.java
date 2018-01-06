@@ -1,5 +1,7 @@
 package com.tyhone.arcanacraft.api.registries;
 
+import com.tyhone.arcanacraft.common.init.ModTinktureTypes;
+
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 
@@ -7,7 +9,7 @@ public class TinktureStack {
 
     private NBTTagCompound stackTagCompound;
 	private TinktureType tinktureType;
-	private int amount;
+	private int amount = 0;
 	boolean isEmpty;
 	
 	public TinktureStack(TinktureType tinktureType, int amount){
@@ -22,11 +24,11 @@ public class TinktureStack {
 	
 	public TinktureType getTinktureTypeFromString(String tinktureType){
 		for(TinktureType type : TinktureManager.getTinktureTypes()){
-    		if(tinktureType == type.getFluidType()){
+    		if(tinktureType == type.getTinktureName()){
     			return type;
     		}
     	}
-		return null;
+		return ModTinktureTypes.EMPTY;
 	}
 	
 	public TinktureStack copy(){
@@ -34,7 +36,10 @@ public class TinktureStack {
 	}
 	
 	public int getAmount(){
-		return amount;
+		if(tinktureType != ModTinktureTypes.EMPTY){
+			return amount;
+		}
+		return 0;
 	}
 	
 	public void setAmount(int amount){
@@ -47,9 +52,14 @@ public class TinktureStack {
 	}
 	
 	public void checkEmpty(){
+		if(this.tinktureType == ModTinktureTypes.EMPTY){
+			this.amount = 0;
+			this.isEmpty = true;
+		}
 		if(this.amount<=0){
 			this.amount = 0;
 			this.isEmpty = true;
+			this.tinktureType = ModTinktureTypes.EMPTY;
 		}
 		else{
 			this.isEmpty = false;

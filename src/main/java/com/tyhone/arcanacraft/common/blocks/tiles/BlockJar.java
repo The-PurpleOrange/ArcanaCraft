@@ -6,6 +6,7 @@ import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.api.item.IEssenceVessel;
 import com.tyhone.arcanacraft.api.registries.TinktureStack;
 import com.tyhone.arcanacraft.common.blocks.base.ModBlockTileEntityBase;
+import com.tyhone.arcanacraft.common.init.ModTinktureTypes;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityJar;
 
 import net.minecraft.block.state.IBlockState;
@@ -55,18 +56,18 @@ public class BlockJar extends ModBlockTileEntityBase{
 				ItemStack stack = player.getHeldItem(hand);
 				IEssenceVessel item = (IEssenceVessel) stack.getItem();
 				
-				if(te.getFluidType() == item.getFluidType(stack)){
-					if(te.getFluidLevel() + item.getFluidAmount(stack) <= te.getMaxFluid()){
-						te.addFluid(item.getFluidType(stack), item.getFluidAmount(stack));
-						
-						if(stack.getCount() > 1){
-							stack.setCount(stack.getCount()-1);
-						}
-						else{
-							stack = ItemStack.EMPTY;
-						}
+				if(te.addFluid(item.getFluidType(stack), item.getFluidAmount(stack))){
+					
+					if(stack.getCount() > 1){
+						stack.setCount(stack.getCount()-1);
+					}
+					else{
+						stack = ItemStack.EMPTY;
 					}
 				}
+			}else{
+				TileEntityJar te = (TileEntityJar) world.getTileEntity(pos);
+				Arcanacraft.logger.info("TinktureType: " + te.getFluidType().getTinktureName() + ", Amount: " + te.getFluidLevel());
 			}
 		}
         

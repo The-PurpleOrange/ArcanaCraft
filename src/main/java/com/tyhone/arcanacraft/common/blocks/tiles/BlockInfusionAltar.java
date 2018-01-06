@@ -2,7 +2,6 @@ package com.tyhone.arcanacraft.common.blocks.tiles;
 
 import com.tyhone.arcanacraft.common.blocks.base.ModBlockTileEntityBase;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityInfusionAltar;
-import com.tyhone.arcanacraft.common.tileentity.TileEntitySoulAltar;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
@@ -13,6 +12,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -79,6 +79,16 @@ public class BlockInfusionAltar extends ModBlockTileEntityBase{
                     player.openContainer.detectAndSendChanges();
                 }
             }
+        }
+        else{
+        	if(player.isSneaking()){
+            	TileEntityInfusionAltar te = (TileEntityInfusionAltar) world.getTileEntity(pos);
+            	if(te.checkBuild()){
+            		player.sendMessage(new TextComponentTranslation("Build complete"));
+            	}else{
+            		player.sendMessage(new TextComponentTranslation("Build incomplete"));
+            	}
+        	}
         }
         
         return true;

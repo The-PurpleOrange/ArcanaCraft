@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Level;
 import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.api.registries.TinktureStack;
 import com.tyhone.arcanacraft.api.util.ItemStackUtil;
+import com.tyhone.arcanacraft.api.util.TinktureStackutil;
 
 import net.minecraft.item.ItemStack;
 
@@ -57,17 +58,48 @@ public class RecipeInfusionAltar {
 		return this.infusionItem;
 	}
 	
-	public static RecipeInfusionAltar getRecipe(ItemStack infusionItem, ArrayList<ItemStack> inputs){
+	public static RecipeInfusionAltar getRecipe(ItemStack infusionItem, ArrayList<ItemStack> inputs, ArrayList<TinktureStack> tInputs){
 		for(RecipeInfusionAltar recipe : ArcanacraftCraftingManager.getInfusionAltarRecipes()){
 			if(ItemStackUtil.simpleAreStackSizeEqual(recipe.infusionItem, infusionItem)){
 				if(doInputsMatch(recipe.inputs, inputs)){
-					return recipe;
+					Arcanacraft.logger.info("Inputs match");
+					if(doTinktureIputsMatch(recipe.tInputs, tInputs)){
+						return recipe;
+					}
 				}
 			}
 		}
 		return null;
 	}
 	
+	public static boolean doTinktureIputsMatch(ArrayList<TinktureStack> inputRecipe, ArrayList<TinktureStack> inputActual){
+		ArrayList<TinktureStack> inputsRequired = (ArrayList<TinktureStack>) new ArrayList(inputRecipe).clone();
+
+		
+		for(int i = 0; i < inputActual.size(); i++) {
+			TinktureStack stack = inputActual.get(i);
+			if(stack == null)
+				break;
+
+			int stackI = -1;
+
+			for(int j = 0; j < inputsRequired.size(); j++) {
+				TinktureStack required = inputsRequired.get(j);
+				if(TinktureStackutil.simpleIsAmountGreaterThan(stack, required)) {
+					stackI = j;
+					break;
+				}
+			}
+
+			if(stackI != -1)
+				inputsRequired.remove(stackI);
+			else return false;
+		}
+
+		return inputsRequired.isEmpty();
+	}
+	
+	//TODO Fix this inputs not matching
 	public static boolean doInputsMatch(ArrayList<ItemStack> inputRecipe, ArrayList<ItemStack> inputActual) {
 		ArrayList<ItemStack> inputsRequired = (ArrayList<ItemStack>) new ArrayList(inputRecipe).clone();
 

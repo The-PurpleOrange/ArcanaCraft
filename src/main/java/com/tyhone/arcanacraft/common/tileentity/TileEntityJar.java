@@ -1,7 +1,9 @@
 package com.tyhone.arcanacraft.common.tileentity;
 
+import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.api.registries.TinktureStack;
 import com.tyhone.arcanacraft.api.registries.TinktureType;
+import com.tyhone.arcanacraft.common.init.ModTinktureTypes;
 import com.tyhone.arcanacraft.common.tileentity.base.ModTileEntityBase;
 
 import net.minecraft.nbt.NBTTagCompound;
@@ -9,7 +11,7 @@ import net.minecraft.nbt.NBTTagCompound;
 public class TileEntityJar extends ModTileEntityBase {
 	
 	private final int maxFluid = 32;
-	private TinktureStack tinktureStack;
+	private TinktureStack tinktureStack = new TinktureStack(ModTinktureTypes.EMPTY, 0);
 	
 	public int getFluidLevel(){
 		return tinktureStack.getAmount();
@@ -44,21 +46,27 @@ public class TileEntityJar extends ModTileEntityBase {
 	}
 	
 	public boolean addFluid(TinktureType type, int amount){
-		if(tinktureStack.getTinktureType() == null || tinktureStack.getTinktureType() == type){
+		if(tinktureStack.getTinktureType() == ModTinktureTypes.EMPTY || tinktureStack.getTinktureType() == type){
 			if((tinktureStack.getAmount() + amount) > maxFluid){
+				Arcanacraft.logger.info("Failed adding tinkture (Not enough space): " + type.getTinktureName() + ", Current Amount: "+ this.getFluidLevel());
 				return false;
 			}
 			else{
+				if(tinktureStack.getTinktureType() == ModTinktureTypes.EMPTY){
+					tinktureStack.setTinktureType(type);
+				}
 				tinktureStack.modifyAmount(amount);
 				markForClean();
+				Arcanacraft.logger.info("Added tinkture: " + type.getTinktureName() + ", Current Amount: "+ this.getFluidLevel());
 				return true;
 			}
 		}
+		Arcanacraft.logger.info("Failed adding tinkture (Iincorrect type):  " + type.getTinktureName() + ", Current Amount: "+ this.getFluidLevel());
 		return false;
 	}
 	
 	public int addFluidPartial(TinktureType type, int amount){
-		if(tinktureStack.getTinktureType() == null || tinktureStack.getTinktureType() == type){
+		if(tinktureStack.getTinktureType() == ModTinktureTypes.EMPTY || tinktureStack.getTinktureType() == type){
 			if(tinktureStack.getAmount() >= maxFluid){
 				return amount;
 			}
@@ -92,13 +100,13 @@ public class TileEntityJar extends ModTileEntityBase {
         		}
         	}*/
         } else {
-        	tinktureStack.setTinktureType(null);
+        	tinktureStack.setTinktureType(ModTinktureTypes.EMPTY);
         }
         if(compound.hasKey("fluid")){
         	tinktureStack.setAmount(compound.getInteger("fluid"));
         }
         else{
-        	tinktureStack = null;
+        	tinktureStack = new TinktureStack(ModTinktureTypes.EMPTY, 0);
         }
     }
 
@@ -106,8 +114,8 @@ public class TileEntityJar extends ModTileEntityBase {
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
         
-        if(tinktureStack.getAmount()>0){
-        	compound.setString("fluidType", tinktureStack.getTinktureType().getFluidType());
+        if(!tinktureStack.isEmpty()){
+        	compound.setString("fluidType", tinktureStack.getTinktureType().getTinktureName());
         	compound.setInteger("fluid", tinktureStack.getAmount());
         }
         return compound;
