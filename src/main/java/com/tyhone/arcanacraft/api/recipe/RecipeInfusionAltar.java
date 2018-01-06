@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.logging.log4j.Level;
 
 import com.tyhone.arcanacraft.Arcanacraft;
+import com.tyhone.arcanacraft.api.registries.TinktureStack;
 import com.tyhone.arcanacraft.api.util.ItemStackUtil;
 
 import net.minecraft.item.ItemStack;
@@ -15,8 +16,9 @@ public class RecipeInfusionAltar {
 	ItemStack output;
 	ItemStack infusionItem;
 	ArrayList<ItemStack> inputs;
+	ArrayList<TinktureStack> tInputs;
 	
-	public RecipeInfusionAltar(ItemStack output, ItemStack infusionItem, ItemStack[] inputs){
+	public RecipeInfusionAltar(ItemStack output, ItemStack infusionItem, ItemStack[] inputs, TinktureStack[] tInputs){
 		
 		if(inputs == null || inputs.length>5){
 			Arcanacraft.logger.log(Level.ERROR ,"Invalid infusion recipe added for: " + output);
@@ -30,11 +32,21 @@ public class RecipeInfusionAltar {
 			inputsToSet.add(input);
 		}
 
+		ArrayList<TinktureStack> tInputsToSet = new ArrayList();
+		for(TinktureStack tInput : tInputs) {
+			tInputsToSet.add(tInput);
+		}
+
 		this.inputs = inputsToSet;
+		this.tInputs = tInputsToSet;
 	}
 
 	public List<ItemStack> getInputs() {
 		return new ArrayList(inputs);
+	}
+	
+	public List<TinktureStack> getTInputs() {
+		return new ArrayList(tInputs);
 	}
 
 	public ItemStack getOutput() {

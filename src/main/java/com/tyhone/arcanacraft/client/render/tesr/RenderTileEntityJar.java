@@ -4,6 +4,7 @@ import org.apache.logging.log4j.Level;
 import org.lwjgl.opengl.GL11;
 
 import com.tyhone.arcanacraft.Arcanacraft;
+import com.tyhone.arcanacraft.api.registries.TinktureType;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityJar;
 
 import net.minecraft.client.Minecraft;
@@ -29,7 +30,7 @@ public class RenderTileEntityJar extends TileEntitySpecialRenderer{
 		TileEntityJar jar = (TileEntityJar) te;
 		double fluidLevel = jar.getFluidLevel();
 		double maxFluid = jar.getMaxFluid();
-		String fluidType = jar.getFluidType();
+		TinktureType fluidType = jar.getFluidType();
 		
 		if(true){
 			

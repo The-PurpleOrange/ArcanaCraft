@@ -87,7 +87,7 @@ public class RecipeRitualCircle {
 		List<ItemStack> inputsRequired = new ArrayList(blockPosList);
 		boolean flag = true;
 		for(int i = 0; i < inputsRequired.size(); i++){
-			if(areBlocksEqual(blocks.get(i), inputsRequired.get(i))==false){
+			if(inputsRequired.get(i) != null && areBlocksEqual(blocks.get(i), inputsRequired.get(i))==false){
 				flag = false;
 			}
 		}

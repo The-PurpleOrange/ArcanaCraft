@@ -4,6 +4,7 @@ import java.util.Random;
 
 import com.tyhone.arcanacraft.common.blocks.base.IEnumMeta;
 import com.tyhone.arcanacraft.common.blocks.base.ModBlockEnum;
+import com.tyhone.arcanacraft.common.init.ModItems;
 import com.tyhone.arcanacraft.common.util.PosUtil;
 
 import net.minecraft.block.material.Material;
@@ -22,6 +23,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import scala.tools.cmd.Meta;
 
 public class BlockChalk extends ModBlockEnum {
 
@@ -137,14 +139,15 @@ public class BlockChalk extends ModBlockEnum {
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, VARIANT);
 	}
-	
 
-    public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state)
+    @Override
+	public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state)
     {
-        return null;
+        return new ItemStack(ModItems.CHALK, 1, this.getMetaFromState(state));
     }
 
-    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    @Override
+	public Item getItemDropped(IBlockState state, Random rand, int fortune)
     {
         return null;
     }

@@ -3,6 +3,9 @@ package com.tyhone.arcanacraft.common.tileentity;
 import java.util.ArrayList;
 
 import com.tyhone.arcanacraft.api.recipe.RecipeInfusionAltar;
+import com.tyhone.arcanacraft.api.registries.TinktureStack;
+import com.tyhone.arcanacraft.api.registries.TinktureType;
+import com.tyhone.arcanacraft.common.init.ModBlocks;
 import com.tyhone.arcanacraft.common.tileentity.base.ModTileEntityBase;
 import com.tyhone.arcanacraft.common.tileentity.base.ModTileEntitySingleInventoryBase;
 import com.tyhone.arcanacraft.common.util.BlockUtils;
@@ -48,6 +51,7 @@ public class TileEntityInfusionAltar extends ModTileEntityBase implements ITicka
 			if(stack!=ItemStack.EMPTY){
 				
 				BlockPos[] pedestals = getPedestals(world);
+				BlockPos[] jars = getJars(world);
 				if(pedestals != null){
 	            	
 					ArrayList<ItemStack> pedestalsItemStacks = getPedestalItemStacks(pedestals);
@@ -131,10 +135,34 @@ public class TileEntityInfusionAltar extends ModTileEntityBase implements ITicka
 		}
 		return false;
 	}
+	
+	public ArrayList<TinktureType> getJarsTinktureStacks(BlockPos[] jarPosList){
+
+		ArrayList<TinktureType> jarTinktureType = new ArrayList<TinktureType>();
+		for(BlockPos jarPos : jarPosList){
+			TileEntity te = world.getTileEntity(PosUtil.combinePos(pos, jarPos));
+			if(te != null && (te instanceof TileEntityJar)){
+				jarTinktureType.add(((TileEntityJar) te).getFluidType());
+			}
+		}
+		
+		return jarTinktureType;
+	}
+	
+	public void emptyJars(BlockPos[] jarPosList, TinktureType type, int amount){
+		for(BlockPos jarPos : jarPosList){
+			TileEntity te = world.getTileEntity(PosUtil.combinePos(pos, jarPos));
+			if(te != null && (te instanceof TileEntityJar)){
+				if(((TileEntityJar) te).getFluidType() == type){
+					((TileEntityJar) te).removeFluid(-amount);
+				}
+			}
+		}
+	}
 
 	public BlockPos[] getJars(World world){    	
 		for(BlockPos[] searchPos : JAR_ALL_SEARCH_POS){
-			if(BlockUtils.checkIfPedestal(world, PosUtil.combinePos(pos, searchPos[0]))){
+			if(world.getBlockState(PosUtil.combinePos(pos, searchPos[0])).getBlock() == ModBlocks.JAR){
 				if(checkforJars(searchPos)){
 					return searchPos;
 				}
@@ -148,7 +176,8 @@ public class TileEntityInfusionAltar extends ModTileEntityBase implements ITicka
 		boolean matches = true;
 		
 		for(int i = 1; i < searchPos.length; i++){
-			if(!BlockUtils.checkIfPedestal(world, PosUtil.combinePos(pos, searchPos[i]))){
+			if(world.getBlockState(PosUtil.combinePos(pos, searchPos[i])).getBlock() != ModBlocks.JAR){
+			//if(!BlockUtils.checkIfPedestal(world, PosUtil.combinePos(pos, searchPos[i]))){
 				matches = false;
 				break;
 			}

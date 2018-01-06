@@ -4,6 +4,7 @@ import org.apache.logging.log4j.Level;
 
 import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.api.item.IEssenceVessel;
+import com.tyhone.arcanacraft.api.registries.TinktureStack;
 import com.tyhone.arcanacraft.common.blocks.base.ModBlockTileEntityBase;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityJar;
 
@@ -53,9 +54,11 @@ public class BlockJar extends ModBlockTileEntityBase{
 				TileEntityJar te = (TileEntityJar) world.getTileEntity(pos);
 				ItemStack stack = player.getHeldItem(hand);
 				IEssenceVessel item = (IEssenceVessel) stack.getItem();
-				if(te.getFluidType() == null || te.getFluidType() == item.getFluidType(stack)){
-					if(te.addFluid(item.getFluid())){
-						te.setFluidType(item.getFluidType(stack));
+				
+				if(te.getFluidType() == item.getFluidType(stack)){
+					if(te.getFluidLevel() + item.getFluidAmount(stack) <= te.getMaxFluid()){
+						te.addFluid(item.getFluidType(stack), item.getFluidAmount(stack));
+						
 						if(stack.getCount() > 1){
 							stack.setCount(stack.getCount()-1);
 						}

@@ -18,6 +18,13 @@ public class RecipeDeconstructionTable {
 		this.deconstructionTime = deconstructionTime;
 	}
 	
+	public boolean hasLens(){
+		if(this.lens!=null){
+			return true;
+		}
+		return false;
+	}
+	
 	public ItemStack getLens(){
 		return this.lens;
 	}

@@ -10,6 +10,9 @@ import net.minecraft.item.ItemStack;
 
 public class InitRecipesSoulAltar {
 	public static void initSoulAltarRecipes(){
-		ArcanacraftCraftingManager.registerSoulInfusionRecipe(new ItemStack(ModItems.SOUL, 1, ItemMetaUtil.soul("complete")), new ItemStack(Blocks.GLASS), new ItemStack(Blocks.SOUL_SAND), new ItemStack(Blocks.SOUL_SAND), new ItemStack(Blocks.SOUL_SAND), new ItemStack(Blocks.SOUL_SAND), new ItemStack(Blocks.SOUL_SAND));
+		{
+			ItemStack item = new ItemStack(ModItems.SOUL, 1, ItemMetaUtil.soul("fragment"));
+			ArcanacraftCraftingManager.registerSoulInfusionRecipe(new ItemStack(ModItems.SOUL, 1, ItemMetaUtil.soul("complete")), new ItemStack(Blocks.GLASS), item, item, item, item, item);
+		}
 	}
 }

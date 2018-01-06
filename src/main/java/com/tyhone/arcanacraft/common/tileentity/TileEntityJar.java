@@ -1,77 +1,104 @@
 package com.tyhone.arcanacraft.common.tileentity;
 
+import com.tyhone.arcanacraft.api.registries.TinktureStack;
+import com.tyhone.arcanacraft.api.registries.TinktureType;
 import com.tyhone.arcanacraft.common.tileentity.base.ModTileEntityBase;
 
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
 public class TileEntityJar extends ModTileEntityBase {
 	
-	private final double maxFluid = 32D;
-	private double fluid = 0D;
-	private String fluidType;
+	private final int maxFluid = 32;
+	private TinktureStack tinktureStack;
 	
-	public double getFluidLevel(){
-		return fluid;
+	public int getFluidLevel(){
+		return tinktureStack.getAmount();
+	}
+
+	public TinktureStack getTinktureStack(){
+		return tinktureStack;
 	}
 	
-	public String getFluidType(){
-		return fluidType;
+	public TinktureType getFluidType(){
+		return tinktureStack.getTinktureType();
 	}
 	
-	public double getMaxFluid(){
+	public int getMaxFluid(){
 		return maxFluid;
 	}
 	
-	public void setFluidType(String fluid){
-		fluidType = fluid;
+	public void setFluidType(TinktureType type){
+		tinktureStack.setTinktureType(type);
 		markForClean();
 	}
 	
-	public boolean addFluid(double amount){
-		
-		if((fluid + amount) > maxFluid){
+	public boolean removeFluid(int amount){
+		if((tinktureStack.getAmount() - amount) < 0){
 			return false;
 		}
 		else{
-			fluid += amount;
+			tinktureStack.modifyAmount(-amount);
 			markForClean();
 			return true;
 		}
 	}
 	
-	public double addFluidForce(double amount){
-		if(fluid >= maxFluid){
-			return amount;
-		}
-		else{
-			markForClean();
-			if((fluid + amount) >= maxFluid){
-				double amountLeft = (fluid + amount) - maxFluid;
-				fluid = maxFluid;
-				return amountLeft;
+	public boolean addFluid(TinktureType type, int amount){
+		if(tinktureStack.getTinktureType() == null || tinktureStack.getTinktureType() == type){
+			if((tinktureStack.getAmount() + amount) > maxFluid){
+				return false;
 			}
 			else{
-				fluid += amount;
-				return 0;
+				tinktureStack.modifyAmount(amount);
+				markForClean();
+				return true;
 			}
 		}
+		return false;
+	}
+	
+	public int addFluidPartial(TinktureType type, int amount){
+		if(tinktureStack.getTinktureType() == null || tinktureStack.getTinktureType() == type){
+			if(tinktureStack.getAmount() >= maxFluid){
+				return amount;
+			}
+			else{
+				markForClean();
+				if((tinktureStack.getAmount() + amount) >= maxFluid){
+					int amountLeft = (tinktureStack.getAmount() + amount) - maxFluid;
+					tinktureStack.setAmount(maxFluid);
+					return amountLeft;
+				}
+				else{
+					tinktureStack.modifyAmount(amount);
+					return 0;
+				}
+			}
+		}
+		return amount;
 	}
 
-    @Override
+	@Override
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
         if(compound.hasKey("fluidType")){
-        	fluidType = compound.getString("fluidType");
+        	tinktureStack.setTinktureType(tinktureStack.getTinktureTypeFromString(compound.getString("fluidType")));
+        	
+        	/*String ft = compound.getString("fluidType");
+        	for(TinktureType type : TinktureManager.getTinktureTypes()){
+        		if(ft == type.getFluidType()){
+        			tinktureStack.setTinktureType(type);
+        			break;
+        		}
+        	}*/
         } else {
-            fluidType = null;
+        	tinktureStack.setTinktureType(null);
         }
         if(compound.hasKey("fluid")){
-        	fluid = compound.getDouble("fluid");
+        	tinktureStack.setAmount(compound.getInteger("fluid"));
         }
         else{
-        	fluid = 0D;
-        	fluidType = null;
+        	tinktureStack = null;
         }
     }
 
@@ -79,9 +106,9 @@ public class TileEntityJar extends ModTileEntityBase {
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
         
-        if(fluid>0){
-        	compound.setString("fluidType", fluidType);
-        	compound.setDouble("fluid", fluid);
+        if(tinktureStack.getAmount()>0){
+        	compound.setString("fluidType", tinktureStack.getTinktureType().getFluidType());
+        	compound.setInteger("fluid", tinktureStack.getAmount());
         }
         return compound;
     }

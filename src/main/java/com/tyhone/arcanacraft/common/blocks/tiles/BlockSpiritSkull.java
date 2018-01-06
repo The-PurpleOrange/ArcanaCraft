@@ -67,22 +67,26 @@ public class BlockSpiritSkull extends ModBlockTileEntityBase{
     }*/
     
 
-    public TileEntity createNewTileEntity(World worldIn, int meta)
+    @Override
+	public TileEntity createNewTileEntity(World worldIn, int meta)
     {
         return new TileEntitySpiritSkull();
     }
     
-    public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state)
+    @Override
+	public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state)
     {
         return new ItemStack(ModItems.SPIRIT_SKULL, 1);
     }
 
-    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    @Override
+	public Item getItemDropped(IBlockState state, Random rand, int fortune)
     {
         return ModItems.SPIRIT_SKULL;
     }
     
-    public void getDrops(net.minecraft.util.NonNullList<ItemStack> drops, IBlockAccess worldIn, BlockPos pos, IBlockState state, int fortune)
+    @Override
+	public void getDrops(net.minecraft.util.NonNullList<ItemStack> drops, IBlockAccess worldIn, BlockPos pos, IBlockState state, int fortune)
     {
         drops.add(new ItemStack(ModItems.SPIRIT_SKULL, 1));
     }

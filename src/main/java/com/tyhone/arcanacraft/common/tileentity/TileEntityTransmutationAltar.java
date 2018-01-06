@@ -32,6 +32,18 @@ public class TileEntityTransmutationAltar extends ModTileEntityBase implements I
 				getPos().add(2, 1, -2),
 				getPos().add(-2, 1, 2),
 				getPos().add(-2, 1, -2)
+			},
+			{
+				getPos().add(2, 0, 0),
+				getPos().add(-2, 0, 0),
+				getPos().add(0, 0, 2),
+				getPos().add(0, 0, -2)
+			},
+			{
+				getPos().add(2, 1, 0),
+				getPos().add(-2, 1, 0),
+				getPos().add(0, 1, 2),
+				getPos().add(0, 1, -2)
 			}
 		};
 	

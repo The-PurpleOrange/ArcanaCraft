@@ -31,7 +31,8 @@ public class ItemSpiritSkull extends ModItemBase{
     /**
      * Called when a Block is right-clicked with this Item
      */
-    public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
+    @Override
+	public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
     {
         if (facing == EnumFacing.DOWN)
         {

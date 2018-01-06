@@ -5,39 +5,36 @@ import java.util.List;
 
 public class TinktureManager {
 	
-	public static List<RegistryTinktureType> tinktureTypeList = new ArrayList<RegistryTinktureType>();
+	public static List<TinktureType> tinktureTypeList = new ArrayList<TinktureType>();
 	
-
-	//TINKTURE TYPES
-	public static RegistryTinktureType registerTinktureType(String fluidType, int colourHex) {
-		RegistryTinktureType recipe = new RegistryTinktureType(fluidType, colourHex);
-		tinktureTypeList.add(recipe);
-		return recipe;
+	
+	public static void registerTinktureType(TinktureType tinktureType) {
+		tinktureTypeList.add(tinktureType);
 	}
 	
-	public static List<RegistryTinktureType> getTinktureTypes(){
+	public static List<TinktureType> getTinktureTypes(){
 		return tinktureTypeList;
 	}
 
 	public static ArrayList<String> getTinktureNames(){
 		ArrayList<String> tinktureNames = new ArrayList<String>();
-		for(RegistryTinktureType tinkture : tinktureTypeList){
+		for(TinktureType tinkture : tinktureTypeList){
 			tinktureNames.add(tinkture.getFluidType());
 		}
 		return tinktureNames;
 	}
 	
-	public static String getTinktureNameFromMeta(int i){
-		ArrayList<String> tinktureNames = new ArrayList<String>();
-		for(RegistryTinktureType tinkture : tinktureTypeList){
-			tinktureNames.add(tinkture.getFluidType());
+	public static TinktureType getTinktureTypeFromMeta(int i){
+		ArrayList<TinktureType> tinktureNames = new ArrayList<TinktureType>();
+		for(TinktureType tinkture : tinktureTypeList){
+			tinktureNames.add(tinkture);
 		}
 		return tinktureNames.get(i);
 	}
 
 	public static ArrayList<Integer> getTinktureHexs(){
 		ArrayList<Integer> tinktureHexs = new ArrayList<Integer>();
-		for(RegistryTinktureType tinkture : tinktureTypeList){
+		for(TinktureType tinkture : tinktureTypeList){
 			tinktureHexs.add(tinkture.getColourHex());
 		}
 		return tinktureHexs;
@@ -45,7 +42,7 @@ public class TinktureManager {
 	
 	public static int getTinktureHexFromMeta(int i){
 		ArrayList<Integer> tinktureHexs = new ArrayList<Integer>();
-		for(RegistryTinktureType tinkture : tinktureTypeList){
+		for(TinktureType tinkture : tinktureTypeList){
 			tinktureHexs.add(tinkture.getColourHex());
 		}
 		return tinktureHexs.get(i);

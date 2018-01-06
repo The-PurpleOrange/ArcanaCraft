@@ -1,11 +1,13 @@
 package com.tyhone.arcanacraft.api.item;
 
+import com.tyhone.arcanacraft.api.registries.TinktureType;
+
 import net.minecraft.item.ItemStack;
 
 public interface IEssenceVessel {
 	
-	public double getFluid();
+	public int getFluidAmount(ItemStack stack);
 
 	//Returns a string name of the fluid contained
-	public String getFluidType(ItemStack stack);
+	public TinktureType getFluidType(ItemStack stack);
 }

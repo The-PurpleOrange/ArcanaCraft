@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.logging.log4j.Level;
 
 import com.tyhone.arcanacraft.Arcanacraft;
+import com.tyhone.arcanacraft.api.registries.TinktureStack;
 
 import net.minecraft.item.ItemStack;
 
@@ -77,8 +78,8 @@ public class ArcanacraftCraftingManager {
 	}
 
 	//INFUSION RECIPES
-	public static RecipeInfusionAltar registerInfusionRecipe(ItemStack output, ItemStack itemInfusionItem, ItemStack ... inputs) {
-		RecipeInfusionAltar recipe = new RecipeInfusionAltar(output, itemInfusionItem, inputs);
+	public static RecipeInfusionAltar registerInfusionRecipe(ItemStack output, ItemStack itemInfusionItem, ItemStack[] inputs, TinktureStack[] tInputs) {
+		RecipeInfusionAltar recipe = new RecipeInfusionAltar(output, itemInfusionItem, inputs, tInputs);
 		infusionAltarRecipes.add(recipe);
 		return recipe;
 	}
@@ -94,7 +95,7 @@ public class ArcanacraftCraftingManager {
 		return recipe;
 	}
 	
-	public static List<RecipeSoulAltar> getSoulInfusionAltarRecipes(){
+	public static List<RecipeSoulAltar> getSoulAltarRecipes(){
 		return soulAltarRecipes;
 	}
 }

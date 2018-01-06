@@ -2,10 +2,10 @@ package com.tyhone.arcanacraft.common.items.items;
 
 import com.tyhone.arcanacraft.api.item.IEssenceVessel;
 import com.tyhone.arcanacraft.api.registries.TinktureManager;
+import com.tyhone.arcanacraft.api.registries.TinktureType;
 import com.tyhone.arcanacraft.common.items.base.ModItemBase;
 
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.MathHelper;
 
 public class ItemTinkture extends ModItemBase implements IEssenceVessel{
 	
@@ -14,13 +14,13 @@ public class ItemTinkture extends ModItemBase implements IEssenceVessel{
 	}
 
 	@Override
-	public double getFluid() {
-		return 4D;
+	public int getFluidAmount(ItemStack stack) {
+		return 8;
 	}
 
 	@Override
-	public String getFluidType(ItemStack stack) {
-		return TinktureManager.getTinktureNameFromMeta(stack.getMetadata());
+	public TinktureType getFluidType(ItemStack stack) {
+		return TinktureManager.getTinktureTypeFromMeta(stack.getMetadata());
 	}
 	
 	/*@Override
