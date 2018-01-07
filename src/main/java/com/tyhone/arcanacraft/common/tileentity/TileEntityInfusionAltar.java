@@ -11,6 +11,8 @@ import com.tyhone.arcanacraft.common.tileentity.base.ModTileEntitySingleInventor
 import com.tyhone.arcanacraft.common.util.BlockUtils;
 import com.tyhone.arcanacraft.common.util.PosUtil;
 
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -100,7 +102,9 @@ public class TileEntityInfusionAltar extends ModTileEntityBase implements ITicka
 		for(BlockPos pedestalPos : pedestalPosList){
 			TileEntity te = world.getTileEntity(PosUtil.combinePos(pos, pedestalPos));
 			if(te != null && (te instanceof TileEntityPedestal || te instanceof TileEntityPedestalSlab)){
-				pedestalItemStacks.add(((ModTileEntitySingleInventoryBase) te).getStack());
+				if(((ModTileEntitySingleInventoryBase) te).getStack().getItem() != Items.AIR){
+					pedestalItemStacks.add(((ModTileEntitySingleInventoryBase) te).getStack());
+				}
 			}
 		}
 		
@@ -163,11 +167,15 @@ public class TileEntityInfusionAltar extends ModTileEntityBase implements ITicka
 	}
 	
 	public void emptyJars(BlockPos[] jarPosList, TinktureType type, int amount){
+		int remainder = amount;
+		
 		for(BlockPos jarPos : jarPosList){
-			TileEntity te = world.getTileEntity(PosUtil.combinePos(pos, jarPos));
-			if(te != null && (te instanceof TileEntityJar)){
-				if(((TileEntityJar) te).getFluidType() != null && ((TileEntityJar) te).getFluidType() == type){
-					if(!((TileEntityJar) te).removeFluid(-amount)){
+			TileEntity tew = world.getTileEntity(PosUtil.combinePos(pos, jarPos));
+			if(tew != null && (tew instanceof TileEntityJar)){
+				TileEntityJar te = (TileEntityJar) world.getTileEntity(tew.getPos());
+				if(te.getFluidType() != null && te.getFluidType() == type){
+					remainder = te.removeFluidPartial(remainder);
+					if(remainder == 0){
 						break;
 					}
 				}

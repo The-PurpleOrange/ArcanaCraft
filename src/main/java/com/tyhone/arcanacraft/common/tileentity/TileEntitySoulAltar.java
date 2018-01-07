@@ -8,6 +8,7 @@ import com.tyhone.arcanacraft.common.tileentity.base.ModTileEntitySingleInventor
 import com.tyhone.arcanacraft.common.util.BlockUtils;
 import com.tyhone.arcanacraft.common.util.PosUtil;
 
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -92,7 +93,9 @@ public class TileEntitySoulAltar extends ModTileEntityBase implements ITickable{
 		for(BlockPos pedestalPos : pedestalPosList){
 			TileEntity te = world.getTileEntity(PosUtil.combinePos(pos, pedestalPos));
 			if(te != null && (te instanceof TileEntityPedestal || te instanceof TileEntityPedestalSlab)){
-				pedestalItemStacks.add(((ModTileEntitySingleInventoryBase) te).getStack());
+				if(((ModTileEntitySingleInventoryBase) te).getStack().getItem() != Items.AIR){
+					pedestalItemStacks.add(((ModTileEntitySingleInventoryBase) te).getStack());
+				}
 			}
 		}
 		

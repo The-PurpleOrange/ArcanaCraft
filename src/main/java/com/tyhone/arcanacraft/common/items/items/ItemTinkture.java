@@ -20,7 +20,7 @@ public class ItemTinkture extends ModItemBase implements IEssenceVessel{
 
 	@Override
 	public TinktureType getFluidType(ItemStack stack) {
-		return TinktureManager.getTinktureTypeFromMeta(stack.getMetadata());
+		return TinktureManager.getTinktureTypeFromMeta(stack.getMetadata()+1);
 	}
 	
 	/*@Override

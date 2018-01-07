@@ -45,6 +45,19 @@ public class TileEntityJar extends ModTileEntityBase {
 		}
 	}
 	
+	public int removeFluidPartial(int amount){
+		if((tinktureStack.getAmount() - amount) < 0){
+			int remainder = ((tinktureStack.getAmount() - amount) * -1);
+			tinktureStack.setAmount(0);
+			return remainder;
+		}
+		else{
+			tinktureStack.modifyAmount(-amount);
+			markForClean();
+			return 0;
+		}
+	}
+	
 	public boolean addFluid(TinktureType type, int amount){
 		if(tinktureStack.getTinktureType() == ModTinktureTypes.EMPTY || tinktureStack.getTinktureType() == type){
 			if((tinktureStack.getAmount() + amount) > maxFluid){
