@@ -59,7 +59,7 @@ public class TileEntityInfusionAltar extends ModTileEntityBase implements ITicka
 	public void update(){
 		if(!getWorld().isRemote){
 			boolean isDirty = false;
-			if(stack!=ItemStack.EMPTY){
+			if(!stack.isEmpty()){
 				
 				BlockPos[] pedestals = getPedestals(world);
 				BlockPos[] jars = getJars(world);

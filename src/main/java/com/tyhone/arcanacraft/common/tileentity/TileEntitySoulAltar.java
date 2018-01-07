@@ -55,7 +55,7 @@ public class TileEntitySoulAltar extends ModTileEntityBase implements ITickable{
 	public void update(){
 		if(!getWorld().isRemote){
 			boolean isDirty = false;
-			if(stack!=ItemStack.EMPTY){
+			if(!stack.isEmpty()){
 				
 				BlockPos[] pedestals = getPedestals(world);
 				if(pedestals != null){

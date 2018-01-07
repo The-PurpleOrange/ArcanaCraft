@@ -52,7 +52,7 @@ public class TileEntityTransmutationAltar extends ModTileEntityBase implements I
 	public void update(){
 		if(!getWorld().isRemote){
 			boolean isDirty = false;
-			if(stack == ItemStack.EMPTY){
+			if(stack.isEmpty()){
 				
 				BlockPos[] pedestals = getPedestals(world);
 				if(pedestals != null){

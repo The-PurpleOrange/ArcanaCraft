@@ -20,20 +20,20 @@ public class ModTileEntities {
 	
 	public static void register(){
 
-		GameRegistry.registerTileEntity(TileEntityAlchemicArray.class, "alchemic_array");
-		GameRegistry.registerTileEntity(TileEntityRitualCircle.class, "ritual_circle");
+		GameRegistry.registerTileEntity(TileEntityAlchemicArray.class, Arcanacraft.MODID + ".alchemic_array");
+		GameRegistry.registerTileEntity(TileEntityRitualCircle.class, Arcanacraft.MODID + ".ritual_circle");
 		
-		GameRegistry.registerTileEntity(TileEntityLensReceptacle.class, "lens_receptacle");
-		GameRegistry.registerTileEntity(TileEntityDeconstructionTable.class, "deconstruction_table");
-		GameRegistry.registerTileEntity(TileEntityTransmutationAltar.class, "transmutation_altar");
-		GameRegistry.registerTileEntity(TileEntityInfusionAltar.class, "infusion_altar");
-		GameRegistry.registerTileEntity(TileEntitySoulAltar.class, "soul_altar");
-		GameRegistry.registerTileEntity(TileEntityJar.class, "jar");
-		GameRegistry.registerTileEntity(TileEntityPedestal.class, "pedestal");
-		GameRegistry.registerTileEntity(TileEntityPedestalSlab.class, "pedestal_slab");
+		GameRegistry.registerTileEntity(TileEntityLensReceptacle.class, Arcanacraft.MODID + ".lens_receptacle");
+		GameRegistry.registerTileEntity(TileEntityDeconstructionTable.class, Arcanacraft.MODID + ".deconstruction_table");
+		GameRegistry.registerTileEntity(TileEntityTransmutationAltar.class, Arcanacraft.MODID + ".transmutation_altar");
+		GameRegistry.registerTileEntity(TileEntityInfusionAltar.class, Arcanacraft.MODID + ".infusion_altar");
+		GameRegistry.registerTileEntity(TileEntitySoulAltar.class, Arcanacraft.MODID + ".soul_altar");
+		GameRegistry.registerTileEntity(TileEntityJar.class, Arcanacraft.MODID + ".jar");
+		GameRegistry.registerTileEntity(TileEntityPedestal.class, Arcanacraft.MODID + ".pedestal");
+		GameRegistry.registerTileEntity(TileEntityPedestalSlab.class, Arcanacraft.MODID + ".pedestal_slab");
 		
 
-		GameRegistry.registerTileEntity(TileEntitySpiritSkull.class, "block_spirit_skull");
+		GameRegistry.registerTileEntity(TileEntitySpiritSkull.class, Arcanacraft.MODID + ".block_spirit_skull");
 	}
 
 }
