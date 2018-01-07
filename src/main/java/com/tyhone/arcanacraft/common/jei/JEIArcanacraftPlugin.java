@@ -41,8 +41,16 @@ import mezz.jei.api.ingredients.IIngredientRenderer;
 import mezz.jei.api.ingredients.IModIngredientRegistration;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.BufferBuilder;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 
 @JEIPlugin
 public class JEIArcanacraftPlugin implements IModPlugin {
@@ -120,17 +128,17 @@ public class JEIArcanacraftPlugin implements IModPlugin {
 
 		@Override
 		public String getDisplayName(TinktureStack ingredient) {
-			return "Tinkture ingredient Display Name" + ingredient.getTinktureName();
+			return ingredient.getTinktureName();
 		}
 
 		@Override
 		public String getUniqueId(TinktureStack ingredient) {
-			return "Tinkture ingredient Unique ID" + ingredient.getTinktureName();
+			return ingredient.getTinktureName();
 		}
 
 		@Override
 		public String getWildcardId(TinktureStack ingredient) {
-			return "Tinkture ingredient Wildcard ID" + ingredient.getTinktureName();
+			return ingredient.getTinktureName();
 		}
 
 		@Override
@@ -145,7 +153,7 @@ public class JEIArcanacraftPlugin implements IModPlugin {
 
 		@Override
 		public String getResourceId(TinktureStack ingredient) {
-			return "Tinkture Ingredient Resource Id " + ingredient.getTinktureName();
+			return ingredient.getTinktureName();
 		}
 
 		@Override
@@ -155,21 +163,106 @@ public class JEIArcanacraftPlugin implements IModPlugin {
 
 		@Override
 		public String getErrorInfo(TinktureStack ingredient) {
-			return "Tinkture Ingredient Error Info " + ingredient.getTinktureName();
+			return "Tinkture Ingredient Error: " + ingredient.getTinktureName();
 		}
 	}
 	
 	private static class tinktureIngredientRenderer implements IIngredientRenderer<TinktureStack> {
 
 		@Override
-		public void render(Minecraft minecraft, int xPosition, int yPosition, TinktureStack ingredient) {
-			// TODO Auto-generated method stub
+		public void render(Minecraft minecraft, int x, int y, TinktureStack ingredient) {
+			if (ingredient != null) {
+
+				int colourHex = ingredient.getTinktureType().getColourHex();
+
+				int z = 100;
+				int h = 6;
+				int w = 6;
+				
+				GlStateManager.enableDepth();
+				RenderHelper.enableGUIStandardItemLighting();
+				
+				//ResourceLocation tinktureTexture = new ResourceLocation(Arcanacraft.MODID + ":textures/t.png");
+				//minecraft.renderEngine.bindTexture(tinktureTexture);
+				
+				//setGLColourFromInt(colourHex);
+				
+				int r = (colourHex & 0xFF0000) >> 16;
+			    int g = (colourHex & 0xFF00) >> 8;
+			    int b = (colourHex & 0xFF);
+
+				Tessellator tess = Tessellator.getInstance();
+				BufferBuilder buffer = tess.getBuffer();
+
+				buffer.begin(7, DefaultVertexFormats.POSITION_COLOR);
+				buffer.pos(x, y+h, z).color(r, g, b, 255).endVertex();
+				buffer.pos(x+w, y+h, z).color(r, g, b, 255).endVertex();
+				buffer.pos(x+w, y, z).color(r, g, b, 255).endVertex();
+				buffer.pos(x, y, z).color(r, g, b, 255).endVertex();
+				/*
+				buffer.begin(7, DefaultVertexFormats.POSITION_TEX);
+				buffer.pos(x, y+h, z).tex(0, h).endVertex();
+				buffer.pos(x+w, y+h, z).tex(w, h).endVertex();
+				buffer.pos(x+w, y, z).tex(w, 0).endVertex();
+				buffer.pos(x, y, z).tex(0, 0).endVertex();*/
+				tess.draw();
+				
+				GlStateManager.disableBlend();
+				RenderHelper.disableStandardItemLighting();
+			}
+		}
+		
+		/*private TextureAtlasSprite getTInktureFluidSprite(Minecraft minecraft, TinktureType tinktureType) {
+			TextureMap textureMapBlocks = minecraft.getTextureMapBlocks();
+			ResourceLocation tinktureTexture = new ResourceLocation(Arcanacraft.MODID + ":textures/blocks/tinkture_fluid_block.png");
+			//ResourceLocation tinktureTexture = new ResourceLocation(Arcanacraft.MODID + ":textures/models/alchemic_array/alchemic_array_inner.png");
+			TextureAtlasSprite tinktureSprite = null;
 			
+			if(tinktureTexture != null){
+				tinktureSprite = textureMapBlocks.getTextureExtry(tinktureTexture.toString());
+			}
+			
+			return tinktureSprite;
+		}
+
+		private void drawSprite(Minecraft minecraft, int x, int y, int w, int h, int tinktureColour, int colourHex, TextureAtlasSprite sprite) {
+			ResourceLocation tinktureTexture = new ResourceLocation(Arcanacraft.MODID + ":textures/blocks/tinkture_fluid_block.png");
+			minecraft.renderEngine.bindTexture(tinktureTexture);
+			
+			//ResourceLocation tinktureTexture = new ResourceLocation(Arcanacraft.MODID + ":textures/models/alchemic_array/alchemic_array_inner.png");
+			//ResourceLocation tinktureTexture = new ResourceLocation(Arcanacraft.MODID + ":textures/blocks/tinkture_fluid_block.png");
+					
+			//minecraft.renderEngine.bindTexture(sprite);
+			setGLColourFromInt(colourHex);
+			
+			//minecraft.ingameGUI.drawTexturedModalRect(x, y, sprite, w, h);
+			
+			int z = 100;
+
+			Tessellator tess = Tessellator.getInstance();
+			BufferBuilder buffer = tess.getBuffer();
+			buffer.begin(7, DefaultVertexFormats.POSITION_TEX);
+			buffer.pos(x, y+h, z).tex(0, h).endVertex();
+			buffer.pos(x+w, y+h, z).tex(w, h).endVertex();
+			buffer.pos(x+w, y, z).tex(w, 0).endVertex();
+			buffer.pos(x, y, z).tex(0, 0).endVertex();
+			tess.draw();
+			
+		}*/
+
+		private void setGLColourFromInt(int hex) {
+			
+		    int r = (hex & 0xFF0000) >> 16;
+		    int g = (hex & 0xFF00) >> 8;
+		    int b = (hex & 0xFF);
+			
+			GlStateManager.color(r, g, b);
 		}
 
 		@Override
 		public List<String> getTooltip(Minecraft minecraft, TinktureStack ingredient, ITooltipFlag tooltipFlag) {
-			return Collections.singletonList("Tinkture Ingredient Tooltip " + ingredient);
+			String tooltip = String.format("%s%n%s", ingredient.getTinktureName(), ingredient.getAmount()+"mt");
+			return Collections.singletonList(tooltip);
 		}
 	}
 }

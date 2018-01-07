@@ -3,6 +3,7 @@ package com.tyhone.arcanacraft.common.jei.infusion_altar;
 import java.util.List;
 
 import com.tyhone.arcanacraft.Arcanacraft;
+import com.tyhone.arcanacraft.api.registries.TinktureStack;
 import com.tyhone.arcanacraft.common.util.GuiUtils;
 
 import mezz.jei.api.IGuiHelper;
@@ -46,6 +47,7 @@ public class InfusionAltarRecipeCategory implements IRecipeCategory<InfusionAlta
 	@Override
 	public void setRecipe(IRecipeLayout recipeLayout, InfusionAltarRecipeWrapper wrapper, IIngredients ingredients) {
 		List<ItemStack> inputs = wrapper.recipe.getInputs();
+		List<TinktureStack> tInputs = wrapper.recipe.getTInputs();
 		
 		recipeLayout.getItemStacks().init(0, true, 37, 37);
 		recipeLayout.getItemStacks().set(0, wrapper.recipe.getInfusionItem());
@@ -92,6 +94,26 @@ public class InfusionAltarRecipeCategory implements IRecipeCategory<InfusionAlta
         
         recipeLayout.getItemStacks().init(1, false, 107, 37);
         recipeLayout.getItemStacks().set(1, wrapper.recipe.getOutput());
+
+        recipeLayout.getIngredientsGroup(TinktureStack.class).init(10, true, 28, 28);
+     	if(tInputs.size()>=1){
+     		recipeLayout.getIngredientsGroup(TinktureStack.class).set(10, tInputs.get(0));
+     	}
+     	
+        recipeLayout.getIngredientsGroup(TinktureStack.class).init(11, true, 58, 28);
+     	if(tInputs.size()>=2){
+     		recipeLayout.getIngredientsGroup(TinktureStack.class).set(11, tInputs.get(1));
+     	}
+     	
+        recipeLayout.getIngredientsGroup(TinktureStack.class).init(12, true, 28, 58);
+     	if(tInputs.size()>=3){
+     		recipeLayout.getIngredientsGroup(TinktureStack.class).set(12, tInputs.get(2));
+     	}
+     	
+        recipeLayout.getIngredientsGroup(TinktureStack.class).init(13, true, 58, 58);
+     	if(tInputs.size()==4){
+     		recipeLayout.getIngredientsGroup(TinktureStack.class).set(13, tInputs.get(3));
+     	}
 
 	}
 
