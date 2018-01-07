@@ -62,7 +62,7 @@ public class TileEntityJar extends ModTileEntityBase {
 		}
 	}
 	
-	public boolean addRinktureAmount(TinktureType type, int amount){
+	public boolean addTinktureAmount(TinktureType type, int amount){
 		if(tinktureStack.getTinktureType() == ModTinktureTypes.EMPTY || tinktureStack.getTinktureType() == type){
 			if((tinktureStack.getAmount() + amount) > MAX_FLUID){
 				Arcanacraft.logger.info("Failed adding tinkture (Not enough space): " + type.getTinktureName() + ", Current Amount: "+ this.getTinktureAmount());

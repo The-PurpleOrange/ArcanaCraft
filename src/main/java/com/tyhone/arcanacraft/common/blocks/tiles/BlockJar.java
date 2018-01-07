@@ -56,7 +56,7 @@ public class BlockJar extends ModBlockTileEntityBase{
 				ItemStack stack = player.getHeldItem(hand);
 				IEssenceVessel item = (IEssenceVessel) stack.getItem();
 				
-				if(te.addRinktureAmount(item.getFluidType(stack), item.getFluidAmount(stack))){
+				if(te.addTinktureAmount(item.getFluidType(stack), item.getFluidAmount(stack))){
 					
 					if(stack.getCount() > 1){
 						stack.setCount(stack.getCount()-1);
