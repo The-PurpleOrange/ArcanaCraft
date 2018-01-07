@@ -1,34 +1,35 @@
 package com.tyhone.arcanacraft.api.registries;
 
+import com.tyhone.arcanacraft.api.util.TinktureStackUtil;
 import com.tyhone.arcanacraft.common.init.ModTinktureTypes;
 
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.EnumFacing;
+import net.minecraftforge.common.capabilities.Capability;
 
-public class TinktureStack {
+public class TinktureStack{
 
+    public static final TinktureStack EMPTY = new TinktureStack(ModTinktureTypes.EMPTY, 0);
+    
     private NBTTagCompound stackTagCompound;
 	private TinktureType tinktureType;
 	private int amount = 0;
 	boolean isEmpty;
-	
+
 	public TinktureStack(TinktureType tinktureType, int amount){
 		this.tinktureType = tinktureType;
 		this.amount = amount;
 		this.isEmpty = (amount<=0);
 	}
 	
+	/*public TinktureStack(NBTTagCompound compound){
+		this.tinktureType = TinktureStackUtil.getTinktureTypeFromString(compound.getString("fluidType"));
+    	this.amount = compound.getInteger("fluid");
+		this.isEmpty = (amount<=0);
+	}*/
+	
 	public TinktureType getTinktureType(){
 		return tinktureType;
-	}
-	
-	public TinktureType getTinktureTypeFromString(String tinktureType){
-		for(TinktureType type : TinktureManager.getTinktureTypes()){
-    		if(tinktureType == type.getTinktureName()){
-    			return type;
-    		}
-    	}
-		return ModTinktureTypes.EMPTY;
 	}
 	
 	public TinktureStack copy(){
@@ -93,8 +94,17 @@ public class TinktureStack {
 		return -1; 
 	}
 
-	/*public NBTTagCompound writeToNBT(NBTTagCompound nbt)
-    {
+	/*public NBTTagCompound writeToNBT(NBTTagCompound nbt){
+
+		nbt.setString("name", this.getTinktureType().getTinktureName());
+		nbt.setInteger("amount", this.amount);
+		
+		if(this.stackTagCompound != null){
+			nbt.setTag("tag", this.stackTagCompound);
+		}
+        
+        return nbt;
+        
         String fluidType = this.getTinktureType().getFluidType();
         nbt.setString("id", fluidType == null ? "null" : fluidType);
         nbt.setInteger("amount", this.amount);

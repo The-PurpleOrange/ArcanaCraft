@@ -3,6 +3,7 @@ package com.tyhone.arcanacraft.common.tileentity;
 import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.api.registries.TinktureStack;
 import com.tyhone.arcanacraft.api.registries.TinktureType;
+import com.tyhone.arcanacraft.api.util.TinktureStackUtil;
 import com.tyhone.arcanacraft.common.init.ModTinktureTypes;
 import com.tyhone.arcanacraft.common.tileentity.base.ModTileEntityBase;
 
@@ -10,8 +11,11 @@ import net.minecraft.nbt.NBTTagCompound;
 
 public class TileEntityJar extends ModTileEntityBase {
 	
-	private final int maxFluid = 32;
-	private TinktureStack tinktureStack = new TinktureStack(ModTinktureTypes.EMPTY, 0);
+	private final String TAG_TYPE = "type";
+	private final String TAG_AMOUNT = "amount";
+	
+	private final int MAX_FLUID = 32;
+	private TinktureStack tinktureStack = TinktureStack.EMPTY;
 	
 	public int getFluidLevel(){
 		return tinktureStack.getAmount();
@@ -26,7 +30,7 @@ public class TileEntityJar extends ModTileEntityBase {
 	}
 	
 	public int getMaxFluid(){
-		return maxFluid;
+		return MAX_FLUID;
 	}
 	
 	public void setFluidType(TinktureType type){
@@ -60,7 +64,7 @@ public class TileEntityJar extends ModTileEntityBase {
 	
 	public boolean addFluid(TinktureType type, int amount){
 		if(tinktureStack.getTinktureType() == ModTinktureTypes.EMPTY || tinktureStack.getTinktureType() == type){
-			if((tinktureStack.getAmount() + amount) > maxFluid){
+			if((tinktureStack.getAmount() + amount) > MAX_FLUID){
 				Arcanacraft.logger.info("Failed adding tinkture (Not enough space): " + type.getTinktureName() + ", Current Amount: "+ this.getFluidLevel());
 				return false;
 			}
@@ -69,8 +73,8 @@ public class TileEntityJar extends ModTileEntityBase {
 					tinktureStack.setTinktureType(type);
 				}
 				tinktureStack.modifyAmount(amount);
-				markForClean();
 				Arcanacraft.logger.info("Added tinkture: " + type.getTinktureName() + ", Current Amount: "+ this.getFluidLevel());
+				markForClean();
 				return true;
 			}
 		}
@@ -80,14 +84,14 @@ public class TileEntityJar extends ModTileEntityBase {
 	
 	public int addFluidPartial(TinktureType type, int amount){
 		if(tinktureStack.getTinktureType() == ModTinktureTypes.EMPTY || tinktureStack.getTinktureType() == type){
-			if(tinktureStack.getAmount() >= maxFluid){
+			if(tinktureStack.getAmount() >= MAX_FLUID){
 				return amount;
 			}
 			else{
 				markForClean();
-				if((tinktureStack.getAmount() + amount) >= maxFluid){
-					int amountLeft = (tinktureStack.getAmount() + amount) - maxFluid;
-					tinktureStack.setAmount(maxFluid);
+				if((tinktureStack.getAmount() + amount) >= MAX_FLUID){
+					int amountLeft = (tinktureStack.getAmount() + amount) - MAX_FLUID;
+					tinktureStack.setAmount(MAX_FLUID);
 					return amountLeft;
 				}
 				else{
@@ -102,34 +106,62 @@ public class TileEntityJar extends ModTileEntityBase {
 	@Override
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
-        if(compound.hasKey("fluidType")){
-        	tinktureStack.setTinktureType(tinktureStack.getTinktureTypeFromString(compound.getString("fluidType")));
-        	
-        	/*String ft = compound.getString("fluidType");
-        	for(TinktureType type : TinktureManager.getTinktureTypes()){
-        		if(ft == type.getFluidType()){
-        			tinktureStack.setTinktureType(type);
-        			break;
-        		}
-        	}*/
-        } else {
-        	tinktureStack.setTinktureType(ModTinktureTypes.EMPTY);
-        }
-        if(compound.hasKey("fluid")){
-        	tinktureStack.setAmount(compound.getInteger("fluid"));
+
+       /* if(compound.hasKey("tinkture")){
+        	Arcanacraft.logger.info("Tinkture Found");
+        	tinktureStack = new TinktureStack(compound.getCompoundTag("tinkture"));
+        	Arcanacraft.logger.info(tinktureStack.getTinktureType().getTinktureName() + ":" + tinktureStack.getAmount());
         }
         else{
-        	tinktureStack = new TinktureStack(ModTinktureTypes.EMPTY, 0);
+        	Arcanacraft.logger.info("No tinkture Found");
+        	tinktureStack = TinktureStack.EMPTY;
         }
+        tinktureStack.checkEmpty();*/
+        
+		TinktureType type;
+		int amount;
+    	
+        if(compound.hasKey(TAG_TYPE)){
+        	Arcanacraft.logger.info("Compoud load: " + compound);
+        	type = TinktureStackUtil.getTinktureTypeFromString(compound.getString(TAG_TYPE));
+        	amount = compound.getInteger(TAG_AMOUNT);
+        }
+        else{
+        	//Arcanacraft.logger.info(side + " - Failed reading nbt");
+        	type = ModTinktureTypes.EMPTY;
+        	amount = 0;
+        }
+        
+        tinktureStack = new TinktureStack(type, amount);
     }
 
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
+
+        /*if(!tinktureStack.isEmpty()){
+        	Arcanacraft.logger.info("writing tinkture nbt");
+        	Arcanacraft.logger.info(tinktureStack.getTinktureType().getTinktureName() + ":" + tinktureStack.getAmount());
+            
+        	NBTTagCompound tagCompound = new NBTTagCompound();
+        	tinktureStack.writeToNBT(tagCompound);
+        	compound.setTag("tinkture", tagCompound);
+        	
+        	TinktureStack temptStack = new TinktureStack(compound.getCompoundTag("tinkture"));
+        	
+        	Arcanacraft.logger.info(temptStack.getTinktureType().getTinktureName() + ":" + temptStack.getAmount());
+            
+        }else{
+        	Arcanacraft.logger.info("failed writing tinkture nbt");
+        }
+        return compound;*/
+        
         
         if(!tinktureStack.isEmpty()){
-        	compound.setString("fluidType", tinktureStack.getTinktureType().getTinktureName());
-        	compound.setInteger("fluid", tinktureStack.getAmount());
+        	compound.setString(TAG_TYPE, tinktureStack.getTinktureType().getTinktureName());
+        	compound.setInteger(TAG_AMOUNT, tinktureStack.getAmount());
+
+        	Arcanacraft.logger.info("Compoud save: " + compound);
         }
         return compound;
     }

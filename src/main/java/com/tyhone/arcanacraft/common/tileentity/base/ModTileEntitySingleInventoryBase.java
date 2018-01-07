@@ -1,4 +1,4 @@
-package com.tyhone.arcanacraft.common.tileentity.base;
+ package com.tyhone.arcanacraft.common.tileentity.base;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;

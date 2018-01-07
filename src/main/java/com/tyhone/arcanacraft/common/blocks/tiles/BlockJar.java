@@ -65,10 +65,12 @@ public class BlockJar extends ModBlockTileEntityBase{
 						stack = ItemStack.EMPTY;
 					}
 				}
-			}else{
-				TileEntityJar te = (TileEntityJar) world.getTileEntity(pos);
-				Arcanacraft.logger.info("TinktureType: " + te.getFluidType().getTinktureName() + ", Amount: " + te.getFluidLevel());
 			}
+		}
+
+		if(player.isSneaking() && hand == EnumHand.MAIN_HAND){
+			TileEntityJar te = (TileEntityJar) world.getTileEntity(pos);
+			Arcanacraft.logger.info("TinktureType: " + te.getFluidType().getTinktureName() + ", Amount: " + te.getFluidLevel());
 		}
         
         return false;

@@ -4,7 +4,9 @@ import org.apache.logging.log4j.Level;
 import org.lwjgl.opengl.GL11;
 
 import com.tyhone.arcanacraft.Arcanacraft;
+import com.tyhone.arcanacraft.api.registries.TinktureStack;
 import com.tyhone.arcanacraft.api.registries.TinktureType;
+import com.tyhone.arcanacraft.common.init.ModTinktureTypes;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityJar;
 
 import net.minecraft.client.Minecraft;
@@ -28,11 +30,9 @@ public class RenderTileEntityJar extends TileEntitySpecialRenderer{
 	@Override
 	public void render(TileEntity te, double x, double y, double z, float partialTicks, int destroyStage, float alpha){
 		TileEntityJar jar = (TileEntityJar) te;
-		double fluidLevel = jar.getFluidLevel();
-		double maxFluid = jar.getMaxFluid();
-		TinktureType fluidType = jar.getFluidType();
+		TinktureStack tinktureStack = jar.getTinktureStack();
 		
-		if(true){
+		if(tinktureStack.getTinktureType() != ModTinktureTypes.EMPTY){
 			
 			Tessellator tess = Tessellator.getInstance();
 			BufferBuilder buffer = tess.getBuffer();
