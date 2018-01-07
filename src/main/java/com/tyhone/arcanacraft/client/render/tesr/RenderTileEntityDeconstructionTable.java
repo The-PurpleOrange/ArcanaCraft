@@ -1,18 +1,16 @@
 package com.tyhone.arcanacraft.client.render.tesr;
 
-import org.apache.logging.log4j.Level;
 import org.lwjgl.opengl.GL11;
 
 import com.tyhone.arcanacraft.Arcanacraft;
+import com.tyhone.arcanacraft.api.util.ItemRenderUtil;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityDeconstructionTable;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.RenderItem;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.block.model.ItemCameraTransforms.TransformType;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
@@ -48,12 +46,10 @@ public class RenderTileEntityDeconstructionTable extends TileEntitySpecialRender
             GlStateManager.scale(scale, scale, scale);
             
             try{
-    	        //GlStateManager.color(1F, 1F, 1F, 1F);
-                //Minecraft.getMinecraft().getRenderItem().renderItem(itemStack, TransformType.FIXED);
-                renderItemInWorld(itemStack);
+                ItemRenderUtil.renderItemInWorld(itemStack);
             }
             catch(Exception e){
-                Arcanacraft.logger.log(Level.ERROR, "Something went wrong trying to render an item in a Deconstruction Table! The item is "+itemStack.getItem().getRegistryName()+"! - " +  e);
+                Arcanacraft.logger.error("Something went wrong trying to render an item in a Deconstruction Table! The item is "+itemStack.getItem().getRegistryName()+"! - " +  e);
             }
             
 
@@ -63,16 +59,6 @@ public class RenderTileEntityDeconstructionTable extends TileEntitySpecialRender
 		
         renderCircle(te, x, y, z, partialTicks);
 	}
-	
-	public void renderItemInWorld(ItemStack stack){
-        GlStateManager.pushMatrix();
-        GlStateManager.pushAttrib();
-        RenderHelper.enableStandardItemLighting();
-        Minecraft.getMinecraft().getRenderItem().renderItem(stack, TransformType.FIXED);
-        RenderHelper.disableStandardItemLighting();
-        GlStateManager.popAttrib();
-        GlStateManager.popMatrix();
-    }
 	
 	public void renderCircle(TileEntity te, double x, double y, double z, float partialTicks){
 		GlStateManager.pushMatrix();

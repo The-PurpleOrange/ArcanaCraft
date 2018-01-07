@@ -104,28 +104,4 @@ public class TinktureStack{
 		}
 		return -1; 
 	}
-
-	/*public NBTTagCompound writeToNBT(NBTTagCompound nbt){
-
-		nbt.setString("name", this.getTinktureType().getTinktureName());
-		nbt.setInteger("amount", this.amount);
-		
-		if(this.stackTagCompound != null){
-			nbt.setTag("tag", this.stackTagCompound);
-		}
-        
-        return nbt;
-        
-        String fluidType = this.getTinktureType().getFluidType();
-        nbt.setString("id", fluidType == null ? "null" : fluidType);
-        nbt.setInteger("amount", this.amount);
-
-        if (this.stackTagCompound != null)
-        {
-            nbt.setTag("tag", this.stackTagCompound);
-        }
-
-        return nbt;
-    }*/
-	
 }

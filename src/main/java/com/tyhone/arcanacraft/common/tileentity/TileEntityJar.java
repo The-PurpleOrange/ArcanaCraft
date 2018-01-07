@@ -65,7 +65,6 @@ public class TileEntityJar extends ModTileEntityBase {
 	public boolean addTinktureAmount(TinktureType type, int amount){
 		if(tinktureStack.isEmpty() || tinktureStack.getTinktureType() == type){
 			if((tinktureStack.getAmount() + amount) > MAX_FLUID){
-				Arcanacraft.logger.info("Failed adding tinkture (Not enough space): " + type.getTinktureName() + ", Current Amount: "+ this.getTinktureAmount());
 				return false;
 			}
 			else{
@@ -75,12 +74,10 @@ public class TileEntityJar extends ModTileEntityBase {
 				else{
 					tinktureStack.modifyAmount(amount);
 				}
-				Arcanacraft.logger.info("Added tinkture: " + type.getTinktureName() + ", Current Amount: "+ this.getTinktureAmount());
 				markForClean();
 				return true;
 			}
 		}
-		Arcanacraft.logger.info("Failed adding tinkture (Iincorrect type):  " + type.getTinktureName() + ", Current Amount: "+ this.getTinktureAmount());
 		return false;
 	}
 	
@@ -108,34 +105,22 @@ public class TileEntityJar extends ModTileEntityBase {
 	@Override
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
-        
     	
         if(compound.hasKey(TAG_TYPE)){
-        	Arcanacraft.logger.info("Compoud load: " + compound);
         	String stype = compound.getString(TAG_TYPE);
         	TinktureType type = TinktureStackUtil.getTinktureTypeFromString(stype);
-        	Arcanacraft.logger.info(stype);
-        	Arcanacraft.logger.info(type.getTinktureName());
         	int amount = compound.getInteger(TAG_AMOUNT);
             tinktureStack = new TinktureStack(type, amount);
         }
-        else{
-        	Arcanacraft.logger.info("Compoud failed to load");
-        }
-        
     }
 
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
+        
         if(!tinktureStack.isEmpty()){
         	compound.setString(TAG_TYPE, tinktureStack.getTinktureName());
         	compound.setInteger(TAG_AMOUNT, tinktureStack.getAmount());
-
-        	Arcanacraft.logger.info("Compoud save: " + compound);
-        }
-        else{
-        	Arcanacraft.logger.info("Compoud did not save (empty)");
         }
         return compound;
     }

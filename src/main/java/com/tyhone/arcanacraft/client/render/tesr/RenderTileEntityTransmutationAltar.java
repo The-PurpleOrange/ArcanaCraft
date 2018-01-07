@@ -3,6 +3,7 @@ package com.tyhone.arcanacraft.client.render.tesr;
 import org.apache.logging.log4j.Level;
 
 import com.tyhone.arcanacraft.Arcanacraft;
+import com.tyhone.arcanacraft.api.util.ItemRenderUtil;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityTransmutationAltar;
 
 import net.minecraft.client.Minecraft;
@@ -39,9 +40,7 @@ public class RenderTileEntityTransmutationAltar extends TileEntitySpecialRendere
             GlStateManager.scale(scale, scale, scale);
             
             try{
-    	        //GlStateManager.color(1F, 1F, 1F, 1F);
-                //Minecraft.getMinecraft().getRenderItem().renderItem(itemStack, TransformType.FIXED);
-                renderItemInWorld(itemStack);
+                ItemRenderUtil.renderItemInWorld(itemStack);
             }
             catch(Exception e){
                 Arcanacraft.logger.log(Level.ERROR, "Something went wrong trying to render an item in a Transmutation Altar! The item is "+itemStack.getItem().getRegistryName()+"! - " +  e);
@@ -50,15 +49,5 @@ public class RenderTileEntityTransmutationAltar extends TileEntitySpecialRendere
             GlStateManager.popMatrix();
 		}
 	}
-	
-	public static void renderItemInWorld(ItemStack stack){
-        GlStateManager.pushMatrix();
-        GlStateManager.pushAttrib();
-        RenderHelper.enableStandardItemLighting();
-        Minecraft.getMinecraft().getRenderItem().renderItem(stack, TransformType.FIXED);
-        RenderHelper.disableStandardItemLighting();
-        GlStateManager.popAttrib();
-        GlStateManager.popMatrix();
-    }
 
 }

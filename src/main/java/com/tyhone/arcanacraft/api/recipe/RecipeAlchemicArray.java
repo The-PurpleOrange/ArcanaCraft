@@ -19,7 +19,7 @@ public class RecipeAlchemicArray {
 	public RecipeAlchemicArray(ItemStack output, ItemStack[] inputs){
 		
 		if(inputs == null){
-			Arcanacraft.logger.log(Level.ERROR ,"Invalid Alchemic Array recipe added for: " + output);
+			Arcanacraft.logger.error("Invalid Alchemic Array recipe added for: " + output);
 		}
 		
 		this.output = output;

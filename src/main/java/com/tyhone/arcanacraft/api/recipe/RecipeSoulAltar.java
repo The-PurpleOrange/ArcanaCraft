@@ -19,7 +19,7 @@ public class RecipeSoulAltar {
 	public RecipeSoulAltar(ItemStack output, ItemStack infusionItem, ItemStack[] inputs){
 		
 		if(inputs == null || inputs.length>5){
-			Arcanacraft.logger.log(Level.ERROR ,"Invalid soul infusion recipe added for: " + output.getDisplayName());
+			Arcanacraft.logger.error("Invalid soul infusion recipe added for: " + output.getDisplayName());
 		}
 		
 		this.output = output;

@@ -65,7 +65,7 @@ public class ArcanacraftCraftingManager {
 	//TRANSMUTATION RECIPES
 	public static RecipeTransmutationAltar registerTransmutationRecipes(ItemStack output, ItemStack ... inputs) {
 		if(inputs == null || inputs.length>4){
-			Arcanacraft.logger.log(Level.ERROR ,"Invalid transmutation recipe added for: " + output);
+			Arcanacraft.logger.error("Invalid transmutation recipe added for: " + output);
 			return null;
 		}
 		RecipeTransmutationAltar recipe = new RecipeTransmutationAltar(output, inputs);

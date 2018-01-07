@@ -41,10 +41,6 @@ public class TileEntityAlchemicArray extends ModTileEntityBase {
 			}
 			itemStacks = ItemStackUtil.compactItems(tempItemStacks);
 			
-			for(ItemStack i : itemStacks){
-			Arcanacraft.logger.info(i.getDisplayName() + ", " + i.getMetadata() + ", " + i.getCount());
-			}
-			
 			pos = this.getPos();
 			
 			RecipeAlchemicArray recipe = RecipeAlchemicArray.getRecipe((ArrayList<ItemStack>) itemStacks);

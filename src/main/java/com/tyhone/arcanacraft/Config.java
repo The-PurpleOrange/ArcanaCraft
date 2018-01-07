@@ -19,7 +19,7 @@ public class Config {
 			cfg.load();
 			initGeneralConfig(cfg);
 		} catch (Exception e){
-			Arcanacraft.logger.log(Level.ERROR, "Problem loading config file", e);
+			Arcanacraft.logger.error("Problem loading config file", e);
 		} finally {
 			if(cfg.hasChanged()){
 				cfg.save();

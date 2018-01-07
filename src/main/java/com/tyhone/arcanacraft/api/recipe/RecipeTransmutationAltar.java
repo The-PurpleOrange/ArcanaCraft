@@ -19,7 +19,7 @@ public class RecipeTransmutationAltar {
 	public RecipeTransmutationAltar(ItemStack output, ItemStack[] inputs){
 		
 		if(inputs == null || inputs.length>4){
-			Arcanacraft.logger.log(Level.ERROR ,"Invalid transmutation recipe added for: " + output);
+			Arcanacraft.logger.error("Invalid transmutation recipe added for: " + output);
 		}
 		
 		this.output = output;
