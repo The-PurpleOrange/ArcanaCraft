@@ -70,7 +70,7 @@ public class BlockJar extends ModBlockTileEntityBase{
 
 		if(player.isSneaking() && hand == EnumHand.MAIN_HAND){
 			TileEntityJar te = (TileEntityJar) world.getTileEntity(pos);
-			Arcanacraft.logger.info("TinktureType: " + te.getTinktureType().getTinktureName() + ", Amount: " + te.getTinktureAmount());
+			Arcanacraft.logger.info("TinktureType: " + te.getTinktureStack().getTinktureName() + ", Amount: " + te.getTinktureAmount());
 		}
         
         return false;

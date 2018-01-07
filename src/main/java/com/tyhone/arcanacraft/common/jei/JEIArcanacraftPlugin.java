@@ -120,17 +120,17 @@ public class JEIArcanacraftPlugin implements IModPlugin {
 
 		@Override
 		public String getDisplayName(TinktureStack ingredient) {
-			return "Tinkture ingredient Display Name" + ingredient.getTinktureType().getTinktureName();
+			return "Tinkture ingredient Display Name" + ingredient.getTinktureName();
 		}
 
 		@Override
 		public String getUniqueId(TinktureStack ingredient) {
-			return "Tinkture ingredient Unique ID" + ingredient.getTinktureType().getTinktureName();
+			return "Tinkture ingredient Unique ID" + ingredient.getTinktureName();
 		}
 
 		@Override
 		public String getWildcardId(TinktureStack ingredient) {
-			return "Tinkture ingredient Wildcard ID" + ingredient.getTinktureType().getTinktureName();
+			return "Tinkture ingredient Wildcard ID" + ingredient.getTinktureName();
 		}
 
 		@Override
@@ -145,7 +145,7 @@ public class JEIArcanacraftPlugin implements IModPlugin {
 
 		@Override
 		public String getResourceId(TinktureStack ingredient) {
-			return "Tinkture Ingredient Resource Id " + ingredient.getTinktureType().getTinktureName();
+			return "Tinkture Ingredient Resource Id " + ingredient.getTinktureName();
 		}
 
 		@Override
@@ -155,7 +155,7 @@ public class JEIArcanacraftPlugin implements IModPlugin {
 
 		@Override
 		public String getErrorInfo(TinktureStack ingredient) {
-			return "Tinkture Ingredient Error Info " + ingredient.getTinktureType().getTinktureName();
+			return "Tinkture Ingredient Error Info " + ingredient.getTinktureName();
 		}
 	}
 	

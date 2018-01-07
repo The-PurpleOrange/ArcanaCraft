@@ -95,35 +95,12 @@ public class RecipeInfusionAltar {
 			else{
 				return false;
 			}
-			return true;
+			//return true;
 		}
-		
-		
-		
-		/*for(int i = 0; i < inputActual.size(); i++) {
-			TinktureStack stack = inputActual.get(i);
-			if(stack == null)
-				break;
-
-			int stackI = -1;
-
-			for(int j = 0; j < inputsRequired.size(); j++) {
-				TinktureStack required = inputsRequired.get(j);
-				if(TinktureStackutil.simpleIsAmountGreaterThan(stack, required)) {
-					stackI = j;
-					break;
-				}
-			}
-
-			if(stackI != -1)
-				inputsRequired.remove(stackI);
-			else return false;
-		}*/
 
 		return inputsRequired.isEmpty();
 	}
 	
-	//TODO Fix this inputs not matching
 	public static boolean doInputsMatch(ArrayList<ItemStack> inputRecipe, ArrayList<ItemStack> inputActual) {
 		ArrayList<ItemStack> inputsRequired = (ArrayList<ItemStack>) new ArrayList(inputRecipe).clone();
 		

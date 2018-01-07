@@ -63,16 +63,18 @@ public class TileEntityJar extends ModTileEntityBase {
 	}
 	
 	public boolean addTinktureAmount(TinktureType type, int amount){
-		if(tinktureStack.getTinktureType() == ModTinktureTypes.EMPTY || tinktureStack.getTinktureType() == type){
+		if(tinktureStack.isEmpty() || tinktureStack.getTinktureType() == type){
 			if((tinktureStack.getAmount() + amount) > MAX_FLUID){
 				Arcanacraft.logger.info("Failed adding tinkture (Not enough space): " + type.getTinktureName() + ", Current Amount: "+ this.getTinktureAmount());
 				return false;
 			}
 			else{
-				if(tinktureStack.getTinktureType() == ModTinktureTypes.EMPTY){
-					tinktureStack.setTinktureType(type);
+				if(tinktureStack.isEmpty()){
+					tinktureStack = new TinktureStack(type, amount);
 				}
-				tinktureStack.modifyAmount(amount);
+				else{
+					tinktureStack.modifyAmount(amount);
+				}
 				Arcanacraft.logger.info("Added tinkture: " + type.getTinktureName() + ", Current Amount: "+ this.getTinktureAmount());
 				markForClean();
 				return true;
@@ -83,7 +85,7 @@ public class TileEntityJar extends ModTileEntityBase {
 	}
 	
 	public int addTinktureAmountPartial(TinktureType type, int amount){
-		if(tinktureStack.getTinktureType() == ModTinktureTypes.EMPTY || tinktureStack.getTinktureType() == type){
+		if(tinktureStack.isEmpty() || tinktureStack.getTinktureType() == type){
 			if(tinktureStack.getAmount() >= MAX_FLUID){
 				return amount;
 			}
@@ -110,7 +112,10 @@ public class TileEntityJar extends ModTileEntityBase {
     	
         if(compound.hasKey(TAG_TYPE)){
         	Arcanacraft.logger.info("Compoud load: " + compound);
-        	TinktureType type = TinktureStackUtil.getTinktureTypeFromString(compound.getString(TAG_TYPE));
+        	String stype = compound.getString(TAG_TYPE);
+        	TinktureType type = TinktureStackUtil.getTinktureTypeFromString(stype);
+        	Arcanacraft.logger.info(stype);
+        	Arcanacraft.logger.info(type.getTinktureName());
         	int amount = compound.getInteger(TAG_AMOUNT);
             tinktureStack = new TinktureStack(type, amount);
         }
@@ -123,9 +128,8 @@ public class TileEntityJar extends ModTileEntityBase {
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
-        
         if(!tinktureStack.isEmpty()){
-        	compound.setString(TAG_TYPE, tinktureStack.getTinktureType().getTinktureName());
+        	compound.setString(TAG_TYPE, tinktureStack.getTinktureName());
         	compound.setInteger(TAG_AMOUNT, tinktureStack.getAmount());
 
         	Arcanacraft.logger.info("Compoud save: " + compound);

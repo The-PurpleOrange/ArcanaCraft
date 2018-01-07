@@ -44,7 +44,7 @@ public class TinktureStackUtil {
 
 	public static TinktureType getTinktureTypeFromString(String tinktureType){
 		for(TinktureType type : TinktureManager.getTinktureTypes()){
-			if(tinktureType == type.getTinktureName()){
+			if(tinktureType.equals(type.getTinktureName())){
 				return type;
 			}
 		}

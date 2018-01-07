@@ -12,7 +12,7 @@ import net.minecraft.item.ItemStack;
 public class InitRecipesInfusionAltar {
 	public static void initInfusionAltarRecipes(){
 		ItemStack[] items = {new ItemStack(Blocks.SOUL_SAND)};
-		TinktureStack[] tinktures = {new TinktureStack(ModTinktureTypes.LOCUS,10)};
+		TinktureStack[] tinktures = {new TinktureStack(ModTinktureTypes.LOCUS, 10), new TinktureStack(ModTinktureTypes.IMPIRUS, 10)};
 		ArcanacraftCraftingManager.registerInfusionRecipe(new ItemStack(ModItems.SOUL, 1, ItemMetaUtil.soul("raging")), new ItemStack(Blocks.GLASS), items, tinktures);
 	}
 }

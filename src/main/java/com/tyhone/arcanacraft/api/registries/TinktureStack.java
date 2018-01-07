@@ -1,17 +1,12 @@
 package com.tyhone.arcanacraft.api.registries;
 
-import com.tyhone.arcanacraft.api.util.TinktureStackUtil;
 import com.tyhone.arcanacraft.common.init.ModTinktureTypes;
-
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumFacing;
-import net.minecraftforge.common.capabilities.Capability;
 
 public class TinktureStack{
 
     public static final TinktureStack EMPTY = new TinktureStack(ModTinktureTypes.EMPTY, 0);
     
-    private NBTTagCompound stackTagCompound;
+    //private NBTTagCompound stackTagCompound;
 	private TinktureType tinktureType;
 	private int amount = 0;
 	boolean isEmpty;
@@ -19,7 +14,7 @@ public class TinktureStack{
 	public TinktureStack(TinktureType tinktureType, int amount){
 		this.tinktureType = tinktureType;
 		this.amount = amount;
-		this.isEmpty = (amount<=0);
+		this.updateEmptyState();
 	}
 	
 	/*public TinktureStack(NBTTagCompound compound){
@@ -45,19 +40,25 @@ public class TinktureStack{
 	
 	public void setAmount(int amount){
 		this.amount = amount;
-		checkEmpty();
+		this.updateEmptyState();
 	}
 	
 	public void setTinktureType(TinktureType tinktureType){
 		this.tinktureType = tinktureType;
 	}
 	
-	public void checkEmpty(){
-		if(this.tinktureType == ModTinktureTypes.EMPTY){
-			this.amount = 0;
+	public String getTinktureName(){
+		if(this.isEmpty()){
+			return "null";
+		}
+		return this.tinktureType.getTinktureName();
+	}
+	
+	/*public void checkEmpty(){
+		if(this == EMPTY){
 			this.isEmpty = true;
 		}
-		if(this.amount<=0){
+		if(this.amount<=0 || this.tinktureType == null){ //|| this.tinktureType == ModTinktureTypes.EMPTY){
 			this.amount = 0;
 			this.isEmpty = true;
 			this.tinktureType = ModTinktureTypes.EMPTY;
@@ -65,16 +66,26 @@ public class TinktureStack{
 		else{
 			this.isEmpty = false;
 		}
-	}
+	}*/
 	
 	public boolean isEmpty(){
-		return this.isEmpty;
+		if(this == EMPTY){
+			return true;
+		}
+		if(this.getAmount() > 0 && this.tinktureType != ModTinktureTypes.EMPTY){
+			return false;
+		}
+		return true;
 	}
+
+    private void updateEmptyState()
+    {
+        this.isEmpty = this.isEmpty();
+    }
 	
 	public boolean modifyAmount(int amount){
 		if((this.amount + amount) >= 0){
 			this.amount+=amount;
-			checkEmpty();
 			return true;
 		}
 		return false; 
