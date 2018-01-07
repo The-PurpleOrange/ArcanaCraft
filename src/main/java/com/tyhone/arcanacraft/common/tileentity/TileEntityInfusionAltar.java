@@ -159,7 +159,7 @@ public class TileEntityInfusionAltar extends ModTileEntityBase implements ITicka
 		for(BlockPos jarPos : jarPosList){
 			TileEntity te = world.getTileEntity(PosUtil.combinePos(pos, jarPos));
 			if(te != null && (te instanceof TileEntityJar)){
-				jarTinktureType.add(new TinktureStack(((TileEntityJar) te).getFluidType(), ((TileEntityJar) te).getFluidLevel()));
+				jarTinktureType.add(new TinktureStack(((TileEntityJar) te).getTinktureType(), ((TileEntityJar) te).getTinktureAmount()));
 			}
 		}
 		
@@ -173,8 +173,8 @@ public class TileEntityInfusionAltar extends ModTileEntityBase implements ITicka
 			TileEntity tew = world.getTileEntity(PosUtil.combinePos(pos, jarPos));
 			if(tew != null && (tew instanceof TileEntityJar)){
 				TileEntityJar te = (TileEntityJar) world.getTileEntity(tew.getPos());
-				if(te.getFluidType() != null && te.getFluidType() == type){
-					remainder = te.removeFluidPartial(remainder);
+				if(te.getTinktureType() != null && te.getTinktureType() == type){
+					remainder = te.removeTinktureAmountPartial(remainder);
 					if(remainder == 0){
 						break;
 					}

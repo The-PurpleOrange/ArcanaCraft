@@ -56,7 +56,7 @@ public class BlockJar extends ModBlockTileEntityBase{
 				ItemStack stack = player.getHeldItem(hand);
 				IEssenceVessel item = (IEssenceVessel) stack.getItem();
 				
-				if(te.addFluid(item.getFluidType(stack), item.getFluidAmount(stack))){
+				if(te.addRinktureAmount(item.getFluidType(stack), item.getFluidAmount(stack))){
 					
 					if(stack.getCount() > 1){
 						stack.setCount(stack.getCount()-1);
@@ -70,7 +70,7 @@ public class BlockJar extends ModBlockTileEntityBase{
 
 		if(player.isSneaking() && hand == EnumHand.MAIN_HAND){
 			TileEntityJar te = (TileEntityJar) world.getTileEntity(pos);
-			Arcanacraft.logger.info("TinktureType: " + te.getFluidType().getTinktureName() + ", Amount: " + te.getFluidLevel());
+			Arcanacraft.logger.info("TinktureType: " + te.getTinktureType().getTinktureName() + ", Amount: " + te.getTinktureAmount());
 		}
         
         return false;
