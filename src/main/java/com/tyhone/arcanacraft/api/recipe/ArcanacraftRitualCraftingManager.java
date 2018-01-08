@@ -7,7 +7,7 @@ import java.util.Map;
 
 import net.minecraft.item.ItemStack;
 
-public class ArcanacraftRitualManager {
+public class ArcanacraftRitualCraftingManager {
 
 	private static List<RecipeRitualCircle> ritualCircleRecipe = new ArrayList<RecipeRitualCircle>();
 	//private static Map<String, RecipeRitualCircle> activationCircleRecipes = new HashMap<String, RecipeRitualCircle>();

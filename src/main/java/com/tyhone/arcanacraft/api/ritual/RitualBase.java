@@ -1,6 +1,7 @@
 package com.tyhone.arcanacraft.api.ritual;
 
 import com.tyhone.arcanacraft.Arcanacraft;
+import com.tyhone.arcanacraft.common.init.ModRituals;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
@@ -8,10 +9,16 @@ import net.minecraft.world.World;
 
 public class RitualBase implements IRitual{
 
+	private String ritualName;
+	
+	public RitualBase(String ritualName) {
+		this.ritualName = ritualName;
+		ModRituals.register(this);
+	}
+	
 	@Override
 	public String getRitualName() {
-		// TODO Auto-generated method stub
-		return "base - ERROR";
+		return ritualName;
 	}
 
 	@Override

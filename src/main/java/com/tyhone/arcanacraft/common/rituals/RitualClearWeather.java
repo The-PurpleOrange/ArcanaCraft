@@ -10,12 +10,11 @@ import net.minecraft.world.World;
 
 public class RitualClearWeather extends RitualBase{
 
-	private String ritualName = "clear_weather";
-    public final Random rand = new Random();
+	public final Random rand = new Random();
 	
-	@Override
-	public String getRitualName() {
-		return ritualName;
+	
+    public RitualClearWeather(String ritualName) {
+		super(ritualName);
 	}
 
 	@Override

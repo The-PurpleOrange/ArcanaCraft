@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.tyhone.arcanacraft.Arcanacraft;
-import com.tyhone.arcanacraft.api.registries.RitualManager;
+import com.tyhone.arcanacraft.api.registries.Ritual;
 import com.tyhone.arcanacraft.api.registries.RitualRegistry;
 import com.tyhone.arcanacraft.api.ritual.RitualBase;
 import com.tyhone.arcanacraft.api.util.ItemStackUtil;
@@ -139,7 +139,7 @@ public class RecipeRitualCircle {
 	
 	public static RecipeRitualCircle getRecipe(ArrayList<ItemStack> itemStacks, List<ItemStack> blockStacks){
 		
-		for(RecipeRitualCircle recipe : ArcanacraftRitualManager.getRitualCircleRecipes()){
+		for(RecipeRitualCircle recipe : ArcanacraftRitualCraftingManager.getRitualCircleRecipes()){
 			if(recipe.matchesBlocks(blockStacks)){
 				if(itemStacks!=null && recipe.doInputsMatch(itemStacks)){
 					return recipe;
@@ -169,11 +169,9 @@ public class RecipeRitualCircle {
 		return middleInt;
 	}
 
-
-
 	public RitualBase getRitual(String ritualName) {
-		for(RitualManager ritual : RitualRegistry.getRitualList()){
-			if(ritualName == ritual.getRitualName()){
+		for(Ritual ritual : RitualRegistry.getRitualList()){
+			if(ritual.compare(ritualName)){
 				return ritual.GetRitual();
 			}
 		}

@@ -2,13 +2,11 @@ package com.tyhone.arcanacraft.common.proxy;
 
 import java.io.File;
 
-import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.Config;
-import com.tyhone.arcanacraft.api.registries.TinktureManager;
-import com.tyhone.arcanacraft.api.registries.TinktureType;
 import com.tyhone.arcanacraft.common.init.ModBlocks;
 import com.tyhone.arcanacraft.common.init.ModItems;
 import com.tyhone.arcanacraft.common.init.ModRecipes;
+import com.tyhone.arcanacraft.common.init.ModRitualRecipes;
 import com.tyhone.arcanacraft.common.init.ModRituals;
 import com.tyhone.arcanacraft.common.init.ModTileEntities;
 import com.tyhone.arcanacraft.common.init.ModTinktureTypes;
@@ -43,6 +41,7 @@ public class CommonProxy {
     public void init(FMLInitializationEvent e) {
     	ModRecipes.init();
     	ModRituals.init();
+    	ModRitualRecipes.init();
     }
 
     public void postInit(FMLPostInitializationEvent e) {

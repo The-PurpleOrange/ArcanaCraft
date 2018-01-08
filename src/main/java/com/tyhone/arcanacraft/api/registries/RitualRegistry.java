@@ -7,16 +7,16 @@ import com.tyhone.arcanacraft.api.ritual.RitualBase;
 
 public class RitualRegistry {
 	
-	public static List<RitualManager> ritualList = new ArrayList<RitualManager>();
+	public static List<Ritual> ritualList = new ArrayList<Ritual>();
 	
 	
-	public static RitualManager registerRitual(RitualBase ritualClass) {
-		RitualManager ritual = new RitualManager(ritualClass.getRitualName(), ritualClass);
+	public static Ritual registerRitual(RitualBase ritualClass) {
+		Ritual ritual = new Ritual(ritualClass.getRitualName(), ritualClass);
 		ritualList.add(ritual);
 		return ritual;
 	}
 	
-	public static List<RitualManager> getRitualList(){
+	public static List<Ritual> getRitualList(){
 		return ritualList;
 	}
 	
