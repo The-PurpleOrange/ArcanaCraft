@@ -9,6 +9,6 @@ import net.minecraft.item.ItemStack;
 
 public class InitRecipesAlchemicArray {
 	public static void initAlchemicArrayRecipes(){
-		ArcanacraftCraftingManager.registerAlchemicArrayRecipe(new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("fey_powder")), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("bone_ash")), new ItemStack(Items.BLAZE_POWDER), new ItemStack(ModItems.RED_COAL), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("blood_drop")));
+		ArcanacraftCraftingManager.registerAlchemicArrayRecipe(new ItemStack(ModItems.ITEM, 2, ItemMetaUtil.item("fey_powder")), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("bone_ash")), new ItemStack(Items.BLAZE_POWDER), new ItemStack(ModItems.RED_COAL), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("blood_drop")));
 	}
 }

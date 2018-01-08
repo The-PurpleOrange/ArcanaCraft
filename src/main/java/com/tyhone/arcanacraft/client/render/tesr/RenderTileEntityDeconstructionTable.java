@@ -3,12 +3,13 @@ package com.tyhone.arcanacraft.client.render.tesr;
 import org.lwjgl.opengl.GL11;
 
 import com.tyhone.arcanacraft.Arcanacraft;
-import com.tyhone.arcanacraft.api.util.ItemRenderUtil;
+import com.tyhone.arcanacraft.client.util.RenderUtil;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityDeconstructionTable;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.RenderItem;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -29,44 +30,46 @@ public class RenderTileEntityDeconstructionTable extends TileEntitySpecialRender
 	}
 	
 	@Override
-	public void render(TileEntity te, double x, double y, double z, float partialTicks, int destroyStage, float alpha){
-		TileEntityDeconstructionTable deconstructionTable = (TileEntityDeconstructionTable) te;
-		ItemStack itemStack = deconstructionTable.getStack();
-		
+	public void render(TileEntity tileEntity, double x, double y, double z, float partialTicks, int destroyStage, float alpha){
+		TileEntityDeconstructionTable te = (TileEntityDeconstructionTable) tileEntity;
+		ItemStack itemStack = te.getStack();
+
+        renderCircle(te, x, y, z, partialTicks);
+        
 		if(itemStack != null && itemStack.getCount()>0){ //Check if there is an item in slot 0
 			
-            GlStateManager.pushMatrix();
+			RenderUtil.renderItem(te, itemStack, x, y+1.35F, z, partialTicks, true);
+			
+            /*GlStateManager.pushMatrix();
             GlStateManager.translate((float)x+0.5F, (float)y+1.35F, (float)z+0.5F);
-
-            double sysTime = Minecraft.getSystemTime()/800D;
-            GlStateManager.translate(0D, Math.sin(sysTime%(2*Math.PI))*0.065, 0D);
-            GlStateManager.rotate((float)(((sysTime*40D)%360))+(deconstructionTable.getWorkTime()*3), 0, 1, 0);
+            float time = te.getWorld().getTotalWorldTime() + partialTicks;
+            GlStateManager.translate(0D, Math.sin((time/16)%(2*Math.PI))*0.065, 0D);
+            GlStateManager.rotate(time*2.2f, 0.0F, 1.0F, 0.0F);
 
             float scale = itemStack.getItem() instanceof ItemBlock ? 0.65F : 0.5F;
             GlStateManager.scale(scale, scale, scale);
             
             try{
-                ItemRenderUtil.renderItemInWorld(itemStack);
+                RenderUtil.renderItemInWorld(itemStack);
             }
             catch(Exception e){
                 Arcanacraft.logger.error("Something went wrong trying to render an item in a Deconstruction Table! The item is "+itemStack.getItem().getRegistryName()+"! - " +  e);
             }
             
 
-            GlStateManager.popMatrix();
+            GlStateManager.popMatrix();*/
 
 		}
-		
-        renderCircle(te, x, y, z, partialTicks);
 	}
 	
 	public void renderCircle(TileEntity te, double x, double y, double z, float partialTicks){
+		
 		GlStateManager.pushMatrix();
+		GlStateManager.disableLighting();
 		GlStateManager.translate(x+0.5, y+0.94, z+0.5);
         GlStateManager.scale(0.35, 0.35, 0.35);
         GlStateManager.rotate((te.getWorld().getTotalWorldTime() + partialTicks), 0.0F, 1.0F, 0.0F);
-        GlStateManager.color(0F, 0F, 0F, 1F);
-		GlStateManager.disableLighting();
+        GlStateManager.color(0.6F, 0F, 0.9F, 1F);
 
 		bindTexture(CIRCLE_INNER);
 		Tessellator tessellator = Tessellator.getInstance();
@@ -83,7 +86,7 @@ public class RenderTileEntityDeconstructionTable extends TileEntitySpecialRender
 		GlStateManager.translate(x+0.5, y+0.94, z+0.5);
         GlStateManager.scale(0.35, 0.35, 0.35);
 		GlStateManager.rotate((te.getWorld().getTotalWorldTime() + partialTicks)*-1, 0.0F, 1.0F, 0.0F);
-        GlStateManager.color(0F, 0F, 0F, 1F);
+        GlStateManager.color(0.6F, 0F, 0.9F, 1F);
 
 		bindTexture(CIRCLE_OUTER);
 		BufferBuilder wrBody = tessellator.getBuffer();

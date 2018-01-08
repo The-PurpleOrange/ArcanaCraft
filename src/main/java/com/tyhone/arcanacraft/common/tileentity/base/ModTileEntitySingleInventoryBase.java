@@ -1,7 +1,11 @@
  package com.tyhone.arcanacraft.common.tileentity.base;
 
+import com.tyhone.arcanacraft.common.util.NBTUtils;
+
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTUtil;
 
 public class ModTileEntitySingleInventoryBase extends ModTileEntityBase{
 
@@ -19,21 +23,13 @@ public class ModTileEntitySingleInventoryBase extends ModTileEntityBase{
     @Override
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
-        if (compound.hasKey("item")) {
-            stack = new ItemStack(compound.getCompoundTag("item"));
-        } else {
-            stack = ItemStack.EMPTY;
-        }
+        stack = NBTUtils.readItemCompound("item", compound);
     }
 
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
-        if (!stack.isEmpty()) {
-            NBTTagCompound tagCompound = new NBTTagCompound();
-            stack.writeToNBT(tagCompound);
-            compound.setTag("item", tagCompound);
-        }
+        NBTUtils.writeItemCompound("item", compound, stack);
         return compound;
     }
 }

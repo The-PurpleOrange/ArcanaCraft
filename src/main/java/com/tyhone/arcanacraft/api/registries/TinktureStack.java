@@ -1,5 +1,6 @@
 package com.tyhone.arcanacraft.api.registries;
 
+import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.common.init.ModTinktureTypes;
 
 public class TinktureStack{
@@ -16,12 +17,6 @@ public class TinktureStack{
 		this.amount = amount;
 		this.updateEmptyState();
 	}
-	
-	/*public TinktureStack(NBTTagCompound compound){
-		this.tinktureType = TinktureStackUtil.getTinktureTypeFromString(compound.getString("fluidType"));
-    	this.amount = compound.getInteger("fluid");
-		this.isEmpty = (amount<=0);
-	}*/
 	
 	public TinktureType getTinktureType(){
 		return tinktureType;
@@ -54,20 +49,6 @@ public class TinktureStack{
 		return this.tinktureType.getTinktureName();
 	}
 	
-	/*public void checkEmpty(){
-		if(this == EMPTY){
-			this.isEmpty = true;
-		}
-		if(this.amount<=0 || this.tinktureType == null){ //|| this.tinktureType == ModTinktureTypes.EMPTY){
-			this.amount = 0;
-			this.isEmpty = true;
-			this.tinktureType = ModTinktureTypes.EMPTY;
-		}
-		else{
-			this.isEmpty = false;
-		}
-	}*/
-	
 	public boolean isEmpty(){
 		if(this == EMPTY){
 			return true;
@@ -86,8 +67,11 @@ public class TinktureStack{
 	public boolean modifyAmount(int amount){
 		if((this.amount + amount) >= 0){
 			this.amount+=amount;
+			this.updateEmptyState();
+			//Arcanacraft.logger.info("IT BE >= 0");
 			return true;
 		}
+		//Arcanacraft.logger.info("NAH YA CANT");
 		return false; 
 	}
 	
@@ -103,5 +87,9 @@ public class TinktureStack{
 			return (amount+this.amount);
 		}
 		return -1; 
+	}
+
+	public TinktureStack setEmpty() {
+		return TinktureStack.EMPTY;
 	}
 }

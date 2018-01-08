@@ -3,7 +3,7 @@ package com.tyhone.arcanacraft.client.render.tesr;
 import org.apache.logging.log4j.Level;
 
 import com.tyhone.arcanacraft.Arcanacraft;
-import com.tyhone.arcanacraft.api.util.ItemRenderUtil;
+import com.tyhone.arcanacraft.client.util.RenderUtil;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityLensReceptacle;
 
 import net.minecraft.client.Minecraft;
@@ -40,7 +40,7 @@ public class RenderTileEntityLensReceptacle extends TileEntitySpecialRenderer{
             GlStateManager.scale(scale, scale, scale);
             
             try{
-                ItemRenderUtil.renderItemInWorld(itemStack);
+                RenderUtil.renderItemInWorld(itemStack);
             }
             catch(Exception e){
                 Arcanacraft.logger.log(Level.ERROR, "Something went wrong trying to render an item in a Pedestal Table! The item is "+itemStack.getItem().getRegistryName()+"! - " +  e);

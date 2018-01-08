@@ -3,7 +3,7 @@ package com.tyhone.arcanacraft.client.render.tesr;
 import org.apache.logging.log4j.Level;
 
 import com.tyhone.arcanacraft.Arcanacraft;
-import com.tyhone.arcanacraft.api.util.ItemRenderUtil;
+import com.tyhone.arcanacraft.client.util.RenderUtil;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityPedestal;
 
 import net.minecraft.client.Minecraft;
@@ -28,8 +28,11 @@ public class RenderTileEntityPedestal extends TileEntitySpecialRenderer{
 		ItemStack itemStack = pedestal.getStack();
 		
 		if(itemStack != null && itemStack.getCount()>0){ //Check if there is an item in slot 0
+
+			RenderUtil.renderItem(te, itemStack, x, y+1.35F, z, partialTicks, true);
 			
-            GlStateManager.pushMatrix();
+			
+            /*GlStateManager.pushMatrix();
             GlStateManager.translate((float)x+0.5F, (float)y+1.35F, (float)z+0.5F);
 
             double sysTime = Minecraft.getSystemTime()/800D;
@@ -40,13 +43,13 @@ public class RenderTileEntityPedestal extends TileEntitySpecialRenderer{
             GlStateManager.scale(scale, scale, scale);
             
             try{
-                ItemRenderUtil.renderItemInWorld(itemStack);
+                RenderUtil.renderItemInWorld(itemStack);
             }
             catch(Exception e){
                 Arcanacraft.logger.log(Level.ERROR, "Something went wrong trying to render an item in a Pedestal! The item is "+itemStack.getItem().getRegistryName()+"! - " +  e);
             }
 
-            GlStateManager.popMatrix();
+            GlStateManager.popMatrix();*/
 		}
 	}
 

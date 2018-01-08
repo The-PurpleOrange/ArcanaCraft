@@ -15,7 +15,7 @@ public class ItemTinkture extends ModItemBase implements IEssenceVessel{
 
 	@Override
 	public int getFluidAmount(ItemStack stack) {
-		return 8;
+		return 10;
 	}
 
 	@Override

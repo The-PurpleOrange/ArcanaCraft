@@ -21,20 +21,24 @@ import net.minecraft.util.ResourceLocation;
 
 public class RenderTileEntityJar extends TileEntitySpecialRenderer{
 	
-	public RenderTileEntityJar(RenderManager renderManager, RenderItem renderItem){	
-	}
+
+	private static final ResourceLocation TEXTURE = new ResourceLocation(Arcanacraft.MODID + ":textures/blocks/tinkture_fluid_block.png");
 	
+	public RenderTileEntityJar(RenderManager renderManager, RenderItem renderItem) {
+	}
+
 	@Override
 	public void render(TileEntity te, double x, double y, double z, float partialTicks, int destroyStage, float alpha){
 		TileEntityJar jar = (TileEntityJar) te;
 		TinktureStack tinktureStack = jar.getTinktureStack();
 		
 		if(tinktureStack.getTinktureType() != ModTinktureTypes.EMPTY){
-
-			ResourceLocation texture = new ResourceLocation(Arcanacraft.MODID + ":textures/blocks/red_coal_block.png");
 			
-
-			bindTexture(texture);
+			int hex = tinktureStack.getTinktureType().getColourHex();
+			
+			float pf = (float) jar.getTinktureAmount() / (float) jar.getMaxFluid();
+			
+			bindTexture(TEXTURE);
 			
 			Tessellator tess = Tessellator.getInstance();
 			BufferBuilder buffer = tess.getBuffer();
@@ -53,17 +57,16 @@ public class RenderTileEntityJar extends TileEntitySpecialRenderer{
 		      GL11.glShadeModel(GL11.GL_FLAT);
 		    }*/
 
-		    GlStateManager.translate(x, y+1, z);
+		    GlStateManager.translate(x, y, z);
 		    
-			buffer.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX);
-			//buffer.color(255, 0, 0, 150);
+			buffer.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX_COLOR);
 
-		    buildQuad(buffer, 0, 0, 0, 1, 1, 1, EnumFacing.DOWN);
-		    buildQuad(buffer, 0, 0, 0, 1, 1, 1, EnumFacing.UP);
-		    buildQuad(buffer, 0, 0, 0, 1, 1, 1, EnumFacing.NORTH);
-		    buildQuad(buffer, 0, 0, 0, 1, 1, 1, EnumFacing.SOUTH);
-		    buildQuad(buffer, 0, 0, 0, 1, 1, 1, EnumFacing.EAST);
-		    buildQuad(buffer, 0, 0, 0, 1, 1, 1, EnumFacing.WEST);
+		    buildQuad(buffer, 0, 0, 0, 1, 1, 1, EnumFacing.DOWN, hex, pf);
+		    buildQuad(buffer, 0, 0, 0, 1, 1, 1, EnumFacing.UP, hex, pf);
+		    buildQuad(buffer, 0, 0, 0, 1, 1, 1, EnumFacing.NORTH, hex, pf);
+		    buildQuad(buffer, 0, 0, 0, 1, 1, 1, EnumFacing.SOUTH, hex, pf);
+		    buildQuad(buffer, 0, 0, 0, 1, 1, 1, EnumFacing.EAST, hex, pf);
+		    buildQuad(buffer, 0, 0, 0, 1, 1, 1, EnumFacing.WEST, hex, pf);
 		    
 		    tess.draw();
 
@@ -73,57 +76,68 @@ public class RenderTileEntityJar extends TileEntitySpecialRenderer{
 		}
 	}
 		
-	public static void buildQuad(BufferBuilder renderer, double x, double y, double z, double w, double h, double d, EnumFacing face) {
+	public static void buildQuad(BufferBuilder renderer, float x, float y, float z, float w, float h, float d, EnumFacing face, int hex, float a) {
 
-		double s = 0.1;
-		double x1 = x + s;
-		double x2 = x + w - s;
-		double y1 = y + s;
-		double y2 = y + h - s;
-		double z1 = z + s;
-		double z2 = z + d - s;
+		
+		float p = (float) 1/ (float) 16;
+		
+		float s = p*4;
+		float x1 = x + s;
+		float x2 = x + w - s;
+		float y1 = y + p;
+		float ym = h - (p*5); 
+		float ya = ym-y1;
+		float y2 = (a*ya) + p;
+		float z1 = z + s;
+		float z2 = z + d - s;
 		
 		double minU = 0;
-		double maxU = 16;
+		double maxU = 1;
 		double minV = 0;
-		double maxV = 16;
+		double maxV = 1;
 
+
+		int r = (hex & 0xFF0000) >> 16;
+	    int g = (hex & 0xFF00) >> 8;
+	    int b = (hex & 0xFF);
+	    
+	    
 		switch(face) {
 		case DOWN:
-			renderer.pos(x1, y1, z1).tex(minU, minU).endVertex();;
-			renderer.pos(x2, y1, z1).tex(maxU, minV).endVertex();;
-			renderer.pos(x2, y1, z2).tex(maxU, maxV).endVertex();;
-			renderer.pos(x1, y1, z2).tex(minU, maxV).endVertex();;
+			renderer.pos(x1, y1, z1).tex(minU, minU).color(r, g, b, 255).endVertex();
+			renderer.pos(x2, y1, z1).tex(maxU, minV).color(r, g, b, 255).endVertex();
+			renderer.pos(x2, y1, z2).tex(maxU, maxV).color(r, g, b, 255).endVertex();
+			renderer.pos(x1, y1, z2).tex(minU, maxV).color(r, g, b, 255).endVertex();
 			break;
 		case UP:
-			renderer.pos(x1, y2, z1).tex(minU, minU).endVertex();;
-			renderer.pos(x1, y2, z2).tex(minU, maxV).endVertex();;
-			renderer.pos(x2, y2, z2).tex(maxU, maxV).endVertex();;
-			renderer.pos(x2, y2, z1).tex(maxU, minV).endVertex();;
+			renderer.pos(x1, y2, z1).tex(minU, minU).color(r, g, b, 255).endVertex();
+			renderer.pos(x1, y2, z2).tex(minU, maxV).color(r, g, b, 255).endVertex();
+			renderer.pos(x2, y2, z2).tex(maxU, maxV).color(r, g, b, 255).endVertex();
+			renderer.pos(x2, y2, z1).tex(maxU, minV).color(r, g, b, 255).endVertex();
 			break;
 		case NORTH:
-			renderer.pos(x1, y1, z1).tex(minU, maxV).endVertex();;
-			renderer.pos(x1, y2, z1).tex(minU, minU).endVertex();;
-			renderer.pos(x2, y2, z1).tex(maxU, minV).endVertex();;
-			renderer.pos(x2, y1, z1).tex(maxU, maxV).endVertex();;
+			renderer.pos(x1, y1, z1).tex(minU, maxV).color(r, g, b, 255).endVertex();
+			renderer.pos(x1, y2, z1).tex(minU, minU).color(r, g, b, 255).endVertex();
+			renderer.pos(x2, y2, z1).tex(maxU, minV).color(r, g, b, 255).endVertex();
+			renderer.pos(x2, y1, z1).tex(maxU, maxV).color(r, g, b, 255).endVertex();
 			break;
 		case SOUTH:
-			renderer.pos(x1, y1, z2).tex(maxU, maxV).endVertex();;
-			renderer.pos(x2, y1, z2).tex(minU, maxV).endVertex();;
-			renderer.pos(x2, y2, z2).tex(minU, minU).endVertex();;
-			renderer.pos(x1, y2, z2).tex(maxU, minV).endVertex();;
+			renderer.pos(x1, y1, z2).tex(maxU, maxV).color(r, g, b, 255).endVertex();
+			renderer.pos(x2, y1, z2).tex(minU, maxV).color(r, g, b, 255).endVertex();
+			renderer.pos(x2, y2, z2).tex(minU, minU).color(r, g, b, 255).endVertex();
+			renderer.pos(x1, y2, z2).tex(maxU, minV).color(r, g, b, 255).endVertex();
 			break;
 		case WEST:
-			renderer.pos(x1, y1, z1).tex(maxU, maxV).endVertex();;
-			renderer.pos(x1, y1, z2).tex(minU, maxV).endVertex();;
-			renderer.pos(x1, y2, z2).tex(minU, minU).endVertex();;
-			renderer.pos(x1, y2, z1).tex(maxU, minV).endVertex();;
+			renderer.pos(x1, y1, z1).tex(maxU, maxV).color(r, g, b, 255).endVertex();
+			renderer.pos(x1, y1, z2).tex(minU, maxV).color(r, g, b, 255).endVertex();
+			renderer.pos(x1, y2, z2).tex(minU, minU).color(r, g, b, 255).endVertex();
+			renderer.pos(x1, y2, z1).tex(maxU, minV).color(r, g, b, 255).endVertex();
 			break;
 		case EAST:
-			renderer.pos(x2, y1, z1).tex(minU, maxV).endVertex();;
-			renderer.pos(x2, y2, z1).tex(minU, minU).endVertex();;
-			renderer.pos(x2, y2, z2).tex(maxU, minV).endVertex();;
-			renderer.pos(x2, y1, z2).tex(maxU, maxV).endVertex();;
+			renderer.pos(x2, y1, z1).tex(minU, maxV).color(r, g, b, 255).endVertex();
+			renderer.pos(x2, y2, z1).tex(minU, minU).color(r, g, b, 255).endVertex();
+			renderer.pos(x2, y2, z2).tex(maxU, minV).color(r, g, b, 255).endVertex();
+			renderer.pos(x2, y1, z2).tex(maxU, maxV).color(r, g, b, 255).endVertex();
 			break;
 		}
 	}

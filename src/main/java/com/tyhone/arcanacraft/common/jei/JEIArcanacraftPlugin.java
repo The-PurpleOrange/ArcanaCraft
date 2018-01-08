@@ -175,14 +175,14 @@ public class JEIArcanacraftPlugin implements IModPlugin {
 
 				int colourHex = ingredient.getTinktureType().getColourHex();
 
-				int z = 100;
+				int z = 0;
 				int h = 6;
 				int w = 6;
 				
 				GlStateManager.enableDepth();
 				RenderHelper.enableGUIStandardItemLighting();
 				
-				//ResourceLocation tinktureTexture = new ResourceLocation(Arcanacraft.MODID + ":textures/t.png");
+				ResourceLocation tinktureTexture = new ResourceLocation(Arcanacraft.MODID + ":textures/t.png");
 				//minecraft.renderEngine.bindTexture(tinktureTexture);
 				
 				//setGLColourFromInt(colourHex);
@@ -193,18 +193,28 @@ public class JEIArcanacraftPlugin implements IModPlugin {
 
 				Tessellator tess = Tessellator.getInstance();
 				BufferBuilder buffer = tess.getBuffer();
-
-				buffer.begin(7, DefaultVertexFormats.POSITION_COLOR);
-				buffer.pos(x, y+h, z).color(r, g, b, 255).endVertex();
-				buffer.pos(x+w, y+h, z).color(r, g, b, 255).endVertex();
-				buffer.pos(x+w, y, z).color(r, g, b, 255).endVertex();
-				buffer.pos(x, y, z).color(r, g, b, 255).endVertex();
-				/*
-				buffer.begin(7, DefaultVertexFormats.POSITION_TEX);
+				
+				
+				/*buffer.begin(7, DefaultVertexFormats.POSITION_COLOR);
+				buffer.pos(x, y+h, z).endVertex();
+				buffer.pos(x+w, y+h, z).endVertex();
+				buffer.pos(x+w, y, z).endVertex();
+				buffer.pos(x, y, z).endVertex();
+				buffer.putColorRGB_F4(r, g, b);*/
+				
+				
+				buffer.begin(7, DefaultVertexFormats.POSITION_TEX_COLOR);
+				buffer.pos(x, y+h, z).tex(0, 1).color(r, g, b, 255).endVertex();
+				buffer.pos(x+w, y+h, z).tex(0, 1).color(r, g, b, 255).endVertex();
+				buffer.pos(x+w, y, z).tex(0, 1).color(r, g, b, 255).endVertex();
+				buffer.pos(x, y, z).tex(0, 1).color(r, g, b, 255).endVertex();
+				
+				/*buffer.begin(7, DefaultVertexFormats.POSITION_TEX);
 				buffer.pos(x, y+h, z).tex(0, h).endVertex();
 				buffer.pos(x+w, y+h, z).tex(w, h).endVertex();
 				buffer.pos(x+w, y, z).tex(w, 0).endVertex();
 				buffer.pos(x, y, z).tex(0, 0).endVertex();*/
+				
 				tess.draw();
 				
 				GlStateManager.disableBlend();

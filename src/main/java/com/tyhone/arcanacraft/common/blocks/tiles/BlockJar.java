@@ -13,10 +13,14 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockJar extends ModBlockTileEntityBase{
     
@@ -34,7 +38,14 @@ public class BlockJar extends ModBlockTileEntityBase{
 		return 0;
 	}
 
-    
+
+    @Override
+	@SideOnly(Side.CLIENT)
+    public BlockRenderLayer getBlockLayer()
+    {
+        return BlockRenderLayer.TRANSLUCENT;
+    }
+	
 	@Override
 	public boolean isOpaqueCube(IBlockState state)
     {
@@ -69,7 +80,11 @@ public class BlockJar extends ModBlockTileEntityBase{
 		}
 
 		if(player.isSneaking() && hand == EnumHand.MAIN_HAND){
-			TileEntityJar te = (TileEntityJar) world.getTileEntity(pos);
+			if(!(player.getHeldItem(hand).getItem() instanceof IEssenceVessel)){
+				TileEntityJar te = (TileEntityJar) world.getTileEntity(pos);
+				String s = world.isRemote ? "Client - " : "Server - ";
+    			player.sendMessage(new TextComponentTranslation(s + te.getTinktureStack().getTinktureName() + " " + te.getTinktureAmount() + "mt"));
+			}
 		}
         
         return false;

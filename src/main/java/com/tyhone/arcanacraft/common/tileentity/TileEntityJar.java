@@ -4,7 +4,6 @@ import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.api.registries.TinktureStack;
 import com.tyhone.arcanacraft.api.registries.TinktureType;
 import com.tyhone.arcanacraft.api.util.TinktureStackUtil;
-import com.tyhone.arcanacraft.common.init.ModTinktureTypes;
 import com.tyhone.arcanacraft.common.tileentity.base.ModTileEntityBase;
 
 import net.minecraft.nbt.NBTTagCompound;
@@ -50,16 +49,21 @@ public class TileEntityJar extends ModTileEntityBase {
 	}
 	
 	public int removeTinktureAmountPartial(int amount){
+		
+		int remainder = 0;
 		if((tinktureStack.getAmount() - amount) < 0){
-			int remainder = ((tinktureStack.getAmount() - amount) * -1);
+			remainder = ((tinktureStack.getAmount() - amount) * -1);
 			tinktureStack.setAmount(0);
-			return remainder;
+		}
+		else if(tinktureStack.getAmount() == amount){
+			tinktureStack = TinktureStack.EMPTY;
+			
 		}
 		else{
 			tinktureStack.modifyAmount(-amount);
-			markForClean();
-			return 0;
 		}
+		markForClean();
+		return remainder;
 	}
 	
 	public boolean addTinktureAmount(TinktureType type, int amount){
@@ -118,10 +122,9 @@ public class TileEntityJar extends ModTileEntityBase {
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
         
-        if(!tinktureStack.isEmpty()){
-        	compound.setString(TAG_TYPE, tinktureStack.getTinktureName());
-        	compound.setInteger(TAG_AMOUNT, tinktureStack.getAmount());
-        }
+    	compound.setString(TAG_TYPE, tinktureStack.getTinktureName());
+    	compound.setInteger(TAG_AMOUNT, tinktureStack.getAmount());
+        
         return compound;
     }
 }

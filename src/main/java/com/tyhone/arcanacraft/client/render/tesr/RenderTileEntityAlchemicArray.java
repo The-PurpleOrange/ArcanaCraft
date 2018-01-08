@@ -33,11 +33,12 @@ public class RenderTileEntityAlchemicArray extends TileEntitySpecialRenderer{
 	
 	public void renderCircle(TileEntity te, double x, double y, double z, float partialTicks){
 		GlStateManager.pushMatrix();
+		GlStateManager.disableLighting();
+		
 		GlStateManager.translate(x+0.5, y+0.04, z+0.5);
         GlStateManager.scale(0.7, 0.7, 0.7);
         GlStateManager.rotate((te.getWorld().getTotalWorldTime() + partialTicks), 0.0F, 1.0F, 0.0F);
-        GlStateManager.color(0F, 0F, 0F, 1F);
-		GlStateManager.disableLighting();
+        GlStateManager.color(0.8F, 0.7F, 0F, 1F);
 
 		bindTexture(CIRCLE_INNER);
 		Tessellator tessellator = Tessellator.getInstance();
@@ -54,7 +55,8 @@ public class RenderTileEntityAlchemicArray extends TileEntitySpecialRenderer{
 		GlStateManager.translate(x+0.5, y+0.03, z+0.5);
         GlStateManager.scale(0.7, 0.7, 0.7);
 		GlStateManager.rotate((te.getWorld().getTotalWorldTime() + partialTicks)*-1, 0.0F, 1.0F, 0.0F);
-        GlStateManager.color(0F, 0F, 0F, 1F);
+		GlStateManager.color(0.8F, 0.7F, 0F, 1F);
+		
 
 		bindTexture(CIRCLE_OUTER);
 		BufferBuilder wrBody = tessellator.getBuffer();
@@ -64,6 +66,7 @@ public class RenderTileEntityAlchemicArray extends TileEntitySpecialRenderer{
 		wrBody.pos(1.0D, 0.1D, -1.0D).tex(1, 1).endVertex();
 		wrBody.pos(-1.0D, 0.1D, -1.D).tex(0, 1).endVertex();
 		tessellator.draw();
+		
 		GlStateManager.enableLighting();
         GlStateManager.popMatrix();
 	}

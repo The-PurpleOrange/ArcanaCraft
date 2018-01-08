@@ -26,6 +26,10 @@ public class Arcanacraft {
     public static Arcanacraft instance;
 
     public static Logger logger;
+    
+    public static void log(String msg){
+    	logger.info(msg);
+    }
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event){

@@ -37,7 +37,7 @@ public class RenderTileEntityRitualCircle extends TileEntitySpecialRenderer{
 		GlStateManager.translate(x+0.5, y+0.04, z+0.5);
         GlStateManager.scale(0.75, 0.75, 0.75);
         GlStateManager.rotate((te.getWorld().getTotalWorldTime() + partialTicks), 0.0F, 1.0F, 0.0F);
-        GlStateManager.color(0F, 0F, 0F, 1F);
+        GlStateManager.color(0.8F, 0.7F, 0F, 1F);
 		GlStateManager.disableLighting();
 
 		bindTexture(CIRCLE_INNER);
@@ -55,7 +55,7 @@ public class RenderTileEntityRitualCircle extends TileEntitySpecialRenderer{
 		GlStateManager.translate(x+0.5, y+0.03, z+0.5);
         GlStateManager.scale(0.75, 0.75, 0.75);
 		GlStateManager.rotate((te.getWorld().getTotalWorldTime() + partialTicks)*-1, 0.0F, 1.0F, 0.0F);
-        GlStateManager.color(0F, 0F, 0F, 1F);
+        GlStateManager.color(0.8F, 0.7F, 0F, 1F);
 
 		bindTexture(CIRCLE_OUTER);
 		BufferBuilder wrBody = tessellator.getBuffer();

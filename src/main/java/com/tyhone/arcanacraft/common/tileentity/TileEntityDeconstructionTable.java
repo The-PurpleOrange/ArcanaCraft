@@ -12,13 +12,14 @@ public class TileEntityDeconstructionTable extends ModTileEntityBase implements 
 
 	private ItemStack stack = ItemStack.EMPTY;
 	private int workTime = 0;
+	private RecipeDeconstructionTable recipe;
 	
 	@Override
 	public void update(){
 		if(!getWorld().isRemote){
 			boolean isDirty = false;
 			if(!stack.isEmpty()){
-				RecipeDeconstructionTable recipe = RecipeDeconstructionTable.getRecipe(stack, getLens());
+				getRecipe();
 				if(recipe != null){
 					if(workTime<recipe.getDeconstrutionTime()){
 						workTime++;
@@ -37,6 +38,13 @@ public class TileEntityDeconstructionTable extends ModTileEntityBase implements 
 		}
 	}
 	
+	private void getRecipe() {
+		if(recipe != RecipeDeconstructionTable.getRecipe(stack, getLens())){
+			recipe = RecipeDeconstructionTable.getRecipe(stack, getLens());
+			markForClean();
+		}
+	}
+
 	private ItemStack getLens(){
 		if(world.getTileEntity(pos.add(0, 1, 0)) instanceof TileEntityLensReceptacle){
 			TileEntityLensReceptacle receptacle = (TileEntityLensReceptacle) world.getTileEntity(pos.add(0, 1, 0));
@@ -78,7 +86,7 @@ public class TileEntityDeconstructionTable extends ModTileEntityBase implements 
             NBTTagCompound tagCompound = new NBTTagCompound();
             stack.writeToNBT(tagCompound);
             compound.setTag("item", tagCompound);
-        }	
+        }
         compound.setInteger("workTime", workTime);
         return compound;
     }

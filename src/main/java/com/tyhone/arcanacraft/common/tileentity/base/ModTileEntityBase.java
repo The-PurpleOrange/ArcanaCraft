@@ -2,6 +2,9 @@ package com.tyhone.arcanacraft.common.tileentity.base;
 
 import javax.annotation.Nullable;
 
+import com.tyhone.arcanacraft.Arcanacraft;
+import com.tyhone.arcanacraft.common.tileentity.TileEntityJar;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
@@ -40,6 +43,10 @@ public class ModTileEntityBase extends TileEntity{
 	
     
     public void markForClean(){
+    	if(world.getTileEntity(pos) instanceof TileEntityJar){
+    		TileEntityJar te = (TileEntityJar) world.getTileEntity(pos);
+    		Arcanacraft.log("marked for clean: " + te.getTinktureType().getTinktureName() + ":" + te.getTinktureAmount());
+    	}
 		markDirty();
 		if (world != null){
 			IBlockState state = getWorld().getBlockState(getPos());
