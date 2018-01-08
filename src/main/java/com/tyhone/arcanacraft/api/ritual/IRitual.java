@@ -6,7 +6,7 @@ import net.minecraft.world.World;
 
 public interface IRitual {
 	
-	public String getRitualName();
+	public String getLocalizedName();
 	
 	public boolean preformRitual(World world, EntityPlayer player, BlockPos pos);
 }

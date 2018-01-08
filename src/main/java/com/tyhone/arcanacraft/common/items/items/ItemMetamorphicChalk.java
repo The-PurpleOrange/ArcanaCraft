@@ -5,8 +5,8 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import com.tyhone.arcanacraft.Arcanacraft;
-import com.tyhone.arcanacraft.api.registries.Ritual;
 import com.tyhone.arcanacraft.api.registries.RitualRegistry;
+import com.tyhone.arcanacraft.api.ritual.RitualBase;
 import com.tyhone.arcanacraft.common.items.base.ModItemBase;
 
 import net.minecraft.client.util.ITooltipFlag;
@@ -26,6 +26,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemMetamorphicChalk extends ModItemBase{
 
 	private final String NBT_RITUAL = "ritual";
+	private final String NBT_RITUAL_DISPLAY_NAME = "ritual_display_name";
 	
 	public ItemMetamorphicChalk() {
 		super("chalk_metamorphic");
@@ -37,27 +38,27 @@ public class ItemMetamorphicChalk extends ModItemBase{
 	{
 		if(player.isSneaking()){
 			String msg = null;
-			List<Ritual> rituals = RitualRegistry.getRitualList();
+			List<RitualBase> rituals = RitualRegistry.getRitualList();
 			ItemStack stack = player.getHeldItem(hand);
 	
 			NBTTagCompound tag = new NBTTagCompound();
 			if(stack.hasTagCompound() && stack.getTagCompound().hasKey(NBT_RITUAL)){
 				tag = stack.getTagCompound();
 				for(int i = 0; i < rituals.size(); i++){
-					if(tag.getString(NBT_RITUAL) == rituals.get(i).getDisplayName()){
+					if((tag.getString(NBT_RITUAL)).equals(rituals.get(i).getUnlocalizedName())){
 						if(i == rituals.size()-1){
-							tag.setString(NBT_RITUAL, rituals.get(0).getDisplayName());
-		            		msg = (rituals.get(0).getDisplayName());
+							setNBT(tag, rituals.get(0));
+		            		msg = (rituals.get(0).getUnlocalizedName());
 						}else{
-							tag.setString(NBT_RITUAL, rituals.get(i+1).getDisplayName());
-		            		msg = (rituals.get(i+1).getDisplayName());
+							setNBT(tag, rituals.get(i+1));
+		            		msg = (rituals.get(i+1).getUnlocalizedName());
 						}
 						break;
 					}
 				}
 			}else{
-				tag.setString(NBT_RITUAL, rituals.get(0).getDisplayName());
-        		msg = (rituals.get(0).getDisplayName());
+				setNBT(tag, rituals.get(0));
+        		msg = (rituals.get(0).getUnlocalizedName());
 			}
 			
 			if(world.isRemote && msg != null){
@@ -65,12 +66,6 @@ public class ItemMetamorphicChalk extends ModItemBase{
 			}
 	
 			stack.setTagCompound(tag);
-		}else{
-			if(!world.isRemote){
-				Arcanacraft.log("ItemStackDisplayName: " + this.getItemStackDisplayName(player.getHeldItem(hand)));
-				Arcanacraft.log("UnlocalizedName:      " + this.getUnlocalizedName(player.getHeldItem(hand)));
-				Arcanacraft.log("RegistryName:         " + this.getRegistryName().toString());
-			}
 		}
         return new ActionResult<ItemStack>(EnumActionResult.PASS, player.getHeldItem(hand));
     }
@@ -99,13 +94,19 @@ public class ItemMetamorphicChalk extends ModItemBase{
         return EnumActionResult.FAIL;
     }
 	
+	private void setNBT(NBTTagCompound tag, RitualBase ritual){
+		tag.setString(NBT_RITUAL, ritual.getUnlocalizedName());
+		tag.setString(NBT_RITUAL_DISPLAY_NAME, ritual.getDisplayName());
+	}
+	
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
     {
     	
-    	if(stack.hasTagCompound() && stack.getTagCompound().hasKey(NBT_RITUAL)){
-    		tooltip.add(stack.getTagCompound().getString(NBT_RITUAL));
+    	if(stack.hasTagCompound() && stack.getTagCompound().hasKey(NBT_RITUAL_DISPLAY_NAME)){
+    		tooltip.add(stack.getTagCompound().getString(NBT_RITUAL_DISPLAY_NAME));
+    		tooltip.add(stack.getTagCompound().toString());
     	}
     }
 }

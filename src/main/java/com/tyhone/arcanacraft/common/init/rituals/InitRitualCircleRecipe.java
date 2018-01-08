@@ -20,8 +20,8 @@ public class InitRitualCircleRecipe {
 	}
 	
 	private static void initSummonRain(){
-		ArcanacraftRitualCraftingManager.registerRitualCircle(
-				ModRituals.RITUAL_SUMMON_RAIN.getRitualName(),
+		ArcanacraftRitualCraftingManager.registerRitualCircleRecipe(
+				ModRituals.RITUAL_SUMMON_RAIN,
 			new ItemStack[]{
 					new ItemStack(Items.DYE, 1, 4)
 			},
@@ -39,8 +39,8 @@ public class InitRitualCircleRecipe {
 	}
 	
 	private static void initClearWeather(){
-		ArcanacraftRitualCraftingManager.registerRitualCircle(
-			ModRituals.RITUAL_CLEAR_WEATHER.getRitualName(),
+		ArcanacraftRitualCraftingManager.registerRitualCircleRecipe(
+			ModRituals.RITUAL_CLEAR_WEATHER,
 			new ItemStack[]{
 					new ItemStack(Blocks.GLASS, 1)
 			},
@@ -58,8 +58,8 @@ public class InitRitualCircleRecipe {
 	}
 	
 	private static void initSummonLightning(){
-		ArcanacraftRitualCraftingManager.registerRitualCircle(
-			ModRituals.RITUAL_SUMMON_LIGHTNING.getRitualName(),
+		ArcanacraftRitualCraftingManager.registerRitualCircleRecipe(
+			ModRituals.RITUAL_SUMMON_LIGHTNING,
 			new ItemStack[]{
 					new ItemStack(Items.GLOWSTONE_DUST, 1)
 			},

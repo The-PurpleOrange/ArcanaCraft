@@ -77,8 +77,7 @@ public class TileEntityRitualCircle extends ModTileEntityBase {
 			for(EntityItem ei : eItems){
 				ei.setDead();
 			}
-			RitualBase ritual = recipe.getRitual(recipe.getRitualName());
-			ritual.preformRitual(worldObj, player, this.getPos());
+			recipe.getRitual().preformRitual(worldObj, player, this.getPos());
 		}
 	}
 }

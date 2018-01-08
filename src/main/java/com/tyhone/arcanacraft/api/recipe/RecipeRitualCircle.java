@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.tyhone.arcanacraft.Arcanacraft;
-import com.tyhone.arcanacraft.api.registries.Ritual;
 import com.tyhone.arcanacraft.api.registries.RitualRegistry;
 import com.tyhone.arcanacraft.api.ritual.RitualBase;
 import com.tyhone.arcanacraft.api.util.ItemStackUtil;
@@ -12,15 +11,15 @@ import com.tyhone.arcanacraft.api.util.ItemStackUtil;
 import net.minecraft.item.ItemStack;
 
 public class RecipeRitualCircle {
-	String ritualName;
+	RitualBase ritual;
 	
 	//EnumRitual ritual;
 	List<ItemStack> blockPosList;
 	List<ItemStack> inputs;
 	int middleInt = 0;
 
-	public RecipeRitualCircle(String ritualName, ItemStack[] inputs, Object[] blockData){
-		this.ritualName = ritualName;
+	public RecipeRitualCircle(RitualBase ritual, ItemStack[] inputs, Object[] blockData){
+		this.ritual = ritual;
 
 		if(inputs != null){
 			List<ItemStack> inputList = new ArrayList();
@@ -46,7 +45,7 @@ public class RecipeRitualCircle {
 				if(middleInt == 0){
 					int stringSize = ((String) blockData[i]).length();
 					if(stringSize % 2 != 1){
-						Arcanacraft.logger.error("Ritual Circle for " + ritualName + " is invalid");
+						Arcanacraft.logger.error("Ritual Circle for " + ritual.getDisplayName() + " is invalid");
 					}else{
 						this.middleInt = (int) Math.floor(stringSize / 2);
 					}
@@ -149,11 +148,6 @@ public class RecipeRitualCircle {
 		return null;
 	}
 	
-	
-	public String getRitualName(){
-		return this.ritualName;
-	}
-	
 	public List<ItemStack> getBlockRequirements() {
 		return new ArrayList(blockPosList);
 	}
@@ -169,12 +163,7 @@ public class RecipeRitualCircle {
 		return middleInt;
 	}
 
-	public RitualBase getRitual(String ritualName) {
-		for(Ritual ritual : RitualRegistry.getRitualList()){
-			if(ritual.compare(ritualName)){
-				return ritual.GetRitual();
-			}
-		}
-		return null;
+	public RitualBase getRitual() {
+		return ritual;
 	}
 }

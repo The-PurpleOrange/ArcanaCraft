@@ -1,9 +1,9 @@
 package com.tyhone.arcanacraft.api.recipe;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
+import com.tyhone.arcanacraft.api.ritual.RitualBase;
 
 import net.minecraft.item.ItemStack;
 
@@ -14,8 +14,8 @@ public class ArcanacraftRitualCraftingManager {
 	
 
 	//ACTIVATION CIRCLE RECIPES
-	public static RecipeRitualCircle registerRitualCircle(String unlocalizedName, ItemStack[] itemInputs, Object[] blockInputs) {
-		RecipeRitualCircle recipe = new RecipeRitualCircle(unlocalizedName, itemInputs, blockInputs);
+	public static RecipeRitualCircle registerRitualCircleRecipe(RitualBase ritual, ItemStack[] itemInputs, Object[] blockInputs) {
+		RecipeRitualCircle recipe = new RecipeRitualCircle(ritual, itemInputs, blockInputs);
 		ritualCircleRecipe.add(recipe);
 		//activationCircleRecipes.put(unlocalizedName, recipe);
 		return recipe;

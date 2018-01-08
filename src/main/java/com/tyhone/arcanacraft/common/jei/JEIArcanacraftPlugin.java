@@ -183,7 +183,7 @@ public class JEIArcanacraftPlugin implements IModPlugin {
 				RenderHelper.enableGUIStandardItemLighting();
 				
 				ResourceLocation tinktureTexture = new ResourceLocation(Arcanacraft.MODID + ":textures/t.png");
-				//minecraft.renderEngine.bindTexture(tinktureTexture);
+				minecraft.renderEngine.bindTexture(tinktureTexture);
 				
 				//setGLColourFromInt(colourHex);
 				

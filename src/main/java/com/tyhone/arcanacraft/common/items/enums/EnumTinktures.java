@@ -58,7 +58,7 @@ public enum EnumTinktures {
 
 	public static EnumTinktures getByName(String name){
 		for(EnumTinktures e : values()) {
-	        if(e.name == name){ 
+	        if(e.name.equals(name)){ 
 	        	return e;
 	        }
 	    }
