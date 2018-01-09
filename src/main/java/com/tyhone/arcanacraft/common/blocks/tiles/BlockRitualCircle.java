@@ -2,10 +2,12 @@ package com.tyhone.arcanacraft.common.blocks.tiles;
 
 import java.util.Random;
 
+import com.tyhone.arcanacraft.api.ritual.IRitualBuilder;
+import com.tyhone.arcanacraft.api.ritual.IRitualCircle;
 import com.tyhone.arcanacraft.common.blocks.base.ModBlockTileEntityBase;
-import com.tyhone.arcanacraft.common.tileentity.TileEntityPedestal;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityRitualCircle;
 
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -19,13 +21,15 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockRitualCircle extends ModBlockTileEntityBase{
+public class BlockRitualCircle extends ModBlockTileEntityBase implements IRitualCircle{
 
 	
 	protected static final AxisAlignedBB ARRAY = new AxisAlignedBB(0.0F, 0.0F, 0.0F, 1.0F, 0.0625F, 1.0F);
 	
 	public BlockRitualCircle() {
-		super("ritual_circle");
+		super("ritual_circle", Material.CIRCUITS);
+		this.setHardness(0.5f);
+		this.setResistance(3f);
 	}
 	
 	@Override
@@ -71,6 +75,9 @@ public class BlockRitualCircle extends ModBlockTileEntityBase{
 
 	@Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
+		if(player.getHeldItem(hand).getItem() instanceof IRitualBuilder){
+			return false;
+		}
 		if (!world.isRemote) {
 			TileEntityRitualCircle te = (TileEntityRitualCircle) world.getTileEntity(pos);
 			te.onActivated(player, world);

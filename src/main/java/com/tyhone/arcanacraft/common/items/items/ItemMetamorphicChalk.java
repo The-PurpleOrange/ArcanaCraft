@@ -5,12 +5,22 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import com.tyhone.arcanacraft.Arcanacraft;
+import com.tyhone.arcanacraft.api.recipe.ArcanacraftRitualCraftingManager;
+import com.tyhone.arcanacraft.api.recipe.RecipeRitualCircle;
 import com.tyhone.arcanacraft.api.registries.RitualRegistry;
+import com.tyhone.arcanacraft.api.ritual.IRitualBuilder;
+import com.tyhone.arcanacraft.api.ritual.IRitualCircle;
 import com.tyhone.arcanacraft.api.ritual.RitualBase;
+import com.tyhone.arcanacraft.api.util.ItemStackUtil;
+import com.tyhone.arcanacraft.common.init.ModBlocks;
 import com.tyhone.arcanacraft.common.items.base.ModItemBase;
+import com.tyhone.arcanacraft.common.util.PlayerUtils;
+import com.tyhone.arcanacraft.common.util.PosUtil;
 
+import net.minecraft.block.Block;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
@@ -23,7 +33,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemMetamorphicChalk extends ModItemBase{
+public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
 
 	private final String NBT_RITUAL = "ritual";
 	private final String NBT_RITUAL_DISPLAY_NAME = "ritual_display_name";
@@ -60,39 +70,126 @@ public class ItemMetamorphicChalk extends ModItemBase{
 				setNBT(tag, rituals.get(0));
         		msg = (rituals.get(0).getUnlocalizedName());
 			}
-			
-			if(world.isRemote && msg != null){
-				player.sendMessage(new TextComponentTranslation(msg));
-			}
+			PlayerUtils.sendPlayerMessage(player, world, msg);
 	
 			stack.setTagCompound(tag);
+	        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, player.getHeldItem(hand));
 		}
+
         return new ActionResult<ItemStack>(EnumActionResult.PASS, player.getHeldItem(hand));
     }
 	
 	@Override
 	public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
-    {
-        /*if(!worldIn.isRemote){
-        	boolean flag = worldIn.getBlockState(pos).getBlock().isReplaceable(worldIn, pos);
-		    BlockPos blockpos = flag ? pos : pos.offset(facing);
+	{
+		if(player.isSneaking()){
+			return EnumActionResult.SUCCESS;
+		}
+		else{
+			ItemStack stack = player.getHeldItem(hand);
+			RecipeRitualCircle recipe = getNBT(stack);
+			if(checkArea(recipe,player, worldIn, pos, hand)){
+				if(drawCircle(recipe,player, worldIn, pos, hand, true)){
+					return EnumActionResult.SUCCESS;
+				}
+			}
+		}
 		
-		    if (player.canPlayerEdit(blockpos, facing, player.getHeldItem(hand))){
-
-		        Block block = worldIn.getBlockState(blockpos).getBlock();
-		        
-		        Block chalkType = ModBlocks.CHALK_BLOCK;
-		
-		        if (chalkType.canPlaceBlockAt(worldIn, blockpos)) //else if (chalkType.canPlaceBlockAt(worldIn, blockpos))
-		        {
-		        	worldIn.setBlockState(blockpos, chalkType.getStateFromMeta(player.getHeldItem(hand).getMetadata()));
-		        	
-		            return EnumActionResult.SUCCESS;
-		        }
-		    }
-        }*/
-        return EnumActionResult.FAIL;
+        return EnumActionResult.PASS;
     }
+	
+	
+	
+	public boolean drawCircle(RecipeRitualCircle recipe, EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, boolean individual)
+    {
+		String msg = null;
+		boolean finishedBuild = false;
+		
+		for(int place : ArcanacraftRitualCraftingManager.getPlaceOrder()){
+			BlockPos oldPos = PosUtil.combinePos(pos, ArcanacraftRitualCraftingManager.getBlockPlaceFromList(place));
+			final BlockPos placePos = (worldIn.getBlockState(pos).getBlock() instanceof IRitualCircle) ? oldPos : PosUtil.combinePos(oldPos, new BlockPos(0, 1, 0));
+			
+			ItemStack itemStack = recipe.getBlockRequirements().get(place);
+			if(!itemStack.isEmpty()){
+				
+		    	Block block = Block.getBlockFromItem(itemStack.getItem());
+			    if(block.canPlaceBlockAt(worldIn, placePos)){
+					
+			    	if(block == ModBlocks.CHALK_BLOCK || player.isCreative()){
+			    		worldIn.setBlockState(placePos, block.getStateFromMeta(itemStack.getMetadata()));
+			    		if(individual){
+			    			return true;
+			    		}
+			    	}
+			    	else if(PlayerUtils.consumePlayerItem(player, itemStack)){
+			    		worldIn.setBlockState(placePos, block.getStateFromMeta(itemStack.getMetadata()));
+			    		if(individual){
+			    			return true;
+			    		}
+			    	}
+			    	else if(!(block.getBlockFromItem(itemStack.getItem()) instanceof IRitualCircle)){
+			    		msg = "Missing " + itemStack.getDisplayName();
+			    	}
+			    	else{
+			    		msg = "Missing " + itemStack.getDisplayName();
+			    	}
+			    }
+			}
+			if(place == ArcanacraftRitualCraftingManager.getPlaceOrder().length-1 && msg == null){
+				msg="Build Complete!";
+			}
+		}
+		PlayerUtils.sendPlayerMessage(player, worldIn, msg);
+		return false;
+    }
+	
+	private boolean checkArea(RecipeRitualCircle recipe, EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand)
+	{
+		if(recipe==null){
+			return false;
+		}
+		
+		for(int place : ArcanacraftRitualCraftingManager.getPlaceOrder()){
+			BlockPos oldPos = PosUtil.combinePos(pos, ArcanacraftRitualCraftingManager.getBlockPlaceFromList(place));
+			final BlockPos placePos = (worldIn.getBlockState(pos).getBlock() instanceof IRitualCircle) ? oldPos : PosUtil.combinePos(oldPos, new BlockPos(0, 1, 0));
+
+        	if(placePos == null){
+        		Arcanacraft.logger.error("Null BlockPos for ritual recipe " + recipe.getRitual().getDisplayName());
+        		Arcanacraft.logger.error("Please report this to Tyhone");
+        		return false;
+        	}
+        	
+    		if(!worldIn.isSideSolid(placePos.add(0, -1, 0), EnumFacing.UP)){
+    			PlayerUtils.sendPlayerMessage(player, worldIn, "I need to fill in the holes.");
+    			return false;
+    		}
+    		
+    		ItemStack itemStack = recipe.getBlockRequirements().get(place);
+			if(!itemStack.isEmpty()){
+	        	if(worldIn.getBlockState(placePos).getBlock() != Blocks.AIR){
+	        		if(!worldIn.getBlockState(placePos).getBlock().isReplaceable(worldIn, placePos)){
+	        			
+				    	ItemStack itemStack1 = recipe.getBlockRequirements().get(place);
+				    	Block block = worldIn.getBlockState(placePos).getBlock();
+				    	ItemStack itemStack2 = new ItemStack(block, 1, block.getMetaFromState(worldIn.getBlockState(placePos)));
+						if(!(ItemStackUtil.simpleAreStacksEqual(itemStack1, itemStack2))){
+							PlayerUtils.sendPlayerMessage(player, worldIn, "I need to clean the area.");
+							return false;
+						}
+					}
+	        	}
+			}
+		}
+    	return true;
+	}
+	
+	private RecipeRitualCircle getNBT(ItemStack stack){
+		if(stack.hasTagCompound() && stack.getTagCompound().hasKey(NBT_RITUAL)){
+			String ritualName = stack.getTagCompound().getString(NBT_RITUAL);
+			return RecipeRitualCircle.getRecipe(ritualName);
+		}
+		return null;
+	}
 	
 	private void setNBT(NBTTagCompound tag, RitualBase ritual){
 		tag.setString(NBT_RITUAL, ritual.getUnlocalizedName());

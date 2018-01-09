@@ -71,7 +71,7 @@ public class TileEntityRitualCircle extends ModTileEntityBase {
 				//Arcanacraft.logger.info(x + "/" + z + " : " + block.getLocalizedName());
 			}
 		}
-		
+
 		RecipeRitualCircle recipe = RecipeRitualCircle.getRecipe((ArrayList<ItemStack>) itemStacks, blockStacks);
 		if(recipe != null){
 			for(EntityItem ei : eItems){

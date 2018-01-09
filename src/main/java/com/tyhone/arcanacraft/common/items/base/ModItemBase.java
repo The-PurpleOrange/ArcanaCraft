@@ -69,7 +69,7 @@ public class ModItemBase extends Item implements IItemVariantHolder<ModItemBase>
 	public String getUnlocalizedName(ItemStack stack)
     {
 		if(getHasSubtypes() && stack.getMetadata() < VARIANTS.length){
-			return (Arcanacraft.MODID + "." + VARIANTS[stack.getMetadata()]);
+			return (Arcanacraft.MODID + "." + BASE_NAME + "." + VARIANTS[stack.getMetadata()]);
 		}
 		else{
 			return Arcanacraft.MODID + "." + BASE_NAME;

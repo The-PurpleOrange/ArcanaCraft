@@ -9,7 +9,7 @@
             "to": [ 14, 0.25, 14 ],
             "shade": false,
             "faces": {
-                "up":    { "uv": [ 2, 2, 14, 14 ], "texture": "all"}
+                "up": { "uv": [ 0, 0, 16, 16 ], "texture": "all"}
             }
         }
     ]

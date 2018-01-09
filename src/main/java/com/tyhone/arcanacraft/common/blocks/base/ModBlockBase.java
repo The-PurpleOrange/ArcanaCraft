@@ -14,12 +14,15 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ModBlockBase extends Block {
 
+	private final String BASE_NAME;
+	
 	public ModBlockBase(String regName) {
 		this(regName, Material.ROCK);
 	}
 	
 	public ModBlockBase(String regName, Material material) {
 		super(material);
+		this.BASE_NAME = regName;
 		setRegistryName(regName);
 		setUnlocalizedName(regName);
         this.setCreativeTab(CreativeTabs.MATERIALS);
@@ -30,7 +33,7 @@ public class ModBlockBase extends Block {
 	
 	@Override
 	public String getUnlocalizedName(){
-		return /*Arcanacraft.MODID + "." +*/ getRegistryName().toString();
+		return Arcanacraft.MODID + "." + BASE_NAME; //getRegistryName().toString();
 	}
 	
 	@SideOnly(Side.CLIENT)

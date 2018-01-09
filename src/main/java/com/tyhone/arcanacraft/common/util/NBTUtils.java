@@ -7,7 +7,7 @@ public class NBTUtils {
 
 	public static ItemStack readItemCompound(String tag, NBTTagCompound compound){
         if (compound.hasKey(tag)) {
-        	if(new ItemStack(compound.getCompoundTag(tag)) != ItemStack.EMPTY){
+        	if(!new ItemStack(compound.getCompoundTag(tag)).isEmpty()){
                 return new ItemStack(compound.getCompoundTag(tag));
         	}
         }

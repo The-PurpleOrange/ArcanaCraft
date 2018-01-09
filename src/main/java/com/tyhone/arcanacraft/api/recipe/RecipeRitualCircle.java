@@ -17,6 +17,7 @@ public class RecipeRitualCircle {
 	List<ItemStack> blockPosList;
 	List<ItemStack> inputs;
 	int middleInt = 0;
+	int width;
 
 	public RecipeRitualCircle(RitualBase ritual, ItemStack[] inputs, Object[] blockData){
 		this.ritual = ritual;
@@ -44,6 +45,7 @@ public class RecipeRitualCircle {
 				blockPlaceRow.add((String) blockData[i]);
 				if(middleInt == 0){
 					int stringSize = ((String) blockData[i]).length();
+					this.width = stringSize;
 					if(stringSize % 2 != 1){
 						Arcanacraft.logger.error("Ritual Circle for " + ritual.getDisplayName() + " is invalid");
 					}else{
@@ -65,7 +67,7 @@ public class RecipeRitualCircle {
 			char[] charRow = row.toCharArray();
 			for(int j = 0; j< charRow.length; j++){
 				if(charRow[j] == ' '){
-					blockPosList.add(null);
+					blockPosList.add(ItemStack.EMPTY);
 				}
 				else {
 					for(int k = 0; k < blockChar.size(); k++){
@@ -148,6 +150,15 @@ public class RecipeRitualCircle {
 		return null;
 	}
 	
+	public static RecipeRitualCircle getRecipe(String unlocalizedName){
+		for(RecipeRitualCircle recipe : ArcanacraftRitualCraftingManager.getRitualCircleRecipes()){
+			if(recipe.getRitual().getUnlocalizedName().equals(unlocalizedName)){
+				return recipe;
+			}
+		}
+		return null;
+	}
+	
 	public List<ItemStack> getBlockRequirements() {
 		return new ArrayList(blockPosList);
 	}
@@ -165,5 +176,9 @@ public class RecipeRitualCircle {
 
 	public RitualBase getRitual() {
 		return ritual;
+	}
+
+	public int getWidth() {
+		return width;
 	}
 }

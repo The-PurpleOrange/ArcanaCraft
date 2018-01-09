@@ -2,6 +2,7 @@ package com.tyhone.arcanacraft.common.blocks.blocks;
 
 import java.util.Random;
 
+import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.common.blocks.base.IEnumMeta;
 import com.tyhone.arcanacraft.common.blocks.base.ModBlockEnum;
 import com.tyhone.arcanacraft.common.init.ModItems;
@@ -64,7 +65,7 @@ public class BlockChalk extends ModBlockEnum {
 		}
 	}
 	
-	protected static final AxisAlignedBB CHALK_AABB = new AxisAlignedBB(0.0F, 0.0F, 0.0F, 1.0F, 0.0625F, 1.0F);
+	protected static final AxisAlignedBB CHALK_AABB = new AxisAlignedBB(0.1875F, 0.0F, 0.1875F, 0.8125F, 0.0625F, 0.8125F);
 	public static final PropertyEnum VARIANT = PropertyEnum.create("variant", EnumChalkType.class);
 	
 	public BlockChalk() {
@@ -131,7 +132,7 @@ public class BlockChalk extends ModBlockEnum {
     
     @Override
 	public boolean canPlaceBlockAt(World worldIn, BlockPos pos){
-        return (worldIn.getBlockState(pos).getBlock().isReplaceable(worldIn, pos) && worldIn.isSideSolid(PosUtil.combinePos(pos, new BlockPos(0,-1,0)), EnumFacing.UP));
+        return (worldIn.getBlockState(pos).getBlock().isReplaceable(worldIn, pos) && worldIn.isSideSolid(pos.add(0, -1, 0), EnumFacing.UP));
     	//return true;
     }
     

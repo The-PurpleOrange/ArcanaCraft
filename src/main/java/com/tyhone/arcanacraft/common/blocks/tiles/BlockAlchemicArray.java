@@ -2,9 +2,11 @@ package com.tyhone.arcanacraft.common.blocks.tiles;
 
 import java.util.Random;
 
+import com.tyhone.arcanacraft.api.ritual.IRitualCircle;
 import com.tyhone.arcanacraft.common.blocks.base.ModBlockTileEntityBase;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityAlchemicArray;
 
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -18,13 +20,15 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockAlchemicArray extends ModBlockTileEntityBase{
+public class BlockAlchemicArray extends ModBlockTileEntityBase implements IRitualCircle{
     
 
 	protected static final AxisAlignedBB ARRAY = new AxisAlignedBB(0.0F, 0.0F, 0.0F, 1.0F, 0.0625F, 1.0F);
 	
 	public BlockAlchemicArray() {
-		super("alchemic_array");
+		super("alchemic_array", Material.CIRCUITS);
+		this.setHardness(0.5f);
+		this.setResistance(3f);
 	}
 	
 	@Override

@@ -26,15 +26,16 @@ public class InitRitualCircleRecipe {
 					new ItemStack(Items.DYE, 1, 4)
 			},
 			new Object[]{
-					" HGH ",
+					"ZHGHZ",
 					"HB BH",
 					"G C G",
 					"HB BH",
-					" HGH ",
+					"ZHGHZ",
 					'H', new ItemStack(ModBlocks.CHALK_BLOCK, 1, ItemMetaUtil.chalk("bone")),
 					'B', new ItemStack(ModBlocks.CHALK_BLOCK, 1, ItemMetaUtil.chalk("charcoal")),
 					'G', new ItemStack(ModBlocks.CHALK_BLOCK, 1, ItemMetaUtil.chalk("lapis")),
-					'C', new ItemStack(ModBlocks.RITUAL_CIRCLE)
+					'C', new ItemStack(ModBlocks.RITUAL_CIRCLE),
+					'Z', new ItemStack(Blocks.LAPIS_BLOCK, 1)
 			});
 	}
 	
@@ -45,15 +46,16 @@ public class InitRitualCircleRecipe {
 					new ItemStack(Blocks.GLASS, 1)
 			},
 			new Object[]{
-					" HGH ",
+					"ZHGHZ",
 					"HB BH",
 					"G C G",
 					"HB BH",
-					" HGH ",
+					"ZHGHZ",
 					'H', new ItemStack(ModBlocks.CHALK_BLOCK, 1, ItemMetaUtil.chalk("bone")),
 					'B', new ItemStack(ModBlocks.CHALK_BLOCK, 1, ItemMetaUtil.chalk("charcoal")),
 					'G', new ItemStack(ModBlocks.CHALK_BLOCK, 1, ItemMetaUtil.chalk("lapis")),
-					'C', new ItemStack(ModBlocks.RITUAL_CIRCLE)
+					'C', new ItemStack(ModBlocks.RITUAL_CIRCLE),
+					'Z', new ItemStack(Blocks.LAPIS_BLOCK, 1)
 			});
 	}
 	
@@ -64,15 +66,16 @@ public class InitRitualCircleRecipe {
 					new ItemStack(Items.GLOWSTONE_DUST, 1)
 			},
 			new Object[]{
-					" HGH ",
+					"ZHGHZ",
 					"HB BH",
 					"G C G",
 					"HB BH",
-					" HGH ",
+					"ZHGHZ",
 					'H', new ItemStack(ModBlocks.CHALK_BLOCK, 1, ItemMetaUtil.chalk("bone")),
 					'B', new ItemStack(ModBlocks.CHALK_BLOCK, 1, ItemMetaUtil.chalk("charcoal")),
 					'G', new ItemStack(ModBlocks.CHALK_BLOCK, 1, ItemMetaUtil.chalk("lapis")),
-					'C', new ItemStack(ModBlocks.RITUAL_CIRCLE)
+					'C', new ItemStack(ModBlocks.RITUAL_CIRCLE),
+					'Z', new ItemStack(Blocks.LAPIS_BLOCK, 1)
 			});
 	}
 }

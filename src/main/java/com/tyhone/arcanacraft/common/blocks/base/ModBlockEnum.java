@@ -16,6 +16,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ModBlockEnum extends ModBlockBase{
 
 	private final IEnumMeta[] VARIANTS;
+	private final String BASE_NAME;
 	
 	public ModBlockEnum(String name, IEnumMeta[] variants){
 		this(name, Material.ROCK, variants);
@@ -23,11 +24,12 @@ public class ModBlockEnum extends ModBlockBase{
 	
 	public ModBlockEnum(String name, Material material, IEnumMeta[] variants){
 		super(name, material);
+		this.BASE_NAME = name;
 		if (variants.length > 0){
-			VARIANTS = variants;	
+			this.VARIANTS = variants;	
 		}
 		else{
-			VARIANTS = new IEnumMeta[0];
+			this.VARIANTS = new IEnumMeta[0];
 		}
 	}
 	
@@ -35,7 +37,7 @@ public class ModBlockEnum extends ModBlockBase{
 		//Arcanacraft.logger.log(Level.INFO, Arcanacraft.MODID + "." + VARIANTS[itemStack.getMetadata()]);
 		if((itemStack != null && itemStack.getItem() != null) && Block.getBlockFromItem(itemStack.getItem()) instanceof ModBlockBase){
 			if (VARIANTS.length > 0){
-				return Arcanacraft.MODID + "." + VARIANTS[itemStack.getMetadata()];
+				return Arcanacraft.MODID + "." + BASE_NAME + "." + VARIANTS[itemStack.getMetadata()];
 			}
 		}
 		return super.getUnlocalizedName();
