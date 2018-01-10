@@ -6,16 +6,13 @@ import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.client.util.RenderUtil;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityDeconstructionTable;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.RenderItem;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
@@ -25,6 +22,9 @@ public class RenderTileEntityDeconstructionTable extends TileEntitySpecialRender
 	private static final ResourceLocation CIRCLE_INNER = new ResourceLocation(Arcanacraft.MODID + ":textures/models/activation_circle/activation_circle_inner.png");
 	private static final ResourceLocation CIRCLE_OUTER = new ResourceLocation(Arcanacraft.MODID + ":textures/models/activation_circle/activation_circle_body.png");
 	
+	private final float maxR = 0.6F;
+	private final float maxG = 0F;
+	private final float maxB = 0.9F;
 	
 	public RenderTileEntityDeconstructionTable(RenderManager renderManager, RenderItem renderItem){	
 	}
@@ -34,11 +34,30 @@ public class RenderTileEntityDeconstructionTable extends TileEntitySpecialRender
 		TileEntityDeconstructionTable te = (TileEntityDeconstructionTable) tileEntity;
 		ItemStack itemStack = te.getStack();
 
-        renderCircle(te, x, y, z, partialTicks);
-        
-		if(itemStack != null && itemStack.getCount()>0){ //Check if there is an item in slot 0
+		int progress = te.getWorkTime();
+		int maxTime = (int) Math.floor((double)te.getRecipeMaxTime() * 0.8D) ;
+		float fraction = 0;
+		
+		if(progress > 0){
+			if(progress > maxTime){
+				fraction = 1.0F;
+			}
+			else{
+				fraction = (float) progress / (float) maxTime;
+			}
 			
-			RenderUtil.renderItem(te, itemStack, x, y+1.35F, z, partialTicks, true);
+			renderLines(te, x, y, z);
+			
+		}
+		float ticks = (te.getWorld().getTotalWorldTime() + partialTicks);
+        renderCircle(fraction, x, y, z, ticks);
+        
+		if(!itemStack.isEmpty() && itemStack.getCount()>0){ //Check if there is an item in slot 0
+			
+			float sp = (((float)progress + (float)10)*1.1F);
+			
+			RenderUtil.renderItem(te, itemStack, x, y+1.35F, z, partialTicks, true, te.clientGetRotation());
+			
 			
             /*GlStateManager.pushMatrix();
             GlStateManager.translate((float)x+0.5F, (float)y+1.35F, (float)z+0.5F);
@@ -62,14 +81,64 @@ public class RenderTileEntityDeconstructionTable extends TileEntitySpecialRender
 		}
 	}
 	
-	public void renderCircle(TileEntity te, double x, double y, double z, float partialTicks){
+	private void renderLines(TileEntityDeconstructionTable te, double x, double y, double z) {
+		GlStateManager.pushMatrix();
+		GlStateManager.translate(x, y+1, z);
+		GlStateManager.disableLighting();
+		GlStateManager.disableTexture2D();
+        GlStateManager.color(maxR, maxG, maxB);
+
+		/*Tessellator tessellator = Tessellator.getInstance();
+		WorldRenderer line = tessellator.getWorldRenderer();
+		line.begin(GL11.GL_LINE_STRIP, DefaultVertexFormats.POSITION_TEX);
+		line.pos(0.5D, 0.0D, 0.5D);
+		line.pos(0.5D, 1.0D, 0.5D);
+		tessellator.draw();*/
+        
+        GL11.glBegin(GL11.GL_LINE_STRIP);
+
+        if(te.getLens().isEmpty()){
+			GL11.glVertex3d(0.09375,0,0.09375);
+			GL11.glVertex3d(0.5,0.3,0.5);
+			GL11.glVertex3d(0.09375,0,0.90625);
+			GL11.glVertex3d(0.5,0.3,0.5);
+			GL11.glVertex3d(0.90625,0,0.09375);
+			GL11.glVertex3d(0.5,0.3,0.5);
+			GL11.glVertex3d(0.90625,0,0.90625);
+			GL11.glVertex3d(0.5,0.3,0.5);
+        }else{
+			GL11.glVertex3d(0.09375,0,0.09375);
+			GL11.glVertex3d(0.5,0.7,0.5);
+			GL11.glVertex3d(0.09375,0,0.90625);
+			GL11.glVertex3d(0.5,0.7,0.5);
+			GL11.glVertex3d(0.90625,0,0.09375);
+			GL11.glVertex3d(0.5,0.7,0.5);
+			GL11.glVertex3d(0.90625,0,0.90625);
+			GL11.glVertex3d(0.5,0.7,0.5);
+			GL11.glVertex3d(0.5,0.7,0.5);
+			GL11.glVertex3d(0.5,0.3,0.5);
+        }
+		//you will want to modify these offsets.
+		
+		GL11.glEnd();
+        
+		GlStateManager.enableLighting();
+		GlStateManager.enableTexture2D();
+        GlStateManager.popMatrix();
+	}
+
+	public void renderCircle(float fraction, double x, double y, double z, float ticks){
+		
+		float r = fraction * maxR;
+		float g = fraction * maxG;
+		float b = fraction * maxB;
 		
 		GlStateManager.pushMatrix();
 		GlStateManager.disableLighting();
 		GlStateManager.translate(x+0.5, y+0.94, z+0.5);
         GlStateManager.scale(0.35, 0.35, 0.35);
-        GlStateManager.rotate((te.getWorld().getTotalWorldTime() + partialTicks), 0.0F, 1.0F, 0.0F);
-        GlStateManager.color(0.6F, 0F, 0.9F, 1F);
+        GlStateManager.rotate(ticks, 0.0F, 1.0F, 0.0F);
+        GlStateManager.color(r, g, b, 1F);
 
 		bindTexture(CIRCLE_INNER);
 		Tessellator tessellator = Tessellator.getInstance();
@@ -85,8 +154,8 @@ public class RenderTileEntityDeconstructionTable extends TileEntitySpecialRender
 		GlStateManager.pushMatrix();
 		GlStateManager.translate(x+0.5, y+0.94, z+0.5);
         GlStateManager.scale(0.35, 0.35, 0.35);
-		GlStateManager.rotate((te.getWorld().getTotalWorldTime() + partialTicks)*-1, 0.0F, 1.0F, 0.0F);
-        GlStateManager.color(0.6F, 0F, 0.9F, 1F);
+		GlStateManager.rotate(ticks*-1, 0.0F, 1.0F, 0.0F);
+        GlStateManager.color(r, g, b, 1F);
 
 		bindTexture(CIRCLE_OUTER);
 		BufferBuilder wrBody = tessellator.getBuffer();

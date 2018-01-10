@@ -13,13 +13,28 @@ import net.minecraft.tileentity.TileEntity;
 public class RenderUtil {
 
 	public static void renderItem(TileEntity te, ItemStack itemStack, double x, double y, double z, float partialTicks, boolean bob){
+		
+		renderItem(te, itemStack, x, y, z, partialTicks, bob, 0);
+	}
+	
+	public static void renderItem(TileEntity te, ItemStack itemStack, double x, double y, double z, float partialTicks, boolean bob, float customSpeed){
+
+		float rotation = 0;
+		float ticks = te.getWorld().getTotalWorldTime() + partialTicks;
+		
+		if(customSpeed != 0){
+			rotation = customSpeed;
+		}
+		else{
+			rotation = ticks;
+		}
+		
 		GlStateManager.pushMatrix();
         GlStateManager.translate((float)x+0.5F, (float)y, (float)z+0.5F);
-        float time = te.getWorld().getTotalWorldTime() + partialTicks;
         if(bob){
-        	GlStateManager.translate(0D, Math.sin((time/16)%(2*Math.PI))*0.065, 0D);
+        	GlStateManager.translate(0D, Math.sin((ticks/16)%(2*Math.PI))*0.065, 0D);
         }
-        GlStateManager.rotate(time*2.2f, 0.0F, 1.0F, 0.0F);
+        GlStateManager.rotate(rotation*2.2F, 0.0F, 1.0F, 0.0F);
 
         float scale = itemStack.getItem() instanceof ItemBlock ? 0.65F : 0.5F;
         GlStateManager.scale(scale, scale, scale);

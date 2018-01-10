@@ -18,6 +18,7 @@ import com.tyhone.arcanacraft.common.util.PlayerUtils;
 import com.tyhone.arcanacraft.common.util.PosUtil;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -88,7 +89,9 @@ public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
 		else{
 			ItemStack stack = player.getHeldItem(hand);
 			RecipeRitualCircle recipe = getNBT(stack);
+			//Arcanacraft.log("Checking Area");
 			if(checkArea(recipe,player, worldIn, pos, hand)){
+				//Arcanacraft.log("Building circle");
 				if(drawCircle(recipe,player, worldIn, pos, hand, true)){
 					return EnumActionResult.SUCCESS;
 				}
@@ -103,20 +106,21 @@ public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
 	public boolean drawCircle(RecipeRitualCircle recipe, EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, boolean individual)
     {
 		String msg = null;
-		boolean finishedBuild = false;
+		boolean buildComplete;
 		
 		for(int place : ArcanacraftRitualCraftingManager.getPlaceOrder()){
 			BlockPos oldPos = PosUtil.combinePos(pos, ArcanacraftRitualCraftingManager.getBlockPlaceFromList(place));
 			final BlockPos placePos = (worldIn.getBlockState(pos).getBlock() instanceof IRitualCircle) ? oldPos : PosUtil.combinePos(oldPos, new BlockPos(0, 1, 0));
 			
 			ItemStack itemStack = recipe.getBlockRequirements().get(place);
-			if(!itemStack.isEmpty()){
+			if(!itemStack.isEmpty() && worldIn.getBlockState(placePos).getBlock().isReplaceable(worldIn, placePos)){
 				
 		    	Block block = Block.getBlockFromItem(itemStack.getItem());
 			    if(block.canPlaceBlockAt(worldIn, placePos)){
 					
 			    	if(block == ModBlocks.CHALK_BLOCK || player.isCreative()){
 			    		worldIn.setBlockState(placePos, block.getStateFromMeta(itemStack.getMetadata()));
+			    		//worldIn.setBlockState(placePos, Blocks.DIRT.getDefaultState());
 			    		if(individual){
 			    			return true;
 			    		}
@@ -135,12 +139,12 @@ public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
 			    	}
 			    }
 			}
-			if(place == ArcanacraftRitualCraftingManager.getPlaceOrder().length-1 && msg == null){
-				msg="Build Complete!";
-			}
+		}
+		if(msg == null){
+			PlayerUtils.sendPlayerMessage(player, worldIn, "Build Complete!");
 		}
 		PlayerUtils.sendPlayerMessage(player, worldIn, msg);
-		return false;
+		return true;
     }
 	
 	private boolean checkArea(RecipeRitualCircle recipe, EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand)

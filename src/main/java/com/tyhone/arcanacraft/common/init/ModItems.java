@@ -8,10 +8,12 @@ import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.common.items.base.ModItemBase;
 import com.tyhone.arcanacraft.common.items.items.ItemAlchemicDust;
 import com.tyhone.arcanacraft.common.items.items.ItemAlchemicalCoal;
+import com.tyhone.arcanacraft.common.items.items.ItemAyre;
 import com.tyhone.arcanacraft.common.items.items.ItemChalk;
 import com.tyhone.arcanacraft.common.items.items.ItemDust;
 import com.tyhone.arcanacraft.common.items.items.ItemEssence;
 import com.tyhone.arcanacraft.common.items.items.ItemHammer;
+import com.tyhone.arcanacraft.common.items.items.ItemIcons;
 import com.tyhone.arcanacraft.common.items.items.ItemIngot;
 import com.tyhone.arcanacraft.common.items.items.ItemItem;
 import com.tyhone.arcanacraft.common.items.items.ItemLens;
@@ -37,6 +39,7 @@ public class ModItems {
 	public static final ModItemBase ESSENCE = new ItemEssence();
 	public static final ModItemBase INGOT = new ItemIngot();
 	public static final ModItemBase ITEM = new ItemItem();
+	public static final ModItemBase AYRE = new ItemAyre();
 	public static final ModItemBase CHALK = new ItemChalk();
 	public static final ModItemBase CHALK_METAMORPHIC = new ItemMetamorphicChalk();
 	public static final ModItemBase TINKTURE = new ItemTinkture();
@@ -44,6 +47,8 @@ public class ModItems {
 	public static final ModItemBase HAMMER = new ItemHammer();
 
 	public static final ModItemBase SPIRIT_SKULL = new ItemSpiritSkull();
+	
+	public static final ModItemBase ICONS = new ItemIcons();
 	
 	private ModItems() {}
 	

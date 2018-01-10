@@ -17,7 +17,7 @@ public class Names {
         public static final ArrayList<String> INGOT = al("magicite", "blood_iron", "alcharium");
         public static final ArrayList<String> DUST = al("blood", "bone", "charcoal", "iron", "gold", "magicite");
         public static final ArrayList<String> CRYSTAL = al("blood", "gold", "iron", "magicite");
-        public static final ArrayList<String> ITEM = al("bone_ash", "quartz_dust", "clean_flesh", "fey_powder", "blood_drop");
+        public static final ArrayList<String> ITEM = al("bone_ash", "quartz_dust", "clean_flesh", "blood_drop");
      
 	}
 	
