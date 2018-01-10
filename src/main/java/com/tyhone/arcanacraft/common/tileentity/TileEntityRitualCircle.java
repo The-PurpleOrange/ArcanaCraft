@@ -3,11 +3,8 @@ package com.tyhone.arcanacraft.common.tileentity;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.api.recipe.RecipeRitualCircle;
-import com.tyhone.arcanacraft.api.ritual.RitualBase;
 import com.tyhone.arcanacraft.api.util.ItemStackUtil;
-import com.tyhone.arcanacraft.common.rituals.RitualSummonRain;
 import com.tyhone.arcanacraft.common.tileentity.base.ModTileEntityBase;
 
 import net.minecraft.block.Block;
@@ -23,7 +20,7 @@ import net.minecraft.world.World;
 public class TileEntityRitualCircle extends ModTileEntityBase {
 	public void onActivated(EntityPlayer player, World worldObj){
 		List<EntityItem> eItems = worldObj.getEntitiesWithinAABB(EntityItem.class,  this.getRenderBoundingBox().expand(1, 1, 1));
-		List<ItemStack> itemStacks = null;
+		List<ItemStack> itemStacks = new ArrayList<>();
 		boolean noItems = false;
 		
 		if(eItems.size()>0){
@@ -60,19 +57,16 @@ public class TileEntityRitualCircle extends ModTileEntityBase {
 				BlockPos checkPos = new BlockPos(xCoord + x, yCoord, zCoord + z);
 				Block block = worldObj.getBlockState(checkPos).getBlock();
 				if(block == Blocks.AIR){
-					blockStacks.add(null);
+					blockStacks.add(ItemStack.EMPTY);
 				}else{
 					ItemStack blockItemStack = new ItemStack(block, 1, block.getMetaFromState(worldObj.getBlockState(checkPos)));
 					blockStacks.add(blockItemStack);
 				}
-				/*if(block.isFullBlock(worldObj.getBlockState(checkPos))){
-					blockStacks.add(null);
-				}*/
 				//Arcanacraft.logger.info(x + "/" + z + " : " + block.getLocalizedName());
 			}
 		}
 
-		RecipeRitualCircle recipe = RecipeRitualCircle.getRecipe((ArrayList<ItemStack>) itemStacks, blockStacks);
+		RecipeRitualCircle recipe = RecipeRitualCircle.getRecipe(itemStacks, blockStacks);
 		if(recipe != null){
 			for(EntityItem ei : eItems){
 				ei.setDead();

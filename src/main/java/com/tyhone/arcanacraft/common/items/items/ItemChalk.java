@@ -26,7 +26,6 @@ public class ItemChalk extends ModItemBase{
 	@Override
 	public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
 	{
-		Arcanacraft.log("Item used on block");
         if(!worldIn.isRemote){
         	boolean flag = worldIn.getBlockState(pos).getBlock().isReplaceable(worldIn, pos);
 		    BlockPos blockpos = flag ? pos : pos.offset(facing);

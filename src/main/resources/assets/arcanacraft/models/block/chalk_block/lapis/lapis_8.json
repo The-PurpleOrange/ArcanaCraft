@@ -1,0 +1,16 @@
+{
+    "ambientocclusion": false,
+    "textures": {
+        "all": "arcanacraft:blocks/chalk_block/lapis/lapis_8",
+        "particle": "arcanacraft:blocks/chalk_block/lapis/lapis_8"
+    },
+    "elements": [
+        {   "from": [ 2, 0.25, 2 ],
+            "to": [ 14, 0.25, 14 ],
+            "shade": false,
+            "faces": {
+                "up": { "uv": [ 0, 0, 16, 16 ], "texture": "all"}
+            }
+        }
+    ]
+}

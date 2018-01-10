@@ -6,6 +6,7 @@ import com.tyhone.arcanacraft.api.ritual.IRitualCircle;
 import com.tyhone.arcanacraft.common.blocks.base.ModBlockTileEntityBase;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityAlchemicArray;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -90,6 +91,22 @@ public class BlockAlchemicArray extends ModBlockTileEntityBase implements IRitua
 	public Item getItemDropped(IBlockState state, Random rand, int fortune)
     {
         return null;
+    }
+    
+    @Override
+	public boolean canPlaceBlockAt(World worldIn, BlockPos pos){
+    	
+    	
+        return worldIn.isSideSolid(pos.add(0, -1, 0), EnumFacing.UP);
+    }
+    
+    @Override
+	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos){
+        if (!worldIn.isRemote){
+            if(!this.canPlaceBlockAt(worldIn, pos)){
+                worldIn.setBlockToAir(pos);
+            }
+        }
     }
 	
 }

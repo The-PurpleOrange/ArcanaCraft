@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.tyhone.arcanacraft.Arcanacraft;
-import com.tyhone.arcanacraft.api.registries.RitualRegistry;
 import com.tyhone.arcanacraft.api.ritual.RitualBase;
 import com.tyhone.arcanacraft.api.util.ItemStackUtil;
 
@@ -86,10 +85,12 @@ public class RecipeRitualCircle {
 	
 	public boolean matchesBlocks(List<ItemStack> blocks) {
 		List<ItemStack> inputsRequired = new ArrayList(blockPosList);
-		boolean flag = true;
+		boolean flag = true; 
 		for(int i = 0; i < inputsRequired.size(); i++){
-			if(inputsRequired.get(i) != null && areBlocksEqual(blocks.get(i), inputsRequired.get(i))==false){
-				flag = false;
+			if(inputsRequired.get(i) != null){
+				if(!areBlocksEqual(blocks.get(i), inputsRequired.get(i))){
+					flag = false;
+				}
 			}
 		}
 		return flag;
@@ -138,11 +139,12 @@ public class RecipeRitualCircle {
 	}
 	
 	
-	public static RecipeRitualCircle getRecipe(ArrayList<ItemStack> itemStacks, List<ItemStack> blockStacks){
+	public static RecipeRitualCircle getRecipe(List<ItemStack> itemStacks, List<ItemStack> blockStacks){
 		
 		for(RecipeRitualCircle recipe : ArcanacraftRitualCraftingManager.getRitualCircleRecipes()){
 			if(recipe.matchesBlocks(blockStacks)){
-				if(itemStacks!=null && recipe.doInputsMatch(itemStacks)){
+				//Arcanacraft.log("Blocks match");
+				if(itemStacks!=null && recipe.doInputsMatch((ArrayList<ItemStack>)itemStacks)){
 					return recipe;
 				}
 			}

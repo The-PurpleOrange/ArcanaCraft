@@ -2,12 +2,12 @@ package com.tyhone.arcanacraft.common.blocks.blocks;
 
 import java.util.Random;
 
-import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.common.blocks.base.IEnumMeta;
 import com.tyhone.arcanacraft.common.blocks.base.ModBlockEnum;
 import com.tyhone.arcanacraft.common.init.ModItems;
-import com.tyhone.arcanacraft.common.util.PosUtil;
+import com.tyhone.arcanacraft.common.util.ItemMetaUtil;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
@@ -17,6 +17,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -24,7 +25,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import scala.tools.cmd.Meta;
 
 public class BlockChalk extends ModBlockEnum {
 
@@ -132,8 +132,34 @@ public class BlockChalk extends ModBlockEnum {
     
     @Override
 	public boolean canPlaceBlockAt(World worldIn, BlockPos pos){
-        return (worldIn.getBlockState(pos).getBlock().isReplaceable(worldIn, pos) && worldIn.isSideSolid(pos.add(0, -1, 0), EnumFacing.UP));
-    	//return true;
+        return worldIn.isSideSolid(pos.add(0, -1, 0), EnumFacing.UP);
+    }
+    
+    @Override
+	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos){
+        if (!worldIn.isRemote){
+            if(!this.canPlaceBlockAt(worldIn, pos)){
+                worldIn.setBlockToAir(pos);
+            }
+        }
+    }
+
+    @Override
+	@SideOnly(Side.CLIENT)
+    public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand)
+    {
+        int meta = state.getBlock().getMetaFromState(state);
+
+        if (meta == ItemMetaUtil.chalk("magicite") && world.getTotalWorldTime() % 5 == 0)
+        {
+            double d0 = (double)pos.getX() + 0.5D + ((double)rand.nextFloat() - 0.5D) * 0.5D;
+            double d1 = (double)((float)pos.getY() + 0.0625F);
+            double d2 = (double)pos.getZ() + 0.5D + ((double)rand.nextFloat() - 0.5D) * 0.5D;
+            double f1 = 0.1;
+            double f2 = 0.2;
+            double f3 = 0.3;
+            world.spawnParticle(EnumParticleTypes.SPELL_WITCH, d0, d1, d2, f1, d2, f3);
+        }
     }
     
 	@Override
