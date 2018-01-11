@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "arcanacraft:items/item/blood_drop"
+    "layer0": "arcanacraft:items/soul/eldritch"
   }
 }

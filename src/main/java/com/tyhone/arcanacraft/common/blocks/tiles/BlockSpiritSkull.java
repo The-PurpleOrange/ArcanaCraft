@@ -6,6 +6,7 @@ import com.tyhone.arcanacraft.common.blocks.base.ModBlockTileEntityBase;
 import com.tyhone.arcanacraft.common.init.ModItems;
 import com.tyhone.arcanacraft.common.tileentity.TileEntitySpiritSkull;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Items;
@@ -15,6 +16,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTUtil;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntitySkull;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -89,6 +91,21 @@ public class BlockSpiritSkull extends ModBlockTileEntityBase{
 	public void getDrops(net.minecraft.util.NonNullList<ItemStack> drops, IBlockAccess worldIn, BlockPos pos, IBlockState state, int fortune)
     {
         drops.add(new ItemStack(ModItems.SPIRIT_SKULL, 1));
+    }
+    
+    @Override
+	public boolean canPlaceBlockAt(World worldIn, BlockPos pos){
+        return (worldIn.getBlockState(pos).getBlock().isReplaceable(worldIn, pos) && worldIn.isSideSolid(pos.add(0, -1, 0), EnumFacing.UP));
+    }
+    
+    @Override
+	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos){
+        if (!worldIn.isRemote){
+            if(!worldIn.isSideSolid(pos.add(0, -1, 0), EnumFacing.UP)){
+                this.dropBlockAsItem(worldIn, pos, state, 0);
+                worldIn.setBlockToAir(pos);
+            }
+        }
     }
 
 }

@@ -54,22 +54,22 @@ public class SoulAltarRecipeCategory implements IRecipeCategory<SoulAltarRecipeW
 		if(inputs.size()>=1){
 			recipeLayout.getItemStacks().set(2, inputs.get(0));
 		}
-        
+
 		recipeLayout.getItemStacks().init(3, true, 38, 51);
 		if(inputs.size()>=2){
 			recipeLayout.getItemStacks().set(3, inputs.get(1));
 		}
-        
+
 		recipeLayout.getItemStacks().init(4, true, 3, 26);
 		if(inputs.size()>=3){
 			recipeLayout.getItemStacks().set(4, inputs.get(2));
 		}
-        
+
 		recipeLayout.getItemStacks().init(5, true, 45, 26);
 		if(inputs.size()>=4){
 			recipeLayout.getItemStacks().set(5, inputs.get(3));
 		}
-        
+
 		recipeLayout.getItemStacks().init(6, true, 10, 51);
 		if(inputs.size()==5){
 			recipeLayout.getItemStacks().set(6, inputs.get(4));

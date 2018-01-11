@@ -95,15 +95,13 @@ public class BlockAlchemicArray extends ModBlockTileEntityBase implements IRitua
     
     @Override
 	public boolean canPlaceBlockAt(World worldIn, BlockPos pos){
-    	
-    	
-        return worldIn.isSideSolid(pos.add(0, -1, 0), EnumFacing.UP);
+        return (worldIn.getBlockState(pos).getBlock().isReplaceable(worldIn, pos) && worldIn.isSideSolid(pos.add(0, -1, 0), EnumFacing.UP));
     }
     
     @Override
 	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos){
         if (!worldIn.isRemote){
-            if(!this.canPlaceBlockAt(worldIn, pos)){
+            if(!worldIn.isSideSolid(pos.add(0, -1, 0), EnumFacing.UP)){
                 worldIn.setBlockToAir(pos);
             }
         }

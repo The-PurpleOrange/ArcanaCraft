@@ -3,8 +3,6 @@ package com.tyhone.arcanacraft.api.recipe;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.logging.log4j.Level;
-
 import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.api.registries.TinktureStack;
 
@@ -21,6 +19,8 @@ public class ArcanacraftCraftingManager {
 	
 	//DECONSTRUCTOR RECIPES
 	public static RecipeDeconstructionTable registerLensDeconstructionRecipe(ItemStack lens, ItemStack itemOutput, ItemStack itemInputs, double deconstructTime) {
+		lens.setCount(1);
+		itemInputs.setCount(1);
 		RecipeDeconstructionTable recipe = new RecipeDeconstructionTable(lens, itemOutput, itemInputs, (int) Math.round(deconstructTime));
 		decontructionTableRecipes.add(recipe);
 		return recipe;
@@ -43,6 +43,7 @@ public class ArcanacraftCraftingManager {
 	
 	//HAMMER RECIPES
 	public static RecipeHammer registerHammerRecipe(ItemStack itemOutput, ItemStack itemInputs) {
+		itemInputs.setCount(1);
 		RecipeHammer recipe = new RecipeHammer(itemOutput, itemInputs);
 		hanmmerRecipes.add(recipe);
 		return recipe;
@@ -68,6 +69,9 @@ public class ArcanacraftCraftingManager {
 			Arcanacraft.logger.error("Invalid transmutation recipe added for: " + output);
 			return null;
 		}
+		for(ItemStack item : inputs){
+			item.setCount(1);
+		}
 		RecipeTransmutationAltar recipe = new RecipeTransmutationAltar(output, inputs);
 		transmutationAltarRecipes.add(recipe);
 		return recipe;
@@ -79,6 +83,10 @@ public class ArcanacraftCraftingManager {
 
 	//INFUSION RECIPES
 	public static RecipeInfusionAltar registerInfusionRecipe(ItemStack output, ItemStack itemInfusionItem, ItemStack[] inputs, TinktureStack[] tInputs) {
+		itemInfusionItem.setCount(1);
+		for(ItemStack item : inputs){
+			item.setCount(1);
+		}
 		RecipeInfusionAltar recipe = new RecipeInfusionAltar(output, itemInfusionItem, inputs, tInputs);
 		infusionAltarRecipes.add(recipe);
 		return recipe;
@@ -90,6 +98,10 @@ public class ArcanacraftCraftingManager {
 	
 	//SOUL RECIPES
 	public static RecipeSoulAltar registerSoulInfusionRecipe(ItemStack output, ItemStack itemInfusionItem, ItemStack ... inputs) {
+		itemInfusionItem.setCount(1);
+		for(ItemStack item : inputs){
+			item.setCount(1);
+		}
 		RecipeSoulAltar recipe = new RecipeSoulAltar(output, itemInfusionItem, inputs);
 		soulAltarRecipes.add(recipe);
 		return recipe;

@@ -14,4 +14,5 @@ public class ItemMetaUtil {
 	public static int dust(String name){ return Names.MetaItems.DUST.indexOf(name); }
 	public static int crystal(String name){ return Names.MetaItems.CRYSTAL.indexOf(name); }
 	public static int item(String name){ return Names.MetaItems.ITEM.indexOf(name); }
+	public static int star(String name) { return Names.MetaItems.STAR.indexOf(name); }
 }

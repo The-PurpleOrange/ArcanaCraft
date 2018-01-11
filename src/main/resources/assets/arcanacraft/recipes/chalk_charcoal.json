@@ -1,0 +1,24 @@
+{
+  "result": {
+    "item": "arcanacraft:chalk",
+      "data": 0
+  },
+  "pattern": [
+    "  d",
+    " c ",
+    "dw "
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "c": {
+      "item": "minecraft:clay_ball"
+    },
+    "w": {
+      "item": "minecraft:potion"
+    },
+    "d": {
+      "item": "arcanacraft:dust",
+      "data": 2
+    }
+  }
+}

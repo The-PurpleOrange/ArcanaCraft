@@ -1,4 +1,4 @@
-package com.tyhone.arcanacraft.common.jei.soul_altar;
+ package com.tyhone.arcanacraft.common.jei.soul_altar;
 
 import java.util.ArrayList;
 import java.util.List;

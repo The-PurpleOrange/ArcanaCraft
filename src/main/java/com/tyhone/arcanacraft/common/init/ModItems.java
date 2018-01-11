@@ -21,6 +21,7 @@ import com.tyhone.arcanacraft.common.items.items.ItemMetamorphicChalk;
 import com.tyhone.arcanacraft.common.items.items.ItemRedCoal;
 import com.tyhone.arcanacraft.common.items.items.ItemSoul;
 import com.tyhone.arcanacraft.common.items.items.ItemSpiritSkull;
+import com.tyhone.arcanacraft.common.items.items.ItemStar;
 import com.tyhone.arcanacraft.common.items.items.ItemTinkture;
 
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -39,6 +40,7 @@ public class ModItems {
 	public static final ModItemBase ESSENCE = new ItemEssence();
 	public static final ModItemBase INGOT = new ItemIngot();
 	public static final ModItemBase ITEM = new ItemItem();
+	public static final ModItemBase STAR = new ItemStar();
 	public static final ModItemBase AYRE = new ItemAyre();
 	public static final ModItemBase CHALK = new ItemChalk();
 	public static final ModItemBase CHALK_METAMORPHIC = new ItemMetamorphicChalk();

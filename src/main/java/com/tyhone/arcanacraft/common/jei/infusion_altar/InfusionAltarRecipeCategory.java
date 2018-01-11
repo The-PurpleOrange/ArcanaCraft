@@ -62,12 +62,12 @@ public class InfusionAltarRecipeCategory implements IRecipeCategory<InfusionAlta
 			recipeLayout.getItemStacks().set(3, inputs.get(1));
 		}
         
-		recipeLayout.getItemStacks().init(4, true, 6, 26);
+		recipeLayout.getItemStacks().init(4, true, 6, 48);
 		if(inputs.size()>=3){
 			recipeLayout.getItemStacks().set(4, inputs.get(2));
 		}
         
-		recipeLayout.getItemStacks().init(5, true, 6, 48);
+		recipeLayout.getItemStacks().init(5, true, 6, 26);
 		if(inputs.size()>=4){
 			recipeLayout.getItemStacks().set(5, inputs.get(3));
 		}
@@ -82,12 +82,12 @@ public class InfusionAltarRecipeCategory implements IRecipeCategory<InfusionAlta
 			recipeLayout.getItemStacks().set(7, inputs.get(5));
 		}
         
-		recipeLayout.getItemStacks().init(8, true, 26, 68);
+		recipeLayout.getItemStacks().init(8, true, 48, 68);
 		if(inputs.size()>=7){
 			recipeLayout.getItemStacks().set(8, inputs.get(6));
 		}
         
-		recipeLayout.getItemStacks().init(9, true, 48, 68);
+		recipeLayout.getItemStacks().init(9, true, 26, 68);
 		if(inputs.size()==8){
 			recipeLayout.getItemStacks().set(9, inputs.get(7));
 		}
