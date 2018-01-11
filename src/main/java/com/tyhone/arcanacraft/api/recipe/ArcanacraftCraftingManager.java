@@ -26,7 +26,7 @@ public class ArcanacraftCraftingManager {
 		return recipe;
 	}
 	public static RecipeDeconstructionTable registerLensDeconstructionRecipe(ItemStack lens, ItemStack itemOutput, ItemStack itemInputs) {
-		RecipeDeconstructionTable recipe = registerLensDeconstructionRecipe(lens, itemOutput, itemInputs, 60);
+		RecipeDeconstructionTable recipe = registerLensDeconstructionRecipe(lens, itemOutput, itemInputs, 120);
 		return recipe;
 	}
 	public static RecipeDeconstructionTable registerDeconstructionRecipe(ItemStack itemOutput, ItemStack itemInputs, double deconstructTime) {
@@ -34,7 +34,7 @@ public class ArcanacraftCraftingManager {
 		return recipe;
 	}
 	public static RecipeDeconstructionTable registerDeconstructionRecipe(ItemStack itemOutput, ItemStack itemInputs) {
-		RecipeDeconstructionTable recipe = registerLensDeconstructionRecipe(ItemStack.EMPTY, itemOutput, itemInputs, 60);
+		RecipeDeconstructionTable recipe = registerLensDeconstructionRecipe(ItemStack.EMPTY, itemOutput, itemInputs, 120);
 		return recipe;
 	}
 	public static List<RecipeDeconstructionTable> getDeconstructionRecipes(){

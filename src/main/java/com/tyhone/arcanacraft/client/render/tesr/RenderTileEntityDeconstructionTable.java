@@ -52,11 +52,8 @@ public class RenderTileEntityDeconstructionTable extends TileEntitySpecialRender
 		float ticks = (te.getWorld().getTotalWorldTime() + partialTicks);
         renderCircle(fraction, x, y, z, ticks);
         
-		if(!itemStack.isEmpty() && itemStack.getCount()>0){ //Check if there is an item in slot 0
+		if(!itemStack.isEmpty()){ //Check if there is an item in slot 0
 			
-			float sp = (((float)progress + (float)10)*1.1F);
-			
-			RenderUtil.renderItem(te, itemStack, x, y+1.35F, z, partialTicks, true, te.clientGetRotation());
 			
 			
             /*GlStateManager.pushMatrix();
