@@ -17,7 +17,7 @@ public class ModTileEntitySingleInventoryBase extends ModTileEntityBase implemen
 	public void update(){
 		if(world.isRemote){
 			this.rotation = (this.rotation % 360);
-			//this.rotation++;
+			this.rotation++;
 			//Arcanacraft.log("Rotation BASE: " + GetRotation());
 		}
 	}

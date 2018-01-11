@@ -1,5 +1,7 @@
 package com.tyhone.arcanacraft.common.blocks.tiles;
 
+import java.util.Random;
+
 import com.tyhone.arcanacraft.api.util.ItemStackUtil;
 import com.tyhone.arcanacraft.common.blocks.base.ModBlockTileEntityBase;
 import com.tyhone.arcanacraft.common.init.ModBlocks;
@@ -8,12 +10,17 @@ import com.tyhone.arcanacraft.common.tileentity.TileEntityDeconstructionTable;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockDeconstructionTable extends ModBlockTileEntityBase{
 
@@ -77,5 +84,34 @@ public class BlockDeconstructionTable extends ModBlockTileEntityBase{
         
         return true;
     }
+	 
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand){
+		TileEntityDeconstructionTable te = (TileEntityDeconstructionTable) world.getTileEntity(pos);
+		
+		for(int i = 0; i < 8; i++){
+			if(rand.nextFloat() < te.getPercentage()){
+	            spawnEffectParticle(world, pos, rand);
+			}
+		}
+		if(te.getPercentage() > 0.8F){
+			for(int i = 0; i < 8; i++){
+	            spawnEffectParticle(world, pos, rand);
+			}
+		}
+	}
+
+	@SideOnly(Side.CLIENT)
+	private void spawnEffectParticle(World world, BlockPos pos, Random rand){
+        double px = (double)pos.getX() + 0.5D + ((double)rand.nextFloat() - 0.5D) * 0.5D;
+        double py = (double)((float)pos.getY() + 0.0625F - ((rand.nextFloat() - 0.5D)/3));
+        double pz = (double)pos.getZ() + 0.5D + ((double)rand.nextFloat() - 0.5D) * 0.5D;
+
+        double mx = ((rand.nextFloat()-0.5D)/50D);
+        double mz = ((rand.nextFloat()-0.5D)/50D);
+        
+        world.spawnParticle(EnumParticleTypes.REDSTONE, px, py+1.25F, pz, mx, 0.01, mz);
+	}
 	
 }

@@ -1,11 +1,14 @@
 package com.tyhone.arcanacraft.client.render.tesr;
 
+import java.util.Random;
+
 import org.lwjgl.opengl.GL11;
 
 import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.client.util.RenderUtil;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityDeconstructionTable;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderItem;
@@ -15,6 +18,7 @@ import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 
 public class RenderTileEntityDeconstructionTable extends TileEntitySpecialRenderer{
@@ -47,8 +51,8 @@ public class RenderTileEntityDeconstructionTable extends TileEntitySpecialRender
 			}
 			
 			renderLines(te, x, y, z);
-			
 		}
+		
 		float ticks = (te.getWorld().getTotalWorldTime() + partialTicks);
         renderCircle(fraction, x, y, z, ticks);
         
