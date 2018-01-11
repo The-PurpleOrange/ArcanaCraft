@@ -2,26 +2,25 @@ package com.tyhone.arcanacraft.common.tileentity;
 
 import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.api.recipe.RecipeDeconstructionTable;
-import com.tyhone.arcanacraft.common.tileentity.base.ModTileEntityBase;
+import com.tyhone.arcanacraft.common.tileentity.base.ModTileEntitySingleInventoryBase;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ITickable;
 
-public class TileEntityDeconstructionTable extends ModTileEntityBase implements ITickable{
+public class TileEntityDeconstructionTable extends ModTileEntitySingleInventoryBase implements ITickable{
 
 
-	private ItemStack stack = ItemStack.EMPTY;
+	//private ItemStack stack = ItemStack.EMPTY;
 	private int workTime = 0;
 	private int maxWorkTime = 0;
 	private RecipeDeconstructionTable recipe;
-	int rotation = 0;
 	
 	@Override
 	public void update(){
 		if(!getWorld().isRemote){
 			boolean isDirty = false;
-			if(!this.stack.isEmpty()){
+			if(!this.getStack().isEmpty()){
 				getRecipe();
 				if(this.recipe != null){
 					this.maxWorkTime = this.recipe.getDeconstrutionTime();
@@ -30,7 +29,7 @@ public class TileEntityDeconstructionTable extends ModTileEntityBase implements 
 						isDirty=true;
 					}
 					else{
-						setStack(this.recipe.getOutput().copy());
+						this.setStack(this.recipe.getOutput().copy());
 						this.workTime = 0;
 						this.maxWorkTime = 0;
 						this.recipe = null;
@@ -47,38 +46,24 @@ public class TileEntityDeconstructionTable extends ModTileEntityBase implements 
 				markForClean();
 			}
 		}
-		else{
-			this.rotation = (this.rotation % 360);
+		else if (world.isRemote){
 			if(this.workTime > 0){
-				
-				//Get Fastest
-				double fastest = 0;
-				if(this.maxWorkTime < 60){
-					fastest = Math.floor(((double) this.maxWorkTime / 4D) * 3D);
+				double speed = 0;
+				if(this.workTime < 60){
+					speed = (double) workTime; //Math.floor(((double) this.workTime / 4D) * 3D);
 				}
 				else{
-					fastest = 45D;
+					speed = 60D;
 				}
-				
-				//Get rotation
-				if(this.workTime < fastest){
-					this.rotation += Math.floor((double)this.workTime / 2D);
-				}
-				else{
-					this.rotation += Math.floor(fastest / 2D);
-				}
-				
-				
+				SetRotation( GetRotation() + ((int) Math.floor(speed / 2D)));
 			}
-			else{
-				this.rotation++;
-			}
+			//Arcanacraft.log("Rotation: " + GetRotation());
 		}
 	}
 	
 	private void getRecipe() {
-		if(this.recipe != RecipeDeconstructionTable.getRecipe(this.stack, getLens())){
-			this.recipe = RecipeDeconstructionTable.getRecipe(this.stack, getLens());
+		if(this.recipe != RecipeDeconstructionTable.getRecipe(this.getStack(), getLens())){
+			this.recipe = RecipeDeconstructionTable.getRecipe(this.getStack(), getLens());
 			markForClean();
 		}
 	}
@@ -91,16 +76,12 @@ public class TileEntityDeconstructionTable extends ModTileEntityBase implements 
 		return ItemStack.EMPTY;
 	}
 	
-	public ItemStack getStack() {
-		return this.stack;
-	}
-	
+	@Override
 	public void setStack(ItemStack stack) {
-		this.stack = stack;
 		this.workTime = 0;
 		this.maxWorkTime = 0;
 		this.recipe = null;
-		markForClean();
+		super.setStack(stack);
 	}
 	
 	public int getWorkTime(){
@@ -115,18 +96,10 @@ public class TileEntityDeconstructionTable extends ModTileEntityBase implements 
 		return this.recipe != null ? true : false;
 	}
 	
-	public int clientGetRotation(){
-		return this.rotation;
-	}
-	
     @Override
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
-        if (compound.hasKey("item")) {
-        	this.stack = new ItemStack(compound.getCompoundTag("item"));
-        } else {
-        	this.stack = ItemStack.EMPTY;
-        }
+    	this.setStack(new ItemStack(compound.getCompoundTag("item")));
 
         this.workTime = compound.getInteger("workTime");
         this.maxWorkTime = compound.getInteger("maxWorkTime");
@@ -135,11 +108,9 @@ public class TileEntityDeconstructionTable extends ModTileEntityBase implements 
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
-        if (!this.stack.isEmpty()) {
-            NBTTagCompound tagCompound = new NBTTagCompound();
-            this.stack.writeToNBT(tagCompound);
-            compound.setTag("item", tagCompound);
-        }
+        NBTTagCompound tagCompound = new NBTTagCompound();
+        this.getStack().writeToNBT(tagCompound);
+        compound.setTag("item", tagCompound);
         compound.setInteger("workTime", workTime);
         compound.setInteger("maxWorkTime", maxWorkTime);
         return compound;
