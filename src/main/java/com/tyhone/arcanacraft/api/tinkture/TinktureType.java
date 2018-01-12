@@ -1,4 +1,4 @@
-package com.tyhone.arcanacraft.api.registries;
+package com.tyhone.arcanacraft.api.tinkture;
 
 import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.common.init.ModItems;

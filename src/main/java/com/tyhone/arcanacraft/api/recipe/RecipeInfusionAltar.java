@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.logging.log4j.Level;
 
 import com.tyhone.arcanacraft.Arcanacraft;
-import com.tyhone.arcanacraft.api.registries.TinktureStack;
+import com.tyhone.arcanacraft.api.tinkture.TinktureStack;
 import com.tyhone.arcanacraft.api.util.ItemStackUtil;
 import com.tyhone.arcanacraft.api.util.TinktureStackUtil;
 

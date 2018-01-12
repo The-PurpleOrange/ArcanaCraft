@@ -3,8 +3,8 @@ package com.tyhone.arcanacraft.common.tileentity;
 import java.util.ArrayList;
 
 import com.tyhone.arcanacraft.api.recipe.RecipeInfusionAltar;
-import com.tyhone.arcanacraft.api.registries.TinktureStack;
-import com.tyhone.arcanacraft.api.registries.TinktureType;
+import com.tyhone.arcanacraft.api.tinkture.TinktureStack;
+import com.tyhone.arcanacraft.api.tinkture.TinktureType;
 import com.tyhone.arcanacraft.common.init.ModBlocks;
 import com.tyhone.arcanacraft.common.tileentity.base.ModTileEntityBase;
 import com.tyhone.arcanacraft.common.tileentity.base.ModTileEntitySingleInventoryBase;

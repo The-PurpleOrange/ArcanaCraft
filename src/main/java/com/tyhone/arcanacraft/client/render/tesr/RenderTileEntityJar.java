@@ -3,7 +3,7 @@ package com.tyhone.arcanacraft.client.render.tesr;
 import org.lwjgl.opengl.GL11;
 
 import com.tyhone.arcanacraft.Arcanacraft;
-import com.tyhone.arcanacraft.api.registries.TinktureStack;
+import com.tyhone.arcanacraft.api.tinkture.TinktureStack;
 import com.tyhone.arcanacraft.common.init.ModTinktureTypes;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityJar;
 

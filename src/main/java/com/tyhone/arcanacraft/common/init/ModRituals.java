@@ -5,8 +5,8 @@ import java.util.Collection;
 import java.util.List;
 
 import com.tyhone.arcanacraft.Arcanacraft;
-import com.tyhone.arcanacraft.api.registries.RitualRegistry;
 import com.tyhone.arcanacraft.api.ritual.RitualBase;
+import com.tyhone.arcanacraft.api.tinkture.RitualRegistry;
 import com.tyhone.arcanacraft.common.rituals.RitualClearWeather;
 import com.tyhone.arcanacraft.common.rituals.RitualSummonLightning;
 import com.tyhone.arcanacraft.common.rituals.RitualSummonRain;

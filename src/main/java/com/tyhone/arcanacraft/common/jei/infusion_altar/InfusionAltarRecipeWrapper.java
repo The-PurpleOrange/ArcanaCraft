@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.tyhone.arcanacraft.api.recipe.RecipeInfusionAltar;
-import com.tyhone.arcanacraft.api.registries.TinktureStack;
+import com.tyhone.arcanacraft.api.tinkture.TinktureStack;
 
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeWrapper;

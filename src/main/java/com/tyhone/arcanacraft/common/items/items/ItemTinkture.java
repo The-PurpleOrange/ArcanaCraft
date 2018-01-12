@@ -5,19 +5,28 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import org.omg.CORBA.LongLongSeqHelper;
+
 import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.api.item.IEssenceVessel;
-import com.tyhone.arcanacraft.api.registries.TinktureManager;
-import com.tyhone.arcanacraft.api.registries.TinktureType;
+import com.tyhone.arcanacraft.api.ritual.RitualBase;
+import com.tyhone.arcanacraft.api.tinkture.RitualRegistry;
+import com.tyhone.arcanacraft.api.tinkture.TinktureManager;
+import com.tyhone.arcanacraft.api.tinkture.TinktureType;
 import com.tyhone.arcanacraft.common.items.base.ModItemBase;
+import com.tyhone.arcanacraft.common.util.PlayerUtils;
 import com.tyhone.arcanacraft.common.util.ResourceLocationHelper;
 
 import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
@@ -25,89 +34,113 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemTinkture extends ModItemBase implements IEssenceVessel{
 
-	private final String NBT_TINKTURE = "tinkture";
-	private final String NBT_TINKTURE_DISPLAY_NAME = "tinkture_display_name";
-	private final static ArrayList<String> VARIANTS = TinktureManager.getTinktureNames();
+	private final static String NBT_TINKTURE = "tinkture";
+	private final static String NBT_TINKTURE_DISPLAY_NAME = "tinkture_display_name";
+	private final static List<TinktureType> VARIANTS = TinktureManager.getTinktureTypes();
 	
 	public ItemTinkture() {
-		super("tinkture", VARIANTS);
+		super("tinkture");
 	}
+	
+	
+	
+	
+	@Override
+	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand)
+	{
+		if(player.isSneaking()){
+			String msg = null;
+			ItemStack stack = player.getHeldItem(hand);
+	
+			NBTTagCompound tag = new NBTTagCompound();
+			if(stack.hasTagCompound() && stack.getTagCompound().hasKey(NBT_TINKTURE)){
+				tag = stack.getTagCompound();
+				for(int i = 0; i < VARIANTS.size(); i++){
+					if((tag.getString(NBT_TINKTURE)).equals(VARIANTS.get(i).getUnlocalizedName())){
+						if(i == VARIANTS.size()-1){
+							setNBT(tag, VARIANTS.get(0));
+		            		msg = (VARIANTS.get(0).getUnlocalizedName());
+						}else{
+							setNBT(tag, VARIANTS.get(i+1));
+		            		msg = (VARIANTS.get(i+1).getUnlocalizedName());
+						}
+						break;
+					}
+				}
+			}else{
+				setNBT(tag, VARIANTS.get(0));
+        		msg = (VARIANTS.get(0).getUnlocalizedName());
+			}
+			PlayerUtils.sendPlayerMessage(player, world, msg);
+	
+			stack.setTagCompound(tag);
+	        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, player.getHeldItem(hand));
+		}
+
+        return new ActionResult<ItemStack>(EnumActionResult.PASS, player.getHeldItem(hand));
+    }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	@Override
 	public int getFluidAmount(ItemStack stack) {
 		return 10;
 	}
-
+	
 	@Override
 	public TinktureType getFluidType(ItemStack stack) {
-		return TinktureManager.getTinktureTypeFromMeta(stack.getMetadata()+1);
+		
+		if(stack.hasTagCompound() && stack.getTagCompound().hasKey(NBT_TINKTURE)){
+			String tinktureName = stack.getTagCompound().getString(NBT_TINKTURE);
+			if(tinktureName!=null){
+				TinktureType tinkture = TinktureManager.getTinktureTypeFromName(tinktureName);
+				
+				return tinkture;
+			}
+		}
+		return null;
 	}
 	
 	public int getColour(ItemStack stack){
 		return getFluidType(stack).getColourHex();
 	}
 	
-	public static TinktureType getStaticFluidType(ItemStack stack) {
-		return TinktureManager.getTinktureTypeFromMeta(stack.getMetadata()+1);
-	}
-	
-	public static int getStaticColour(ItemStack stack){
-		return getStaticFluidType(stack).getColourHex();
-	}
-	
-	/*@Override
-	@SideOnly(Side.CLIENT)
-	public void initModelsAndVariants(){
-		
-		ModelLoader.setCustomMeshDefinition(this, new ItemMeshDefinition() {
-			@Override
-			public ModelResourceLocation getModelLocation(ItemStack stack) {
-				return new ModelResourceLocation(getRegistryName().toString());
-			}
-		});
-		
-		if(getCustomMeshDefinition() != null){
-			ModelLoader.setCustomMeshDefinition(this, getCustomMeshDefinition());
-		}
-		
-		else{
-            ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName().toString()));
-		}
-	}*/
-	
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void initModelsAndVariants(){
-		
-		if(getCustomMeshDefinition() != null){
-			for(int i = 0; i < VARIANTS.size(); i++){
-				ModelBakery.registerItemVariants(this, ResourceLocationHelper.getModelResourceLocation("tinkture"));
-			}
-			
-			ModelLoader.setCustomMeshDefinition(this, getCustomMeshDefinition());
-		}
-		
-		else{
-			if(getHasSubtypes() && VARIANTS.size()>0){
-				List<ModelResourceLocation> modelResources = new ArrayList<>();
+	public static int getColourFromNBT(ItemStack stack){
+		if(stack.hasTagCompound() && stack.getTagCompound().hasKey(NBT_TINKTURE)){
+			String tinktureName = stack.getTagCompound().getString(NBT_TINKTURE);
+			if(tinktureName!=null){
+				int colourHex = TinktureManager.getTinktureColourFromName(tinktureName);
 				
-				for(int i = 0; i < VARIANTS.size(); i++){
-                    modelResources.add(ResourceLocationHelper.getModelResourceLocation("tinkture"));
-				}
-				
-				ModelBakery.registerItemVariants(this, modelResources.toArray(new ModelResourceLocation[0]));
-                ModelLoader.setCustomMeshDefinition(this, itemStack -> modelResources.get(itemStack.getMetadata()));
-            }
-            else {
-                ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName().toString()));
-            }
+				return colourHex;
+			}
 		}
+		return 0x000000;
 	}
 	
 	private TinktureType getNBT(ItemStack stack){
 		if(stack.hasTagCompound() && stack.getTagCompound().hasKey(NBT_TINKTURE)){
 			String tinktureName = stack.getTagCompound().getString(NBT_TINKTURE);
 			if(tinktureName!=null){
+				Arcanacraft.log("getNBT Type: " + TinktureType.getType(NBT_TINKTURE));
 				return TinktureType.getType(NBT_TINKTURE);
 			}
 		}

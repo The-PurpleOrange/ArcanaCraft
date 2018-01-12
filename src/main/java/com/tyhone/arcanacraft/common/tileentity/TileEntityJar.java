@@ -1,8 +1,8 @@
 package com.tyhone.arcanacraft.common.tileentity;
 
 import com.tyhone.arcanacraft.Arcanacraft;
-import com.tyhone.arcanacraft.api.registries.TinktureStack;
-import com.tyhone.arcanacraft.api.registries.TinktureType;
+import com.tyhone.arcanacraft.api.tinkture.TinktureStack;
+import com.tyhone.arcanacraft.api.tinkture.TinktureType;
 import com.tyhone.arcanacraft.api.util.TinktureStackUtil;
 import com.tyhone.arcanacraft.common.tileentity.base.ModTileEntityBase;
 

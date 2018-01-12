@@ -3,7 +3,7 @@ package com.tyhone.arcanacraft.common.jei.infusion_altar;
 import java.util.List;
 
 import com.tyhone.arcanacraft.Arcanacraft;
-import com.tyhone.arcanacraft.api.registries.TinktureStack;
+import com.tyhone.arcanacraft.api.tinkture.TinktureStack;
 import com.tyhone.arcanacraft.common.util.GuiUtils;
 
 import mezz.jei.api.IGuiHelper;

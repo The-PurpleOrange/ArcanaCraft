@@ -3,9 +3,9 @@ package com.tyhone.arcanacraft.api.util;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.tyhone.arcanacraft.api.registries.TinktureManager;
-import com.tyhone.arcanacraft.api.registries.TinktureStack;
-import com.tyhone.arcanacraft.api.registries.TinktureType;
+import com.tyhone.arcanacraft.api.tinkture.TinktureManager;
+import com.tyhone.arcanacraft.api.tinkture.TinktureStack;
+import com.tyhone.arcanacraft.api.tinkture.TinktureType;
 import com.tyhone.arcanacraft.common.init.ModTinktureTypes;
 
 import net.minecraft.item.ItemStack;

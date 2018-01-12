@@ -5,8 +5,8 @@ import java.util.Collection;
 import java.util.List;
 
 import com.tyhone.arcanacraft.Arcanacraft;
-import com.tyhone.arcanacraft.api.registries.TinktureManager;
-import com.tyhone.arcanacraft.api.registries.TinktureType;
+import com.tyhone.arcanacraft.api.tinkture.TinktureManager;
+import com.tyhone.arcanacraft.api.tinkture.TinktureType;
 
 import net.minecraftforge.fml.common.registry.GameRegistry;
 

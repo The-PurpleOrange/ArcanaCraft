@@ -1,9 +1,13 @@
-package com.tyhone.arcanacraft.api.registries;
+package com.tyhone.arcanacraft.api.tinkture;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import com.tyhone.arcanacraft.Arcanacraft;
+import com.tyhone.arcanacraft.api.item.IEssenceVessel;
 import com.tyhone.arcanacraft.common.init.ModTinktureTypes;
+
+import net.minecraft.item.ItemStack;
 
 public class TinktureManager {
 	
@@ -28,12 +32,22 @@ public class TinktureManager {
 		return tinktureNames;
 	}
 	
-	public static TinktureType getTinktureTypeFromMeta(int i){
-		ArrayList<TinktureType> tinktureNames = new ArrayList<TinktureType>();
+	public static int getTinktureColourFromName(String name){
 		for(TinktureType tinkture : tinktureTypeList){
-			tinktureNames.add(tinkture);
+			if(tinkture.getUnlocalizedName().equals(name)){
+				return tinkture.getColourHex();
+			}
 		}
-		return tinktureNames.get(i);
+		return 0x000000;
+	}
+	
+	public static TinktureType getTinktureTypeFromName(String name){
+		for(TinktureType tinkture : tinktureTypeList){
+			if(tinkture.getUnlocalizedName().equals(name)){
+				return tinkture;
+			}
+		}
+		return null;
 	}
 
 	public static ArrayList<Integer> getTinktureHexs(){
@@ -43,13 +57,4 @@ public class TinktureManager {
 		}
 		return tinktureHexs;
 	}
-	
-	public static int getTinktureHexFromMeta(int i){
-		ArrayList<Integer> tinktureHexs = new ArrayList<Integer>();
-		for(TinktureType tinkture : tinktureTypeList){
-			tinktureHexs.add(tinkture.getColourHex());
-		}
-		return tinktureHexs.get(i);
-	}
-	
 }

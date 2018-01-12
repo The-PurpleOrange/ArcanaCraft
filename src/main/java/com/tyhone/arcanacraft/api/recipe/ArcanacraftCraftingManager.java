@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.tyhone.arcanacraft.Arcanacraft;
-import com.tyhone.arcanacraft.api.registries.TinktureStack;
+import com.tyhone.arcanacraft.api.tinkture.TinktureStack;
 
 import net.minecraft.item.ItemStack;
 

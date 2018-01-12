@@ -2,6 +2,8 @@ package com.tyhone.arcanacraft.client.render;
 
 import java.awt.Color;
 
+import com.tyhone.arcanacraft.Arcanacraft;
+import com.tyhone.arcanacraft.api.tinkture.TinktureManager;
 import com.tyhone.arcanacraft.common.items.items.ItemTinkture;
 
 import net.minecraft.client.renderer.color.IItemColor;
@@ -14,7 +16,7 @@ public class TinktureColour implements IItemColor{
 	public int colorMultiplier(ItemStack stack, int tintIndex) {
 		switch (tintIndex){
 			case 0: {
-				return ItemTinkture.getStaticColour(stack);
+				return ItemTinkture.getColourFromNBT(stack); // .getColour(stack);
 			}
 			case 1: {
 				return Color.WHITE.getRGB();

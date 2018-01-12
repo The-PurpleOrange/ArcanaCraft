@@ -1,4 +1,4 @@
-package com.tyhone.arcanacraft.api.registries;
+package com.tyhone.arcanacraft.api.tinkture;
 
 import java.util.ArrayList;
 import java.util.List;
