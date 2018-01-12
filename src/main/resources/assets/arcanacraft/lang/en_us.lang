@@ -1,0 +1,14 @@
+
+
+#Items
+arcanacraft.tinkture.name=Tinkture #correct
+arcanacraft:red_coal.name=Red Coal
+item.arcanacraft:alchemic_coal=Alchemic Coal
+
+#Blocks
+arcanacraft.red_coal_block.name=Red Coal Block #Correct
+arcanacraft:alchemic_coal_block=Alchemic Coal
+
+#TinktureType
+arcanacraft.rebus=Rebus
+arcanacraft.impirus.name=Impirus

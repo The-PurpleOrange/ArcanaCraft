@@ -1,49 +1,53 @@
 package com.tyhone.arcanacraft.common.items.items;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nullable;
 
-import org.omg.CORBA.LongLongSeqHelper;
-
-import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.api.item.IEssenceVessel;
-import com.tyhone.arcanacraft.api.ritual.RitualBase;
-import com.tyhone.arcanacraft.api.tinkture.RitualRegistry;
 import com.tyhone.arcanacraft.api.tinkture.TinktureManager;
 import com.tyhone.arcanacraft.api.tinkture.TinktureType;
 import com.tyhone.arcanacraft.common.items.base.ModItemBase;
 import com.tyhone.arcanacraft.common.util.PlayerUtils;
-import com.tyhone.arcanacraft.common.util.ResourceLocationHelper;
 
-import net.minecraft.client.renderer.ItemMeshDefinition;
-import net.minecraft.client.renderer.block.model.ModelBakery;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemTinkture extends ModItemBase implements IEssenceVessel{
 
-	private final static String NBT_TINKTURE = "tinkture";
-	private final static String NBT_TINKTURE_DISPLAY_NAME = "tinkture_display_name";
+	public final static String NBT_TINKTURE = "tinkture";
+	public final static String NBT_TINKTURE_DISPLAY_NAME = "tinkture_display_name";
 	private final static List<TinktureType> VARIANTS = TinktureManager.getTinktureTypes();
 	
 	public ItemTinkture() {
 		super("tinkture");
+		setHasSubtypes(false);
 	}
 	
-	
-	
+	@Override
+	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items){
+		for(TinktureType type : VARIANTS){
+	    	ItemStack stack = new ItemStack(this, 1);
+	    	
+	    	NBTTagCompound tag = new NBTTagCompound();
+	    	
+	    	setNBT(tag, type);
+	    	
+	    	stack.setTagCompound(tag);
+	        items.add(stack);
+		}
+    }
 	
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand)
@@ -56,20 +60,20 @@ public class ItemTinkture extends ModItemBase implements IEssenceVessel{
 			if(stack.hasTagCompound() && stack.getTagCompound().hasKey(NBT_TINKTURE)){
 				tag = stack.getTagCompound();
 				for(int i = 0; i < VARIANTS.size(); i++){
-					if((tag.getString(NBT_TINKTURE)).equals(VARIANTS.get(i).getUnlocalizedName())){
+					if((tag.getString(NBT_TINKTURE)).equals(VARIANTS.get(i).getRegistryName())){
 						if(i == VARIANTS.size()-1){
 							setNBT(tag, VARIANTS.get(0));
-		            		msg = (VARIANTS.get(0).getUnlocalizedName());
+		            		msg = (VARIANTS.get(0).getRegistryName().toString());
 						}else{
 							setNBT(tag, VARIANTS.get(i+1));
-		            		msg = (VARIANTS.get(i+1).getUnlocalizedName());
+		            		msg = (VARIANTS.get(i+1).getRegistryName().toString());
 						}
 						break;
 					}
 				}
 			}else{
 				setNBT(tag, VARIANTS.get(0));
-        		msg = (VARIANTS.get(0).getUnlocalizedName());
+        		msg = (VARIANTS.get(0).getRegistryName().toString());
 			}
 			PlayerUtils.sendPlayerMessage(player, world, msg);
 	
@@ -79,27 +83,6 @@ public class ItemTinkture extends ModItemBase implements IEssenceVessel{
 
         return new ActionResult<ItemStack>(EnumActionResult.PASS, player.getHeldItem(hand));
     }
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 	@Override
 	public int getFluidAmount(ItemStack stack) {
@@ -136,11 +119,10 @@ public class ItemTinkture extends ModItemBase implements IEssenceVessel{
 		return 0x000000;
 	}
 	
-	private TinktureType getNBT(ItemStack stack){
+	public TinktureType getNBT(ItemStack stack){
 		if(stack.hasTagCompound() && stack.getTagCompound().hasKey(NBT_TINKTURE)){
 			String tinktureName = stack.getTagCompound().getString(NBT_TINKTURE);
 			if(tinktureName!=null){
-				Arcanacraft.log("getNBT Type: " + TinktureType.getType(NBT_TINKTURE));
 				return TinktureType.getType(NBT_TINKTURE);
 			}
 		}
@@ -148,7 +130,7 @@ public class ItemTinkture extends ModItemBase implements IEssenceVessel{
 	}
 	
 	private void setNBT(NBTTagCompound tag, TinktureType type){
-		tag.setString(NBT_TINKTURE, type.getUnlocalizedName());
+		tag.setString(NBT_TINKTURE, type.getRegistryName().toString());
 		tag.setString(NBT_TINKTURE_DISPLAY_NAME, type.getDisplayName());
 	}
 	
@@ -159,7 +141,6 @@ public class ItemTinkture extends ModItemBase implements IEssenceVessel{
     	
     	if(stack.hasTagCompound() && stack.getTagCompound().hasKey(NBT_TINKTURE_DISPLAY_NAME)){
     		tooltip.add(stack.getTagCompound().getString(NBT_TINKTURE_DISPLAY_NAME));
-    		tooltip.add(stack.getTagCompound().toString());
     	}
     }
 }

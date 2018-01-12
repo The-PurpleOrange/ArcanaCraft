@@ -34,7 +34,7 @@ public class TinktureManager {
 	
 	public static int getTinktureColourFromName(String name){
 		for(TinktureType tinkture : tinktureTypeList){
-			if(tinkture.getUnlocalizedName().equals(name)){
+			if(tinkture.getRegistryName().toString().equals(name)){
 				return tinkture.getColourHex();
 			}
 		}
@@ -43,7 +43,7 @@ public class TinktureManager {
 	
 	public static TinktureType getTinktureTypeFromName(String name){
 		for(TinktureType tinkture : tinktureTypeList){
-			if(tinkture.getUnlocalizedName().equals(name)){
+			if(tinkture.getRegistryName().toString().equals(name)){
 				return tinkture;
 			}
 		}

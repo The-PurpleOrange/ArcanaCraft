@@ -18,7 +18,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 
-//Uses temporary Pahicode from Pahimar for Item Variants, will be replaced in future
+//Uses temporary Pahi-style code from Pahimar for Item Variants, will be replaced in future
 public class ModItemBase extends Item implements IItemVariantHolder<ModItemBase>{
 	
 	private final String BASE_NAME;
@@ -69,10 +69,10 @@ public class ModItemBase extends Item implements IItemVariantHolder<ModItemBase>
 	public String getUnlocalizedName(ItemStack stack)
     {
 		if(getHasSubtypes() && stack.getMetadata() < VARIANTS.length){
-			return (Arcanacraft.MODID + "." + BASE_NAME + "." + VARIANTS[stack.getMetadata()]);
+			return ("item." + Arcanacraft.MODID + ":" + BASE_NAME + "." + VARIANTS[stack.getMetadata()]);
 		}
 		else{
-			return Arcanacraft.MODID + "." + BASE_NAME;
+			return "item." + Arcanacraft.MODID + ":" + BASE_NAME;
 		}
     }
 

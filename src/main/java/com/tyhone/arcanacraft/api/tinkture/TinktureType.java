@@ -1,13 +1,12 @@
 package com.tyhone.arcanacraft.api.tinkture;
 
 import com.tyhone.arcanacraft.Arcanacraft;
-import com.tyhone.arcanacraft.common.init.ModItems;
 import com.tyhone.arcanacraft.common.init.ModTinktureTypes;
 
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.translation.I18n;
 
-public class TinktureType {
+public class TinktureType extends net.minecraftforge.registries.IForgeRegistryEntry.Impl<TinktureType>{
 
 	private final String REGISTRY_NAME;
 	private final int COLOUR_HEX;
@@ -15,6 +14,7 @@ public class TinktureType {
 	public TinktureType(String registryName, int colourHex){
 		this.REGISTRY_NAME = registryName;
 		this.COLOUR_HEX = colourHex;
+		setRegistryName(registryName);
 		
 		ModTinktureTypes.registerTinktureToList(this);
 	}
@@ -28,28 +28,19 @@ public class TinktureType {
 	}
 	
 	public String getDisplayName(){
-		return this.getUnlocalizedName() + ".name";
-	}
-
-	public String getLocalizedName(){
-		return REGISTRY_NAME;
+        return I18n.translateToLocal(this.getUnlocalizedName() + ".name").trim();
 	}
 	
 	public String getUnlocalizedName(){
-		return Arcanacraft.MODID + "." + REGISTRY_NAME;
+		return "tinkture." + Arcanacraft.MODID + "." + REGISTRY_NAME;
 	}
 
 	public static TinktureType getType(String name) {
 		for(TinktureType type : TinktureManager.getTinktureTypes()){
-			if(name.equals(type.getUnlocalizedName())){
+			if(name.equals(type.getRegistryName().toString())){
 				return type;
 			}
 		}
 		return null;
 	}
-	
-	/*public ResourceLocation getRegistryName(){
-		
-	}*/
-	
 }

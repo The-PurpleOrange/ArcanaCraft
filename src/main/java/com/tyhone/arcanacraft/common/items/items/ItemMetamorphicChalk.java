@@ -1,5 +1,6 @@
 package com.tyhone.arcanacraft.common.items.items;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nullable;
@@ -18,7 +19,6 @@ import com.tyhone.arcanacraft.common.util.PlayerUtils;
 import com.tyhone.arcanacraft.common.util.PosUtil;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -29,7 +29,6 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -141,7 +140,18 @@ public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
 			}
 		}
 		if(msg == null){
-			PlayerUtils.sendPlayerMessage(player, worldIn, "Build Complete!");
+			PlayerUtils.sendPlayerMessage(player, worldIn, "Completed " + recipe.getRitual().getDisplayName());
+			
+			if(recipe.getItemRequirements().size()>0){
+				List<String> itemReqs = new ArrayList<>();
+				itemReqs.add("Item requirements:");
+				for(ItemStack req : recipe.getItemRequirements()){
+					itemReqs.add(" - x" + req.getCount() + " " + req.getDisplayName());
+				}
+				for(String line : itemReqs){
+					PlayerUtils.sendPlayerMessage(player, worldIn, line);
+				}
+			}
 		}
 		PlayerUtils.sendPlayerMessage(player, worldIn, msg);
 		return true;

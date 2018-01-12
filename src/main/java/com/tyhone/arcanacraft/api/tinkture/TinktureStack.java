@@ -49,6 +49,20 @@ public class TinktureStack{
 		return this.tinktureType.getTinktureName();
 	}
 	
+	public String getUnlocalizedName(){
+		if(this.isEmpty()){
+			return "null";
+		}
+		return this.tinktureType.getUnlocalizedName();
+	}
+	
+	public String getDisplayNameFromStack(){
+		if(this.isEmpty()){
+			return "null";
+		}
+		return this.tinktureType.getDisplayName();
+	}
+	
 	public boolean isEmpty(){
 		if(this == EMPTY){
 			return true;

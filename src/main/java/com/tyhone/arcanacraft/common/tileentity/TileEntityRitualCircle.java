@@ -62,7 +62,6 @@ public class TileEntityRitualCircle extends ModTileEntityBase {
 					ItemStack blockItemStack = new ItemStack(block, 1, block.getMetaFromState(worldObj.getBlockState(checkPos)));
 					blockStacks.add(blockItemStack);
 				}
-				//Arcanacraft.logger.info(x + "/" + z + " : " + block.getLocalizedName());
 			}
 		}
 

@@ -1,12 +1,8 @@
 package com.tyhone.arcanacraft.common.jei;
 
-import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
 
-import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.api.recipe.ArcanacraftCraftingManager;
 import com.tyhone.arcanacraft.api.recipe.RecipeAlchemicArray;
 import com.tyhone.arcanacraft.api.recipe.RecipeDeconstructionTable;
@@ -19,6 +15,7 @@ import com.tyhone.arcanacraft.api.tinkture.TinktureStack;
 import com.tyhone.arcanacraft.api.tinkture.TinktureType;
 import com.tyhone.arcanacraft.common.init.ModBlocks;
 import com.tyhone.arcanacraft.common.init.ModItems;
+import com.tyhone.arcanacraft.common.items.items.ItemTinkture;
 import com.tyhone.arcanacraft.common.jei.alchemic_array.AlchemicArrayRecipeCategory;
 import com.tyhone.arcanacraft.common.jei.alchemic_array.AlchemicArrayRecipeWrapper;
 import com.tyhone.arcanacraft.common.jei.deconstruction_table.DeconstructionTableRecipeCategory;
@@ -35,25 +32,29 @@ import com.tyhone.arcanacraft.common.jei.transmutation_altar.TransmutationAltarR
 import mezz.jei.api.IJeiHelpers;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.IModRegistry;
+import mezz.jei.api.ISubtypeRegistry;
 import mezz.jei.api.JEIPlugin;
-import mezz.jei.api.ingredients.IIngredientHelper;
-import mezz.jei.api.ingredients.IIngredientRenderer;
 import mezz.jei.api.ingredients.IModIngredientRegistration;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.BufferBuilder;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
-import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.nbt.NBTTagCompound;
 
 @JEIPlugin
 public class JEIArcanacraftPlugin implements IModPlugin {
+	
+	@Override
+	public void registerItemSubtypes(ISubtypeRegistry registry){
+		
+		/*ISubtypeRegistry.ISubtypeInterpreter tinktureSubtypeInterpreter = itemStack -> {
+			TinktureType tinkture = TinktureType.getType()
+		};*/
+		
+		
+		
+		//registry.registerSubtypeInterpreter(ModItems.TINKTURE, new TinktureSubtypeInterpreter());
+		registry.useNbtForSubtypes(ModItems.TINKTURE);
+	}
+	
 	
 	@Override
 	public void registerIngredients(IModIngredientRegistration registry) {
@@ -63,9 +64,7 @@ public class JEIArcanacraftPlugin implements IModPlugin {
 			tinktureStackIngredient.add(new TinktureStack(type, 0));
 		}
 		
-		registry.register(TinktureStack.class, tinktureStackIngredient, new TinktureIngredientHelper(), new tinktureIngredientRenderer());
-		
-		//IModPlugin.super.registerIngredients(registry);
+		registry.register(TinktureStack.class, tinktureStackIngredient, new TinktureIngredientHelper(), new TinktureIngredientRenderer());
 	}
 
 	@Override
@@ -106,10 +105,11 @@ public class JEIArcanacraftPlugin implements IModPlugin {
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.INFUSION_ALTAR), InfusionAltarRecipeCategory.NAME);
 		registry.addRecipeCatalyst(new ItemStack(ModItems.ICONS, 1, 0), AlchemicArrayRecipeCategory.NAME);
 	}
+}
 	
 
 
-	private static class TinktureIngredientHelper implements IIngredientHelper<TinktureStack>{
+	/*private static class TinktureIngredientHelper implements IIngredientHelper<TinktureStack>{
 
 		@Override
 		public List<TinktureStack> expandSubtypes(List<TinktureStack> ingredients) {
@@ -165,9 +165,9 @@ public class JEIArcanacraftPlugin implements IModPlugin {
 		public String getErrorInfo(TinktureStack ingredient) {
 			return "Tinkture Ingredient Error: " + ingredient.getTinktureName();
 		}
-	}
+	}*/
 	
-	private static class tinktureIngredientRenderer implements IIngredientRenderer<TinktureStack> {
+/*	private static class TinktureIngredientRenderer implements IIngredientRenderer<TinktureStack> {
 
 		@Override
 		public void render(Minecraft minecraft, int x, int y, TinktureStack ingredient) {
@@ -195,12 +195,12 @@ public class JEIArcanacraftPlugin implements IModPlugin {
 				BufferBuilder buffer = tess.getBuffer();
 				
 				
-				/*buffer.begin(7, DefaultVertexFormats.POSITION_COLOR);
+				buffer.begin(7, DefaultVertexFormats.POSITION_COLOR);
 				buffer.pos(x, y+h, z).endVertex();
 				buffer.pos(x+w, y+h, z).endVertex();
 				buffer.pos(x+w, y, z).endVertex();
 				buffer.pos(x, y, z).endVertex();
-				buffer.putColorRGB_F4(r, g, b);*/
+				buffer.putColorRGB_F4(r, g, b);
 				
 				
 				buffer.begin(7, DefaultVertexFormats.POSITION_TEX_COLOR);
@@ -209,11 +209,11 @@ public class JEIArcanacraftPlugin implements IModPlugin {
 				buffer.pos(x+w, y, z).tex(0, 1).color(r, g, b, 255).endVertex();
 				buffer.pos(x, y, z).tex(0, 1).color(r, g, b, 255).endVertex();
 				
-				/*buffer.begin(7, DefaultVertexFormats.POSITION_TEX);
+				buffer.begin(7, DefaultVertexFormats.POSITION_TEX);
 				buffer.pos(x, y+h, z).tex(0, h).endVertex();
 				buffer.pos(x+w, y+h, z).tex(w, h).endVertex();
 				buffer.pos(x+w, y, z).tex(w, 0).endVertex();
-				buffer.pos(x, y, z).tex(0, 0).endVertex();*/
+				buffer.pos(x, y, z).tex(0, 0).endVertex();
 				
 				tess.draw();
 				
@@ -221,44 +221,6 @@ public class JEIArcanacraftPlugin implements IModPlugin {
 				RenderHelper.disableStandardItemLighting();
 			}
 		}
-		
-		/*private TextureAtlasSprite getTInktureFluidSprite(Minecraft minecraft, TinktureType tinktureType) {
-			TextureMap textureMapBlocks = minecraft.getTextureMapBlocks();
-			ResourceLocation tinktureTexture = new ResourceLocation(Arcanacraft.MODID + ":textures/blocks/tinkture_fluid_block.png");
-			//ResourceLocation tinktureTexture = new ResourceLocation(Arcanacraft.MODID + ":textures/models/alchemic_array/alchemic_array_inner.png");
-			TextureAtlasSprite tinktureSprite = null;
-			
-			if(tinktureTexture != null){
-				tinktureSprite = textureMapBlocks.getTextureExtry(tinktureTexture.toString());
-			}
-			
-			return tinktureSprite;
-		}
-
-		private void drawSprite(Minecraft minecraft, int x, int y, int w, int h, int tinktureColour, int colourHex, TextureAtlasSprite sprite) {
-			ResourceLocation tinktureTexture = new ResourceLocation(Arcanacraft.MODID + ":textures/blocks/tinkture_fluid_block.png");
-			minecraft.renderEngine.bindTexture(tinktureTexture);
-			
-			//ResourceLocation tinktureTexture = new ResourceLocation(Arcanacraft.MODID + ":textures/models/alchemic_array/alchemic_array_inner.png");
-			//ResourceLocation tinktureTexture = new ResourceLocation(Arcanacraft.MODID + ":textures/blocks/tinkture_fluid_block.png");
-					
-			//minecraft.renderEngine.bindTexture(sprite);
-			setGLColourFromInt(colourHex);
-			
-			//minecraft.ingameGUI.drawTexturedModalRect(x, y, sprite, w, h);
-			
-			int z = 100;
-
-			Tessellator tess = Tessellator.getInstance();
-			BufferBuilder buffer = tess.getBuffer();
-			buffer.begin(7, DefaultVertexFormats.POSITION_TEX);
-			buffer.pos(x, y+h, z).tex(0, h).endVertex();
-			buffer.pos(x+w, y+h, z).tex(w, h).endVertex();
-			buffer.pos(x+w, y, z).tex(w, 0).endVertex();
-			buffer.pos(x, y, z).tex(0, 0).endVertex();
-			tess.draw();
-			
-		}*/
 
 		private void setGLColourFromInt(int hex) {
 			
@@ -274,5 +236,5 @@ public class JEIArcanacraftPlugin implements IModPlugin {
 			String tooltip = String.format("%s%n%s", ingredient.getTinktureName(), ingredient.getAmount()+"mt");
 			return Collections.singletonList(tooltip);
 		}
-	}
-}
+	}*/
+

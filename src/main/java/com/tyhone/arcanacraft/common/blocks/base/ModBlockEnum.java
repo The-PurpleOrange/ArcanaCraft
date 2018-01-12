@@ -34,10 +34,9 @@ public class ModBlockEnum extends ModBlockBase{
 	}
 	
 	public String getUnlocalizedName(ItemStack itemStack){
-		//Arcanacraft.logger.log(Level.INFO, Arcanacraft.MODID + "." + VARIANTS[itemStack.getMetadata()]);
 		if((itemStack != null && itemStack.getItem() != null) && Block.getBlockFromItem(itemStack.getItem()) instanceof ModBlockBase){
 			if (VARIANTS.length > 0){
-				return Arcanacraft.MODID + "." + BASE_NAME + "." + VARIANTS[itemStack.getMetadata()];
+				return "tile." + Arcanacraft.MODID + ":" + BASE_NAME + "." + VARIANTS[itemStack.getMetadata()];
 			}
 		}
 		return super.getUnlocalizedName();

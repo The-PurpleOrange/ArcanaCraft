@@ -35,7 +35,7 @@ public class ModBlockBase extends Block {
 	
 	@Override
 	public String getUnlocalizedName(){
-		return Arcanacraft.MODID + "." + BASE_NAME; //getRegistryName().toString();
+		return "tile." + Arcanacraft.MODID + "." + BASE_NAME;
 	}
 	
 	@SideOnly(Side.CLIENT)
