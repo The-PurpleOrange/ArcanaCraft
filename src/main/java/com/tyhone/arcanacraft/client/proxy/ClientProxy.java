@@ -1,12 +1,14 @@
 package com.tyhone.arcanacraft.client.proxy;
 
 import com.tyhone.arcanacraft.client.render.ModTileEntitySpecialRender;
+import com.tyhone.arcanacraft.client.render.TinktureColour;
 import com.tyhone.arcanacraft.common.blocks.base.ModBlockBase;
 import com.tyhone.arcanacraft.common.init.ModBlocks;
 import com.tyhone.arcanacraft.common.init.ModItems;
 import com.tyhone.arcanacraft.common.items.base.ModItemBase;
 import com.tyhone.arcanacraft.common.proxy.CommonProxy;
 
+import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -22,6 +24,7 @@ public class ClientProxy extends CommonProxy {
         super.preInit(e);
         
         ModTileEntitySpecialRender.preInit();
+        
     }
 
     @Override
@@ -32,6 +35,7 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void postInit(FMLPostInitializationEvent e) {
         super.postInit(e);
+        Minecraft.getMinecraft().getItemColors().registerItemColorHandler(new TinktureColour(), ModItems.TINKTURE);
     }
 
     @SubscribeEvent

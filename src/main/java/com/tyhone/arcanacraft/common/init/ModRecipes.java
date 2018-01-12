@@ -6,14 +6,16 @@ import com.tyhone.arcanacraft.common.init.recipes.InitRecipesHammer;
 import com.tyhone.arcanacraft.common.init.recipes.InitRecipesInfusionAltar;
 import com.tyhone.arcanacraft.common.init.recipes.InitRecipesSoulAltar;
 import com.tyhone.arcanacraft.common.init.recipes.InitRecipesTransmutationAltar;
+import com.tyhone.arcanacraft.common.init.recipes.InitVanillaRecipesSmelting;
 
 public class ModRecipes {
 	public static void init(){
-		InitRecipesDeconstructionTable.initDeconstructionTableRecipes();
-		InitRecipesHammer.initHammerRecipes();
-		InitRecipesSoulAltar.initSoulAltarRecipes();
-		InitRecipesInfusionAltar.initInfusionAltarRecipes();
-		InitRecipesTransmutationAltar.initTransmutationAltarRecipes();
-		InitRecipesAlchemicArray.initAlchemicArrayRecipes();
+		InitRecipesDeconstructionTable.init();
+		InitRecipesHammer.init();
+		InitRecipesSoulAltar.init();
+		InitRecipesInfusionAltar.init();
+		InitRecipesTransmutationAltar.init();
+		InitRecipesAlchemicArray.init();
+		InitVanillaRecipesSmelting.init();
 	}
 }

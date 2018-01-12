@@ -23,8 +23,8 @@ public class BlockAlchemicStone extends ModBlockEnum {
 
 	public enum EnumAlchemicStoneType implements IEnumMeta, Comparable<EnumAlchemicStoneType>{
 		UNIFORM,
-		SMOOTH,
 		TILE,
+		SMOOTH,
 		SMOOTH_TILE;
 		
 		private int meta;

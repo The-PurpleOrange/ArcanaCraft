@@ -13,7 +13,8 @@ public class Names {
         public static final ArrayList<String> ALCHEMIC_DUST = al("mundane", "salient", "lavarice", "avaricle");
         public static final ArrayList<String> SOUL = al("fragment", "complete", "nether", "eldritch");
         public static final ArrayList<String> LENS = al("essence", "soul");
-        public static final ArrayList<String> ESSENCE = al("iron", "gold", "magicite", "nether", "eldritch");
+        public static final ArrayList<String> ESSENCE = al("iron", "gold", "magicite", "nether", "eldritch", "prosper", "greed");
+        public static final ArrayList<String> SHARD = al("nether", "eldritch", "prosper", "greed");
         public static final ArrayList<String> INGOT = al("magicite", "blood_iron", "alcharium");
         public static final ArrayList<String> DUST = al("blood", "bone", "charcoal", "iron", "gold", "magicite");
         public static final ArrayList<String> CRYSTAL = al("blood", "gold", "iron", "magicite");

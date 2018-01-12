@@ -1,0 +1,32 @@
+{
+  "result": {
+    "item": "arcanacraft:deconstruction_table"
+  },
+  "pattern": [
+    "bdb",
+    "sos",
+    "sgs"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "s": {
+      "item": "arcanacraft:alchemic_stone",
+      "data": 32767
+    },
+    "g": {
+      "item": "minecraft:gold_block"
+    },
+    "b": {
+      "item": "arcanacraft:item",
+      "data": 3
+    },
+    "d": {
+      "item": "arcanacraft:item",
+      "data": 0
+    },
+    "o": {
+      "item": "minecraft:stone_slab",
+      "data": 0
+    }
+  }
+}

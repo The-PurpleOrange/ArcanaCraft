@@ -8,7 +8,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 public class InitRecipesHammer {
-	public static void initHammerRecipes(){
+	public static void init(){
 		
 		ArcanacraftCraftingManager.registerHammerRecipe(new ItemStack(ModItems.DUST, 1, ItemMetaUtil.dust("charcoal")), new ItemStack(Items.COAL, 1, 1));
 		

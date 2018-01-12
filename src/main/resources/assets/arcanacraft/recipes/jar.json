@@ -1,0 +1,20 @@
+{
+  "result": {
+    "item": "arcanacraft:jar"
+  },
+  "pattern": [
+    "gwg",
+    "g g",
+    "ggg"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "g": {
+      "item": "arcanacraft:alchemic_glass"
+    },
+    "w": {
+      "item": "minecraft:wooden_slab",
+      "data": 32767
+    }
+  }
+}

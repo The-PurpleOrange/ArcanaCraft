@@ -10,7 +10,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 public class InitRecipesSoulAltar {
-	public static void initSoulAltarRecipes(){
+	public static void init(){
 		{
 			
 			{

@@ -30,7 +30,7 @@ public class RitualBase extends net.minecraftforge.registries.IForgeRegistryEntr
     }
 
 	public String getDisplayName(){
-		return Arcanacraft.MODID + "." + ritualName + ".name";
+		return this.getUnlocalizedName() + ".name";
     }
 
 	@Override

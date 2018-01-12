@@ -10,12 +10,13 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 public class InitRecipesAlchemicArray {
-	public static void initAlchemicArrayRecipes(){
+	public static void init(){
 		ArcanacraftCraftingManager.registerAlchemicArrayRecipe(new ItemStack(ModBlocks.ALCHEMIC_STONE, 8), new ItemStack(Blocks.STONE, 8), new ItemStack(ModItems.AYRE, 1));
 		ArcanacraftCraftingManager.registerAlchemicArrayRecipe(new ItemStack(ModBlocks.ALCHEMIC_GLASS, 8), new ItemStack(Blocks.GLASS, 8), new ItemStack(ModItems.AYRE, 1), new ItemStack(Items.GOLD_INGOT, 1));
 		ArcanacraftCraftingManager.registerAlchemicArrayRecipe(new ItemStack(ModItems.AYRE, 1), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("bone_ash")), new ItemStack(Items.BLAZE_POWDER), new ItemStack(ModItems.RED_COAL), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("blood_drop")));
 		ArcanacraftCraftingManager.registerAlchemicArrayRecipe(new ItemStack(ModItems.RED_COAL, 1), new ItemStack(Items.COAL, 1, 0), new ItemStack(Items.REDSTONE, 4));
 		ArcanacraftCraftingManager.registerAlchemicArrayRecipe(new ItemStack(Items.LEATHER, 1), new ItemStack(ModItems.ITEM, 2, ItemMetaUtil.item("clean_flesh")));
+		ArcanacraftCraftingManager.registerAlchemicArrayRecipe(new ItemStack(ModItems.INGOT, 1, ItemMetaUtil.ingot("magicite")), new ItemStack (Items.IRON_INGOT), new ItemStack(ModItems.AYRE, 1));
 		
 		
 		

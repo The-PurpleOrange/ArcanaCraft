@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "arcanacraft:alchemic_stone",
+    "data": 2,
+    "count": 4
+  },
+  "pattern": [
+    "ss ",
+    "ss ",
+    "   "
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "s": {
+      "item": "arcanacraft:alchemic_stone",
+      "data": 1
+    }
+  }
+}

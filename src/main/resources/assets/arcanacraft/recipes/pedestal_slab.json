@@ -1,0 +1,17 @@
+{
+  "result": {
+    "item": "arcanacraft:pedestal_slab"
+  },
+  "pattern": [
+    "   ",
+    " s ",
+    "sss"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "s": {
+      "item": "arcanacraft:alchemic_stone",
+      "data": 32767
+    }
+  }
+}

@@ -11,7 +11,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 public class InitRecipesInfusionAltar {
-	public static void initInfusionAltarRecipes(){
+	public static void init(){
 		ItemStack[] items = {new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("star_shard")), new ItemStack(Items.GHAST_TEAR), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("star_shard")), new ItemStack(Items.GHAST_TEAR), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("star_shard")), new ItemStack(Items.GHAST_TEAR), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("star_shard")), new ItemStack(Items.GHAST_TEAR)};
 		TinktureStack[] tinktures = {new TinktureStack(ModTinktureTypes.LOCUS, 32), new TinktureStack(ModTinktureTypes.IMPIRUS, 32), new TinktureStack(ModTinktureTypes.REBUS, 32), new TinktureStack(ModTinktureTypes.AMNIS, 32)};
 		ArcanacraftCraftingManager.registerInfusionRecipe(new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("inert_star")), new ItemStack(ModItems.ALCHEMICAL_COAL, 1), items, tinktures);

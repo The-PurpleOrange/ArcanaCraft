@@ -9,9 +9,11 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 public class InitRecipesDeconstructionTable {
-	public static void initDeconstructionTableRecipes(){
+	public static void init(){
 		ArcanacraftCraftingManager.registerDeconstructionRecipe(new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("clean_flesh")), new ItemStack(Items.ROTTEN_FLESH, 1));
 
+		ArcanacraftCraftingManager.registerDeconstructionRecipe(new ItemStack(ModItems.DUST, 2, ItemMetaUtil.dust("iron")), new ItemStack(Blocks.IRON_ORE));
+		ArcanacraftCraftingManager.registerDeconstructionRecipe(new ItemStack(ModItems.DUST, 2, ItemMetaUtil.dust("gold")), new ItemStack(Blocks.GOLD_ORE));
 		ArcanacraftCraftingManager.registerDeconstructionRecipe(new ItemStack(ModItems.DUST, 1, ItemMetaUtil.dust("iron")), new ItemStack(Items.IRON_INGOT));
 		ArcanacraftCraftingManager.registerDeconstructionRecipe(new ItemStack(ModItems.DUST, 1, ItemMetaUtil.dust("gold")), new ItemStack(Items.GOLD_INGOT));
 		ArcanacraftCraftingManager.registerDeconstructionRecipe(new ItemStack(ModItems.DUST, 1, ItemMetaUtil.dust("magicite")), new ItemStack(ModItems.INGOT, 1, ItemMetaUtil.ingot("magicite")));
@@ -22,7 +24,9 @@ public class InitRecipesDeconstructionTable {
 		ArcanacraftCraftingManager.registerLensDeconstructionRecipe(new ItemStack(ModItems.LENS, 1, ItemMetaUtil.lens("essence")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("iron")), new ItemStack(Items.IRON_INGOT));
 		ArcanacraftCraftingManager.registerLensDeconstructionRecipe(new ItemStack(ModItems.LENS, 1, ItemMetaUtil.lens("essence")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("gold")), new ItemStack(Items.GOLD_INGOT));
 		ArcanacraftCraftingManager.registerLensDeconstructionRecipe(new ItemStack(ModItems.LENS, 1, ItemMetaUtil.lens("essence")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("magicite")), new ItemStack(ModItems.INGOT, 1, ItemMetaUtil.ingot("magicite")));
-		ArcanacraftCraftingManager.registerLensDeconstructionRecipe(new ItemStack(ModItems.LENS, 1, ItemMetaUtil.lens("essence")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("nether")), new ItemStack(Items.BLAZE_POWDER, 1));
-		ArcanacraftCraftingManager.registerLensDeconstructionRecipe(new ItemStack(ModItems.LENS, 1, ItemMetaUtil.lens("essence")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("eldritch")), new ItemStack(Items.ENDER_PEARL, 1));
+		ArcanacraftCraftingManager.registerLensDeconstructionRecipe(new ItemStack(ModItems.LENS, 1, ItemMetaUtil.lens("essence")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("nether")), new ItemStack(ModItems.SHARD, 1, ItemMetaUtil.shard("nether")));
+		ArcanacraftCraftingManager.registerLensDeconstructionRecipe(new ItemStack(ModItems.LENS, 1, ItemMetaUtil.lens("essence")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("eldritch")), new ItemStack(ModItems.SHARD, 1, ItemMetaUtil.shard("eldritch")));
+		ArcanacraftCraftingManager.registerLensDeconstructionRecipe(new ItemStack(ModItems.LENS, 1, ItemMetaUtil.lens("essence")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("prosper")), new ItemStack(ModItems.SHARD, 1, ItemMetaUtil.shard("prosper")));
+		ArcanacraftCraftingManager.registerLensDeconstructionRecipe(new ItemStack(ModItems.LENS, 1, ItemMetaUtil.lens("essence")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("greed")), new ItemStack(ModItems.SHARD, 1, ItemMetaUtil.shard("greed")));
 	}
 }
