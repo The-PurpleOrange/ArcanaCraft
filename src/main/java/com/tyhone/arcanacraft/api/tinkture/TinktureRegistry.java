@@ -4,12 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.tyhone.arcanacraft.Arcanacraft;
-import com.tyhone.arcanacraft.api.item.IEssenceVessel;
 import com.tyhone.arcanacraft.common.init.ModTinktureTypes;
 
 import net.minecraft.item.ItemStack;
 
-public class TinktureManager {
+public class TinktureRegistry {
 	
 	public static List<TinktureType> tinktureTypeList = new ArrayList<TinktureType>();
 	

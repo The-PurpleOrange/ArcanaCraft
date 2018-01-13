@@ -46,6 +46,7 @@ public class TileEntityAlchemicArray extends ModTileEntityBase {
 			RecipeAlchemicArray recipe = RecipeAlchemicArray.getRecipe((ArrayList<ItemStack>) itemStacks);
 			if(recipe != null){
 				for(EntityItem ei : eItems){
+					ei.setInvisible(true);
 					ei.setDead();
 				}
 				EntityItem eOutput = new EntityItem(worldObj, pos.getX()+0.25, pos.getY()+0.25, pos.getZ()+0.25, recipe.getOutput());

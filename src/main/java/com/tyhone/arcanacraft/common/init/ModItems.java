@@ -18,6 +18,7 @@ import com.tyhone.arcanacraft.common.items.items.ItemIngot;
 import com.tyhone.arcanacraft.common.items.items.ItemItem;
 import com.tyhone.arcanacraft.common.items.items.ItemLens;
 import com.tyhone.arcanacraft.common.items.items.ItemMetamorphicChalk;
+import com.tyhone.arcanacraft.common.items.items.ItemNeedle;
 import com.tyhone.arcanacraft.common.items.items.ItemRedCoal;
 import com.tyhone.arcanacraft.common.items.items.ItemShard;
 import com.tyhone.arcanacraft.common.items.items.ItemSoul;
@@ -44,6 +45,7 @@ public class ModItems {
 	public static final ModItemBase ITEM = new ItemItem();
 	public static final ModItemBase STAR = new ItemStar();
 	public static final ModItemBase AYRE = new ItemAyre();
+	public static final ModItemBase NEEDLE = new ItemNeedle();
 	public static final ModItemBase CHALK = new ItemChalk();
 	public static final ModItemBase CHALK_METAMORPHIC = new ItemMetamorphicChalk();
 	public static final ModItemBase TINKTURE = new ItemTinkture();
@@ -53,6 +55,7 @@ public class ModItems {
 	public static final ModItemBase SPIRIT_SKULL = new ItemSpiritSkull();
 	
 	public static final ModItemBase ICONS = new ItemIcons();
+
 	
 	private ModItems() {}
 	

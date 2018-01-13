@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.List;
 
 import com.tyhone.arcanacraft.Arcanacraft;
-import com.tyhone.arcanacraft.api.tinkture.TinktureManager;
+import com.tyhone.arcanacraft.api.tinkture.TinktureRegistry;
 import com.tyhone.arcanacraft.api.tinkture.TinktureType;
 
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -34,7 +34,7 @@ public class ModTinktureTypes {
 	public static void registerAll(){
 		
 		for(TinktureType type : TINKTURE_TYPES){
-			TinktureManager.registerTinktureType(type);
+			TinktureRegistry.registerTinktureType(type);
 		}
 	}
 }

@@ -4,8 +4,8 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import com.tyhone.arcanacraft.api.item.IEssenceVessel;
-import com.tyhone.arcanacraft.api.tinkture.TinktureManager;
+import com.tyhone.arcanacraft.api.tinkture.IEssenceVessel;
+import com.tyhone.arcanacraft.api.tinkture.TinktureRegistry;
 import com.tyhone.arcanacraft.api.tinkture.TinktureType;
 import com.tyhone.arcanacraft.common.items.base.ModItemBase;
 import com.tyhone.arcanacraft.common.util.PlayerUtils;
@@ -28,7 +28,7 @@ public class ItemTinkture extends ModItemBase implements IEssenceVessel{
 
 	public final static String NBT_TINKTURE = "tinkture";
 	public final static String NBT_TINKTURE_DISPLAY_NAME = "tinkture_display_name";
-	private final static List<TinktureType> VARIANTS = TinktureManager.getTinktureTypes();
+	private final static List<TinktureType> VARIANTS = TinktureRegistry.getTinktureTypes();
 	
 	public ItemTinkture() {
 		super("tinkture");
@@ -95,7 +95,7 @@ public class ItemTinkture extends ModItemBase implements IEssenceVessel{
 		if(stack.hasTagCompound() && stack.getTagCompound().hasKey(NBT_TINKTURE)){
 			String tinktureName = stack.getTagCompound().getString(NBT_TINKTURE);
 			if(tinktureName!=null){
-				TinktureType tinkture = TinktureManager.getTinktureTypeFromName(tinktureName);
+				TinktureType tinkture = TinktureRegistry.getTinktureTypeFromName(tinktureName);
 				
 				return tinkture;
 			}
@@ -111,7 +111,7 @@ public class ItemTinkture extends ModItemBase implements IEssenceVessel{
 		if(stack.hasTagCompound() && stack.getTagCompound().hasKey(NBT_TINKTURE)){
 			String tinktureName = stack.getTagCompound().getString(NBT_TINKTURE);
 			if(tinktureName!=null){
-				int colourHex = TinktureManager.getTinktureColourFromName(tinktureName);
+				int colourHex = TinktureRegistry.getTinktureColourFromName(tinktureName);
 				
 				return colourHex;
 			}

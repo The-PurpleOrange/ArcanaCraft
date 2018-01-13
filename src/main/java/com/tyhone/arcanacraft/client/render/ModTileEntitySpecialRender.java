@@ -2,6 +2,7 @@ package com.tyhone.arcanacraft.client.render;
 
 import com.tyhone.arcanacraft.client.render.tesr.RenderTileEntityAlchemicArray;
 import com.tyhone.arcanacraft.client.render.tesr.RenderTileEntityDeconstructionTable;
+import com.tyhone.arcanacraft.client.render.tesr.RenderTileEntityGrandRitualCircle;
 import com.tyhone.arcanacraft.client.render.tesr.RenderTileEntityInfusionAltar;
 import com.tyhone.arcanacraft.client.render.tesr.RenderTileEntityJar;
 import com.tyhone.arcanacraft.client.render.tesr.RenderTileEntityLensReceptacle;
@@ -12,6 +13,7 @@ import com.tyhone.arcanacraft.client.render.tesr.RenderTileEntitySoulAltar;
 import com.tyhone.arcanacraft.client.render.tesr.RenderTileEntityTransmutationAltar;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityAlchemicArray;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityDeconstructionTable;
+import com.tyhone.arcanacraft.common.tileentity.TileEntityGrandRitualCircle;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityInfusionAltar;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityJar;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityLensReceptacle;
@@ -34,6 +36,7 @@ public class ModTileEntitySpecialRender {
 
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAlchemicArray.class, new RenderTileEntityAlchemicArray(renderManager, renderItem));
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityRitualCircle.class, new RenderTileEntityRitualCircle(renderManager, renderItem));
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityGrandRitualCircle.class, new RenderTileEntityGrandRitualCircle(renderManager, renderItem));
 		
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityLensReceptacle.class, new RenderTileEntityLensReceptacle(renderManager, renderItem));
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityDeconstructionTable.class, new RenderTileEntityDeconstructionTable(renderManager, renderItem));

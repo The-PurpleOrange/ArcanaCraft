@@ -1,6 +1,4 @@
-package com.tyhone.arcanacraft.api.item;
-
-import com.tyhone.arcanacraft.api.tinkture.TinktureType;
+package com.tyhone.arcanacraft.api.tinkture;
 
 import net.minecraft.item.ItemStack;
 

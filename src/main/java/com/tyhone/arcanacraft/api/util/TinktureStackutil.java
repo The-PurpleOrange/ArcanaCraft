@@ -3,7 +3,7 @@ package com.tyhone.arcanacraft.api.util;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.tyhone.arcanacraft.api.tinkture.TinktureManager;
+import com.tyhone.arcanacraft.api.tinkture.TinktureRegistry;
 import com.tyhone.arcanacraft.api.tinkture.TinktureStack;
 import com.tyhone.arcanacraft.api.tinkture.TinktureType;
 import com.tyhone.arcanacraft.common.init.ModTinktureTypes;
@@ -43,7 +43,7 @@ public class TinktureStackUtil {
 	}
 
 	public static TinktureType getTinktureTypeFromString(String tinktureType){
-		for(TinktureType type : TinktureManager.getTinktureTypes()){
+		for(TinktureType type : TinktureRegistry.getTinktureTypes()){
 			if(tinktureType.equals(type.getTinktureName())){
 				return type;
 			}

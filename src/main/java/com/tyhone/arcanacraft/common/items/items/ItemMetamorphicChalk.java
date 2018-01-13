@@ -11,7 +11,7 @@ import com.tyhone.arcanacraft.api.recipe.RecipeRitualCircle;
 import com.tyhone.arcanacraft.api.ritual.IRitualBuilder;
 import com.tyhone.arcanacraft.api.ritual.IRitualCircle;
 import com.tyhone.arcanacraft.api.ritual.RitualBase;
-import com.tyhone.arcanacraft.api.tinkture.RitualRegistry;
+import com.tyhone.arcanacraft.api.ritual.RitualRegistry;
 import com.tyhone.arcanacraft.api.util.ItemStackUtil;
 import com.tyhone.arcanacraft.common.init.ModBlocks;
 import com.tyhone.arcanacraft.common.items.base.ModItemBase;
@@ -37,6 +37,10 @@ public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
 
 	private final String NBT_RITUAL = "ritual";
 	private final String NBT_RITUAL_DISPLAY_NAME = "ritual_display_name";
+	private final String NBT_RITUAL_TYPE = "ritual_type";
+	
+	
+	//TODO add support for shift-right clicking for different ritual types
 	
 	public ItemMetamorphicChalk() {
 		super("chalk_metamorphic");
@@ -87,11 +91,9 @@ public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
 		}
 		else{
 			ItemStack stack = player.getHeldItem(hand);
-			RecipeRitualCircle recipe = getNBT(stack);
-			//Arcanacraft.log("Checking Area");
-			if(checkArea(recipe,player, worldIn, pos, hand)){
-				//Arcanacraft.log("Building circle");
-				if(drawCircle(recipe,player, worldIn, pos, hand, true)){
+			RecipeRitualCircle recipe = getNBT(stack); //ONLY FOR BASIC RITUALS
+			if(checkArea(recipe, player, worldIn, pos, hand)){
+				if(drawCircle(recipe, player, worldIn, pos, hand, true)){
 					return EnumActionResult.SUCCESS;
 				}
 			}

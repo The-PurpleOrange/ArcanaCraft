@@ -3,7 +3,7 @@ package com.tyhone.arcanacraft.client.render;
 import java.awt.Color;
 
 import com.tyhone.arcanacraft.Arcanacraft;
-import com.tyhone.arcanacraft.api.tinkture.TinktureManager;
+import com.tyhone.arcanacraft.api.tinkture.TinktureRegistry;
 import com.tyhone.arcanacraft.common.items.items.ItemTinkture;
 
 import net.minecraft.client.renderer.color.IItemColor;

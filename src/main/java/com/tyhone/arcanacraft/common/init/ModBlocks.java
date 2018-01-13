@@ -14,6 +14,7 @@ import com.tyhone.arcanacraft.common.blocks.blocks.BlockChalk;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockRedCoal;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockAlchemicArray;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockDeconstructionTable;
+import com.tyhone.arcanacraft.common.blocks.tiles.BlockGrandRitualCircle;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockInfusionAltar;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockJar;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockLensReceptacle;
@@ -41,6 +42,7 @@ public class ModBlocks {
 
 	public static final ModBlockBase ALCHEMIC_ARRAY = new BlockAlchemicArray();
 	public static final ModBlockBase RITUAL_CIRCLE = new BlockRitualCircle();
+	public static final ModBlockBase GRAND_RITUAL_CIRCLE = new BlockGrandRitualCircle();
 	
 	public static final ModBlockBase LENS_RECEPTACLE = new BlockLensReceptacle();
 	public static final ModBlockBase DECONSTRUCTION_TABLE = new BlockDeconstructionTable();

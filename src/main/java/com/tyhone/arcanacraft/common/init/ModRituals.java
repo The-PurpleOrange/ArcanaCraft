@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.api.ritual.RitualBase;
-import com.tyhone.arcanacraft.api.tinkture.RitualRegistry;
+import com.tyhone.arcanacraft.api.ritual.RitualRegistry;
+import com.tyhone.arcanacraft.common.rituals.GrandRitualSummonCreeper;
 import com.tyhone.arcanacraft.common.rituals.RitualClearWeather;
 import com.tyhone.arcanacraft.common.rituals.RitualSummonLightning;
 import com.tyhone.arcanacraft.common.rituals.RitualSummonRain;
@@ -18,6 +18,8 @@ public class ModRituals {
 	public static final RitualBase RITUAL_SUMMON_RAIN = new RitualSummonRain("summon_rain");
 	public static final RitualBase RITUAL_CLEAR_WEATHER = new RitualClearWeather("clear_weather");
 	public static final RitualBase RITUAL_SUMMON_LIGHTNING = new RitualSummonLightning("summon_lightning");
+
+	public static final RitualBase GRAND_RITUAL_SUMMON_CREEPER = new GrandRitualSummonCreeper("summon_creeper");
 
 	private ModRituals() {}
 	

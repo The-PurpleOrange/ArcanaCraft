@@ -3,6 +3,7 @@ package com.tyhone.arcanacraft.common.init;
 import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityAlchemicArray;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityDeconstructionTable;
+import com.tyhone.arcanacraft.common.tileentity.TileEntityGrandRitualCircle;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityInfusionAltar;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityJar;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityLensReceptacle;
@@ -22,6 +23,7 @@ public class ModTileEntities {
 
 		GameRegistry.registerTileEntity(TileEntityAlchemicArray.class, Arcanacraft.MODID + ".alchemic_array");
 		GameRegistry.registerTileEntity(TileEntityRitualCircle.class, Arcanacraft.MODID + ".ritual_circle");
+		GameRegistry.registerTileEntity(TileEntityGrandRitualCircle.class, Arcanacraft.MODID + ".grand_ritual_circle");
 		
 		GameRegistry.registerTileEntity(TileEntityLensReceptacle.class, Arcanacraft.MODID + ".lens_receptacle");
 		GameRegistry.registerTileEntity(TileEntityDeconstructionTable.class, Arcanacraft.MODID + ".deconstruction_table");

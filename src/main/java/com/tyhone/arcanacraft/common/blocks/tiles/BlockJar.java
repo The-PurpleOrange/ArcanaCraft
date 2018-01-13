@@ -3,7 +3,7 @@ package com.tyhone.arcanacraft.common.blocks.tiles;
 import org.apache.logging.log4j.Level;
 
 import com.tyhone.arcanacraft.Arcanacraft;
-import com.tyhone.arcanacraft.api.item.IEssenceVessel;
+import com.tyhone.arcanacraft.api.tinkture.IEssenceVessel;
 import com.tyhone.arcanacraft.api.tinkture.TinktureStack;
 import com.tyhone.arcanacraft.common.blocks.base.ModBlockTileEntityBase;
 import com.tyhone.arcanacraft.common.init.ModTinktureTypes;

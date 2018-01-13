@@ -10,7 +10,7 @@ import com.tyhone.arcanacraft.api.recipe.RecipeHammer;
 import com.tyhone.arcanacraft.api.recipe.RecipeInfusionAltar;
 import com.tyhone.arcanacraft.api.recipe.RecipeSoulAltar;
 import com.tyhone.arcanacraft.api.recipe.RecipeTransmutationAltar;
-import com.tyhone.arcanacraft.api.tinkture.TinktureManager;
+import com.tyhone.arcanacraft.api.tinkture.TinktureRegistry;
 import com.tyhone.arcanacraft.api.tinkture.TinktureStack;
 import com.tyhone.arcanacraft.api.tinkture.TinktureType;
 import com.tyhone.arcanacraft.common.init.ModBlocks;
@@ -60,7 +60,7 @@ public class JEIArcanacraftPlugin implements IModPlugin {
 	public void registerIngredients(IModIngredientRegistration registry) {
 		
 		Collection<TinktureStack> tinktureStackIngredient = new ArrayList<>();
-		for(TinktureType type : TinktureManager.getTinktureTypes()){
+		for(TinktureType type : TinktureRegistry.getTinktureTypes()){
 			tinktureStackIngredient.add(new TinktureStack(type, 0));
 		}
 		

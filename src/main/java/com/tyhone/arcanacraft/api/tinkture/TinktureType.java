@@ -36,7 +36,7 @@ public class TinktureType extends net.minecraftforge.registries.IForgeRegistryEn
 	}
 
 	public static TinktureType getType(String name) {
-		for(TinktureType type : TinktureManager.getTinktureTypes()){
+		for(TinktureType type : TinktureRegistry.getTinktureTypes()){
 			if(name.equals(type.getRegistryName().toString())){
 				return type;
 			}
