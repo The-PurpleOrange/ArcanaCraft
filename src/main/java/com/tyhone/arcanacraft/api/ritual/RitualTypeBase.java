@@ -1,5 +1,7 @@
 package com.tyhone.arcanacraft.api.ritual;
 
+import java.util.List;
+
 import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.common.init.ModRituals;
 
@@ -9,16 +11,16 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 
-public class RitualBase extends net.minecraftforge.registries.IForgeRegistryEntry.Impl<RitualBase> implements IRitual{
+public class RitualTypeBase extends net.minecraftforge.registries.IForgeRegistryEntry.Impl<RitualTypeBase> implements IRitualType{
 
 	private ResourceLocation registryName;
 	private String ritualName;
-	private RitualTypeBase ritualType;
+	private List<RitualBase> ritualTypeList;
 	
-	public RitualBase(String ritualName, RitualTypeBase ritualType){ //ModRituals.RITUAL_TYPE_STANDARD){
+	public RitualTypeBase(String ritualName, List<RitualBase> ritualTypeList) {
 		this.ritualName = ritualName;
 		this.registryName = new ResourceLocation(Arcanacraft.MODID, ritualName);
-		this.ritualType = ritualType;
+		this.ritualTypeList = ritualTypeList;
 		ModRituals.register(this);
 	}
 
@@ -30,14 +32,9 @@ public class RitualBase extends net.minecraftforge.registries.IForgeRegistryEntr
 	public String getDisplayName(){
         return I18n.translateToLocal(this.getUnlocalizedName() + ".name").trim();
     }
-	
-	public RitualTypeBase getRitualType(){
-		return ritualType;
-	}
 
 	@Override
-	public boolean preformRitual(World world, EntityPlayer player, BlockPos pos) {
-		Arcanacraft.logger.error("TRIED TO PREFORM RITUAL IN BASE CLASS");
-		return false;
+	public List<RitualBase> getRitualList() {
+		return this.ritualTypeList;
 	}
 }

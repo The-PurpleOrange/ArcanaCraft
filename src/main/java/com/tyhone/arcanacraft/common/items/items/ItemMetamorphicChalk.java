@@ -12,8 +12,10 @@ import com.tyhone.arcanacraft.api.ritual.IRitualBuilder;
 import com.tyhone.arcanacraft.api.ritual.IRitualCircle;
 import com.tyhone.arcanacraft.api.ritual.RitualBase;
 import com.tyhone.arcanacraft.api.ritual.RitualRegistry;
+import com.tyhone.arcanacraft.api.ritual.RitualTypeBase;
 import com.tyhone.arcanacraft.api.util.ItemStackUtil;
 import com.tyhone.arcanacraft.common.init.ModBlocks;
+import com.tyhone.arcanacraft.common.init.ModRituals;
 import com.tyhone.arcanacraft.common.items.base.ModItemBase;
 import com.tyhone.arcanacraft.common.util.PlayerUtils;
 import com.tyhone.arcanacraft.common.util.PosUtil;
@@ -35,9 +37,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
 
-	private final String NBT_RITUAL = "ritual";
-	private final String NBT_RITUAL_DISPLAY_NAME = "ritual_display_name";
 	private final String NBT_RITUAL_TYPE = "ritual_type";
+	private final String NBT_RITUAL_TYPE_DISPLAY_NAME = "ritual_type_display_name";
 	
 	
 	//TODO add support for shift-right clicking for different ritual types
@@ -50,40 +51,100 @@ public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand)
 	{
+		
+		
 		if(player.isSneaking()){
 			String msg = null;
-			List<RitualBase> rituals = RitualRegistry.getRitualList();
+
+
+			List<RitualTypeBase> ritualTypes = RitualRegistry.getRitualTypeList();
+			
 			ItemStack stack = player.getHeldItem(hand);
-	
 			NBTTagCompound tag = new NBTTagCompound();
-			if(stack.hasTagCompound() && stack.getTagCompound().hasKey(NBT_RITUAL)){
+			
+			if(stack.hasTagCompound()){
 				tag = stack.getTagCompound();
-				for(int i = 0; i < rituals.size(); i++){
-					if((tag.getString(NBT_RITUAL)).equals(rituals.get(i).getUnlocalizedName())){
-						if(i == rituals.size()-1){
-							setNBT(tag, rituals.get(0));
-		            		msg = (rituals.get(0).getUnlocalizedName());
+			}
+			
+			if(ritualTypes.size() > 1 && tag.hasKey(NBT_RITUAL_TYPE)){
+				for(int i = 0; i < ritualTypes.size(); i++){
+					if((tag.getString(NBT_RITUAL_TYPE)).equals(ritualTypes.get(i).getUnlocalizedName())){
+						if(i == ritualTypes.size()-1){
+							setRitualTypeNBT(tag, ritualTypes.get(0));
+		            		msg = (ritualTypes.get(0).getUnlocalizedName());
 						}else{
-							setNBT(tag, rituals.get(i+1));
-		            		msg = (rituals.get(i+1).getUnlocalizedName());
+							setRitualTypeNBT(tag, ritualTypes.get(i+1));
+		            		msg = (ritualTypes.get(i+1).getUnlocalizedName());
 						}
 						break;
 					}
 				}
 			}else{
-				setNBT(tag, rituals.get(0));
-        		msg = (rituals.get(0).getUnlocalizedName());
+				setRitualTypeNBT(tag, ritualTypes.get(0));
+        		msg = (ritualTypes.get(0).getUnlocalizedName());
 			}
 			PlayerUtils.sendPlayerMessage(player, world, msg);
 	
 			stack.setTagCompound(tag);
-	        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, player.getHeldItem(hand));
 		}
-
-        return new ActionResult<ItemStack>(EnumActionResult.PASS, player.getHeldItem(hand));
+		else{
+			String msg = null;
+			ItemStack stack = player.getHeldItem(hand);
+			NBTTagCompound tag = new NBTTagCompound();
+			
+			if(stack.hasTagCompound()){
+				tag = stack.getTagCompound();
+			}
+			
+			if(tag.hasKey(NBT_RITUAL_TYPE)){
+				RitualTypeBase ritualType = getRitualTypeNBT(stack);
+				if(ritualType != null && tag.hasKey(ritualType.getUnlocalizedName())){
+					List<RitualBase> rituals = RitualRegistry.getRitualListFromString(ritualType.getUnlocalizedName());
+					
+					if(rituals.size() > 1){
+						for(int i = 0; i < rituals.size(); i++){
+							if(tag.getString(ritualType.getUnlocalizedName()).equals(rituals.get(i).getUnlocalizedName())){
+								if(i == rituals.size()-1){
+									setAllNBT(tag, rituals.get(0), ritualType);
+				            		msg = (rituals.get(0).getUnlocalizedName());
+								}else{
+									setAllNBT(tag, rituals.get(i+1), ritualType);
+				            		msg = (rituals.get(i+1).getUnlocalizedName());
+								}
+								break;
+							}
+						}
+					}
+					else{
+						RitualBase ritual = RitualRegistry.getRitualListFromHashMap(ritualType).get(0);
+						setAllNBT(tag, ritual, ritualType);
+		        		msg = (ritual.getUnlocalizedName());
+					}
+					
+				}
+				else{
+					RitualBase ritual = RitualRegistry.getRitualListFromHashMap(ritualType).get(0);
+					setAllNBT(tag, ritual, ritualType);
+	        		msg = (ritual.getUnlocalizedName());
+				}
+				
+				PlayerUtils.sendPlayerMessage(player, world, msg);
+		
+				stack.setTagCompound(tag);
+			}
+			else{
+				RitualTypeBase ritualType = ModRituals.RITUAL_TYPE_STANDARD; //RitualRegistry.getRitualTypeList().get(0);
+				RitualBase ritual = RitualRegistry.getRitualListFromHashMap(ritualType).get(0);
+				setAllNBT(tag, ritual, ritualType);
+        		msg = (ritualType.getUnlocalizedName());
+				stack.setTagCompound(tag);
+    			PlayerUtils.sendPlayerMessage(player, world, msg);
+			}
+		}
+        return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, player.getHeldItem(hand));
     }
 	
-	@Override
+	/*@Override
 	public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
 	{
 		if(player.isSneaking()){
@@ -91,7 +152,8 @@ public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
 		}
 		else{
 			ItemStack stack = player.getHeldItem(hand);
-			RecipeRitualCircle recipe = getNBT(stack); //ONLY FOR BASIC RITUALS
+			//RecipeRitualCircle recipe = getRitualNBT(getRitualTypeNBT(stack).getUnlocalizedName()); //ONLY FOR BASIC RITUALS
+			RecipeRitualCircle recipe = getRitualNBT();
 			if(checkArea(recipe, player, worldIn, pos, hand)){
 				if(drawCircle(recipe, player, worldIn, pos, hand, true)){
 					return EnumActionResult.SUCCESS;
@@ -100,7 +162,7 @@ public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
 		}
 		
         return EnumActionResult.PASS;
-    }
+    }*/
 	
 	
 	
@@ -199,27 +261,48 @@ public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
     	return true;
 	}
 	
-	private RecipeRitualCircle getNBT(ItemStack stack){
-		if(stack.hasTagCompound() && stack.getTagCompound().hasKey(NBT_RITUAL)){
-			String ritualName = stack.getTagCompound().getString(NBT_RITUAL);
-			return RecipeRitualCircle.getRecipe(ritualName);
+	private void setAllNBT(NBTTagCompound tag, RitualBase ritual, RitualTypeBase ritualType){
+		setRitualTypeNBT(tag, ritualType);
+		setRitualNBT(tag, ritual, ritualType);
+	}
+	
+	private void setRitualNBT(NBTTagCompound tag, RitualBase ritual, RitualTypeBase ritualType){
+		tag.setString(ritualType.getUnlocalizedName(), ritual.getUnlocalizedName());
+		tag.setString(ritualType.getUnlocalizedName() + "_display_name", ritual.getDisplayName());
+	}
+	
+	private void setRitualTypeNBT(NBTTagCompound tag, RitualTypeBase ritualType){
+		tag.setString(NBT_RITUAL_TYPE, ritualType.getUnlocalizedName());
+		tag.setString(NBT_RITUAL_TYPE_DISPLAY_NAME, ritualType.getDisplayName());
+	}
+	
+	private RitualBase getRitualNBT(ItemStack stack, RitualTypeBase ritualType){
+		if(stack.hasTagCompound() && stack.getTagCompound().hasKey(ritualType.getUnlocalizedName())){
+			String ritualName = stack.getTagCompound().getString(ritualType.getUnlocalizedName());
+			if(ritualName != null){
+				return RitualRegistry.getRitualFromString(ritualName, ritualType);
+			}
 		}
 		return null;
 	}
 	
-	private void setNBT(NBTTagCompound tag, RitualBase ritual){
-		tag.setString(NBT_RITUAL, ritual.getUnlocalizedName());
-		tag.setString(NBT_RITUAL_DISPLAY_NAME, ritual.getDisplayName());
+	private RitualTypeBase getRitualTypeNBT(ItemStack stack){
+		if(stack.hasTagCompound() && stack.getTagCompound().hasKey(NBT_RITUAL_TYPE)){
+			String ritualTypeName = stack.getTagCompound().getString(NBT_RITUAL_TYPE);
+			if(ritualTypeName != null){
+				return RitualRegistry.getRitualTypeFromString(ritualTypeName);
+			}
+		}
+		return null;
 	}
 	
     @Override
     @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
-    {
-    	
-    	if(stack.hasTagCompound() && stack.getTagCompound().hasKey(NBT_RITUAL_DISPLAY_NAME)){
-    		tooltip.add(stack.getTagCompound().getString(NBT_RITUAL_DISPLAY_NAME));
-    		tooltip.add(stack.getTagCompound().toString());
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn){
+    	RitualTypeBase ritualType = getRitualTypeNBT(stack);
+    	if(ritualType != null){
+    		tooltip.add(stack.getTagCompound().getString(NBT_RITUAL_TYPE_DISPLAY_NAME));
+    		tooltip.add(stack.getTagCompound().getString(ritualType.getUnlocalizedName() + "_display_name"));
     	}
     }
 }

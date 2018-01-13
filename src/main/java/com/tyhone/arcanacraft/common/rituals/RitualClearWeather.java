@@ -3,6 +3,7 @@ package com.tyhone.arcanacraft.common.rituals;
 import java.util.Random;
 
 import com.tyhone.arcanacraft.api.ritual.RitualBase;
+import com.tyhone.arcanacraft.api.ritual.RitualTypeBase;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
@@ -13,8 +14,8 @@ public class RitualClearWeather extends RitualBase{
 	public final Random rand = new Random();
 	
 	
-    public RitualClearWeather(String ritualName) {
-		super(ritualName);
+    public RitualClearWeather(String ritualName, RitualTypeBase ritualType) {
+		super(ritualName, ritualType);
 	}
 
 	@Override

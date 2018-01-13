@@ -21,7 +21,7 @@ public class RecipeInfusionAltar {
 	
 	public RecipeInfusionAltar(ItemStack output, ItemStack infusionItem, ItemStack[] inputs, TinktureStack[] tInputs){
 		
-		if(inputs == null || inputs.length>5){
+		if(inputs == null || inputs.length>8){
 			Arcanacraft.logger.error("Invalid infusion recipe added for: " + output);
 		}
 		

@@ -13,8 +13,12 @@ import net.minecraftforge.items.IItemHandler;
 public class PlayerUtils {
 	
 	public static void sendPlayerMessage(EntityPlayer player, World worldIn, String message){
-		if(message!=null && worldIn.isRemote){
-			player.sendMessage(new TextComponentTranslation(message));
+		if(worldIn.isRemote){
+			if(message!=null){
+				player.sendMessage(new TextComponentTranslation(message));
+			}else{
+				player.sendMessage(new TextComponentTranslation("Null Message Error"));
+			}
 		}
 	}
 	
