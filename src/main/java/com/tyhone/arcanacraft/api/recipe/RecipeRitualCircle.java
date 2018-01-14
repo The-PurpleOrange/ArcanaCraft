@@ -139,28 +139,6 @@ public class RecipeRitualCircle {
 	}
 	
 	
-	public static RecipeRitualCircle getRecipe(List<ItemStack> itemStacks, List<ItemStack> blockStacks){
-		
-		for(RecipeRitualCircle recipe : ArcanacraftRitualCraftingManager.getRitualCircleRecipes()){
-			if(recipe.matchesBlocks(blockStacks)){
-				//Arcanacraft.log("Blocks match");
-				if(itemStacks!=null && recipe.doInputsMatch((ArrayList<ItemStack>)itemStacks)){
-					return recipe;
-				}
-			}
-		}
-		return null;
-	}
-	
-	public static RecipeRitualCircle getRecipe(String unlocalizedName){
-		for(RecipeRitualCircle recipe : ArcanacraftRitualCraftingManager.getRitualCircleRecipes()){
-			if(recipe.getRitual().getUnlocalizedName().equals(unlocalizedName)){
-				return recipe;
-			}
-		}
-		return null;
-	}
-	
 	public List<ItemStack> getBlockRequirements() {
 		return new ArrayList(blockPosList);
 	}

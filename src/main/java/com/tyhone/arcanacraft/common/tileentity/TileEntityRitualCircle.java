@@ -3,6 +3,7 @@ package com.tyhone.arcanacraft.common.tileentity;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.tyhone.arcanacraft.api.recipe.ArcanacraftRitualCraftingManager;
 import com.tyhone.arcanacraft.api.recipe.RecipeRitualCircle;
 import com.tyhone.arcanacraft.api.util.ItemStackUtil;
 import com.tyhone.arcanacraft.common.tileentity.base.ModTileEntityBase;
@@ -65,7 +66,7 @@ public class TileEntityRitualCircle extends ModTileEntityBase {
 			}
 		}
 
-		RecipeRitualCircle recipe = RecipeRitualCircle.getRecipe(itemStacks, blockStacks);
+		RecipeRitualCircle recipe = ArcanacraftRitualCraftingManager.getRecipe(itemStacks, blockStacks, ArcanacraftRitualCraftingManager.getRitualCircleRecipes());
 		if(recipe != null){
 			for(EntityItem ei : eItems){
 				ei.setDead();

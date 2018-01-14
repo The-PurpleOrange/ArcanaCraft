@@ -144,25 +144,43 @@ public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
         return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, player.getHeldItem(hand));
     }
 	
-	/*@Override
+	
+	@Override
 	public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
 	{
-		if(player.isSneaking()){
-			return EnumActionResult.SUCCESS;
+		if(player.isSneaking() && player.isCreative()){
+			ItemStack stack = player.getHeldItem(hand);
+			//RecipeRitualCircle recipe = getRitualNBT(getRitualTypeNBT(stack).getUnlocalizedName()); //ONLY FOR BASIC RITUALS
+			RecipeRitualCircle recipe = getRitualRecipeNBT(stack);
+			if(recipe!=null){
+				if(checkArea(recipe, player, worldIn, pos, hand)){
+					if(drawCircle(recipe, player, worldIn, pos, hand, false)){
+						return EnumActionResult.SUCCESS;
+					}
+				}
+			}
+			else{
+				PlayerUtils.sendPlayerMessage(player, worldIn, "Null Ritual Recipe");
+			}
 		}
 		else{
 			ItemStack stack = player.getHeldItem(hand);
 			//RecipeRitualCircle recipe = getRitualNBT(getRitualTypeNBT(stack).getUnlocalizedName()); //ONLY FOR BASIC RITUALS
-			RecipeRitualCircle recipe = getRitualNBT();
-			if(checkArea(recipe, player, worldIn, pos, hand)){
-				if(drawCircle(recipe, player, worldIn, pos, hand, true)){
-					return EnumActionResult.SUCCESS;
+			RecipeRitualCircle recipe = getRitualRecipeNBT(stack);
+			if(recipe!=null){
+				if(checkArea(recipe, player, worldIn, pos, hand)){
+					if(drawCircle(recipe, player, worldIn, pos, hand, true)){
+						return EnumActionResult.SUCCESS;
+					}
 				}
+			}
+			else{
+				PlayerUtils.sendPlayerMessage(player, worldIn, "Null Ritual Recipe");
 			}
 		}
 		
         return EnumActionResult.PASS;
-    }*/
+    }
 	
 	
 	
@@ -170,9 +188,12 @@ public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
     {
 		String msg = null;
 		boolean buildComplete;
+
+		RitualTypeBase ritualType = recipe.getRitual().getRitualType();
+		Arcanacraft.log("RitualType: " + ritualType.getDisplayName());
 		
-		for(int place : ArcanacraftRitualCraftingManager.getPlaceOrder()){
-			BlockPos oldPos = PosUtil.combinePos(pos, ArcanacraftRitualCraftingManager.getBlockPlaceFromList(place));
+		for(int place : ritualType.getRitualRecipePlaceOrder()){
+			BlockPos oldPos = PosUtil.combinePos(pos, ritualType.getRitualRecipePosList().get(place));
 			final BlockPos placePos = (worldIn.getBlockState(pos).getBlock() instanceof IRitualCircle) ? oldPos : PosUtil.combinePos(oldPos, new BlockPos(0, 1, 0));
 			
 			ItemStack itemStack = recipe.getBlockRequirements().get(place);
@@ -183,7 +204,6 @@ public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
 					
 			    	if(block == ModBlocks.CHALK_BLOCK || player.isCreative()){
 			    		worldIn.setBlockState(placePos, block.getStateFromMeta(itemStack.getMetadata()));
-			    		//worldIn.setBlockState(placePos, Blocks.DIRT.getDefaultState());
 			    		if(individual){
 			    			return true;
 			    		}
@@ -216,8 +236,9 @@ public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
 					PlayerUtils.sendPlayerMessage(player, worldIn, line);
 				}
 			}
+		}else{
+			PlayerUtils.sendPlayerMessage(player, worldIn, msg);
 		}
-		PlayerUtils.sendPlayerMessage(player, worldIn, msg);
 		return true;
     }
 	
@@ -227,8 +248,10 @@ public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
 			return false;
 		}
 		
-		for(int place : ArcanacraftRitualCraftingManager.getPlaceOrder()){
-			BlockPos oldPos = PosUtil.combinePos(pos, ArcanacraftRitualCraftingManager.getBlockPlaceFromList(place));
+		RitualTypeBase ritualType = recipe.getRitual().getRitualType();
+		
+		for(int place : ritualType.getRitualRecipePlaceOrder()){
+			BlockPos oldPos = PosUtil.combinePos(pos, ritualType.getRitualRecipePosList().get(place));
 			final BlockPos placePos = (worldIn.getBlockState(pos).getBlock() instanceof IRitualCircle) ? oldPos : PosUtil.combinePos(oldPos, new BlockPos(0, 1, 0));
 
         	if(placePos == null){
@@ -259,6 +282,30 @@ public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
 			}
 		}
     	return true;
+	}
+	
+	/*private RecipeRitualCircle getNBT(ItemStack stack){
+		if(stack.hasTagCompound() && stack.getTagCompound().hasKey(NBT_RITUAL)){
+			String ritualName = stack.getTagCompound().getString(NBT_RITUAL);
+			if(ritualName!=null){
+				return RecipeRitualCircle.getRecipe(ritualName);
+			}
+		}
+		return null;
+	}*/
+	
+	private RecipeRitualCircle getRitualRecipeNBT(ItemStack stack){
+		
+		RitualTypeBase ritualType = getRitualTypeNBT(stack);
+		RitualBase ritual = getRitualNBT(stack, ritualType);
+		
+		for(RecipeRitualCircle ritualRecipe : ritualType.getRitualRecipeList()){
+			if(ritual.getUnlocalizedName().equals(ritualRecipe.getRitual().getUnlocalizedName())){
+				return ritualRecipe;
+			}
+		}
+		
+		return null;
 	}
 	
 	private void setAllNBT(NBTTagCompound tag, RitualBase ritual, RitualTypeBase ritualType){

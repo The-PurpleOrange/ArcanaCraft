@@ -12,7 +12,7 @@ public class RitualRegistry {
 	
 	public static List<RitualBase> ritualList = new ArrayList<RitualBase>();
 	public static List<RitualBase> grandRitualList = new ArrayList<RitualBase>();
-	public static List<RitualBase> soulRitualList = new ArrayList<RitualBase>();
+	//public static List<RitualBase> soulRitualList = new ArrayList<RitualBase>();
 	
 	//RITUAL TYPE
 	public static void registerRitualType(RitualTypeBase ritualType, List<RitualBase> list){
@@ -85,12 +85,12 @@ public class RitualRegistry {
 	}
 	
 	
-	//GRAND RITUAL
-	public static void registerSoulRitual(RitualBase ritual) {
+	//SOUL RITUAL
+	/*public static void registerSoulRitual(RitualBase ritual) {
 		soulRitualList.add(ritual);
 	}
 	
 	public static List<RitualBase> getSoulRitualList(){
 		return soulRitualList;
-	}
+	}*/
 }

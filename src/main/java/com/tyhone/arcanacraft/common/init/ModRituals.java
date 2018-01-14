@@ -3,6 +3,7 @@ package com.tyhone.arcanacraft.common.init;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.tyhone.arcanacraft.api.recipe.ArcanacraftRitualCraftingManager;
 import com.tyhone.arcanacraft.api.ritual.RitualBase;
 import com.tyhone.arcanacraft.api.ritual.RitualRegistry;
 import com.tyhone.arcanacraft.api.ritual.RitualTypeBase;
@@ -18,9 +19,21 @@ public class ModRituals {
 	private static final List<RitualBase> RITUALS = new ArrayList<>();
 	
 
-	public static final RitualTypeBase RITUAL_TYPE_STANDARD = new RitualTypeBase("ritual_type_standard", RitualRegistry.getRitualList());
-	public static final RitualTypeBase RITUAL_TYPE_GRAND = new RitualTypeBase("ritual_type_grand", RitualRegistry.getGrandRitualList());
-	public static final RitualTypeBase RITUAL_TYPE_SOUL_ALTAR = new RitualTypeBase("ritual_type_soul_altar", RitualRegistry.getSoulRitualList());
+	public static final RitualTypeBase RITUAL_TYPE_STANDARD = new RitualTypeBase(
+			"ritual_type_standard", 
+			RitualRegistry.getRitualList(), 
+			ArcanacraftRitualCraftingManager.getRitualCircleRecipes(), 
+			ArcanacraftRitualCraftingManager.getStandardBlockPosList(),
+			ArcanacraftRitualCraftingManager.getStandardPlaceOrder()
+		);
+	public static final RitualTypeBase RITUAL_TYPE_GRAND = new RitualTypeBase(
+			"ritual_type_grand", 
+			RitualRegistry.getGrandRitualList(), 
+			ArcanacraftRitualCraftingManager.getGrandRitualCircleRecipes(),
+			ArcanacraftRitualCraftingManager.getGrandBlockPosList(),
+			ArcanacraftRitualCraftingManager.getGrandPlaceOrder()
+		);
+	//public static final RitualTypeBase RITUAL_TYPE_SOUL_ALTAR = new RitualTypeBase("ritual_type_soul_altar", RitualRegistry.getSoulRitualList());
 	
 	
 	public static final RitualBase RITUAL_SUMMON_RAIN = new RitualSummonRain("summon_rain", RITUAL_TYPE_STANDARD);
