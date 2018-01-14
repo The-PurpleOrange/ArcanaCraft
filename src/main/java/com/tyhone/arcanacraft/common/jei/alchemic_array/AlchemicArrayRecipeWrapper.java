@@ -22,7 +22,7 @@ public class AlchemicArrayRecipeWrapper implements IRecipeWrapper{
 	public void getIngredients(IIngredients ingredients) {
 		
 		List<ItemStack> inputs = new ArrayList<ItemStack>();
-		for(ItemStack input : this.recipe.getInputs()){
+		for(Object input : this.recipe.getInputs()){
 			inputs.add(input);
 		}
 		

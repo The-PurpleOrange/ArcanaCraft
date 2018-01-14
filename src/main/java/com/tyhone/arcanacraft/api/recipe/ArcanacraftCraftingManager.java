@@ -1,5 +1,6 @@
 package com.tyhone.arcanacraft.api.recipe;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import com.tyhone.arcanacraft.common.util.WildStack;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import scala.actors.threadpool.Arrays;
 
 public class ArcanacraftCraftingManager {
 
@@ -67,8 +69,9 @@ public class ArcanacraftCraftingManager {
 
 	//ALCHEMICAL ARRAY RECIPES
 	public static RecipeAlchemicArray registerAlchemicArrayRecipe(ItemStack output, Object ... inputObjects) {
-		ArrayList<ItemStack> inputs = WildStack.InitObjectListToItemStackList(inputObjects);
-		if(inputs==null){
+		//ArrayList<Object> inputs = new ArrayList<Object>(Arrays.asList(inputObjects));
+		ArrayList<Object> inputs = WildStack.InitObjectListToItemStackOrStringList(inputObjects);
+		if(inputs.size()==0){
 			Arcanacraft.logger.error("Error register Recipe for Alchemic Array: " + output.getDisplayName());
 			return null;
 		}

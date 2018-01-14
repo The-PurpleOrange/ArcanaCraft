@@ -18,28 +18,29 @@ public class OreDictionaryHandler {
 	}
 	
 	public static ItemStack getOreDictionaryEntry(String string){
-		List<ItemStack> ores = OreDictionary.getOres(string, true);
-		if(ores.size()>0){
-			return ores.get(0);
+		List<ItemStack> list = getOreDictionaryEntries(string);
+		if(list.size()>0){
+			return list.get(0);
 		}
-		return null;
+		return ItemStack.EMPTY;
 	}
 	
 	public static List<ItemStack> getOreDictionaryEntries(String string){
-		List<ItemStack> ores = OreDictionary.getOres(string, true);
+		List<ItemStack> ores = OreDictionary.getOres(string, false);
 		if(ores.size()>0){
 			return ores;
 		}
 		return null;
 	}
 	
-	public static boolean compareOreDictionaryEntry(Object object, String string){
-		ItemStack stack = WildStack.ObjectToInput(object);
+	public static boolean compareOreDictionaryEntry(ItemStack stack, String string){
 		if(!stack.isEmpty()){
 			List<ItemStack> oreList = getOreDictionaryEntries(string);
-			for(ItemStack oreStack : oreList){
-				if(ItemStackUtil.simpleAreStacksEqual(stack, oreStack)){
-					return true;
+			if(oreList.size()>0){
+				for(ItemStack oreStack : oreList){
+					if(ItemStackUtil.simpleAreStacksEqual(stack, oreStack)){
+						return true;
+					}
 				}
 			}
 		}

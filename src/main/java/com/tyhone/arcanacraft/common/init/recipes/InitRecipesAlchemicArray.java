@@ -23,7 +23,7 @@ public class InitRecipesAlchemicArray {
 		ArcanacraftCraftingManager.registerAlchemicArrayRecipe(new ItemStack(ModItems.MULCH, 4), WildStack.W(Blocks.LEAVES, 3), new ItemStack(Blocks.DIRT, 1, 0));
 		ArcanacraftCraftingManager.registerAlchemicArrayRecipe(new ItemStack(ModItems.MULCH, 4), WildStack.W(Blocks.LEAVES2, 3), new ItemStack(Blocks.DIRT, 1, 0));
 		ArcanacraftCraftingManager.registerAlchemicArrayRecipe(new ItemStack(ModItems.INGOT, 1, ItemMetaUtil.ingot("magicite")), new ItemStack (Items.IRON_INGOT), new ItemStack(ModItems.AYRE, 1));
-		ArcanacraftCraftingManager.registerAlchemicArrayRecipe(new ItemStack(Items.GOLD_INGOT, 1), "dustGold");
+		ArcanacraftCraftingManager.registerAlchemicArrayRecipe(new ItemStack(Items.GOLD_INGOT, 1), "dustGold:2");
 		
 		//Chalk
 		ArcanacraftCraftingManager.registerAlchemicArrayRecipe(new ItemStack(ModItems.CHALK_METAMORPHIC, 1),
