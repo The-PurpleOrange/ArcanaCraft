@@ -10,16 +10,16 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.translation.I18n;
 
-public class RitualTypeBase extends net.minecraftforge.registries.IForgeRegistryEntry.Impl<RitualTypeBase> implements IRitualType{
+public class RitualType extends net.minecraftforge.registries.IForgeRegistryEntry.Impl<RitualType> implements IRitualType{
 
 	private ResourceLocation registryName;
 	private String ritualName;
-	private List<RitualBase> ritualTypeList;
+	private List<Ritual> ritualTypeList;
 	private List<RecipeRitualCircle> ritualRecipeList;
 	private List<BlockPos> posOrderList;
 	private int[] placeOrder;
 	
-	public RitualTypeBase(String ritualName, List<RitualBase> ritualTypeList, List<RecipeRitualCircle> ritualRecipeList, List<BlockPos> posOrderList, int[] placeOrder) {
+	public RitualType(String ritualName, List<Ritual> ritualTypeList, List<RecipeRitualCircle> ritualRecipeList, List<BlockPos> posOrderList, int[] placeOrder) {
 		this.ritualName = ritualName;
 		this.registryName = new ResourceLocation(Arcanacraft.MODID, ritualName);
 		this.ritualTypeList = ritualTypeList;
@@ -38,7 +38,7 @@ public class RitualTypeBase extends net.minecraftforge.registries.IForgeRegistry
         return I18n.translateToLocal(this.getUnlocalizedName() + ".name").trim();
     }
 
-	public List<RitualBase> getRitualList() {
+	public List<Ritual> getRitualList() {
 		return this.ritualTypeList;
 	}
 

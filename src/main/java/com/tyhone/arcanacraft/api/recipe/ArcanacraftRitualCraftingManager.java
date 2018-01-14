@@ -3,8 +3,8 @@ package com.tyhone.arcanacraft.api.recipe;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.tyhone.arcanacraft.Arcanacraft;
-import com.tyhone.arcanacraft.api.ritual.RitualBase;
+import com.tyhone.arcanacraft.api.ritual.Ritual;
+import com.tyhone.arcanacraft.api.util.RecipeUtil;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
@@ -60,7 +60,8 @@ public class ArcanacraftRitualCraftingManager {
     	return posList;
 	}
 
-	private static List<RecipeRitualCircle> ritualCircleRecipe = new ArrayList<RecipeRitualCircle>();
+	
+	private static List<RecipeRitualCircle> standardRitualCircleRecipe = new ArrayList<RecipeRitualCircle>();
 	private static List<RecipeRitualCircle> grandRitualCircleRecipe = new ArrayList<RecipeRitualCircle>();
 	
 
@@ -70,13 +71,13 @@ public class ArcanacraftRitualCraftingManager {
 	}
 	
 	//RITUAL CIRCLE RECIPES
-	public static RecipeRitualCircle registerRitualCircleRecipe(RitualBase ritual, ItemStack[] itemInputs, Object[] blockInputs) {
+	public static RecipeRitualCircle registerRitualCircleRecipe(Ritual ritual, ItemStack[] itemInputs, Object[] blockInputs) {
 		RecipeRitualCircle recipe = new RecipeRitualCircle(ritual, itemInputs, blockInputs);
-		ritualCircleRecipe.add(recipe);
+		standardRitualCircleRecipe.add(recipe);
 		return recipe;
 	}
 	public static List<RecipeRitualCircle> getRitualCircleRecipes(){
-		return ritualCircleRecipe;
+		return standardRitualCircleRecipe;
 	}
 	
 	public static int[] getStandardPlaceOrder(){
@@ -86,14 +87,10 @@ public class ArcanacraftRitualCraftingManager {
 	public static List<BlockPos> getStandardBlockPosList(){
 		return posStandardOrderList;
 	}
-	
-	/*public static BlockPos getStandardBlockPlaceFromList(int i){
-		return posStandardOrderList.get(i);
-	}*/
 
 
 	//GRAND RITUAL CIRCLE RECIPES
-	public static RecipeRitualCircle registerGrandRitualCircleRecipe(RitualBase ritual, ItemStack[] itemInputs, Object[] blockInputs) {
+	public static RecipeRitualCircle registerGrandRitualCircleRecipe(Ritual ritual, ItemStack[] itemInputs, Object[] blockInputs) {
 		RecipeRitualCircle recipe = new RecipeRitualCircle(ritual, itemInputs, blockInputs);
 		grandRitualCircleRecipe.add(recipe);
 		return recipe;
@@ -110,17 +107,13 @@ public class ArcanacraftRitualCraftingManager {
 		return posGrandOrderList;
 	}
 	
-	/*public static BlockPos getGrandBlockPlaceFromList(int i){
-		return posStandardOrderList.get(i);
-	}*/
-	
 	//OTHER
 
 	//GET RITUAL RECIPE FROM LIST
 	public static RecipeRitualCircle getRecipe(List<ItemStack> itemStacks, List<ItemStack> blockStacks, List<RecipeRitualCircle> recipeList){
 		for(RecipeRitualCircle recipe : recipeList){
 			if(recipe.matchesBlocks(blockStacks)){
-				if(itemStacks!=null && recipe.doInputsMatch((ArrayList<ItemStack>)itemStacks)){
+				if(itemStacks!=null && RecipeUtil.doInputsMatch((ArrayList<ItemStack>) recipe.getItemRequirements(), (ArrayList<ItemStack>) itemStacks)){
 					return recipe;
 				}
 			}

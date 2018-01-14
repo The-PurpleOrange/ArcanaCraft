@@ -1,15 +1,15 @@
 package com.tyhone.arcanacraft.common.rituals;
 
-import com.tyhone.arcanacraft.api.ritual.RitualBase;
-import com.tyhone.arcanacraft.api.ritual.RitualTypeBase;
+import com.tyhone.arcanacraft.api.ritual.Ritual;
+import com.tyhone.arcanacraft.api.ritual.RitualType;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class RitualSummonRain extends RitualBase{
+public class RitualSummonRain extends Ritual{
 	
-	public RitualSummonRain(String ritualName, RitualTypeBase ritualType) {
+	public RitualSummonRain(String ritualName, RitualType ritualType) {
 		super(ritualName, ritualType);
 	}
 

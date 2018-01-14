@@ -12,12 +12,12 @@ import net.minecraft.item.ItemStack;
 public class InitGrandRitualCircleRecipe {
 	
 	public static void initRecipe(){
-		initSummonCreeper();
+		initSummonChicken();
 	}
 	
-	private static void initSummonCreeper(){
+	private static void initSummonChicken(){
 		ArcanacraftRitualCraftingManager.registerGrandRitualCircleRecipe(
-				ModRituals.GRAND_RITUAL_SUMMON_CREEPER,
+				ModRituals.GRAND_RITUAL_SUMMON_CHICKEN,
 			new ItemStack[]{
 					new ItemStack(ModItems.AYRE, 1)
 			},
@@ -43,5 +43,4 @@ public class InitGrandRitualCircleRecipe {
 					'K', new ItemStack(Blocks.GLOWSTONE, 1)
 			});
 	}
-
 }

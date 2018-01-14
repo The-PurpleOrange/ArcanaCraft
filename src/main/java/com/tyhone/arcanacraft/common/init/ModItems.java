@@ -18,6 +18,7 @@ import com.tyhone.arcanacraft.common.items.items.ItemIngot;
 import com.tyhone.arcanacraft.common.items.items.ItemItem;
 import com.tyhone.arcanacraft.common.items.items.ItemLens;
 import com.tyhone.arcanacraft.common.items.items.ItemMetamorphicChalk;
+import com.tyhone.arcanacraft.common.items.items.ItemMulch;
 import com.tyhone.arcanacraft.common.items.items.ItemNeedle;
 import com.tyhone.arcanacraft.common.items.items.ItemRedCoal;
 import com.tyhone.arcanacraft.common.items.items.ItemShard;
@@ -43,6 +44,7 @@ public class ModItems {
 	public static final ModItemBase SHARD = new ItemShard();
 	public static final ModItemBase INGOT = new ItemIngot();
 	public static final ModItemBase ITEM = new ItemItem();
+	public static final ModItemBase MULCH = new ItemMulch();
 	public static final ModItemBase STAR = new ItemStar();
 	public static final ModItemBase AYRE = new ItemAyre();
 	public static final ModItemBase NEEDLE = new ItemNeedle();

@@ -18,6 +18,10 @@ public class InitRecipesDeconstructionTable {
 		ArcanacraftCraftingManager.registerDeconstructionRecipe(new ItemStack(ModItems.DUST, 1, ItemMetaUtil.dust("gold")), new ItemStack(Items.GOLD_INGOT));
 		ArcanacraftCraftingManager.registerDeconstructionRecipe(new ItemStack(ModItems.DUST, 1, ItemMetaUtil.dust("magicite")), new ItemStack(ModItems.INGOT, 1, ItemMetaUtil.ingot("magicite")));
 		
+
+		ArcanacraftCraftingManager.registerDeconstructionRecipe(new ItemStack(Items.COAL, 1, 1), Blocks.LOG);
+		ArcanacraftCraftingManager.registerDeconstructionRecipe(new ItemStack(Items.COAL, 1, 1), Blocks.LOG2);
+		
 		
 		ArcanacraftCraftingManager.registerLensDeconstructionRecipe(new ItemStack(ModItems.LENS, 1, ItemMetaUtil.lens("soul")), new ItemStack(ModItems.SOUL, 1, 0), new ItemStack(Blocks.SOUL_SAND));
 		

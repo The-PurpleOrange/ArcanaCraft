@@ -9,13 +9,13 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 
-public class RitualBase extends net.minecraftforge.registries.IForgeRegistryEntry.Impl<RitualBase> implements IRitual{
+public class Ritual extends net.minecraftforge.registries.IForgeRegistryEntry.Impl<Ritual> implements IRitual{
 
 	private ResourceLocation registryName;
 	private String ritualName;
-	private RitualTypeBase ritualType;
+	private RitualType ritualType;
 	
-	public RitualBase(String ritualName, RitualTypeBase ritualType){ //ModRituals.RITUAL_TYPE_STANDARD){
+	public Ritual(String ritualName, RitualType ritualType){ //ModRituals.RITUAL_TYPE_STANDARD){
 		this.ritualName = ritualName;
 		this.registryName = new ResourceLocation(Arcanacraft.MODID, ritualName);
 		this.ritualType = ritualType;
@@ -31,7 +31,7 @@ public class RitualBase extends net.minecraftforge.registries.IForgeRegistryEntr
         return I18n.translateToLocal(this.getUnlocalizedName() + ".name").trim();
     }
 	
-	public RitualTypeBase getRitualType(){
+	public RitualType getRitualType(){
 		return ritualType;
 	}
 

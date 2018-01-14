@@ -7,37 +7,37 @@ import java.util.List;
 public class RitualRegistry {
 
 	
-	public static HashMap<RitualTypeBase, List<RitualBase>> hashRitualTypeMap = new HashMap<RitualTypeBase, List<RitualBase>>();
-	public static List<RitualTypeBase> ritualTypesList = new ArrayList<RitualTypeBase>();
+	public static HashMap<RitualType, List<Ritual>> hashRitualTypeMap = new HashMap<RitualType, List<Ritual>>();
+	public static List<RitualType> ritualTypesList = new ArrayList<RitualType>();
 	
-	public static List<RitualBase> ritualList = new ArrayList<RitualBase>();
-	public static List<RitualBase> grandRitualList = new ArrayList<RitualBase>();
+	public static List<Ritual> ritualList = new ArrayList<Ritual>();
+	public static List<Ritual> grandRitualList = new ArrayList<Ritual>();
 	//public static List<RitualBase> soulRitualList = new ArrayList<RitualBase>();
 	
 	//RITUAL TYPE
-	public static void registerRitualType(RitualTypeBase ritualType, List<RitualBase> list){
+	public static void registerRitualType(RitualType ritualType, List<Ritual> list){
 		hashRitualTypeMap.put(ritualType, list);
 	}
 	
-	public static HashMap<RitualTypeBase, List<RitualBase>> getRitualRegistyLists(){
+	public static HashMap<RitualType, List<Ritual>> getRitualRegistyLists(){
 		return hashRitualTypeMap;
 	}
 	
-	public static List<RitualBase> getRitualListFromHashMap(RitualTypeBase ritualType){
+	public static List<Ritual> getRitualListFromHashMap(RitualType ritualType){
 		return hashRitualTypeMap.get(ritualType);
 	}
 	
-	public static void registerRitualType(RitualTypeBase ritualType){
+	public static void registerRitualType(RitualType ritualType){
 		ritualTypesList.add(ritualType);
 	}
 	
-	public static List<RitualTypeBase> getRitualTypeList(){
+	public static List<RitualType> getRitualTypeList(){
 		return ritualTypesList;
 	}
 	
-	public static List<RitualBase> getRitualListFromString(String ritualTypeName){
+	public static List<Ritual> getRitualListFromString(String ritualTypeName){
 		if(ritualTypeName != null){
-			RitualTypeBase ritualType = getRitualTypeFromString(ritualTypeName);
+			RitualType ritualType = getRitualTypeFromString(ritualTypeName);
 			if(ritualType != null){
 				return getRitualListFromHashMap(ritualType);
 			}
@@ -45,8 +45,8 @@ public class RitualRegistry {
 		return null;
 	}
 	
-	public static RitualTypeBase getRitualTypeFromString(String ritualTypeName){
-		for(RitualTypeBase ritualType : ritualTypesList){
+	public static RitualType getRitualTypeFromString(String ritualTypeName){
+		for(RitualType ritualType : ritualTypesList){
 			if(ritualTypeName.equals(ritualType.getUnlocalizedName())){
 				return ritualType;
 			}
@@ -54,9 +54,9 @@ public class RitualRegistry {
 		return null;
 	}
 
-	public static RitualBase getRitualFromString(String ritualName, RitualTypeBase ritualType) {
-		List<RitualBase> ritualList = getRitualListFromHashMap(ritualType);
-		for(RitualBase ritual : ritualList){
+	public static Ritual getRitualFromString(String ritualName, RitualType ritualType) {
+		List<Ritual> ritualList = getRitualListFromHashMap(ritualType);
+		for(Ritual ritual : ritualList){
 			if(ritualName.equals(ritual.getUnlocalizedName())){
 				return ritual;
 			}
@@ -66,21 +66,21 @@ public class RitualRegistry {
 
 	
 	//STANDARD RITUAL
-	public static void registerRitual(RitualBase ritual) {
+	public static void registerRitual(Ritual ritual) {
 		ritual.getRitualType().getRitualList().add(ritual);
 	}
 	
-	public static List<RitualBase> getRitualList(){
+	public static List<Ritual> getRitualList(){
 		return ritualList;
 	}
 	
 	
 	//GRAND RITUAL
-	public static void registerGrandRitual(RitualBase ritual) {
+	public static void registerGrandRitual(Ritual ritual) {
 		grandRitualList.add(ritual);
 	}
 	
-	public static List<RitualBase> getGrandRitualList(){
+	public static List<Ritual> getGrandRitualList(){
 		return grandRitualList;
 	}
 	

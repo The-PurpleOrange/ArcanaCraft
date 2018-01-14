@@ -6,7 +6,7 @@ import java.util.List;
 import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.api.recipe.RecipeAlchemicArray;
 import com.tyhone.arcanacraft.api.recipe.RecipeRitualCircle;
-import com.tyhone.arcanacraft.api.ritual.RitualBase;
+import com.tyhone.arcanacraft.api.ritual.Ritual;
 import com.tyhone.arcanacraft.api.util.ItemStackUtil;
 import com.tyhone.arcanacraft.common.rituals.RitualSummonRain;
 import com.tyhone.arcanacraft.common.tileentity.base.ModTileEntityBase;

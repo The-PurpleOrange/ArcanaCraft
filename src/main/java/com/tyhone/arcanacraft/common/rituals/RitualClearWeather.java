@@ -2,19 +2,19 @@ package com.tyhone.arcanacraft.common.rituals;
 
 import java.util.Random;
 
-import com.tyhone.arcanacraft.api.ritual.RitualBase;
-import com.tyhone.arcanacraft.api.ritual.RitualTypeBase;
+import com.tyhone.arcanacraft.api.ritual.Ritual;
+import com.tyhone.arcanacraft.api.ritual.RitualType;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class RitualClearWeather extends RitualBase{
+public class RitualClearWeather extends Ritual{
 
 	public final Random rand = new Random();
 	
 	
-    public RitualClearWeather(String ritualName, RitualTypeBase ritualType) {
+    public RitualClearWeather(String ritualName, RitualType ritualType) {
 		super(ritualName, ritualType);
 	}
 

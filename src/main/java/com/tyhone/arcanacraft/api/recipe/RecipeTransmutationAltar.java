@@ -2,12 +2,9 @@ package com.tyhone.arcanacraft.api.recipe;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-
-import org.apache.logging.log4j.Level;
 
 import com.tyhone.arcanacraft.Arcanacraft;
-import com.tyhone.arcanacraft.api.util.ItemStackUtil;
+import com.tyhone.arcanacraft.api.util.RecipeUtil;
 
 import net.minecraft.item.ItemStack;
 
@@ -16,15 +13,11 @@ public class RecipeTransmutationAltar {
 	ItemStack output;
 	ArrayList<ItemStack> inputs;
 	
-	public RecipeTransmutationAltar(ItemStack output, ItemStack[] inputs){
-		
-		if(inputs == null || inputs.length>4){
-			Arcanacraft.logger.error("Invalid transmutation recipe added for: " + output);
-		}
+	public RecipeTransmutationAltar(ItemStack output, ArrayList<ItemStack> inputs){
 		
 		this.output = output;
 
-		this.inputs = new ArrayList<ItemStack>(Arrays.asList(inputs));
+		this.inputs = (ArrayList<ItemStack>) inputs.clone();
 	}
 
 	public ArrayList<ItemStack> getInputs() {
@@ -37,14 +30,14 @@ public class RecipeTransmutationAltar {
 	
 	public static RecipeTransmutationAltar getRecipe(ArrayList<ItemStack> inputs){
 		for(RecipeTransmutationAltar recipe : ArcanacraftCraftingManager.getTransmutationAltarRecipes()){
-			if(doInputsMatch(recipe.getInputs(), inputs)){
+			if(RecipeUtil.doInputsMatch(recipe.getInputs(), inputs)){
 				return recipe;
 			}
 		}
 		return null;
 	}
 	
-	public static boolean doInputsMatch(ArrayList<ItemStack> inputRecipe, ArrayList<ItemStack> inputActual) {
+	/*public static boolean doInputsMatch(ArrayList<ItemStack> inputRecipe, ArrayList<ItemStack> inputActual) {
 		ArrayList<ItemStack> inputsRequired = (ArrayList<ItemStack>) new ArrayList(inputRecipe).clone();
 
 		
@@ -69,5 +62,5 @@ public class RecipeTransmutationAltar {
 		}
 
 		return inputsRequired.isEmpty();
-	}
+	}*/
 }

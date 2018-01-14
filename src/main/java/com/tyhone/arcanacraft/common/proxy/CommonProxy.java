@@ -3,6 +3,7 @@ package com.tyhone.arcanacraft.common.proxy;
 import java.io.File;
 
 import com.tyhone.arcanacraft.Config;
+import com.tyhone.arcanacraft.common.handler.OreDictionaryHandler;
 import com.tyhone.arcanacraft.common.init.ModBlocks;
 import com.tyhone.arcanacraft.common.init.ModItems;
 import com.tyhone.arcanacraft.common.init.ModRecipes;
@@ -39,6 +40,7 @@ public class CommonProxy {
     }
 
     public void init(FMLInitializationEvent e) {
+    	OreDictionaryHandler.registerOreDictionary();
     	ModRecipes.init();
     	ModRituals.init();
     	ModRitualRecipes.init();

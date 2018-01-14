@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.tyhone.arcanacraft.Arcanacraft;
-import com.tyhone.arcanacraft.api.ritual.RitualBase;
+import com.tyhone.arcanacraft.api.ritual.Ritual;
 import com.tyhone.arcanacraft.api.util.ItemStackUtil;
 
 import net.minecraft.item.ItemStack;
 
 public class RecipeRitualCircle {
-	RitualBase ritual;
+	Ritual ritual;
 	
 	//EnumRitual ritual;
 	List<ItemStack> blockPosList;
@@ -18,7 +18,7 @@ public class RecipeRitualCircle {
 	int middleInt = 0;
 	int width;
 
-	public RecipeRitualCircle(RitualBase ritual, ItemStack[] inputs, Object[] blockData){
+	public RecipeRitualCircle(Ritual ritual, ItemStack[] inputs, Object[] blockData){
 		this.ritual = ritual;
 
 		if(inputs != null){
@@ -96,10 +96,8 @@ public class RecipeRitualCircle {
 		return flag;
 	}
 	
-	
-	
-	public boolean doInputsMatch(ArrayList<ItemStack> inputActual) {
-		ArrayList<ItemStack> inputsRequired = (ArrayList<ItemStack>) new ArrayList(inputs).clone();
+	/*public boolean doInputsMatch(ArrayList<ItemStack> inputActual, ArrayList<ItemStack> inputsRecipe) {
+		ArrayList<ItemStack> inputsRequired = (ArrayList<ItemStack>) new ArrayList(inputsRecipe).clone();
 
 		
 		for(int i = 0; i < inputActual.size(); i++) {
@@ -123,7 +121,7 @@ public class RecipeRitualCircle {
 		}
 
 		return inputsRequired.isEmpty();
-	}
+	}*/
 
 	boolean areBlocksEqual(ItemStack stack1, ItemStack stack2) {
 		if(stack1 == null && stack2 == null){
@@ -154,7 +152,7 @@ public class RecipeRitualCircle {
 		return middleInt;
 	}
 
-	public RitualBase getRitual() {
+	public Ritual getRitual() {
 		return ritual;
 	}
 

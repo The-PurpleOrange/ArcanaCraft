@@ -17,8 +17,8 @@
       "item": "minecraft:potion"
     },
     "d": {
-      "item": "arcanacraft:dust",
-      "data": 4
+      "type": "forge:ore_dict",
+      "ore": "dustGold"
     }
   }
 }

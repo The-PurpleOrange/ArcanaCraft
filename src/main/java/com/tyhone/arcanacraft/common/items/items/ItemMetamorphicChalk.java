@@ -10,9 +10,9 @@ import com.tyhone.arcanacraft.api.recipe.ArcanacraftRitualCraftingManager;
 import com.tyhone.arcanacraft.api.recipe.RecipeRitualCircle;
 import com.tyhone.arcanacraft.api.ritual.IRitualBuilder;
 import com.tyhone.arcanacraft.api.ritual.IRitualCircle;
-import com.tyhone.arcanacraft.api.ritual.RitualBase;
+import com.tyhone.arcanacraft.api.ritual.Ritual;
 import com.tyhone.arcanacraft.api.ritual.RitualRegistry;
-import com.tyhone.arcanacraft.api.ritual.RitualTypeBase;
+import com.tyhone.arcanacraft.api.ritual.RitualType;
 import com.tyhone.arcanacraft.api.util.ItemStackUtil;
 import com.tyhone.arcanacraft.common.init.ModBlocks;
 import com.tyhone.arcanacraft.common.init.ModRituals;
@@ -57,7 +57,7 @@ public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
 			String msg = null;
 
 
-			List<RitualTypeBase> ritualTypes = RitualRegistry.getRitualTypeList();
+			List<RitualType> ritualTypes = RitualRegistry.getRitualTypeList();
 			
 			ItemStack stack = player.getHeldItem(hand);
 			NBTTagCompound tag = new NBTTagCompound();
@@ -71,10 +71,10 @@ public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
 					if((tag.getString(NBT_RITUAL_TYPE)).equals(ritualTypes.get(i).getUnlocalizedName())){
 						if(i == ritualTypes.size()-1){
 							setRitualTypeNBT(tag, ritualTypes.get(0));
-		            		msg = (ritualTypes.get(0).getUnlocalizedName());
+		            		msg = (ritualTypes.get(0).getDisplayName());
 						}else{
 							setRitualTypeNBT(tag, ritualTypes.get(i+1));
-		            		msg = (ritualTypes.get(i+1).getUnlocalizedName());
+		            		msg = (ritualTypes.get(i+1).getDisplayName());
 						}
 						break;
 					}
@@ -97,35 +97,35 @@ public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
 			}
 			
 			if(tag.hasKey(NBT_RITUAL_TYPE)){
-				RitualTypeBase ritualType = getRitualTypeNBT(stack);
+				RitualType ritualType = getRitualTypeNBT(stack);
 				if(ritualType != null && tag.hasKey(ritualType.getUnlocalizedName())){
-					List<RitualBase> rituals = RitualRegistry.getRitualListFromString(ritualType.getUnlocalizedName());
+					List<Ritual> rituals = RitualRegistry.getRitualListFromString(ritualType.getUnlocalizedName());
 					
 					if(rituals.size() > 1){
 						for(int i = 0; i < rituals.size(); i++){
 							if(tag.getString(ritualType.getUnlocalizedName()).equals(rituals.get(i).getUnlocalizedName())){
 								if(i == rituals.size()-1){
 									setAllNBT(tag, rituals.get(0), ritualType);
-				            		msg = (rituals.get(0).getUnlocalizedName());
+				            		msg = (rituals.get(0).getDisplayName());
 								}else{
 									setAllNBT(tag, rituals.get(i+1), ritualType);
-				            		msg = (rituals.get(i+1).getUnlocalizedName());
+				            		msg = (rituals.get(i+1).getDisplayName());
 								}
 								break;
 							}
 						}
 					}
 					else{
-						RitualBase ritual = RitualRegistry.getRitualListFromHashMap(ritualType).get(0);
+						Ritual ritual = RitualRegistry.getRitualListFromHashMap(ritualType).get(0);
 						setAllNBT(tag, ritual, ritualType);
-		        		msg = (ritual.getUnlocalizedName());
+		        		msg = (ritual.getDisplayName());
 					}
 					
 				}
 				else{
-					RitualBase ritual = RitualRegistry.getRitualListFromHashMap(ritualType).get(0);
+					Ritual ritual = RitualRegistry.getRitualListFromHashMap(ritualType).get(0);
 					setAllNBT(tag, ritual, ritualType);
-	        		msg = (ritual.getUnlocalizedName());
+	        		msg = (ritual.getDisplayName());
 				}
 				
 				PlayerUtils.sendPlayerMessage(player, world, msg);
@@ -133,8 +133,8 @@ public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
 				stack.setTagCompound(tag);
 			}
 			else{
-				RitualTypeBase ritualType = ModRituals.RITUAL_TYPE_STANDARD; //RitualRegistry.getRitualTypeList().get(0);
-				RitualBase ritual = RitualRegistry.getRitualListFromHashMap(ritualType).get(0);
+				RitualType ritualType = ModRituals.RITUAL_TYPE_STANDARD; //RitualRegistry.getRitualTypeList().get(0);
+				Ritual ritual = RitualRegistry.getRitualListFromHashMap(ritualType).get(0);
 				setAllNBT(tag, ritual, ritualType);
         		msg = (ritualType.getUnlocalizedName());
 				stack.setTagCompound(tag);
@@ -178,8 +178,8 @@ public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
 				PlayerUtils.sendPlayerMessage(player, worldIn, "Null Ritual Recipe");
 			}
 		}
-		
-        return EnumActionResult.PASS;
+
+		return EnumActionResult.SUCCESS;
     }
 	
 	
@@ -189,7 +189,7 @@ public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
 		String msg = null;
 		boolean buildComplete;
 
-		RitualTypeBase ritualType = recipe.getRitual().getRitualType();
+		RitualType ritualType = recipe.getRitual().getRitualType();
 		Arcanacraft.log("RitualType: " + ritualType.getDisplayName());
 		
 		for(int place : ritualType.getRitualRecipePlaceOrder()){
@@ -248,7 +248,7 @@ public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
 			return false;
 		}
 		
-		RitualTypeBase ritualType = recipe.getRitual().getRitualType();
+		RitualType ritualType = recipe.getRitual().getRitualType();
 		
 		for(int place : ritualType.getRitualRecipePlaceOrder()){
 			BlockPos oldPos = PosUtil.combinePos(pos, ritualType.getRitualRecipePosList().get(place));
@@ -296,8 +296,8 @@ public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
 	
 	private RecipeRitualCircle getRitualRecipeNBT(ItemStack stack){
 		
-		RitualTypeBase ritualType = getRitualTypeNBT(stack);
-		RitualBase ritual = getRitualNBT(stack, ritualType);
+		RitualType ritualType = getRitualTypeNBT(stack);
+		Ritual ritual = getRitualNBT(stack, ritualType);
 		
 		for(RecipeRitualCircle ritualRecipe : ritualType.getRitualRecipeList()){
 			if(ritual.getUnlocalizedName().equals(ritualRecipe.getRitual().getUnlocalizedName())){
@@ -308,22 +308,22 @@ public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
 		return null;
 	}
 	
-	private void setAllNBT(NBTTagCompound tag, RitualBase ritual, RitualTypeBase ritualType){
+	private void setAllNBT(NBTTagCompound tag, Ritual ritual, RitualType ritualType){
 		setRitualTypeNBT(tag, ritualType);
 		setRitualNBT(tag, ritual, ritualType);
 	}
 	
-	private void setRitualNBT(NBTTagCompound tag, RitualBase ritual, RitualTypeBase ritualType){
+	private void setRitualNBT(NBTTagCompound tag, Ritual ritual, RitualType ritualType){
 		tag.setString(ritualType.getUnlocalizedName(), ritual.getUnlocalizedName());
 		tag.setString(ritualType.getUnlocalizedName() + "_display_name", ritual.getDisplayName());
 	}
 	
-	private void setRitualTypeNBT(NBTTagCompound tag, RitualTypeBase ritualType){
+	private void setRitualTypeNBT(NBTTagCompound tag, RitualType ritualType){
 		tag.setString(NBT_RITUAL_TYPE, ritualType.getUnlocalizedName());
 		tag.setString(NBT_RITUAL_TYPE_DISPLAY_NAME, ritualType.getDisplayName());
 	}
 	
-	private RitualBase getRitualNBT(ItemStack stack, RitualTypeBase ritualType){
+	private Ritual getRitualNBT(ItemStack stack, RitualType ritualType){
 		if(stack.hasTagCompound() && stack.getTagCompound().hasKey(ritualType.getUnlocalizedName())){
 			String ritualName = stack.getTagCompound().getString(ritualType.getUnlocalizedName());
 			if(ritualName != null){
@@ -333,7 +333,7 @@ public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
 		return null;
 	}
 	
-	private RitualTypeBase getRitualTypeNBT(ItemStack stack){
+	private RitualType getRitualTypeNBT(ItemStack stack){
 		if(stack.hasTagCompound() && stack.getTagCompound().hasKey(NBT_RITUAL_TYPE)){
 			String ritualTypeName = stack.getTagCompound().getString(NBT_RITUAL_TYPE);
 			if(ritualTypeName != null){
@@ -346,7 +346,7 @@ public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn){
-    	RitualTypeBase ritualType = getRitualTypeNBT(stack);
+    	RitualType ritualType = getRitualTypeNBT(stack);
     	if(ritualType != null){
     		tooltip.add(stack.getTagCompound().getString(NBT_RITUAL_TYPE_DISPLAY_NAME));
     		tooltip.add(stack.getTagCompound().getString(ritualType.getUnlocalizedName() + "_display_name"));

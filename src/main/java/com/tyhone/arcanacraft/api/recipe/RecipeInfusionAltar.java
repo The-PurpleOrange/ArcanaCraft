@@ -3,11 +3,10 @@ package com.tyhone.arcanacraft.api.recipe;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.logging.log4j.Level;
-
 import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.api.tinkture.TinktureStack;
 import com.tyhone.arcanacraft.api.util.ItemStackUtil;
+import com.tyhone.arcanacraft.api.util.RecipeUtil;
 import com.tyhone.arcanacraft.api.util.TinktureStackUtil;
 
 import net.minecraft.item.ItemStack;
@@ -19,11 +18,7 @@ public class RecipeInfusionAltar {
 	ArrayList<ItemStack> inputs;
 	ArrayList<TinktureStack> tInputs;
 	
-	public RecipeInfusionAltar(ItemStack output, ItemStack infusionItem, ItemStack[] inputs, TinktureStack[] tInputs){
-		
-		if(inputs == null || inputs.length>8){
-			Arcanacraft.logger.error("Invalid infusion recipe added for: " + output);
-		}
+	public RecipeInfusionAltar(ItemStack output, ItemStack infusionItem, ArrayList<ItemStack> inputs, TinktureStack[] tInputs){
 		
 		this.output = output;
 		this.infusionItem = infusionItem;
@@ -61,7 +56,7 @@ public class RecipeInfusionAltar {
 	public static RecipeInfusionAltar getRecipe(ItemStack infusionItem, ArrayList<ItemStack> inputs, ArrayList<TinktureStack> tInputs){
 		for(RecipeInfusionAltar recipe : ArcanacraftCraftingManager.getInfusionAltarRecipes()){
 			if(ItemStackUtil.simpleAreStackSizeEqual(recipe.infusionItem, infusionItem)){
-				if(doInputsMatch(recipe.inputs, inputs)){
+				if(RecipeUtil.doInputsMatch(recipe.inputs, inputs)){
 					if(doTinktureIputsMatch(recipe.tInputs, tInputs)){
 						return recipe;
 					}
@@ -101,27 +96,20 @@ public class RecipeInfusionAltar {
 		return inputsRequired.isEmpty();
 	}
 	
-	public static boolean doInputsMatch(ArrayList<ItemStack> inputRecipe, ArrayList<ItemStack> inputActual) {
+	/*public static boolean doInputsMatch(ArrayList<ItemStack> inputRecipe, ArrayList<ItemStack> inputActual) {
 		ArrayList<ItemStack> inputsRequired = (ArrayList<ItemStack>) new ArrayList(inputRecipe).clone();
-		
-		/*for(ItemStack input : inputsRequired){
-			Arcanacraft.logger.info("Required: " + input.getDisplayName() + ":" + input.getMetadata() + ":" + input.getCount());
-		}
-		for(ItemStack input : inputsRequired){
-			Arcanacraft.logger.info("Actual: " + input.getDisplayName() + ":" + input.getMetadata() + ":" + input.getCount());
-		}*/
+
 		
 		for(int i = 0; i < inputActual.size(); i++) {
 			ItemStack actual = inputActual.get(i);
-			if(actual == null)
+			if(actual.isEmpty()){
 				break;
+			}
 
 			int stackI = -1;
 
 			for(int j = 0; j < inputsRequired.size(); j++) {
 				ItemStack required = inputsRequired.get(j);
-				//Arcanacraft.logger.info("Actual: " + actual.getDisplayName() + ":" + actual.getMetadata() + ":" + actual.getCount());
-				//Arcanacraft.logger.info("Required: " + required.getDisplayName() + ":" + required.getMetadata() + ":" + required.getCount());
 				if(ItemStackUtil.simpleAreStackSizeEqual(required, actual)) {
 					stackI = j;
 					break;
@@ -132,14 +120,10 @@ public class RecipeInfusionAltar {
 				inputsRequired.remove(stackI);
 			}
 			else{
-				//Arcanacraft.logger.info("Returning false?");
 				return false;
 			}
 		}
 		
-		for(ItemStack input : inputsRequired){
-			//Arcanacraft.logger.info("Required: " + input.getDisplayName() + ":" + input.getMetadata() + ":" + input.getCount());
-		}
 		return inputsRequired.isEmpty();
-	}
+	}*/
 }
