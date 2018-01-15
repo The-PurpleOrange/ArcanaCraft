@@ -1,13 +1,17 @@
 package com.tyhone.arcanacraft.common.jei.deconstruction_table;
 
+import java.util.List;
+
 import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.common.util.GuiUtils;
 
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
+import mezz.jei.api.gui.IGuiItemStackGroup;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeCategory;
+import net.minecraft.item.ItemStack;
 
 public class DeconstructionTableRecipeCategory implements IRecipeCategory<DeconstructionTableRecipeWrapper>{
 
@@ -42,16 +46,25 @@ public class DeconstructionTableRecipeCategory implements IRecipeCategory<Decons
 
 	@Override
 	public void setRecipe(IRecipeLayout recipeLayout, DeconstructionTableRecipeWrapper wrapper, IIngredients ingredients) {
+		
+		IGuiItemStackGroup guiItemStacks = recipeLayout.getItemStacks();
+		List<List<ItemStack>> inputs = ingredients.getInputs(ItemStack.class);
+		
+		
+		
 		recipeLayout.getItemStacks().init(0, true, 24, 49);
-        recipeLayout.getItemStacks().set(0, wrapper.recipe.getInput());
-        
-		recipeLayout.getItemStacks().init(1, true, 24, 13);
-		if(wrapper.recipe.hasLens()){
-			recipeLayout.getItemStacks().set(1, wrapper.recipe.getLens());
+        //recipeLayout.getItemStacks().set(0, wrapper.recipe.getInput());
+		guiItemStacks.set(0, inputs.get(0));
+
+
+		if(inputs.size()>1){
+			guiItemStacks.init(2, true, 24, 13);
+			guiItemStacks.set(2, inputs.get(1));
+			//guiItemStacks.set(2, wrapper.recipe.getLens());
 		}
 
-        recipeLayout.getItemStacks().init(2, false, 84, 31);
-        recipeLayout.getItemStacks().set(2, wrapper.recipe.getOutput());
+		guiItemStacks.init(1, false, 84, 31);
+		guiItemStacks.set(1, wrapper.recipe.getOutput());
 
 	}
 

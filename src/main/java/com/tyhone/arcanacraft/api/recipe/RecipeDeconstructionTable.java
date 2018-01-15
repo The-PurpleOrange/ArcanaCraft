@@ -6,12 +6,12 @@ import net.minecraft.item.ItemStack;
 
 public class RecipeDeconstructionTable {
 
-	ItemStack lens;
-	ItemStack output;
-	ItemStack input;
-	int deconstructionTime;
+	private final ItemStack lens;
+	private final ItemStack output;
+	private final Object input;
+	private final int deconstructionTime;
 	
-	public RecipeDeconstructionTable(ItemStack lens, ItemStack output, ItemStack input, int deconstructionTime){
+	public RecipeDeconstructionTable(ItemStack lens, ItemStack output, Object input, int deconstructionTime){
 		this.lens = lens;
 		this.output = output;
 		this.input = input;
@@ -29,7 +29,7 @@ public class RecipeDeconstructionTable {
 		return this.lens;
 	}
 	
-	public ItemStack getInput(){
+	public Object getInput(){
 		return this.input;
 	}
 	
@@ -47,8 +47,8 @@ public class RecipeDeconstructionTable {
 	
 	public static RecipeDeconstructionTable getRecipe(ItemStack input, ItemStack lens){
 		for(RecipeDeconstructionTable recipe : ArcanacraftCraftingManager.getDeconstructionRecipes()){
-			if(ItemStackUtil.simpleAreStackSizeEqual(recipe.input, input)){
-				if(ItemStackUtil.simpleAreStackSizeEqual(recipe.lens, lens)){
+			if(ItemStackUtil.simpleAreStackSizeEqual(recipe.getInput(), input)){
+				if(ItemStackUtil.simpleAreStackSizeEqual(recipe.getLens(), lens)){
 					return recipe;
 				}
 			}

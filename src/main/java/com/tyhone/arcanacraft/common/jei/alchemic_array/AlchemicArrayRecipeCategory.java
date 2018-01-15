@@ -4,9 +4,11 @@ import java.util.List;
 
 import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.common.util.GuiUtils;
+import com.tyhone.arcanacraft.common.util.OreStack;
 
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
+import mezz.jei.api.gui.IGuiItemStackGroup;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeCategory;
@@ -45,27 +47,25 @@ public class AlchemicArrayRecipeCategory implements IRecipeCategory<AlchemicArra
 
 	@Override
 	public void setRecipe(IRecipeLayout recipeLayout, AlchemicArrayRecipeWrapper wrapper, IIngredients ingredients) {
-		List<ItemStack> inputs = wrapper.recipe.getInputs();
+		
+		IGuiItemStackGroup guiItemStacks = recipeLayout.getItemStacks();
+		List<List<ItemStack>> inputs = ingredients.getInputs(ItemStack.class);
 		
 		int i = 0;
+		breakPlacing:
 		for(int h = 0; h<3; h++){
 			for(int w = 0; w<4; w++){
-				recipeLayout.getItemStacks().init(i, true, 6+(w*18), 6+(h*18));
+				if(i>=inputs.size()){
+					break breakPlacing;
+				}
+				guiItemStacks.init(i, true, 6+(w*18), 6+(h*18));
+				guiItemStacks.set(i, inputs.get(i));
 				i++;
 			}
 		}
 		
-		recipeLayout.getItemStacks().set(0, inputs.get(0));
-		if(inputs.size()<=12){
-			int k = 0;
-			for(ItemStack input : inputs){
-				recipeLayout.getItemStacks().set(k, inputs.get(k));
-				k++;
-			}
-		}
-        
-        recipeLayout.getItemStacks().init(i, false, 107, 25);
-        recipeLayout.getItemStacks().set(i, wrapper.recipe.getOutput());
+		guiItemStacks.init(i, false, 107, 25);
+		guiItemStacks.set(i, wrapper.recipe.getOutput());
 
 	}
 

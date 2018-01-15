@@ -33,7 +33,7 @@ public class OreDictionaryHandler {
 		return null;
 	}
 	
-	public static boolean compareOreDictionaryEntry(ItemStack stack, String string){
+	/*public static boolean compareOreDictionaryEntry(ItemStack stack, String string){
 		if(!stack.isEmpty()){
 			List<ItemStack> oreList = getOreDictionaryEntries(string);
 			if(oreList.size()>0){
@@ -46,5 +46,5 @@ public class OreDictionaryHandler {
 		}
 		
 		return false;
-	}
+	}*/
 }

@@ -11,10 +11,10 @@ import com.tyhone.arcanacraft.common.init.recipes.InitVanillaRecipesSmelting;
 public class ModRecipes {
 	public static void init(){
 		InitRecipesDeconstructionTable.init();
-		InitRecipesHammer.init();
-		InitRecipesSoulAltar.init();
-		InitRecipesInfusionAltar.init();
-		InitRecipesTransmutationAltar.init();
+		//InitRecipesHammer.init();
+		//InitRecipesSoulAltar.init();
+		//InitRecipesInfusionAltar.init();
+		//InitRecipesTransmutationAltar.init();
 		InitRecipesAlchemicArray.init();
 		InitVanillaRecipesSmelting.init();
 	}

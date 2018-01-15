@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.tyhone.arcanacraft.Arcanacraft;
-import com.tyhone.arcanacraft.api.util.RecipeUtil;
+import com.tyhone.arcanacraft.common.util.RecipeUtil;
 
 import net.minecraft.item.ItemStack;
 

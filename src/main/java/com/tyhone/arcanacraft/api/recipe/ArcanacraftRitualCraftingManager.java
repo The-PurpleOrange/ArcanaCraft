@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.tyhone.arcanacraft.api.ritual.Ritual;
-import com.tyhone.arcanacraft.api.util.RecipeUtil;
+import com.tyhone.arcanacraft.common.util.RecipeUtil;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
@@ -113,7 +113,7 @@ public class ArcanacraftRitualCraftingManager {
 	public static RecipeRitualCircle getRecipe(List<ItemStack> itemStacks, List<ItemStack> blockStacks, List<RecipeRitualCircle> recipeList){
 		for(RecipeRitualCircle recipe : recipeList){
 			if(recipe.matchesBlocks(blockStacks)){
-				if(itemStacks!=null && RecipeUtil.doInputsMatch((ArrayList<ItemStack>) recipe.getItemRequirements(), (ArrayList<ItemStack>) itemStacks)){
+				if(itemStacks!=null && RecipeUtil.doInputsMatch((ArrayList<Object>) recipe.getItemRequirements(), (ArrayList<ItemStack>) itemStacks)){
 					return recipe;
 				}
 			}

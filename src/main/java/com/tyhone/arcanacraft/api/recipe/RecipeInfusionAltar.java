@@ -6,8 +6,8 @@ import java.util.List;
 import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.api.tinkture.TinktureStack;
 import com.tyhone.arcanacraft.api.util.ItemStackUtil;
-import com.tyhone.arcanacraft.api.util.RecipeUtil;
 import com.tyhone.arcanacraft.api.util.TinktureStackUtil;
+import com.tyhone.arcanacraft.common.util.RecipeUtil;
 
 import net.minecraft.item.ItemStack;
 

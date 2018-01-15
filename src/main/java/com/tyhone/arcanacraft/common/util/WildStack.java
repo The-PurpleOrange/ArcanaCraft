@@ -26,7 +26,7 @@ public class WildStack {
 		return stack;
 	}
 	
-	public static ItemStack ObjectToInput(Object input, int size){
+	/*public static ItemStack ObjectToInput(Object input, int size){
 		ItemStack stack = ItemStack.EMPTY;
 		if(input instanceof ItemStack){
 			return (ItemStack) input;
@@ -78,28 +78,30 @@ public class WildStack {
 	
 	public static ArrayList<ItemStack> InitObjectListToItemStackList(Object[] inputObjects){
 		return InitObjectListToItemStackList(inputObjects, 64);
-	}
+	}*/
 
-	public static ArrayList<Object> InitObjectListToItemStackOrStringList(Object[] inputObjects) {
+	public static ArrayList<Object> objectListToItemStackOrOreStack(Object[] inputObjects) {
 		ArrayList<Object> objectList = new ArrayList<Object>();
 		for(Object input : inputObjects){
-			Object stack = ItemStack.EMPTY;
-			if(input instanceof ItemStack){
-				stack =  input;
-			}else if(input instanceof Block){
-				stack = new ItemStack(Item.getItemFromBlock((Block) input), 1, 32767);
-			}else if(input instanceof Item){
-				stack = new ItemStack((Item) input, 1, 32767);
-			}else if(input instanceof String){
-				//String[] parts = ((String) input).split(":");
-				stack = input;
-				
-				//stack = OreDictionaryHandler.getOreDictionaryEntry((String) input);
-			}else{
-				return null;
-			}
-			objectList.add(stack);
+			objectList.add(objectToItemStackOrOreStack(input));
 		}
 		return objectList;
+	}
+
+	public static Object objectToItemStackOrOreStack(Object input) {
+		Object stack = ItemStack.EMPTY;
+		if(input instanceof ItemStack){
+			return input;
+		}else if(input instanceof Block){
+			return new ItemStack(Item.getItemFromBlock((Block) input), 1, 32767);
+		}else if(input instanceof Item){
+			return new ItemStack((Item) input, 1, 32767);
+		}else if(input instanceof OreStack){
+			return input;
+		}else if(input instanceof String){
+			return new OreStack((String) input, 1);
+		}else{
+			return null;
+		}
 	}
 }

@@ -1,8 +1,11 @@
 package com.tyhone.arcanacraft.common.jei.deconstruction_table;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import com.tyhone.arcanacraft.api.recipe.RecipeDeconstructionTable;
+import com.tyhone.arcanacraft.common.util.OreStack;
 
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeWrapper;
@@ -18,11 +21,21 @@ public class DeconstructionTableRecipeWrapper implements IRecipeWrapper{
 	
 	@Override
 	public void getIngredients(IIngredients ingredients) {
+		
+		List<List<ItemStack>> inputs = new ArrayList<List<ItemStack>>();
+		Object input = this.recipe.getInput();
+		if(input instanceof ItemStack){
+			inputs.add(Arrays.asList((ItemStack) input));
+		}
+		else if(input instanceof OreStack){
+			inputs.add(OreStack.getOreDictionaryEntriesForOreStack((OreStack) input));
+		}
+		
 		if(this.recipe.hasLens()){
-			ingredients.setInputs(ItemStack.class, Arrays.asList(this.recipe.getInput(), this.recipe.getLens()));
-		}else{
-			ingredients.setInput(ItemStack.class, this.recipe.getInput());
+			inputs.add(Arrays.asList(this.recipe.getLens()));
 		};
+		
+		ingredients.setInputLists(ItemStack.class, inputs);
 		ingredients.setOutput(ItemStack.class, this.recipe.getOutput());
 	}
 

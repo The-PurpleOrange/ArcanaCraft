@@ -1,9 +1,10 @@
-package com.tyhone.arcanacraft.api.util;
+package com.tyhone.arcanacraft.common.util;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.tyhone.arcanacraft.Arcanacraft;
+import com.tyhone.arcanacraft.api.util.ItemStackUtil;
 import com.tyhone.arcanacraft.common.handler.OreDictionaryHandler;
 
 import net.minecraft.item.ItemStack;
@@ -29,20 +30,10 @@ public class RecipeUtil {
 						break;
 					}
 				}
-				else if(required instanceof String){
-					String[] parts = ((String) required).split(":");
-					int count = Integer.valueOf(parts[1]);
-					
-					if(count==actual.getCount()){
-						List<ItemStack> ores = OreDictionaryHandler.getOreDictionaryEntries(parts[0]);
-						for(ItemStack ore : ores){
-							Arcanacraft.log(ore.getDisplayName());
-							Arcanacraft.log(actual.getDisplayName());
-							if(ItemStackUtil.simpleAreStacksEqual(ore, actual)){
-								stackI = j;
-								break;
-							}
-						}
+				else if(required instanceof OreStack){
+					if(OreStack.isItemStackFromOre((OreStack) required, actual)){
+						stackI = j;
+						break;
 					}
 				}
 				else{

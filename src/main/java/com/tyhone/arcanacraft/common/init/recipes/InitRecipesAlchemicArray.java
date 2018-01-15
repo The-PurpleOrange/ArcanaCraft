@@ -4,6 +4,7 @@ import com.tyhone.arcanacraft.api.recipe.ArcanacraftCraftingManager;
 import com.tyhone.arcanacraft.common.init.ModBlocks;
 import com.tyhone.arcanacraft.common.init.ModItems;
 import com.tyhone.arcanacraft.common.util.ItemMetaUtil;
+import com.tyhone.arcanacraft.common.util.OreStack;
 import com.tyhone.arcanacraft.common.util.WildStack;
 
 import net.minecraft.init.Blocks;
@@ -23,7 +24,7 @@ public class InitRecipesAlchemicArray {
 		ArcanacraftCraftingManager.registerAlchemicArrayRecipe(new ItemStack(ModItems.MULCH, 4), WildStack.W(Blocks.LEAVES, 3), new ItemStack(Blocks.DIRT, 1, 0));
 		ArcanacraftCraftingManager.registerAlchemicArrayRecipe(new ItemStack(ModItems.MULCH, 4), WildStack.W(Blocks.LEAVES2, 3), new ItemStack(Blocks.DIRT, 1, 0));
 		ArcanacraftCraftingManager.registerAlchemicArrayRecipe(new ItemStack(ModItems.INGOT, 1, ItemMetaUtil.ingot("magicite")), new ItemStack (Items.IRON_INGOT), new ItemStack(ModItems.AYRE, 1));
-		ArcanacraftCraftingManager.registerAlchemicArrayRecipe(new ItemStack(Items.GOLD_INGOT, 1), "dustGold:2");
+		ArcanacraftCraftingManager.registerAlchemicArrayRecipe(new ItemStack(Items.GOLD_INGOT, 2), new OreStack("dustGold", 2));
 		
 		//Chalk
 		ArcanacraftCraftingManager.registerAlchemicArrayRecipe(new ItemStack(ModItems.CHALK_METAMORPHIC, 1),

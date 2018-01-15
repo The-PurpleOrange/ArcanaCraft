@@ -25,8 +25,8 @@ public class ArcanacraftCraftingManager {
 	//DECONSTRUCTOR RECIPES
 	public static RecipeDeconstructionTable registerLensDeconstructionRecipe(ItemStack lens, ItemStack itemOutput, Object objectInput, double deconstructTime) {
 		lens.setCount(1);
-		ItemStack input = WildStack.ObjectToInput(objectInput, 1);
-		if(input.isEmpty()){
+		Object input = WildStack.objectToItemStackOrOreStack(objectInput);
+		if(input==null){
 			Arcanacraft.logger.error("Error register Recipe for Deconstruction Table: " + itemOutput.getDisplayName());
 			return null;
 		}
@@ -70,7 +70,7 @@ public class ArcanacraftCraftingManager {
 	//ALCHEMICAL ARRAY RECIPES
 	public static RecipeAlchemicArray registerAlchemicArrayRecipe(ItemStack output, Object ... inputObjects) {
 		//ArrayList<Object> inputs = new ArrayList<Object>(Arrays.asList(inputObjects));
-		ArrayList<Object> inputs = WildStack.InitObjectListToItemStackOrStringList(inputObjects);
+		ArrayList<Object> inputs = WildStack.objectListToItemStackOrOreStack(inputObjects);
 		if(inputs.size()==0){
 			Arcanacraft.logger.error("Error register Recipe for Alchemic Array: " + output.getDisplayName());
 			return null;
