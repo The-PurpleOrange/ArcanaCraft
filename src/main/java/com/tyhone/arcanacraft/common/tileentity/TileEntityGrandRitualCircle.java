@@ -68,10 +68,12 @@ public class TileEntityGrandRitualCircle extends ModTileEntityBase {
 
 		RecipeRitualCircle recipe = ArcanacraftRitualCraftingManager.getRecipe(itemStacks, blockStacks, ArcanacraftRitualCraftingManager.getGrandRitualCircleRecipes());
 		if(recipe != null){
-			for(EntityItem ei : eItems){
-				ei.setDead();
+			if(recipe.getRitual().meetsSpecialRequirements(worldObj, player, pos)){
+				for(EntityItem ei : eItems){
+					ei.setDead();
+				}
+				recipe.getRitual().preformRitual(worldObj, player, this.getPos());
 			}
-			recipe.getRitual().preformRitual(worldObj, player, this.getPos());
 		}
 	}
 }
