@@ -53,8 +53,9 @@ public class ArcanacraftCraftingManager {
 	
 	//HAMMER RECIPES
 	public static RecipeHammer registerHammerRecipe(ItemStack itemOutput, Object objectInput) {
-		ItemStack input = WildStack.ObjectToInput(objectInput);
-		if(input.isEmpty()){
+		
+		Object input = WildStack.objectToItemStackOrOreStack(objectInput);
+		if(input==null){
 			Arcanacraft.logger.error("Error register Recipe for Hammer: " + itemOutput.getDisplayName());
 			return null;
 		}
@@ -69,7 +70,6 @@ public class ArcanacraftCraftingManager {
 
 	//ALCHEMICAL ARRAY RECIPES
 	public static RecipeAlchemicArray registerAlchemicArrayRecipe(ItemStack output, Object ... inputObjects) {
-		//ArrayList<Object> inputs = new ArrayList<Object>(Arrays.asList(inputObjects));
 		ArrayList<Object> inputs = WildStack.objectListToItemStackOrOreStack(inputObjects);
 		if(inputs.size()==0){
 			Arcanacraft.logger.error("Error register Recipe for Alchemic Array: " + output.getDisplayName());

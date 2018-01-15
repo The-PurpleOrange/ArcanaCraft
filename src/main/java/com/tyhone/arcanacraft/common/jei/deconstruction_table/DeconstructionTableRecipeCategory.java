@@ -50,17 +50,13 @@ public class DeconstructionTableRecipeCategory implements IRecipeCategory<Decons
 		IGuiItemStackGroup guiItemStacks = recipeLayout.getItemStacks();
 		List<List<ItemStack>> inputs = ingredients.getInputs(ItemStack.class);
 		
-		
-		
-		recipeLayout.getItemStacks().init(0, true, 24, 49);
-        //recipeLayout.getItemStacks().set(0, wrapper.recipe.getInput());
-		guiItemStacks.set(0, inputs.get(0));
 
+		recipeLayout.getItemStacks().init(0, true, 24, 49);
+		guiItemStacks.set(0, inputs.get(0));
 
 		if(inputs.size()>1){
 			guiItemStacks.init(2, true, 24, 13);
 			guiItemStacks.set(2, inputs.get(1));
-			//guiItemStacks.set(2, wrapper.recipe.getLens());
 		}
 
 		guiItemStacks.init(1, false, 84, 31);

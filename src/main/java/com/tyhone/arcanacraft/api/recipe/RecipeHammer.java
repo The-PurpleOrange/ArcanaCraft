@@ -7,14 +7,14 @@ import net.minecraft.item.ItemStack;
 public class RecipeHammer {
 
 	ItemStack output;
-	ItemStack input;
+	Object input;
 	
-	public RecipeHammer(ItemStack output, ItemStack input){
+	public RecipeHammer(ItemStack output, Object input){
 		this.output = output;
 		this.input = input;
 	}
 	
-	public ItemStack getInput(){
+	public Object getInput(){
 		return this.input;
 	}
 	

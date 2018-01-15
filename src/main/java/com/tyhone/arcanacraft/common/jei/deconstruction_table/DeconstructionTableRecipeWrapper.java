@@ -25,7 +25,7 @@ public class DeconstructionTableRecipeWrapper implements IRecipeWrapper{
 		List<List<ItemStack>> inputs = new ArrayList<List<ItemStack>>();
 		Object input = this.recipe.getInput();
 		if(input instanceof ItemStack){
-			inputs.add(Arrays.asList((ItemStack) input));
+			inputs.add((Arrays.asList((ItemStack) input)));
 		}
 		else if(input instanceof OreStack){
 			inputs.add(OreStack.getOreDictionaryEntriesForOreStack((OreStack) input));
