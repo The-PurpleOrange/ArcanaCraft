@@ -4,14 +4,17 @@ import com.tyhone.arcanacraft.api.recipe.ArcanacraftCraftingManager;
 import com.tyhone.arcanacraft.common.init.ModBlocks;
 import com.tyhone.arcanacraft.common.init.ModItems;
 import com.tyhone.arcanacraft.common.util.ItemMetaUtil;
+import com.tyhone.arcanacraft.common.util.OreStack;
 
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 public class InitRecipesSoulAltar {
 	public static void init(){
 		{
+			
+
+			ArcanacraftCraftingManager.registerSoulInfusionRecipe(new ItemStack(Items.APPLE), new OreStack("dustGold"), new OreStack("logWood"));
 			
 			{
 				ItemStack item = new ItemStack(ModItems.SOUL, 1, ItemMetaUtil.soul("fragment"));

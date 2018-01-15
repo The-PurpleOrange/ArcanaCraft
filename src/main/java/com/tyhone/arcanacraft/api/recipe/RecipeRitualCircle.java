@@ -14,16 +14,16 @@ public class RecipeRitualCircle {
 	
 	//EnumRitual ritual;
 	List<ItemStack> blockPosList;
-	List<ItemStack> inputs;
+	List<Object> inputs;
 	int middleInt = 0;
 	int width;
 
-	public RecipeRitualCircle(Ritual ritual, ItemStack[] inputs, Object[] blockData){
+	public RecipeRitualCircle(Ritual ritual, Object[] inputs, Object[] blockData){
 		this.ritual = ritual;
 
 		if(inputs != null){
-			List<ItemStack> inputList = new ArrayList();
-			for(ItemStack obj : inputs) {
+			List<Object> inputList = new ArrayList();
+			for(Object obj : inputs) {
 				inputList.add(obj);
 			}
 			this.inputs = inputList;
@@ -141,7 +141,7 @@ public class RecipeRitualCircle {
 		return new ArrayList(blockPosList);
 	}
 
-	public List<ItemStack> getItemRequirements() {
+	public List<Object> getItemRequirements() {
 		if(inputs!=null){
 			return new ArrayList(inputs);
 		}

@@ -27,10 +27,6 @@ public class AlchemicArrayRecipeWrapper implements IRecipeWrapper{
 		for(Object input : this.recipe.getInputs()){
 			if(input instanceof ItemStack){
 				inputs.add(Arrays.asList((ItemStack) input));
-				
-				/*List<ItemStack> subInputs = new ArrayList<>();
-				subInputs.add((ItemStack) input);
-				inputs.add(subInputs);*/
 			}
 			else if(input instanceof OreStack){
 				inputs.add(OreStack.getOreDictionaryEntriesForOreStack((OreStack) input));

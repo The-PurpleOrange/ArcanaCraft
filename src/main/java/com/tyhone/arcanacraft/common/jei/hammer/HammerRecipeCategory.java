@@ -19,7 +19,7 @@ public class HammerRecipeCategory implements IRecipeCategory<HammerRecipeWrapper
     private final IDrawable background;
     
     public HammerRecipeCategory(IGuiHelper helper){
-		this.background = helper.createDrawable(GuiUtils.getGuiLocation("gui_hammer"), 0, 0, 135, 80);
+		this.background = helper.createDrawable(GuiUtils.getGuiLocation("gui_hammer"), 0, 0, 135, 56);
 	}
 	
 	@Override
@@ -47,10 +47,10 @@ public class HammerRecipeCategory implements IRecipeCategory<HammerRecipeWrapper
 
 		IGuiItemStackGroup guiItemStacks = recipeLayout.getItemStacks();
 		
-		guiItemStacks.init(0, true, 10, 31);
+		guiItemStacks.init(0, true, 10, 7);
 		guiItemStacks.set(0, ingredients.getInputs(ItemStack.class).get(0));
 
-		guiItemStacks.init(1, false, 105, 31);
+		guiItemStacks.init(1, false, 105, 7);
 		guiItemStacks.set(1, wrapper.recipe.getOutput());
 
 	}

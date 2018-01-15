@@ -9,4 +9,8 @@ public interface IRitual {
 	public String getUnlocalizedName();
 	
 	public boolean preformRitual(World world, EntityPlayer player, BlockPos pos);
+
+	boolean meetsSpecialRequirements(World world, EntityPlayer player, BlockPos pos);
+
+	RitualType getRitualType();
 }

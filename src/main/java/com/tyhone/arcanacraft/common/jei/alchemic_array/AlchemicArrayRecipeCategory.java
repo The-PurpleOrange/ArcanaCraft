@@ -22,7 +22,7 @@ public class AlchemicArrayRecipeCategory implements IRecipeCategory<AlchemicArra
     private final IDrawable background;
     
     public AlchemicArrayRecipeCategory(IGuiHelper helper){
-		this.background = helper.createDrawable(GuiUtils.getGuiLocation("gui_alchemic_array"), 0, 0, 135, 80);
+		this.background = helper.createDrawable(GuiUtils.getGuiLocation("gui_alchemic_array"), 0, 0, 135, 54);
 	}
 	
 	@Override
@@ -58,13 +58,13 @@ public class AlchemicArrayRecipeCategory implements IRecipeCategory<AlchemicArra
 				if(i>=inputs.size()){
 					break breakPlacing;
 				}
-				guiItemStacks.init(i, true, 6+(w*18), 6+(h*18));
+				guiItemStacks.init(i, true, 6+(w*18), (h*18));
 				guiItemStacks.set(i, inputs.get(i));
 				i++;
 			}
 		}
 		
-		guiItemStacks.init(i, false, 107, 25);
+		guiItemStacks.init(i, false, 107, 19);
 		guiItemStacks.set(i, wrapper.recipe.getOutput());
 
 	}

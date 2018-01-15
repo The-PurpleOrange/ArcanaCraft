@@ -58,6 +58,11 @@ public class BlockTransmutationAltar extends ModBlockTileEntityBase{
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
         if (!world.isRemote) {
         	TileEntityTransmutationAltar te = (TileEntityTransmutationAltar) world.getTileEntity(pos);
+        	
+        	if(player.isSneaking()){
+        		te.onActivated();
+        		return true;
+        	}
             if (!te.getStack().isEmpty()) {
                 ItemStack stack = te.getStack();
                 te.setStack(ItemStack.EMPTY);

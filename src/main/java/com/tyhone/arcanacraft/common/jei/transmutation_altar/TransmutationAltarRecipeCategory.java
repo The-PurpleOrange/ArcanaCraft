@@ -7,6 +7,7 @@ import com.tyhone.arcanacraft.common.util.GuiUtils;
 
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
+import mezz.jei.api.gui.IGuiItemStackGroup;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeCategory;
@@ -20,7 +21,7 @@ public class TransmutationAltarRecipeCategory implements IRecipeCategory<Transmu
     private final IDrawable background;
     
     public TransmutationAltarRecipeCategory(IGuiHelper helper){
-		this.background = helper.createDrawable(GuiUtils.getGuiLocation("gui_transmutation_altar"), 0, 0, 135, 80);
+		this.background = helper.createDrawable(GuiUtils.getGuiLocation("gui_transmutation_altar"), 0, 0, 135, 62);
 	}
 	
 	@Override
@@ -45,28 +46,29 @@ public class TransmutationAltarRecipeCategory implements IRecipeCategory<Transmu
 
 	@Override
 	public void setRecipe(IRecipeLayout recipeLayout, TransmutationAltarRecipeWrapper wrapper, IIngredients ingredients) {
-		List<ItemStack> inputs = wrapper.recipe.getInputs();
+		IGuiItemStackGroup guiItemStacks = recipeLayout.getItemStacks();
+		List<List<ItemStack>> inputs = ingredients.getInputs(ItemStack.class);
 		
-		recipeLayout.getItemStacks().init(0, true, 12, 18);
-		recipeLayout.getItemStacks().set(0, inputs.get(0));
+		guiItemStacks.init(0, true, 12, 0);
+		guiItemStacks.set(0, inputs.get(0));
 
-		recipeLayout.getItemStacks().init(2, true, 37, 18);
+		guiItemStacks.init(2, true, 37, 0);
 		if(inputs.size()>=2){
-			recipeLayout.getItemStacks().set(2, inputs.get(1));
+			guiItemStacks.set(2, inputs.get(1));
 		}
         
-		recipeLayout.getItemStacks().init(3, true, 12, 43);
+		guiItemStacks.init(3, true, 12, 25);
 		if(inputs.size()>=3){
-			recipeLayout.getItemStacks().set(3, inputs.get(2));
+			guiItemStacks.set(3, inputs.get(2));
 		}
         
-		recipeLayout.getItemStacks().init(4, true, 37, 43);
+		guiItemStacks.init(4, true, 37, 25);
 		if(inputs.size()==4){
-			recipeLayout.getItemStacks().set(4, inputs.get(3));
+			guiItemStacks.set(4, inputs.get(3));
 		}
         
-        recipeLayout.getItemStacks().init(1, false, 98, 31);
-        recipeLayout.getItemStacks().set(1, wrapper.recipe.getOutput());
+        guiItemStacks.init(1, false, 98, 13);
+        guiItemStacks.set(1, wrapper.recipe.getOutput());
 
 	}
 

@@ -57,6 +57,11 @@ public class BlockInfusionAltar extends ModBlockTileEntityBase{
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
         if (!world.isRemote) {
         	TileEntityInfusionAltar te = (TileEntityInfusionAltar) world.getTileEntity(pos);
+
+        	if(player.isSneaking()){
+        		te.onActivated();
+        		return true;
+        	}
             if (te.getStack().isEmpty()) {
                 if (!player.getHeldItem(hand).isEmpty()) {
                 	ItemStack itemStack = player.getHeldItem(hand).copy();

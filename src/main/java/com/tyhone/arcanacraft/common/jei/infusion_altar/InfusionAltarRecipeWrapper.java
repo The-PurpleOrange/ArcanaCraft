@@ -1,10 +1,12 @@
 package com.tyhone.arcanacraft.common.jei.infusion_altar;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.tyhone.arcanacraft.api.recipe.RecipeInfusionAltar;
 import com.tyhone.arcanacraft.api.tinkture.TinktureStack;
+import com.tyhone.arcanacraft.common.util.OreStack;
 
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeWrapper;
@@ -21,20 +23,37 @@ public class InfusionAltarRecipeWrapper implements IRecipeWrapper{
 	@Override
 	public void getIngredients(IIngredients ingredients) {
 		
-		List<ItemStack> inputs = new ArrayList<ItemStack>();
-		inputs.add(this.recipe.getInfusionItem());
-		for(ItemStack input : this.recipe.getInputs()){
-			inputs.add(input);
+		
+		//ItemStack Inputs
+		List<List<ItemStack>> inputs = new ArrayList<List<ItemStack>>();
+		Object infusionItem = this.recipe.getInfusionItem();
+		if(infusionItem instanceof ItemStack){
+			inputs.add(Arrays.asList((ItemStack) infusionItem));
 		}
+		else if(infusionItem instanceof OreStack){
+			inputs.add(OreStack.getOreDictionaryEntriesForOreStack((OreStack) infusionItem));
+		}
+		
+		for(Object input : this.recipe.getInputs()){
+			if(input instanceof ItemStack){
+				inputs.add(Arrays.asList((ItemStack) input));
+			}
+			else if(input instanceof OreStack){
+				inputs.add(OreStack.getOreDictionaryEntriesForOreStack((OreStack) input));
+			}
+		}
+		
+		ingredients.setInputLists(ItemStack.class, inputs);
 
+		//Tinkture Inputs
 		List<TinktureStack> tInputs = new ArrayList<TinktureStack>();
 		for(TinktureStack tInput : this.recipe.getTInputs()){
 			tInputs.add(tInput);
 		}
-		
+
 		ingredients.setInputs(TinktureStack.class, tInputs);
 		
-		ingredients.setInputs(ItemStack.class, inputs);
+		//Outputs
 		ingredients.setOutput(ItemStack.class, this.recipe.getOutput());
 	}
 

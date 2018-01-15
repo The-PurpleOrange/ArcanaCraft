@@ -18,9 +18,17 @@ public class OreStack {
 		this.ore = ore;
 		this.count = count;
 	}
+	
+	public OreStack(String ore){
+		this(ore, 1);
+	}
 
 	public int getCount(){
 		return this.count;
+	}
+	
+	public void setCount(int i){
+		this.count=i;
 	}
 	
 	public String getOre(){

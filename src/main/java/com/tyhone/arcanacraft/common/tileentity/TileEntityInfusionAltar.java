@@ -2,6 +2,7 @@ package com.tyhone.arcanacraft.common.tileentity;
 
 import java.util.ArrayList;
 
+import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.api.recipe.RecipeInfusionAltar;
 import com.tyhone.arcanacraft.api.tinkture.TinktureStack;
 import com.tyhone.arcanacraft.api.tinkture.TinktureType;
@@ -57,7 +58,13 @@ public class TileEntityInfusionAltar extends ModTileEntityBase implements ITicka
 	
 	@Override
 	public void update(){
+		
+	}
+	
+	public void onActivated(){
 		if(!getWorld().isRemote){
+			
+			Arcanacraft.log("Infusion Altar Activated");
 			boolean isDirty = false;
 			if(!stack.isEmpty()){
 				

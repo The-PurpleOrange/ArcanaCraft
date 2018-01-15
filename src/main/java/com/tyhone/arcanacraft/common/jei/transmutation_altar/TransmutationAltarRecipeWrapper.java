@@ -1,9 +1,11 @@
 package com.tyhone.arcanacraft.common.jei.transmutation_altar;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.tyhone.arcanacraft.api.recipe.RecipeTransmutationAltar;
+import com.tyhone.arcanacraft.common.util.OreStack;
 
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeWrapper;
@@ -20,12 +22,18 @@ public class TransmutationAltarRecipeWrapper implements IRecipeWrapper{
 	@Override
 	public void getIngredients(IIngredients ingredients) {
 		
-		List<ItemStack> inputs = new ArrayList<ItemStack>();
-		for(ItemStack input : this.recipe.getInputs()){
-			inputs.add(input);
+		
+		List<List<ItemStack>> inputs = new ArrayList<List<ItemStack>>();
+		for(Object input : this.recipe.getInputs()){
+			if(input instanceof ItemStack){
+				inputs.add(Arrays.asList((ItemStack) input));
+			}
+			else if(input instanceof OreStack){
+				inputs.add(OreStack.getOreDictionaryEntriesForOreStack((OreStack) input));
+			}
 		}
 		
-		ingredients.setInputs(ItemStack.class, inputs);
+		ingredients.setInputLists(ItemStack.class, inputs);
 		ingredients.setOutput(ItemStack.class, this.recipe.getOutput());
 	}
 

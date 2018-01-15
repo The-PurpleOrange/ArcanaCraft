@@ -12,9 +12,9 @@ public class ModRecipes {
 	public static void init(){
 		InitRecipesDeconstructionTable.init();
 		InitRecipesHammer.init();
-		//InitRecipesSoulAltar.init();
-		//InitRecipesInfusionAltar.init();
-		//InitRecipesTransmutationAltar.init();
+		InitRecipesSoulAltar.init();
+		InitRecipesInfusionAltar.init();
+		InitRecipesTransmutationAltar.init();
 		InitRecipesAlchemicArray.init();
 		InitVanillaRecipesSmelting.init();
 	}

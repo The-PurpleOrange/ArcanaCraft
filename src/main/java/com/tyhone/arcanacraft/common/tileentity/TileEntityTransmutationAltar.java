@@ -47,16 +47,24 @@ public class TileEntityTransmutationAltar extends ModTileEntityBase implements I
 				getPos().add(0, 1, -2)
 			}
 		};
-	
+
+
+
 	@Override
-	public void update(){
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public void onActivated(){
 		if(!getWorld().isRemote){
+			
+			Arcanacraft.log("Transmutation Altar Activated");
 			boolean isDirty = false;
 			if(stack.isEmpty()){
 				
 				BlockPos[] pedestals = getPedestals(world);
 				if(pedestals != null){
-					//Arcanacraft.logger.info("Pedestals Founds");
 	            	
 					ArrayList<ItemStack> pedestalsItemStacks = getPedestalItemStacks(pedestals);
 					if(!pedestalsItemStacks.isEmpty()){

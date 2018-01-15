@@ -2,6 +2,7 @@ package com.tyhone.arcanacraft.common.tileentity;
 
 import java.util.ArrayList;
 
+import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.api.recipe.RecipeSoulAltar;
 import com.tyhone.arcanacraft.common.tileentity.base.ModTileEntityBase;
 import com.tyhone.arcanacraft.common.tileentity.base.ModTileEntitySingleInventoryBase;
@@ -53,7 +54,13 @@ public class TileEntitySoulAltar extends ModTileEntityBase implements ITickable{
 	
 	@Override
 	public void update(){
+		
+	}
+	
+	public void onActivated(){
 		if(!getWorld().isRemote){
+			
+			Arcanacraft.log("Soul Altar Activated");
 			boolean isDirty = false;
 			if(!stack.isEmpty()){
 				

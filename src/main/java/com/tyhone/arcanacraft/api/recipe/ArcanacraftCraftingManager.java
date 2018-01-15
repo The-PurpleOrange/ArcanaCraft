@@ -1,17 +1,14 @@
 package com.tyhone.arcanacraft.api.recipe;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.api.tinkture.TinktureStack;
+import com.tyhone.arcanacraft.common.util.OreStack;
 import com.tyhone.arcanacraft.common.util.WildStack;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import scala.actors.threadpool.Arrays;
 
 public class ArcanacraftCraftingManager {
 
@@ -88,13 +85,13 @@ public class ArcanacraftCraftingManager {
 	//TRANSMUTATION RECIPES
 	public static RecipeTransmutationAltar registerTransmutationRecipes(ItemStack output, Object ... inputObjects) {
 		if(inputObjects == null || inputObjects.length>4){
-			Arcanacraft.logger.error("Error register Recipe for Transmutation recipe: " + output);
+			Arcanacraft.logger.error("Error register Recipe for Transmutation Altar: " + output);
 			return null;
 		}
 		
-		ArrayList<ItemStack> inputs = WildStack.InitObjectListToItemStackList(inputObjects, 1);
-		if(inputs==null){
-			Arcanacraft.logger.error("Error register Recipe for Alchemic Array: " + output.getDisplayName());
+		ArrayList<Object> inputs = WildStack.objectListToItemStackOrOreStack(inputObjects);
+		if(inputs.size()==0){
+			Arcanacraft.logger.error("Error register Recipe for Transmutation Altar: " + output.getDisplayName());
 			return null;
 		}
 		
@@ -108,20 +105,28 @@ public class ArcanacraftCraftingManager {
 	}
 
 	//INFUSION RECIPES
-	public static RecipeInfusionAltar registerInfusionRecipe(ItemStack output, ItemStack itemInfusionItem, Object[] inputObjects, TinktureStack[] tInputs) {
+	public static RecipeInfusionAltar registerInfusionRecipe(ItemStack output, Object infusionObject, Object[] inputObjects, TinktureStack[] tInputs) {
 		if(inputObjects == null || inputObjects.length>8){
-			Arcanacraft.logger.error("Error register Recipe for Infusion recipe: " + output);
+			Arcanacraft.logger.error("Error register Recipe for Infusion Altar: " + output);
+			return null;
+		}
+
+		ArrayList<Object> inputs = WildStack.objectListToItemStackOrOreStack(inputObjects);
+		if(inputs.size()==0){
+			Arcanacraft.logger.error("Error register Recipe for Infusion Altar: " + output.getDisplayName());
 			return null;
 		}
 		
-		ArrayList<ItemStack> inputs = WildStack.InitObjectListToItemStackList(inputObjects, 1);
-		if(inputs==null){
-			Arcanacraft.logger.error("Error register Recipe for Alchemic Array: " + output.getDisplayName());
-			return null;
+		if(infusionObject instanceof ItemStack){
+			((ItemStack) infusionObject).setCount(1);
+			
+		}
+		else if(infusionObject instanceof OreStack){
+			((OreStack) infusionObject).setCount(1);
+			
 		}
 		
-		itemInfusionItem.setCount(1);
-		RecipeInfusionAltar recipe = new RecipeInfusionAltar(output, itemInfusionItem, inputs, tInputs);
+		RecipeInfusionAltar recipe = new RecipeInfusionAltar(output, infusionObject, inputs, tInputs);
 		infusionAltarRecipes.add(recipe);
 		return recipe;
 	}
@@ -130,21 +135,29 @@ public class ArcanacraftCraftingManager {
 		return infusionAltarRecipes;
 	}
 	
-	//SOUL RECIPES
-	public static RecipeSoulAltar registerSoulInfusionRecipe(ItemStack output, ItemStack itemInfusionItem, Object ... inputObjects) {
+	//SOUL INFUSION RECIPES
+	public static RecipeSoulAltar registerSoulInfusionRecipe(ItemStack output, Object infusionObject, Object ... inputObjects) {
 		if(inputObjects == null || inputObjects.length>5){
 			Arcanacraft.logger.error("Error register Recipe for Soul Infusion recipe: " + output);
 			return null;
 		}
-		
-		ArrayList<ItemStack> inputs = WildStack.InitObjectListToItemStackList(inputObjects, 1);
-		if(inputs==null){
-			Arcanacraft.logger.error("Error register Recipe for Alchemic Array: " + output.getDisplayName());
+
+		ArrayList<Object> inputs = WildStack.objectListToItemStackOrOreStack(inputObjects);
+		if(inputs.size()==0){
+			Arcanacraft.logger.error("Error register Recipe for Infusion Altar: " + output.getDisplayName());
 			return null;
 		}
 		
-		itemInfusionItem.setCount(1);
-		RecipeSoulAltar recipe = new RecipeSoulAltar(output, itemInfusionItem, inputs);
+		if(infusionObject instanceof ItemStack){
+			((ItemStack) infusionObject).setCount(1);
+			
+		}
+		else if(infusionObject instanceof OreStack){
+			((OreStack) infusionObject).setCount(1);
+			
+		}
+		
+		RecipeSoulAltar recipe = new RecipeSoulAltar(output, infusionObject, inputs);
 		soulAltarRecipes.add(recipe);
 		return recipe;
 	}

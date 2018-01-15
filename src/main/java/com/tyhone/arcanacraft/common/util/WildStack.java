@@ -25,60 +25,6 @@ public class WildStack {
 		
 		return stack;
 	}
-	
-	/*public static ItemStack ObjectToInput(Object input, int size){
-		ItemStack stack = ItemStack.EMPTY;
-		if(input instanceof ItemStack){
-			return (ItemStack) input;
-		}else if(input instanceof Block){
-			stack = new ItemStack(Item.getItemFromBlock((Block) input), size, 32767);
-		}else if(input instanceof Item){
-			stack = new ItemStack((Item) input, size, 32767);
-		}else if(input instanceof String){
-			stack = OreDictionaryHandler.getOreDictionaryEntry((String) input);
-		}else{
-			return ItemStack.EMPTY;
-		}
-		
-		return stack;
-	}
-	
-	public static ItemStack ObjectToInput(Object input){
-		return ObjectToInput(input, 1);
-	}
-	
-	public static ArrayList<ItemStack> InitObjectListToItemStackList(ArrayList<Object> inputObjects, int maxCount){
-		ArrayList<ItemStack> inputs = new ArrayList<ItemStack>();
-		for(Object inputObject : inputObjects){
-			
-			ItemStack input = ObjectToInput(inputObject);
-			if(input.isEmpty()){
-				return null;
-			}
-			if(input.getCount() > maxCount){
-				input.setCount(maxCount);
-			}
-			inputs.add(input);
-		}
-		return inputs;
-	}
-	
-	public static ArrayList<ItemStack> InitObjectListToItemStackList(ArrayList<Object> inputObjects){
-		return InitObjectListToItemStackList(inputObjects, 64);
-	}
-	
-	public static ArrayList<ItemStack> InitObjectListToItemStackList(Object[] inputObjects, int maxCount){
-		ArrayList<Object> objectList = new ArrayList<Object>();
-		for(Object object : inputObjects){
-			objectList.add(object);
-		}
-		
-		return InitObjectListToItemStackList(objectList, maxCount);
-	}
-	
-	public static ArrayList<ItemStack> InitObjectListToItemStackList(Object[] inputObjects){
-		return InitObjectListToItemStackList(inputObjects, 64);
-	}*/
 
 	public static ArrayList<Object> objectListToItemStackOrOreStack(Object[] inputObjects) {
 		ArrayList<Object> objectList = new ArrayList<Object>();
@@ -99,7 +45,7 @@ public class WildStack {
 		}else if(input instanceof OreStack){
 			return input;
 		}else if(input instanceof String){
-			return new OreStack((String) input, 1);
+			return new OreStack(((String) input), 1);
 		}else{
 			return null;
 		}

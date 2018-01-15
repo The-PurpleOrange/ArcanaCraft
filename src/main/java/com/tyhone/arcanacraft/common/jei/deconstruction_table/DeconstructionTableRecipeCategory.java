@@ -21,7 +21,7 @@ public class DeconstructionTableRecipeCategory implements IRecipeCategory<Decons
     private final IDrawable background;
     
     public DeconstructionTableRecipeCategory(IGuiHelper helper){
-		this.background = helper.createDrawable(GuiUtils.getGuiLocation("gui_deconstruction_table"), 0, 0, 135, 80);
+		this.background = helper.createDrawable(GuiUtils.getGuiLocation("gui_deconstruction_table"), 0, 0, 135, 54);
 	}
 	
 	@Override
@@ -51,15 +51,15 @@ public class DeconstructionTableRecipeCategory implements IRecipeCategory<Decons
 		List<List<ItemStack>> inputs = ingredients.getInputs(ItemStack.class);
 		
 
-		recipeLayout.getItemStacks().init(0, true, 24, 49);
+		recipeLayout.getItemStacks().init(0, true, 24, 36);
 		guiItemStacks.set(0, inputs.get(0));
 
 		if(inputs.size()>1){
-			guiItemStacks.init(2, true, 24, 13);
+			guiItemStacks.init(2, true, 24, 0);
 			guiItemStacks.set(2, inputs.get(1));
 		}
 
-		guiItemStacks.init(1, false, 84, 31);
+		guiItemStacks.init(1, false, 84, 18);
 		guiItemStacks.set(1, wrapper.recipe.getOutput());
 
 	}

@@ -1,10 +1,12 @@
  package com.tyhone.arcanacraft.common.jei.soul_altar;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.tyhone.arcanacraft.api.recipe.RecipeSoulAltar;
 import com.tyhone.arcanacraft.api.recipe.RecipeTransmutationAltar;
+import com.tyhone.arcanacraft.common.util.OreStack;
 
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeWrapper;
@@ -21,13 +23,25 @@ public class SoulAltarRecipeWrapper implements IRecipeWrapper{
 	@Override
 	public void getIngredients(IIngredients ingredients) {
 		
-		List<ItemStack> inputs = new ArrayList<ItemStack>();
-		inputs.add(this.recipe.getInfusionItem());
-		for(ItemStack input : this.recipe.getInputs()){
-			inputs.add(input);
+		List<List<ItemStack>> inputs = new ArrayList<List<ItemStack>>();
+		Object infusionItem = this.recipe.getInfusionItem();
+		if(infusionItem instanceof ItemStack){
+			inputs.add(Arrays.asList((ItemStack) infusionItem));
+		}
+		else if(infusionItem instanceof OreStack){
+			inputs.add(OreStack.getOreDictionaryEntriesForOreStack((OreStack) infusionItem));
 		}
 		
-		ingredients.setInputs(ItemStack.class, inputs);
+		for(Object input : this.recipe.getInputs()){
+			if(input instanceof ItemStack){
+				inputs.add(Arrays.asList((ItemStack) input));
+			}
+			else if(input instanceof OreStack){
+				inputs.add(OreStack.getOreDictionaryEntriesForOreStack((OreStack) input));
+			}
+		}
+		
+		ingredients.setInputLists(ItemStack.class, inputs);
 		ingredients.setOutput(ItemStack.class, this.recipe.getOutput());
 	}
 

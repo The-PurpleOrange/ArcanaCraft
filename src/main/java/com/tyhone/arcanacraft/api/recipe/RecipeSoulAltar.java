@@ -12,20 +12,14 @@ import net.minecraft.item.ItemStack;
 public class RecipeSoulAltar {
 	
 	ItemStack output;
-	ItemStack infusionItem;
-	ArrayList<ItemStack> inputs;
+	Object infusionItem;
+	ArrayList<Object> inputs;
 	
-	public RecipeSoulAltar(ItemStack output, ItemStack infusionItem, ArrayList<ItemStack> inputs){
+	public RecipeSoulAltar(ItemStack output, Object infusionItem, ArrayList<Object> inputs){
 		
 		this.output = output;
 		this.infusionItem = infusionItem;
-		
-		ArrayList<ItemStack> inputsToSet = new ArrayList();
-		for(ItemStack input : inputs) {
-			inputsToSet.add(input);
-		}
-
-		this.inputs = inputsToSet;
+		this.inputs = (ArrayList<Object>) inputs.clone();
 	}
 
 	public List<ItemStack> getInputs() {
@@ -36,7 +30,7 @@ public class RecipeSoulAltar {
 		return this.output;
 	}
 
-	public ItemStack getInfusionItem() {
+	public Object getInfusionItem() {
 		return this.infusionItem;
 	}
 	

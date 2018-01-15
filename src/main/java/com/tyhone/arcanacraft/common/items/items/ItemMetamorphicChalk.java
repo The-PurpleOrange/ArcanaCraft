@@ -6,7 +6,6 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import com.tyhone.arcanacraft.Arcanacraft;
-import com.tyhone.arcanacraft.api.recipe.ArcanacraftRitualCraftingManager;
 import com.tyhone.arcanacraft.api.recipe.RecipeRitualCircle;
 import com.tyhone.arcanacraft.api.ritual.IRitualBuilder;
 import com.tyhone.arcanacraft.api.ritual.IRitualCircle;
@@ -14,9 +13,11 @@ import com.tyhone.arcanacraft.api.ritual.Ritual;
 import com.tyhone.arcanacraft.api.ritual.RitualRegistry;
 import com.tyhone.arcanacraft.api.ritual.RitualType;
 import com.tyhone.arcanacraft.api.util.ItemStackUtil;
+import com.tyhone.arcanacraft.common.handler.OreDictionaryHandler;
 import com.tyhone.arcanacraft.common.init.ModBlocks;
 import com.tyhone.arcanacraft.common.init.ModRituals;
 import com.tyhone.arcanacraft.common.items.base.ModItemBase;
+import com.tyhone.arcanacraft.common.util.OreStack;
 import com.tyhone.arcanacraft.common.util.PlayerUtils;
 import com.tyhone.arcanacraft.common.util.PosUtil;
 
@@ -190,7 +191,6 @@ public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
 		boolean buildComplete;
 
 		RitualType ritualType = recipe.getRitual().getRitualType();
-		Arcanacraft.log("RitualType: " + ritualType.getDisplayName());
 		
 		for(int place : ritualType.getRitualRecipePlaceOrder()){
 			BlockPos oldPos = PosUtil.combinePos(pos, ritualType.getRitualRecipePosList().get(place));
@@ -229,8 +229,14 @@ public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
 			if(recipe.getItemRequirements().size()>0){
 				List<String> itemReqs = new ArrayList<>();
 				itemReqs.add("Item requirements:");
-				for(ItemStack req : recipe.getItemRequirements()){
-					itemReqs.add(" - x" + req.getCount() + " " + req.getDisplayName());
+				for(Object req : recipe.getItemRequirements()){
+					if(req instanceof OreStack){
+						ItemStack objItem = OreDictionaryHandler.getOreDictionaryEntry(((OreStack)req).getOre());
+						itemReqs.add(" - x" + ((OreStack)req).getCount() + " " + objItem.getDisplayName());
+					}
+					else{
+						itemReqs.add(" - x" + ((ItemStack)req).getCount() + " " + ((ItemStack)req).getDisplayName());
+					}
 				}
 				for(String line : itemReqs){
 					PlayerUtils.sendPlayerMessage(player, worldIn, line);

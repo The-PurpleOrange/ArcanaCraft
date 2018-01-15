@@ -31,8 +31,14 @@ public class Ritual extends net.minecraftforge.registries.IForgeRegistryEntry.Im
         return I18n.translateToLocal(this.getUnlocalizedName() + ".name").trim();
     }
 	
+	@Override
 	public RitualType getRitualType(){
 		return ritualType;
+	}
+	
+	@Override
+	public boolean meetsSpecialRequirements(World world, EntityPlayer player, BlockPos pos) {
+		return true;
 	}
 
 	@Override
