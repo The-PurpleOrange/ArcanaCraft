@@ -5,8 +5,8 @@ import java.util.List;
 
 import com.tyhone.arcanacraft.api.recipe.ArcanacraftRitualCraftingManager;
 import com.tyhone.arcanacraft.api.recipe.RecipeRitualCircle;
-import com.tyhone.arcanacraft.api.util.ItemStackUtil;
 import com.tyhone.arcanacraft.common.tileentity.base.ModTileEntityBase;
+import com.tyhone.arcanacraft.common.util.ItemStackUtil;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItem;

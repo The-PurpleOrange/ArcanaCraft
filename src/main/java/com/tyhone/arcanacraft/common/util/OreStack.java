@@ -2,7 +2,6 @@ package com.tyhone.arcanacraft.common.util;
 
 import java.util.List;
 
-import com.tyhone.arcanacraft.api.util.ItemStackUtil;
 import com.tyhone.arcanacraft.common.handler.OreDictionaryHandler;
 
 import net.minecraft.item.ItemStack;
@@ -61,6 +60,9 @@ public class OreStack {
 		
 		List<ItemStack> list = OreDictionaryHandler.getOreDictionaryEntries(oreStack.getOre());
 		if(list.size()>0){
+			for(ItemStack stack : list){
+				stack.setCount(oreStack.getCount());
+			}
 			return list;
 		}
 		return null;

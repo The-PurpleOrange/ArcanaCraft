@@ -15,7 +15,6 @@ import com.tyhone.arcanacraft.api.tinkture.TinktureStack;
 import com.tyhone.arcanacraft.api.tinkture.TinktureType;
 import com.tyhone.arcanacraft.common.init.ModBlocks;
 import com.tyhone.arcanacraft.common.init.ModItems;
-import com.tyhone.arcanacraft.common.items.items.ItemTinkture;
 import com.tyhone.arcanacraft.common.jei.alchemic_array.AlchemicArrayRecipeCategory;
 import com.tyhone.arcanacraft.common.jei.alchemic_array.AlchemicArrayRecipeWrapper;
 import com.tyhone.arcanacraft.common.jei.deconstruction_table.DeconstructionTableRecipeCategory;
@@ -34,10 +33,11 @@ import mezz.jei.api.IModPlugin;
 import mezz.jei.api.IModRegistry;
 import mezz.jei.api.ISubtypeRegistry;
 import mezz.jei.api.JEIPlugin;
+import mezz.jei.api.ingredients.IIngredientBlacklist;
 import mezz.jei.api.ingredients.IModIngredientRegistration;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.oredict.OreDictionary;
 
 @JEIPlugin
 public class JEIArcanacraftPlugin implements IModPlugin {
@@ -64,11 +64,11 @@ public class JEIArcanacraftPlugin implements IModPlugin {
 		IJeiHelpers helpers = registry.getJeiHelpers();
 		registry.addRecipeCategories(
 				new HammerRecipeCategory(helpers.getGuiHelper()),
+				new AlchemicArrayRecipeCategory(helpers.getGuiHelper()),
 				new DeconstructionTableRecipeCategory(helpers.getGuiHelper()),
 				new TransmutationAltarRecipeCategory(helpers.getGuiHelper()),
 				new SoulAltarRecipeCategory(helpers.getGuiHelper()),
-				new InfusionAltarRecipeCategory(helpers.getGuiHelper()),
-				new AlchemicArrayRecipeCategory(helpers.getGuiHelper())
+				new InfusionAltarRecipeCategory(helpers.getGuiHelper())
 		);
 	}
 	
@@ -77,24 +77,36 @@ public class JEIArcanacraftPlugin implements IModPlugin {
 		IJeiHelpers helpers = registry.getJeiHelpers();
 
 		registry.handleRecipes(RecipeHammer.class, HammerRecipeWrapper::new, HammerRecipeCategory.NAME);
+		registry.handleRecipes(RecipeAlchemicArray.class, AlchemicArrayRecipeWrapper::new, AlchemicArrayRecipeCategory.NAME);
 		registry.handleRecipes(RecipeDeconstructionTable.class, DeconstructionTableRecipeWrapper::new, DeconstructionTableRecipeCategory.NAME);
 		registry.handleRecipes(RecipeTransmutationAltar.class, TransmutationAltarRecipeWrapper::new, TransmutationAltarRecipeCategory.NAME);
 		registry.handleRecipes(RecipeSoulAltar.class, SoulAltarRecipeWrapper::new, SoulAltarRecipeCategory.NAME);
 		registry.handleRecipes(RecipeInfusionAltar.class, InfusionAltarRecipeWrapper::new, InfusionAltarRecipeCategory.NAME);
-		registry.handleRecipes(RecipeAlchemicArray.class, AlchemicArrayRecipeWrapper::new, AlchemicArrayRecipeCategory.NAME);
 
 		registry.addRecipes(ArcanacraftCraftingManager.getHammerRecipes(), HammerRecipeCategory.NAME);
+		registry.addRecipes(ArcanacraftCraftingManager.getAlchemicArrayRecipes(), AlchemicArrayRecipeCategory.NAME);
 		registry.addRecipes(ArcanacraftCraftingManager.getDeconstructionRecipes(), DeconstructionTableRecipeCategory.NAME);
 		registry.addRecipes(ArcanacraftCraftingManager.getTransmutationAltarRecipes(), TransmutationAltarRecipeCategory.NAME);
 		registry.addRecipes(ArcanacraftCraftingManager.getSoulAltarRecipes(), SoulAltarRecipeCategory.NAME);
 		registry.addRecipes(ArcanacraftCraftingManager.getInfusionAltarRecipes(), InfusionAltarRecipeCategory.NAME);
-		registry.addRecipes(ArcanacraftCraftingManager.getAlchemicArrayRecipes(), AlchemicArrayRecipeCategory.NAME);
 
 		registry.addRecipeCatalyst(new ItemStack(ModItems.HAMMER), HammerRecipeCategory.NAME);
+		registry.addRecipeCatalyst(new ItemStack(ModItems.ICONS, 1, 0), AlchemicArrayRecipeCategory.NAME);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.DECONSTRUCTION_TABLE), DeconstructionTableRecipeCategory.NAME);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.TRANSMUTATION_ALTAR), TransmutationAltarRecipeCategory.NAME);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.SOUL_ALTAR), SoulAltarRecipeCategory.NAME);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.INFUSION_ALTAR), InfusionAltarRecipeCategory.NAME);
-		registry.addRecipeCatalyst(new ItemStack(ModItems.ICONS, 1, 0), AlchemicArrayRecipeCategory.NAME);
+		
+		
+		IIngredientBlacklist blacklist = registry.getJeiHelpers().getIngredientBlacklist();
+		blacklist.addIngredientToBlacklist(new ItemStack(ModItems.ICONS, 1, OreDictionary.WILDCARD_VALUE));
+		blacklist.addIngredientToBlacklist(new ItemStack(ModBlocks.ALCHEMIC_ARRAY));
+		blacklist.addIngredientToBlacklist(new ItemStack(ModBlocks.RITUAL_CIRCLE));
+		blacklist.addIngredientToBlacklist(new ItemStack(ModBlocks.GRAND_RITUAL_CIRCLE));
+		blacklist.addIngredientToBlacklist(new ItemStack(ModBlocks.CHALK_BLOCK, 1, OreDictionary.WILDCARD_VALUE));
+		
+
+		//IRecipeTransferRegistry transfer = registry.getRecipeTransferRegistry();
+		
 	}
 }

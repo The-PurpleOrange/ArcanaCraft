@@ -9,19 +9,22 @@ import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.api.recipe.RecipeRitualCircle;
 import com.tyhone.arcanacraft.api.ritual.IRitualBuilder;
 import com.tyhone.arcanacraft.api.ritual.IRitualCircle;
+import com.tyhone.arcanacraft.api.ritual.IRitualDisplayIgnoreBlock;
 import com.tyhone.arcanacraft.api.ritual.Ritual;
 import com.tyhone.arcanacraft.api.ritual.RitualRegistry;
 import com.tyhone.arcanacraft.api.ritual.RitualType;
-import com.tyhone.arcanacraft.api.util.ItemStackUtil;
+import com.tyhone.arcanacraft.common.blocks.blocks.BlockChalk;
 import com.tyhone.arcanacraft.common.handler.OreDictionaryHandler;
 import com.tyhone.arcanacraft.common.init.ModBlocks;
 import com.tyhone.arcanacraft.common.init.ModRituals;
 import com.tyhone.arcanacraft.common.items.base.ModItemBase;
+import com.tyhone.arcanacraft.common.util.ItemStackUtil;
 import com.tyhone.arcanacraft.common.util.OreStack;
 import com.tyhone.arcanacraft.common.util.PlayerUtils;
 import com.tyhone.arcanacraft.common.util.PosUtil;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -35,6 +38,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
 
@@ -82,7 +86,7 @@ public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
 				}
 			}else{
 				setRitualTypeNBT(tag, ritualTypes.get(0));
-        		msg = (ritualTypes.get(0).getUnlocalizedName());
+        		msg = (ritualTypes.get(0).getDisplayName());
 			}
 			PlayerUtils.sendPlayerMessage(player, world, msg);
 	
@@ -134,10 +138,10 @@ public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
 				stack.setTagCompound(tag);
 			}
 			else{
-				RitualType ritualType = ModRituals.RITUAL_TYPE_STANDARD; //RitualRegistry.getRitualTypeList().get(0);
+				RitualType ritualType = ModRituals.RITUAL_TYPE_STANDARD;
 				Ritual ritual = RitualRegistry.getRitualListFromHashMap(ritualType).get(0);
 				setAllNBT(tag, ritual, ritualType);
-        		msg = (ritualType.getUnlocalizedName());
+        		msg = (ritualType.getDisplayName());
 				stack.setTagCompound(tag);
     			PlayerUtils.sendPlayerMessage(player, world, msg);
 			}
@@ -151,7 +155,6 @@ public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
 	{
 		if(player.isSneaking() && player.isCreative()){
 			ItemStack stack = player.getHeldItem(hand);
-			//RecipeRitualCircle recipe = getRitualNBT(getRitualTypeNBT(stack).getUnlocalizedName()); //ONLY FOR BASIC RITUALS
 			RecipeRitualCircle recipe = getRitualRecipeNBT(stack);
 			if(recipe!=null){
 				if(checkArea(recipe, player, worldIn, pos, hand)){
@@ -166,7 +169,6 @@ public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
 		}
 		else{
 			ItemStack stack = player.getHeldItem(hand);
-			//RecipeRitualCircle recipe = getRitualNBT(getRitualTypeNBT(stack).getUnlocalizedName()); //ONLY FOR BASIC RITUALS
 			RecipeRitualCircle recipe = getRitualRecipeNBT(stack);
 			if(recipe!=null){
 				if(checkArea(recipe, player, worldIn, pos, hand)){
@@ -227,18 +229,15 @@ public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
 			PlayerUtils.sendPlayerMessage(player, worldIn, "Completed " + recipe.getRitual().getDisplayName());
 			
 			if(recipe.getItemRequirements().size()>0){
-				List<String> itemReqs = new ArrayList<>();
-				itemReqs.add("Item requirements:");
-				for(Object req : recipe.getItemRequirements()){
-					if(req instanceof OreStack){
-						ItemStack objItem = OreDictionaryHandler.getOreDictionaryEntry(((OreStack)req).getOre());
-						itemReqs.add(" - x" + ((OreStack)req).getCount() + " " + objItem.getDisplayName());
-					}
-					else{
-						itemReqs.add(" - x" + ((ItemStack)req).getCount() + " " + ((ItemStack)req).getDisplayName());
-					}
+				List<String> itemReqsMsg = new ArrayList<>();
+				itemReqsMsg.add("Item requirements:");
+				
+			    List<ItemStack> itemStacks = recipe.getItemStackRequirements();
+				for(ItemStack req : itemStacks){
+					itemReqsMsg.add(" - x" + ((ItemStack)req).getCount() + " " + ((ItemStack)req).getDisplayName());
 				}
-				for(String line : itemReqs){
+				
+				for(String line : itemReqsMsg){
 					PlayerUtils.sendPlayerMessage(player, worldIn, line);
 				}
 			}
@@ -290,24 +289,16 @@ public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
     	return true;
 	}
 	
-	/*private RecipeRitualCircle getNBT(ItemStack stack){
-		if(stack.hasTagCompound() && stack.getTagCompound().hasKey(NBT_RITUAL)){
-			String ritualName = stack.getTagCompound().getString(NBT_RITUAL);
-			if(ritualName!=null){
-				return RecipeRitualCircle.getRecipe(ritualName);
-			}
-		}
-		return null;
-	}*/
-	
 	private RecipeRitualCircle getRitualRecipeNBT(ItemStack stack){
 		
 		RitualType ritualType = getRitualTypeNBT(stack);
 		Ritual ritual = getRitualNBT(stack, ritualType);
 		
-		for(RecipeRitualCircle ritualRecipe : ritualType.getRitualRecipeList()){
-			if(ritual.getUnlocalizedName().equals(ritualRecipe.getRitual().getUnlocalizedName())){
-				return ritualRecipe;
+		if(ritual != null && ritualType != null){
+			for(RecipeRitualCircle ritualRecipe : ritualType.getRitualRecipeList()){
+				if(ritual.getUnlocalizedName().equals(ritualRecipe.getRitual().getUnlocalizedName())){
+					return ritualRecipe;
+				}
 			}
 		}
 		
@@ -352,10 +343,29 @@ public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn){
-    	RitualType ritualType = getRitualTypeNBT(stack);
-    	if(ritualType != null){
-    		tooltip.add(stack.getTagCompound().getString(NBT_RITUAL_TYPE_DISPLAY_NAME));
-    		tooltip.add(stack.getTagCompound().getString(ritualType.getUnlocalizedName() + "_display_name"));
+
+    	RecipeRitualCircle recipe = getRitualRecipeNBT(stack);
+    	if(recipe != null){
+    		tooltip.add(recipe.getRitual().getDisplayName() + "   (Shift for Items)");
+    		tooltip.add(" - " + recipe.getRitual().getRitualType().getDisplayName());
+    		
+    		if(!GuiScreen.isShiftKeyDown()){
+    			tooltip.add("Required Blocks");
+
+        		List<ItemStack> blockStack = ItemStackUtil.compactItems(recipe.getBlockRequirements());
+        		for(ItemStack block : blockStack){
+        			if(!(Block.getBlockFromItem(block.getItem()) instanceof IRitualDisplayIgnoreBlock || block.isEmpty())){
+        	    		tooltip.add(" - " + block.getCount() + "x " + block.getDisplayName());
+        			}
+        		}
+    		}else{
+    			tooltip.add("Required Items");
+    			
+	    		List<ItemStack> itemStacks = recipe.getItemStackRequirements();
+	    		for(ItemStack itemStack : itemStacks){
+	    	    	tooltip.add(" - " + itemStack.getCount() + "x " + itemStack.getDisplayName());
+	    		}
+    		}
     	}
     }
 }

@@ -1,8 +1,6 @@
-package com.tyhone.arcanacraft.api.util;
+package com.tyhone.arcanacraft.common.util;
 
 import java.util.List;
-
-import com.tyhone.arcanacraft.common.util.OreStack;
 
 import net.minecraft.item.ItemStack;
 
@@ -82,7 +80,7 @@ public class ItemStackUtil {
 			for(int j = 0; j<itemStacks.size(); j++){
 				if(i!=j){
 					if(simpleAreStacksEqual(itemStacks.get(i), itemStacks.get(j))){
-						ItemStack tempItemStack = itemStacks.get(i);
+						ItemStack tempItemStack = itemStacks.get(i).copy();
 						tempItemStack.setCount(itemStacks.get(i).getCount() + itemStacks.get(j).getCount());
 						//tempItemStackList.add(tempItemStackList);
 						itemStacks.set(i, tempItemStack);

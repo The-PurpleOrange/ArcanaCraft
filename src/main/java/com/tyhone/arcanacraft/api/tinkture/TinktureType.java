@@ -32,7 +32,7 @@ public class TinktureType extends net.minecraftforge.registries.IForgeRegistryEn
 	}
 	
 	public String getUnlocalizedName(){
-		return "tinkture." + Arcanacraft.MODID + "." + REGISTRY_NAME;
+		return "tinkture." + Arcanacraft.MODID + ":" + REGISTRY_NAME;
 	}
 
 	public static TinktureType getType(String name) {

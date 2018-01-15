@@ -13,11 +13,12 @@ import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeCategory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.translation.I18n;
 
 public class InfusionAltarRecipeCategory implements IRecipeCategory<InfusionAltarRecipeWrapper>{
 
 
-    public static final String NAME = "arcanacraft.infusion_altar";
+    public static final String NAME = "arcanacraft:infusion_altar";
 
     private final IDrawable background;
     
@@ -32,7 +33,7 @@ public class InfusionAltarRecipeCategory implements IRecipeCategory<InfusionAlta
 
 	@Override
 	public String getTitle() {
-		return ("container.nei."+NAME+".name");
+		return I18n.translateToLocal("container.nei."+NAME+".name");
 	}
 
 	@Override

@@ -1,7 +1,5 @@
 package com.tyhone.arcanacraft.common.util;
 
-import com.tyhone.arcanacraft.api.util.ItemStackUtil;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;

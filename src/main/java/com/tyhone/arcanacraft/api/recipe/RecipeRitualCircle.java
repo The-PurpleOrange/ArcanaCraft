@@ -5,7 +5,8 @@ import java.util.List;
 
 import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.api.ritual.Ritual;
-import com.tyhone.arcanacraft.api.util.ItemStackUtil;
+import com.tyhone.arcanacraft.common.handler.OreDictionaryHandler;
+import com.tyhone.arcanacraft.common.util.OreStack;
 
 import net.minecraft.item.ItemStack;
 
@@ -146,6 +147,20 @@ public class RecipeRitualCircle {
 			return new ArrayList(inputs);
 		}
 		return null;
+	}
+	
+	public List<ItemStack> getItemStackRequirements(){
+		List<ItemStack> itemStacks = new ArrayList<>();
+		for(Object object : getItemRequirements()){
+			ItemStack itemStack = ItemStack.EMPTY;
+			if(object instanceof OreStack){
+				itemStack = OreDictionaryHandler.getOreDictionaryEntry(((OreStack)object).getOre());
+			}else if(object instanceof ItemStack){
+				itemStack = (ItemStack) object;
+			}
+			itemStacks.add(itemStack);
+		}
+		return itemStacks;
 	}
 	
 	public int getMiddleInt(){

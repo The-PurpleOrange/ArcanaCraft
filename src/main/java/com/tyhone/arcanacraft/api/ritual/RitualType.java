@@ -31,7 +31,7 @@ public class RitualType extends net.minecraftforge.registries.IForgeRegistryEntr
 
 	@Override
 	public String getUnlocalizedName(){
-		return "ritual." + Arcanacraft.MODID + ":" + ritualName;
+		return "ritual_type." + Arcanacraft.MODID + ":" + ritualName;
     }
 
 	public String getDisplayName(){

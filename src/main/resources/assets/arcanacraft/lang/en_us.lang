@@ -1,14 +1,125 @@
 
 
 #Items
-arcanacraft.tinkture.name=Tinkture #correct
-arcanacraft:red_coal.name=Red Coal
-item.arcanacraft:alchemic_coal=Alchemic Coal
+item.arcanacraft:tinkture.name=Tinkture
+item.arcanacraft:red_coal.name=Red Coal
+item.arcanacraft:alchemical_coal.name=Alchemic Coal
+item.arcanacraft:mulch.name=Mulch
+item.arcanacraft:ayre.name=Ayre
+item.arcanacraft:hammer.name=Alchemic Hammer
+item.arcanacraft:chalk_metamorphic.name=Metamorphic Chalk
+
+item.arcanacraft:icons.icons_alchemic_array.name=Alchemical Array
+item.arcanacraft:icons.icons_ritual_circle.name=Ritual Circle
+
+item.arcanacraft:spirit_skull.name=Bob
+
+item.arcanacraft:dust.dust_blood.name=Blood Dust
+item.arcanacraft:dust.dust_bone.name=Bone Shards
+item.arcanacraft:dust.dust_charcoal.name=Charcoal Dust
+item.arcanacraft:dust.dust_iron.name=Iron Dust
+item.arcanacraft:dust.dust_gold.name=Gold Dust
+item.arcanacraft:dust.dust_magicite.name=Magicite Dust
+
+item.arcanacraft:lens.lens_essence.name=Ethos Lens
+item.arcanacraft:lens.lens_soul.name=Soul Lens
+
+item.arcanacraft:soul.soul_fragment.name=Fragmented Soul
+item.arcanacraft:soul.soul_complete.name=Complete Soul
+item.arcanacraft:soul.soul_nether.name=Wrathful Soul
+item.arcanacraft:soul.soul_eldritch.name=Eldritch Soul
+
+item.arcanacraft:essence.essence_iron.name=Iron Ethos
+item.arcanacraft:essence.essence_gold.name=Gold Ethos
+item.arcanacraft:essence.essence_magicite.name=Magicite Ethos
+item.arcanacraft:essence.essence_nether.name=Nether Ethos
+item.arcanacraft:essence.essence_eldritch.name=Eldritch Ethos
+item.arcanacraft:essence.essence_prosper.name=Prosporous Ethos
+item.arcanacraft:essence.essence_greed.name=Avaricle Ethos
+
+item.arcanacraft:shard.shard_nether.name=Nether Shard
+item.arcanacraft:shard.shard_eldritch.name=Eldritch Shard
+item.arcanacraft:shard.shard_prosper.name=Prosporous Shard
+item.arcanacraft:shard.shard_greed.name=Avaricle Shard
+
+item.arcanacraft:ingot.ingot_magicite.name=Magicite Ingot
+item.arcanacraft:ingot.ingot_blood_iron.name=Blood Iron Ingot
+item.arcanacraft:ingot.ingot_alcharium.name=Alcharium Ingot
+
+item.arcanacraft:item.item_bone_ash.name=Bone Ash
+item.arcanacraft:item.item_quartz_dust.name=Quartz Dust
+item.arcanacraft:item.item_clean_flesh.name=Clean Flesh
+item.arcanacraft:item.item_blood_drop.name=Blood Drop
+item.arcanacraft:item.item_star_shard.name=Star Shard
+item.arcanacraft:item.item_inert_star.name=Inert Star
+
+item.arcanacraft:star.star_eldritch.name=Eldritch Star
+item.arcanacraft:star.star_virtuous.name=Virtuous Star
+
+item.arcanacraft:needle.needle_bone.name=Bone Needle
+item.arcanacraft:needle.needle_cactus.name=Cactus Spine
+item.arcanacraft:needle.needle_bone_bloodied.name=Bloodied Bone Needle
+item.arcanacraft:needle.needle_cactus_bloodied.name=Bloodied Cactus Spine
+
+item.arcanacraft:chalk.chalk_charcoal.name=Charcoal Chalk
+item.arcanacraft:chalk.chalk_bone.name=Bone Chalk
+item.arcanacraft:chalk.chalk_blood.name=Blood Chalk
+item.arcanacraft:chalk.chalk_lapis.name=Lazuli Chalk
+item.arcanacraft:chalk.chalk_gold.name=Golden Chalk
+item.arcanacraft:chalk.chalk_magicite.name=Magicite Chalk
+
 
 #Blocks
-arcanacraft.red_coal_block.name=Red Coal Block #Correct
-arcanacraft:alchemic_coal_block=Alchemic Coal
+tile.arcanacraft:red_coal_block.name=Red Coal Block
+tile.arcanacraft:alchemical_coal_block.name=Alchemic Coal Block
+tile.arcanacraft:alchemic_glass.name=Alchemic Glass
+
+tile.arcanacraft:spirit_skull_block.name=Bob
+
+tile.arcanacraft:alchemic_stone.uniform.name=Alchemic Stone
+tile.arcanacraft:alchemic_stone.tile.name=Alchemic Stone Tile
+tile.arcanacraft:alchemic_stone.smooth.name=Smooth Alchemic Stone
+tile.arcanacraft:alchemic_stone.smooth_tile.name=Smooth Alchemic Stone Tile
+
+tile.arcanacraft:pedestal.name=Pedestal
+tile.arcanacraft:pedestal_slab.name=Pedestal Slab
+
+tile.arcanacraft:lens_receptacle.name=Lens Receptacle
+tile.arcanacraft:jar.name=Ethos Jar
+tile.arcanacraft:deconstruction_table.name=Deconstruction Table
+tile.arcanacraft:transmutation_altar.name=Transmutation Altar
+tile.arcanacraft:infusion_altar.name=Infusion Altar
+tile.arcanacraft:soul_altar.name=Soul Altar
+
+tile.arcanacraft:ritual_circle.name=Ritual Circle
+tile.arcanacraft:grand_ritual_circle.name=Grand Ritual Circle
 
 #TinktureType
-arcanacraft.rebus=Rebus
-arcanacraft.impirus.name=Impirus
+tinkture.arcanacraft:impirus.name=Impirus
+tinkture.arcanacraft:amnis.name=Amnis
+tinkture.arcanacraft:rebus.name=Rebus
+tinkture.arcanacraft:locus.name=Locus
+tinkture.arcanacraft:animo.name=Animo
+tinkture.arcanacraft:voidus.name=Voidus
+
+
+#Gui Containers
+container.nei.arcanacraft:alchemic_array.name=Alchemic Array
+container.nei.arcanacraft:deconstruction_table.name=Deconstruction Table
+container.nei.arcanacraft:soul_altar.name=Soul Altar
+container.nei.arcanacraft:hammer.name=Alchemic Hammer
+container.nei.arcanacraft:transmutation_altar.name=Transmutation Altar
+container.nei.arcanacraft:infusion_altar.name=Infusion Altar
+
+#Rituals Catergories
+ritual_type.arcanacraft:ritual_type_standard.name=Basic Ritual
+ritual_type.arcanacraft:ritual_type_grand.name=Grand Ritual
+
+#Ritual Standard
+ritual.arcanacraft:summon_rain.name=Summon Rain
+ritual.arcanacraft:summon_lightning.name=Summon Lightning
+ritual.arcanacraft:clear_weather.name=Clear Weather
+
+#Ritual Grand
+ritual.arcanacraft:summon_chicken.name=Summon Chicken
+

@@ -1,12 +1,12 @@
 package com.tyhone.arcanacraft.common.items.items;
 
 import com.tyhone.arcanacraft.Arcanacraft;
-import com.tyhone.arcanacraft.api.util.ItemStackUtil;
 import com.tyhone.arcanacraft.common.init.ModBlocks;
 import com.tyhone.arcanacraft.common.init.ModItems;
 import com.tyhone.arcanacraft.common.items.base.ModItemBase;
 import com.tyhone.arcanacraft.common.reference.Names;
 import com.tyhone.arcanacraft.common.util.ItemMetaUtil;
+import com.tyhone.arcanacraft.common.util.ItemStackUtil;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;

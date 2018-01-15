@@ -7,9 +7,9 @@ import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.api.recipe.RecipeAlchemicArray;
 import com.tyhone.arcanacraft.api.recipe.RecipeRitualCircle;
 import com.tyhone.arcanacraft.api.ritual.Ritual;
-import com.tyhone.arcanacraft.api.util.ItemStackUtil;
 import com.tyhone.arcanacraft.common.rituals.RitualSummonRain;
 import com.tyhone.arcanacraft.common.tileentity.base.ModTileEntityBase;
+import com.tyhone.arcanacraft.common.util.ItemStackUtil;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItem;

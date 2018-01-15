@@ -12,11 +12,12 @@ import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeCategory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.translation.I18n;
 
 public class DeconstructionTableRecipeCategory implements IRecipeCategory<DeconstructionTableRecipeWrapper>{
 
 
-    public static final String NAME = "arcanacraft.deconstruction_table";
+    public static final String NAME = "arcanacraft:deconstruction_table";
 
     private final IDrawable background;
     
@@ -31,7 +32,7 @@ public class DeconstructionTableRecipeCategory implements IRecipeCategory<Decons
 
 	@Override
 	public String getTitle() {
-		return ("container.nei."+NAME+".name");
+		return I18n.translateToLocal("container.nei."+NAME+".name");
 	}
 
 	@Override

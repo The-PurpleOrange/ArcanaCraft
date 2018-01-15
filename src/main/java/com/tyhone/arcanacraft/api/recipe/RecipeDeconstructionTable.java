@@ -1,6 +1,6 @@
 package com.tyhone.arcanacraft.api.recipe;
 
-import com.tyhone.arcanacraft.api.util.ItemStackUtil;
+import com.tyhone.arcanacraft.common.util.ItemStackUtil;
 
 import net.minecraft.item.ItemStack;
 

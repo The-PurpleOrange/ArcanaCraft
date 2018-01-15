@@ -10,11 +10,12 @@ import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeCategory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.translation.I18n;
 
 public class HammerRecipeCategory implements IRecipeCategory<HammerRecipeWrapper>{
 
 
-    public static final String NAME = "arcanacraft.hammer";
+    public static final String NAME = "arcanacraft:hammer";
 
     private final IDrawable background;
     
@@ -29,7 +30,7 @@ public class HammerRecipeCategory implements IRecipeCategory<HammerRecipeWrapper
 
 	@Override
 	public String getTitle() {
-		return ("container.nei."+NAME+".name");
+		return I18n.translateToLocal("container.nei."+NAME+".name");
 	}
 
 	@Override

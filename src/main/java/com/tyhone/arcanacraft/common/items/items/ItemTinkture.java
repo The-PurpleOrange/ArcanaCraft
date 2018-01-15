@@ -7,6 +7,7 @@ import javax.annotation.Nullable;
 import com.tyhone.arcanacraft.api.tinkture.IEssenceVessel;
 import com.tyhone.arcanacraft.api.tinkture.TinktureRegistry;
 import com.tyhone.arcanacraft.api.tinkture.TinktureType;
+import com.tyhone.arcanacraft.common.init.ModTinktureTypes;
 import com.tyhone.arcanacraft.common.items.base.ModItemBase;
 import com.tyhone.arcanacraft.common.util.PlayerUtils;
 
@@ -38,14 +39,16 @@ public class ItemTinkture extends ModItemBase implements IEssenceVessel{
 	@Override
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items){
 		for(TinktureType type : VARIANTS){
-	    	ItemStack stack = new ItemStack(this, 1);
-	    	
-	    	NBTTagCompound tag = new NBTTagCompound();
-	    	
-	    	setNBT(tag, type);
-	    	
-	    	stack.setTagCompound(tag);
-	        items.add(stack);
+			if(type != ModTinktureTypes.EMPTY){
+		    	ItemStack stack = new ItemStack(this, 1);
+		    	
+		    	NBTTagCompound tag = new NBTTagCompound();
+		    	
+		    	setNBT(tag, type);
+		    	
+		    	stack.setTagCompound(tag);
+		        items.add(stack);
+			}
 		}
     }
 	

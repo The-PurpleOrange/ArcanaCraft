@@ -12,11 +12,12 @@ import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeCategory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.translation.I18n;
 
 public class SoulAltarRecipeCategory implements IRecipeCategory<SoulAltarRecipeWrapper>{
 
 
-    public static final String NAME = "arcanacraft.soul_altar";
+    public static final String NAME = "arcanacraft:soul_altar";
 
     private final IDrawable background;
     
@@ -31,7 +32,7 @@ public class SoulAltarRecipeCategory implements IRecipeCategory<SoulAltarRecipeW
 
 	@Override
 	public String getTitle() {
-		return ("container.nei."+NAME+".name");
+		return I18n.translateToLocal("container.nei."+NAME+".name");
 	}
 
 	@Override

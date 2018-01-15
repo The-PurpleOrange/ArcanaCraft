@@ -3,6 +3,7 @@ package com.tyhone.arcanacraft.common.blocks.blocks;
 import java.util.Random;
 
 import com.tyhone.arcanacraft.Arcanacraft;
+import com.tyhone.arcanacraft.api.ritual.IRitualDisplayIgnoreBlock;
 import com.tyhone.arcanacraft.common.blocks.base.IEnumMeta;
 import com.tyhone.arcanacraft.common.blocks.base.ModBlockEnum;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockAlchemicArray;
@@ -33,7 +34,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockChalk extends ModBlockEnum {
+public class BlockChalk extends ModBlockEnum implements IRitualDisplayIgnoreBlock{
 
 	public enum EnumChalkType implements IEnumMeta, Comparable<EnumChalkType>{
 		CHARCOAL,
