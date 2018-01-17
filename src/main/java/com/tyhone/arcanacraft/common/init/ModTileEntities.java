@@ -2,6 +2,7 @@ package com.tyhone.arcanacraft.common.init;
 
 import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityAlchemicArray;
+import com.tyhone.arcanacraft.common.tileentity.TileEntityAlembic;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityDeconstructionTable;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityGrandRitualCircle;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityInfusionAltar;
@@ -31,6 +32,7 @@ public class ModTileEntities {
 		GameRegistry.registerTileEntity(TileEntityInfusionAltar.class, Arcanacraft.MODID + ".infusion_altar");
 		GameRegistry.registerTileEntity(TileEntitySoulAltar.class, Arcanacraft.MODID + ".soul_altar");
 		GameRegistry.registerTileEntity(TileEntityJar.class, Arcanacraft.MODID + ".jar");
+		GameRegistry.registerTileEntity(TileEntityAlembic.class, Arcanacraft.MODID + ".alembic");
 		GameRegistry.registerTileEntity(TileEntityPedestal.class, Arcanacraft.MODID + ".pedestal");
 		GameRegistry.registerTileEntity(TileEntityPedestalSlab.class, Arcanacraft.MODID + ".pedestal_slab");
 		

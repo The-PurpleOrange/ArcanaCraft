@@ -1,13 +1,16 @@
 package com.tyhone.arcanacraft.api.tinkture;
 
-import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.common.init.ModTinktureTypes;
+import com.tyhone.arcanacraft.common.jei.TinktureIngredientRenderer;
+
+import net.minecraft.nbt.NBTTagCompound;
 
 public class TinktureStack{
 
     public static final TinktureStack EMPTY = new TinktureStack(ModTinktureTypes.EMPTY, 0);
     
-    //private NBTTagCompound stackTagCompound;
+    
+    private NBTTagCompound tag;
 	private TinktureType tinktureType;
 	private int amount = 0;
 	boolean isEmpty;
@@ -18,6 +21,23 @@ public class TinktureStack{
 		this.updateEmptyState();
 	}
 	
+	public TinktureStack(NBTTagCompound nbt) {
+		
+		TinktureType type = ModTinktureTypes.EMPTY;
+		int mt = 0;
+		
+		if(nbt.hasKey("FluidName")){
+			type = TinktureRegistry.getTinktureTypeFromName(nbt.getString("FluidName"));
+		}
+		if(nbt.hasKey("Amount")){
+			mt = nbt.getInteger("Amount");
+		}
+		
+		this.tinktureType = type;
+		this.amount = mt;
+		this.updateEmptyState();
+	}
+
 	public TinktureType getTinktureType(){
 		return tinktureType;
 	}
@@ -106,4 +126,16 @@ public class TinktureStack{
 	public TinktureStack setEmpty() {
 		return TinktureStack.EMPTY;
 	}
+
+	public NBTTagCompound writeToNBT(NBTTagCompound nbt)
+    {
+        nbt.setString("FluidName", getUnlocalizedName());
+        nbt.setInteger("Amount", amount);
+
+        if (tag != null)
+        {
+            nbt.setTag("Tag", tag);
+        }
+        return nbt;
+    }
 }

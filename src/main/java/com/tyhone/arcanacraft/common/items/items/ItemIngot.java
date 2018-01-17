@@ -17,7 +17,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class ItemIngot  extends ModItemBase{
+public class ItemIngot extends ModItemBase{
 	
 	public ItemIngot() {
 		super("ingot", Names.MetaItems.INGOT);

@@ -146,4 +146,29 @@ public class ItemTinkture extends ModItemBase implements IEssenceVessel{
     		tooltip.add(stack.getTagCompound().getString(NBT_TINKTURE_DISPLAY_NAME));
     	}
     }
+
+	@Override
+	public int getFluidAmount() {
+		return 8;
+	}
+
+	@Override
+	public TinktureType getFluidType() {
+		return ModTinktureTypes.EMPTY;
+	}
+
+	@Override
+	public boolean canAcceptsFluid(ItemStack stack) {
+		return false;
+	}
+
+	@Override
+	public boolean addFluid(ItemStack stack, int amount) {
+		return false;
+	}
+
+	@Override
+	public int addFluidRemainder(ItemStack stack, int amount) {
+		return 0;
+	}
 }

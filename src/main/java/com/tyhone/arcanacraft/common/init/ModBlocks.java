@@ -13,6 +13,7 @@ import com.tyhone.arcanacraft.common.blocks.blocks.BlockAlchemicalCoal;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockChalk;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockRedCoal;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockAlchemicArray;
+import com.tyhone.arcanacraft.common.blocks.tiles.BlockAlembic;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockDeconstructionTable;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockGrandRitualCircle;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockInfusionAltar;
@@ -51,6 +52,8 @@ public class ModBlocks {
 	public static final ModBlockBase INFUSION_ALTAR = new BlockInfusionAltar();
 	public static final ModBlockBase SOUL_ALTAR = new BlockSoulAltar();
 
+	public static final ModBlockBase ALEMBIC = new BlockAlembic();
+	
 	public static final ModBlockBase JAR = new BlockJar();
 	public static final ModBlockBase PEDESTAL = new BlockPedestal();
 	public static final ModBlockBase PEDESTAL_SLAB = new BlockPedestalSlab();

@@ -10,7 +10,9 @@ import com.tyhone.arcanacraft.common.items.items.ItemAlchemicDust;
 import com.tyhone.arcanacraft.common.items.items.ItemAlchemicalCoal;
 import com.tyhone.arcanacraft.common.items.items.ItemAyre;
 import com.tyhone.arcanacraft.common.items.items.ItemChalk;
+import com.tyhone.arcanacraft.common.items.items.ItemCrystal;
 import com.tyhone.arcanacraft.common.items.items.ItemDust;
+import com.tyhone.arcanacraft.common.items.items.ItemEmptyTinkture;
 import com.tyhone.arcanacraft.common.items.items.ItemEssence;
 import com.tyhone.arcanacraft.common.items.items.ItemHammer;
 import com.tyhone.arcanacraft.common.items.items.ItemIcons;
@@ -44,6 +46,7 @@ public class ModItems {
 	public static final ModItemBase SHARD = new ItemShard();
 	public static final ModItemBase INGOT = new ItemIngot();
 	public static final ModItemBase ITEM = new ItemItem();
+	public static final ModItemBase CRYSTAL = new ItemCrystal();
 	public static final ModItemBase MULCH = new ItemMulch();
 	public static final ModItemBase STAR = new ItemStar();
 	public static final ModItemBase AYRE = new ItemAyre();
@@ -51,6 +54,7 @@ public class ModItems {
 	public static final ModItemBase CHALK = new ItemChalk();
 	public static final ModItemBase CHALK_METAMORPHIC = new ItemMetamorphicChalk();
 	public static final ModItemBase TINKTURE = new ItemTinkture();
+	public static final ModItemBase EMPTY_TINKTURE = new ItemEmptyTinkture();
 	
 	public static final ModItemBase HAMMER = new ItemHammer();
 

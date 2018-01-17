@@ -1,0 +1,29 @@
+{
+  "result": {
+    "item": "arcanacraft:alembic"
+  },
+  "pattern": [
+    "jij",
+    "pjp",
+    "aba"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "i": {
+      "item": "minecraft:iron_block"
+    },
+    "p": {
+      "item": "minecraft:heavy_weighted_pressure_plate"
+    },
+    "j": {
+      "item": "arcanacraft:jar"
+    },
+    "b": {
+      "item": "minecraft:brewing_stand"
+    },
+    "a": {
+      "item": "arcanacraft:alchemic_stone",
+      "data": 32767
+    }
+  }
+}

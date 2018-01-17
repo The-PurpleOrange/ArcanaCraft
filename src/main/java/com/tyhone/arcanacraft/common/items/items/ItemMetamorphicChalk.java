@@ -264,14 +264,13 @@ public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
         		Arcanacraft.logger.error("Please report this to Tyhone");
         		return false;
         	}
-        	
-    		if(!worldIn.isSideSolid(placePos.add(0, -1, 0), EnumFacing.UP)){
-    			PlayerUtils.sendPlayerMessage(player, worldIn, "I need to fill in the holes.");
-    			return false;
-    		}
+        	ItemStack itemStack = recipe.getBlockRequirements().get(place);
     		
-    		ItemStack itemStack = recipe.getBlockRequirements().get(place);
 			if(!itemStack.isEmpty()){
+				if(!worldIn.isSideSolid(placePos.add(0, -1, 0), EnumFacing.UP)){
+    				PlayerUtils.sendPlayerMessage(player, worldIn, "I need to fill in the holes.");
+    				return false;
+    			}
 	        	if(worldIn.getBlockState(placePos).getBlock() != Blocks.AIR){
 	        		if(!worldIn.getBlockState(placePos).getBlock().isReplaceable(worldIn, placePos)){
 	        			

@@ -96,6 +96,7 @@ public class JEIArcanacraftPlugin implements IModPlugin {
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.TRANSMUTATION_ALTAR), TransmutationAltarRecipeCategory.NAME);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.SOUL_ALTAR), SoulAltarRecipeCategory.NAME);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.INFUSION_ALTAR), InfusionAltarRecipeCategory.NAME);
+		registry.addRecipeCatalyst(new ItemStack(ModItems.TINKTURE), InfusionAltarRecipeCategory.NAME);
 		
 		
 		IIngredientBlacklist blacklist = registry.getJeiHelpers().getIngredientBlacklist();
