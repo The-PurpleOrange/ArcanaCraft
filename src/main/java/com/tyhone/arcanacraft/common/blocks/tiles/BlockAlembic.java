@@ -8,6 +8,7 @@ import com.tyhone.arcanacraft.common.init.ModItems;
 import com.tyhone.arcanacraft.common.items.items.ItemEmptyTinkture;
 import com.tyhone.arcanacraft.common.items.items.ItemTinkture;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityAlembic;
+import com.tyhone.arcanacraft.common.util.PlayerUtils;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -81,13 +82,14 @@ public class BlockAlembic extends ModBlockTileEntityBase{
 			jar = 2;
 		}
 		
-		if(!world.isRemote && hand == EnumHand.MAIN_HAND && !player.isSneaking()){
+		if(!world.isRemote && !player.isSneaking()){ // && hand == EnumHand.MAIN_HAND 
 			TileEntityAlembic te = (TileEntityAlembic) world.getTileEntity(pos);
 			
 			if(te.getStack(jar) != null && te.getStack(jar) instanceof ItemStack){
 				ItemStack itemStack = (ItemStack) te.getStack(jar);
 				if(!itemStack.isEmpty()){
 					if(player.addItemStackToInventory(itemStack)){
+	                    player.openContainer.detectAndSendChanges();
 						te.cleanStack(jar);
 					}
 				}
@@ -98,10 +100,15 @@ public class BlockAlembic extends ModBlockTileEntityBase{
 					IEssenceVessel tinkture = (IEssenceVessel) player.getHeldItem(hand).getItem();
 					te.setStack(jar, new TinktureStack(tinkture.getFluidType(player.getHeldItem(hand)), tinkture.getFluidAmount()));
 					player.getHeldItem(hand).shrink(1);
+					PlayerUtils.givePlayerItemStack(player, new ItemStack(ModItems.EMPTY_TINKTURE, 1));
+                    player.openContainer.detectAndSendChanges();
 				}
 				else{
-					te.setStack(jar, player.getHeldItem(hand).copy());
+					ItemStack giveStack = player.getHeldItem(hand).copy();
+					giveStack.setCount(1);
+					te.setStack(jar, giveStack);
 					player.getHeldItem(hand).shrink(1);
+                    player.openContainer.detectAndSendChanges();
 				}
 				/*else if(player.getHeldItem(hand).getItem() instanceof ItemBucket && ((ItemBucket) player.getHeldItem(hand).getItem()).get){
 					
@@ -114,6 +121,7 @@ public class BlockAlembic extends ModBlockTileEntityBase{
 					if(item.canAcceptsFluid(essenceVessel)){
 						int amountLeft = item.addFluidRemainder(essenceVessel, ((TinktureStack) te.getStack(jar)).getAmount());
 						((TinktureStack)te.getStack(jar)).setAmount(amountLeft);
+	                    player.openContainer.detectAndSendChanges();
 					}
 				}
 				else if(player.getHeldItem(hand).getItem() instanceof ItemEmptyTinkture && ((TinktureStack)te.getStack(jar)).getAmount() >= 8){
@@ -125,7 +133,8 @@ public class BlockAlembic extends ModBlockTileEntityBase{
 					Arcanacraft.log(tag.toString());
 					newTinkture.setTagCompound(tag);
 					player.getHeldItem(hand).shrink(1);
-					player.addItemStackToInventory(newTinkture);
+					PlayerUtils.givePlayerItemStack(player, newTinkture);
+                    player.openContainer.detectAndSendChanges();
 					te.cleanStack(jar);
 				}
 			}
@@ -157,7 +166,7 @@ public class BlockAlembic extends ModBlockTileEntityBase{
 			}
 		}
         
-        return false;
+        return true;
     }
 	
 }

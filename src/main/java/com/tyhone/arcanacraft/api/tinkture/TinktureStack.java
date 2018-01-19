@@ -25,8 +25,8 @@ public class TinktureStack{
 	
 	public TinktureStack(NBTTagCompound nbt) {
 		
-		TinktureType type = ModTinktureTypes.IMPIRUS;
-		int mt = 2;
+		TinktureType type = ModTinktureTypes.EMPTY;
+		int mt = 0;
 		
 		if(nbt.hasKey("FluidName")){
 			type = TinktureRegistry.getTinktureTypeFromName(nbt.getString("FluidName"));

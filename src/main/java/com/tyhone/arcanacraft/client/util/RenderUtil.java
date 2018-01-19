@@ -18,17 +18,26 @@ public class RenderUtil {
 	public static final EnumFacing[] DIRECTIONS = {EnumFacing.UP, EnumFacing.DOWN, EnumFacing.NORTH, EnumFacing.SOUTH, EnumFacing.EAST, EnumFacing.WEST};
 	
 	public static void renderItem(TileEntity te, ItemStack itemStack, double x, double y, double z, float speed, boolean bob){
-		renderItem(te, itemStack, x, y, z, speed, bob, false);
+		renderItem(te, itemStack, x, y, z, speed, bob, false, 0.5F);
+	}
+	
+	public static void renderItem(TileEntity te, ItemStack itemStack, double x, double y, double z, float speed, boolean bob, float scale){
+		renderItem(te, itemStack, x, y, z, speed, bob, false, scale);
 	}
 	
 	public static void renderItem(TileEntity te, ItemStack itemStack, double x, double y, double z, float speed, boolean bob, boolean customSpeed){
 
+		renderItem(te, itemStack, x, y, z, speed, bob, customSpeed, 0.5F);
+	}
+	
+	public static void renderItem(TileEntity te, ItemStack itemStack, double x, double y, double z, float speed, boolean bob, boolean customSpeed, float scale){
+
 		double sysTime = (Minecraft.getSystemTime()/800D);
 		
 		GlStateManager.pushMatrix();
-        GlStateManager.translate((float)x+0.5F, (float)y, (float)z+0.5F);
+        GlStateManager.translate((float)x, (float)y, (float)z);
         if(bob){
-        	 GlStateManager.translate(0D, Math.sin(sysTime%(2*Math.PI))*0.065, 0D);
+        	 GlStateManager.translate(0D, Math.sin(sysTime%(2*Math.PI))*(0.13F*scale), 0D);
         }
         if(customSpeed){
         	GlStateManager.rotate((float)(((sysTime*40D)%360) + (speed*2)), 0, 1, 0);
@@ -36,8 +45,8 @@ public class RenderUtil {
         	GlStateManager.rotate((float)(((sysTime*40D)%360)), 0, 1, 0);
         }
 
-        float scale = itemStack.getItem() instanceof ItemBlock ? 0.65F : 0.5F;
-        GlStateManager.scale(scale, scale, scale);
+        float newScale = itemStack.getItem() instanceof ItemBlock ? (scale*1.3F) : scale;
+        GlStateManager.scale(newScale, newScale, newScale);
         
         try{
             renderItemInWorld(itemStack);
@@ -60,14 +69,7 @@ public class RenderUtil {
 	    GlStateManager.popMatrix();
 	}
 	
-	public static void buildQuad(BufferBuilder renderer, float x, float y, float z, float w, float h, float d, EnumFacing face, int hex, float a) {
-
-		/*float x = x;
-		float w = x + w;
-		float x = y;
-		float h = y + h;
-		float z = z;
-		float d = z + d;*/
+	public static void buildQuad(BufferBuilder renderer, float x, float y, float z, float w, float h, float d, EnumFacing face, int hex) {
 		
 		double minU = 0;
 		double maxU = 1;

@@ -1,5 +1,7 @@
 package com.tyhone.arcanacraft.common.util;
 
+import com.tyhone.arcanacraft.common.init.ModItems;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
@@ -30,6 +32,12 @@ public class PlayerUtils {
 		}
 		
 		return false;
+	}
+	
+	public static void givePlayerItemStack(EntityPlayer player, ItemStack itemStack){
+		if(!player.addItemStackToInventory(itemStack)){
+			player.dropItem(itemStack, false);
+		}
 	}
 	
 	public static boolean consumePlayerItem(EntityPlayer player, ItemStack itemStack){

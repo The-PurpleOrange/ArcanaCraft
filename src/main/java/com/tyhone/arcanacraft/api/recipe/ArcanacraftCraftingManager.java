@@ -3,6 +3,8 @@ package com.tyhone.arcanacraft.api.recipe;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.api.tinkture.TinktureStack;
 import com.tyhone.arcanacraft.common.util.OreStack;
@@ -18,6 +20,7 @@ public class ArcanacraftCraftingManager {
 	private static List<RecipeTransmutationAltar> transmutationAltarRecipes = new ArrayList<RecipeTransmutationAltar>();
 	private static List<RecipeInfusionAltar> infusionAltarRecipes = new ArrayList<RecipeInfusionAltar>();
 	private static List<RecipeSoulAltar> soulAltarRecipes = new ArrayList<RecipeSoulAltar>();
+	private static List<RecipeAlembic> alembicRecipes = new ArrayList<RecipeAlembic>();
 	
 	//DECONSTRUCTOR RECIPES
 	public static RecipeDeconstructionTable registerLensDeconstructionRecipe(ItemStack lens, ItemStack itemOutput, Object objectInput, double deconstructTime) {
@@ -164,5 +167,30 @@ public class ArcanacraftCraftingManager {
 	
 	public static List<RecipeSoulAltar> getSoulAltarRecipes(){
 		return soulAltarRecipes;
+	}
+
+	//ALEMBIC RECIPES
+	public static RecipeAlembic registerAlembicRecipe(Object output, @Nullable Object bottomObject, Object object1, Object object2) {
+		Object out, bo = null, obj1, obj2 = null;
+		
+		out = WildStack.objectToAnything(output);
+		
+		if(bottomObject != null){
+			bo = WildStack.objectToAnything(bottomObject);
+		}
+		
+		obj1 = WildStack.objectToAnything(object1);
+		
+		if(object2 != null){
+			obj2 = WildStack.objectToAnything(object2);
+		}
+		
+		RecipeAlembic recipe = new RecipeAlembic(out, bo, obj1, obj2);
+		alembicRecipes.add(recipe);
+		return recipe;
+	}
+	
+	public static List<RecipeAlembic> getAlembicRecipes(){
+		return alembicRecipes;
 	}
 }

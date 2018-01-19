@@ -57,7 +57,6 @@ public class TileEntityAlembic extends ModTileEntityBase implements ITickable{
     @Override
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
-        Arcanacraft.log("Reading: " + compound.toString());
         for(int i = 0; i < 3; i++){
         	if (compound.hasKey(ITEM + i) && compound.hasKey(TYPE + i)) {
         		if(compound.getString(TYPE + i).equals(ITEMSTACK)){
@@ -110,12 +109,19 @@ public class TileEntityAlembic extends ModTileEntityBase implements ITickable{
 	            compound.setTag(ITEM + i, tagCompound);
 	            compound.setString(TYPE + i, stackType);
 	        }
-	        else{
+	        /*else{
 	        	compound.setTag(ITEM + 1, null);
 	        	compound.setString(ITEM + 1, "");
-	        }
+	        }*/
         }
-        Arcanacraft.log("Writing: " + compound.toString());
         return compound;
     }
+
+	public float getMaxTinkture() {
+		return MAX_TINKTURE;
+	}
+
+	public float getMaxFluid() {
+		return MAX_FLUID;
+	}
 }

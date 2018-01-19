@@ -61,11 +61,7 @@ public class BlockPedestal extends ModBlockTileEntityBase{
                 	ItemStack itemStack = player.getHeldItem(hand).copy();
                 	itemStack.setCount(1);
                     te.setStack(itemStack);
-                    if(player.getHeldItem(hand).getCount()>1){
-                    	player.getHeldItem(hand).setCount(player.getHeldItem(hand).getCount() - 1);
-                    } else{
-                    	player.setHeldItem(hand, ItemStack.EMPTY);
-                    }
+                	player.getHeldItem(hand).shrink(1);
                     player.openContainer.detectAndSendChanges();
                 }
             } else {
