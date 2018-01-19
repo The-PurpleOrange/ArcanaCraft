@@ -22,6 +22,10 @@ public class TinktureStack{
 		this.amount = amount;
 		this.updateEmptyState();
 	}
+
+	public TinktureStack(TinktureType tinktureType){
+		this(tinktureType, 8);
+	}
 	
 	public TinktureStack(NBTTagCompound nbt) {
 		

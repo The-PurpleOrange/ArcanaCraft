@@ -1,6 +1,8 @@
 package com.tyhone.arcanacraft.common.tileentity;
 
 import com.tyhone.arcanacraft.Arcanacraft;
+import com.tyhone.arcanacraft.api.recipe.RecipeAlembic;
+import com.tyhone.arcanacraft.api.recipe.RecipeDeconstructionTable;
 import com.tyhone.arcanacraft.api.tinkture.TinktureStack;
 import com.tyhone.arcanacraft.common.tileentity.base.ModTileEntityBase;
 
@@ -26,8 +28,17 @@ public class TileEntityAlembic extends ModTileEntityBase implements ITickable{
 	
 	@Override
 	public void update(){
-		if(world.isRemote){
-			//Stuff
+		if(!world.isRemote){
+			if(objectStack[1] != null || objectStack[2] != null){
+				RecipeAlembic recipe = RecipeAlembic.getRecipe(objectStack[0], objectStack[1], objectStack[2]);
+				if(recipe != null){
+					cleanStack(0);
+					cleanStack(1);
+					cleanStack(2);
+					setStack(0, recipe.getOutput());
+					markForClean();
+				}
+			}
 		}
 	}
 	

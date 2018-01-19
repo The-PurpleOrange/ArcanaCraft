@@ -45,13 +45,10 @@ public class RecipeAlembic {
 		return this.bottomObject;
 	}
 	
-	public static RecipeAlembic getRecipe(Object out, @Nullable Object bo, Object obj1, @Nullable Object obj2){
+	public static RecipeAlembic getRecipe(@Nullable Object bo, Object obj1, @Nullable Object obj2){
 		
 		for(RecipeAlembic recipe : ArcanacraftCraftingManager.getAlembicRecipes()){
 			boolean matches = true;
-			if(!WildStack.compareObjectType(out, recipe.getOutput())){
-				matches = false;
-			}
 			if(!WildStack.compareObjectType(bo, recipe.getBottomObject())){
 				matches = false;
 			}
