@@ -124,6 +124,7 @@ public class BlockAlembic extends ModBlockTileEntityBase{
 					tag.setString(ItemTinkture.NBT_TINKTURE_DISPLAY_NAME, tStack.getDisplayNameFromStack());
 					Arcanacraft.log(tag.toString());
 					newTinkture.setTagCompound(tag);
+					player.getHeldItem(hand).shrink(1);
 					player.addItemStackToInventory(newTinkture);
 					te.cleanStack(jar);
 				}

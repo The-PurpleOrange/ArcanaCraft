@@ -4,6 +4,7 @@ import org.lwjgl.opengl.GL11;
 
 import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.api.tinkture.TinktureStack;
+import com.tyhone.arcanacraft.client.util.RenderUtil;
 import com.tyhone.arcanacraft.common.init.ModTinktureTypes;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityJar;
 
@@ -45,28 +46,34 @@ public class RenderTileEntityJar extends TileEntitySpecialRenderer{
 			
 			GlStateManager.pushMatrix();
 
-			//Render smooth stuff
 		    RenderHelper.disableStandardItemLighting();
 		    GlStateManager.enableBlend();
-		    //GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 
-		    /*if(Minecraft.isAmbientOcclusionEnabled()) {
-		      GL11.glShadeModel(GL11.GL_SMOOTH);
-		    }
-		    else {
-		      GL11.glShadeModel(GL11.GL_FLAT);
-		    }*/
 
 		    GlStateManager.translate(x, y, z);
 		    
 			buffer.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX_COLOR);
-
-		    buildQuad(buffer, 0, 0, 0, 1, 1, 1, EnumFacing.DOWN, hex, pf);
-		    buildQuad(buffer, 0, 0, 0, 1, 1, 1, EnumFacing.UP, hex, pf);
-		    buildQuad(buffer, 0, 0, 0, 1, 1, 1, EnumFacing.NORTH, hex, pf);
-		    buildQuad(buffer, 0, 0, 0, 1, 1, 1, EnumFacing.SOUTH, hex, pf);
-		    buildQuad(buffer, 0, 0, 0, 1, 1, 1, EnumFacing.EAST, hex, pf);
-		    buildQuad(buffer, 0, 0, 0, 1, 1, 1, EnumFacing.WEST, hex, pf);
+			
+			{
+				float p = (float) 1/ (float) 16;
+				
+				float s = p*4;
+				float x1 = 0 + s;
+				float x2 = 0 + 1 - s;
+				float y1 = 0 + p;
+				float ym = 1 - (p*5); 
+				float ya = ym-y1;
+				float y2 = (pf*ya) + p;
+				float z1 = 0 + s;
+				float z2 = 0 + 1 - s;
+				
+				for(EnumFacing facing : RenderUtil.DIRECTIONS){
+					RenderUtil.buildQuad(buffer, x1, y1, z1, x2, y2, z2, facing, hex, pf);
+				}
+			}
+			
+			
+		    
 		    
 		    tess.draw();
 
@@ -76,7 +83,7 @@ public class RenderTileEntityJar extends TileEntitySpecialRenderer{
 		}
 	}
 		
-	public static void buildQuad(BufferBuilder renderer, float x, float y, float z, float w, float h, float d, EnumFacing face, int hex, float a) {
+	/*public static void buildQuad(BufferBuilder renderer, float x, float y, float z, float w, float h, float d, EnumFacing face, int hex, float a) {
 
 		
 		float p = (float) 1/ (float) 16;
@@ -140,5 +147,5 @@ public class RenderTileEntityJar extends TileEntitySpecialRenderer{
 			renderer.pos(x2, y1, z2).tex(maxU, maxV).color(r, g, b, 255).endVertex();
 			break;
 		}
-	}
+	}*/
 }

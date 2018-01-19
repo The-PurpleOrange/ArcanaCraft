@@ -1,8 +1,5 @@
 package com.tyhone.arcanacraft.common.tileentity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.api.tinkture.TinktureStack;
 import com.tyhone.arcanacraft.common.tileentity.base.ModTileEntityBase;
@@ -10,8 +7,8 @@ import com.tyhone.arcanacraft.common.tileentity.base.ModTileEntityBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ITickable;
+import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
-import scala.actors.threadpool.Arrays;
 
 public class TileEntityAlembic extends ModTileEntityBase implements ITickable{
 
@@ -60,15 +57,16 @@ public class TileEntityAlembic extends ModTileEntityBase implements ITickable{
     @Override
     public void readFromNBT(NBTTagCompound compound) {
         super.readFromNBT(compound);
+        Arcanacraft.log("Reading: " + compound.toString());
         for(int i = 0; i < 3; i++){
-        	if (compound.hasKey(TYPE + i)) {
-        		if(compound.getString(TYPE).equals(ITEMSTACK)){
+        	if (compound.hasKey(ITEM + i) && compound.hasKey(TYPE + i)) {
+        		if(compound.getString(TYPE + i).equals(ITEMSTACK)){
         			this.objectStack[i] = new ItemStack(compound.getCompoundTag(ITEM + i));
 	            }
-		        else if(compound.getString(TYPE).equals(TINKTURESTACK)){
+		        else if(compound.getString(TYPE + i).equals(TINKTURESTACK)){
 		        	this.objectStack[i] = new TinktureStack(compound.getCompoundTag(ITEM + i));
 		        }
-		        else if(compound.getString(TYPE).equals(FLUIDSTACK)){
+		        else if(compound.getString(TYPE + i).equals(FLUIDSTACK)){
 		        	this.objectStack[i] = FluidStack.loadFluidStackFromNBT(compound.getCompoundTag(ITEM + i));
 		        }
 		        else{
@@ -91,20 +89,33 @@ public class TileEntityAlembic extends ModTileEntityBase implements ITickable{
 	            String stackType = "";
 	            if(objectStack[i] instanceof ItemStack){
 	            	ItemStack itemStack = (ItemStack) objectStack[i];
-	            	itemStack.writeToNBT(tagCompound);
-	            	stackType = ITEMSTACK;
+		        	if(!itemStack.isEmpty()){
+		            	itemStack.writeToNBT(tagCompound);
+		            	stackType = ITEMSTACK;
+		        	}
 	            }
 		        else if(objectStack[i] instanceof TinktureStack){
-		        	((TinktureStack) objectStack[i]).writeToNBT(tagCompound);
-		        	stackType = TINKTURESTACK;
+		        	TinktureStack tinktureStack = (TinktureStack) objectStack[i];
+		        	if(!tinktureStack.isEmpty()){
+		            	tinktureStack.writeToNBT(tagCompound);
+		            	stackType = TINKTURESTACK;
+		        	}
 		        }else if(objectStack[i] instanceof FluidStack){
-	            	((FluidStack) objectStack[i]).writeToNBT(tagCompound);
-	            	stackType = FLUIDSTACK;
+		        	FluidStack fluidStack = (FluidStack) objectStack[i];
+		        	if(fluidStack.amount>0){
+		            	fluidStack.writeToNBT(tagCompound);
+		            	stackType = FLUIDSTACK;
+		        	}
 		        }
 	            compound.setTag(ITEM + i, tagCompound);
 	            compound.setString(TYPE + i, stackType);
 	        }
+	        else{
+	        	compound.setTag(ITEM + 1, null);
+	        	compound.setString(ITEM + 1, "");
+	        }
         }
+        Arcanacraft.log("Writing: " + compound.toString());
         return compound;
     }
 }
