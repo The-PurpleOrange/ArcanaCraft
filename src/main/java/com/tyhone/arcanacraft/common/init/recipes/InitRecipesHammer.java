@@ -5,6 +5,7 @@ import com.tyhone.arcanacraft.common.init.ModItems;
 import com.tyhone.arcanacraft.common.util.ItemMetaUtil;
 import com.tyhone.arcanacraft.common.util.OreStack;
 
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
@@ -16,5 +17,6 @@ public class InitRecipesHammer {
 		
 		ArcanacraftCraftingManager.registerHammerRecipe(new ItemStack(ModItems.DUST, 1, ItemMetaUtil.dust("bone")), new ItemStack(Items.BONE));
 		ArcanacraftCraftingManager.registerHammerRecipe(new ItemStack(Items.DYE, 4, 15), new ItemStack(ModItems.DUST, 1, ItemMetaUtil.dust("bone")));
+		ArcanacraftCraftingManager.registerHammerRecipe(new ItemStack(ModItems.NEEDLE, 4, 1), new ItemStack(Blocks.CACTUS));
 	}
 }

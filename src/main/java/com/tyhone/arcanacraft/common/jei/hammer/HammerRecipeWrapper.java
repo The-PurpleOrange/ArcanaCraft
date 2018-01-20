@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.tyhone.arcanacraft.api.recipe.RecipeHammer;
+import com.tyhone.arcanacraft.common.util.NBTItemStack;
 import com.tyhone.arcanacraft.common.util.OreStack;
 
 import mezz.jei.api.ingredients.IIngredients;
@@ -30,6 +31,11 @@ public class HammerRecipeWrapper implements IRecipeWrapper{
 		}
 		else if(input instanceof OreStack){
 			inputs = (OreStack.getOreDictionaryEntriesForOreStack((OreStack) input));
+		}
+		else if(input instanceof NBTItemStack){
+			ItemStack stack = ((NBTItemStack) input).getStack();
+			stack.setTagCompound(((NBTItemStack) input).getNBT());
+			inputs.add(stack);
 		}
 		
 		//ingredients.setInput(ItemStack.class, this.recipe.getInput());

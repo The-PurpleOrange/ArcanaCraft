@@ -53,6 +53,14 @@ public class WildStack {
 			}
 			return false;
 		}
+		if(obj1 instanceof NBTItemStack && obj2 instanceof NBTItemStack){
+			if(ItemStackUtil.simpleAreItemStackSizeEqual(((NBTItemStack) obj1).getStack(), ((NBTItemStack) obj2).getStack(), false)){
+				if(((NBTItemStack) obj1).compareNBT(((NBTItemStack) obj1).getNBT())){
+					return true;
+				}
+			}
+			return false;
+		}
 		if(obj1 instanceof TinktureStack && obj2 instanceof TinktureStack){
 			if(TinktureStackUtil.simpleAreStacksEqual((TinktureStack) obj1, (TinktureStack) obj2)){
 				return true;
@@ -91,6 +99,8 @@ public class WildStack {
 			return input;
 		}else if(input instanceof String){
 			return new OreStack(((String) input), 1);
+		}else if(input instanceof NBTItemStack){
+			return input;
 		}else{
 			return null;
 		}
@@ -120,6 +130,8 @@ public class WildStack {
 		}else if(input instanceof String){
 			return new OreStack(((String) input), 1);
 		}else if(input instanceof TinktureStack){
+			return input;
+		}else if(input instanceof NBTItemStack){
 			return input;
 		}else if(input instanceof FluidStack){
 			return input;

@@ -5,6 +5,7 @@ import java.io.File;
 import com.tyhone.arcanacraft.Config;
 import com.tyhone.arcanacraft.common.handler.OreDictionaryHandler;
 import com.tyhone.arcanacraft.common.init.ModBlocks;
+import com.tyhone.arcanacraft.common.init.ModEntities;
 import com.tyhone.arcanacraft.common.init.ModItems;
 import com.tyhone.arcanacraft.common.init.ModRecipes;
 import com.tyhone.arcanacraft.common.init.ModRitualRecipes;
@@ -37,6 +38,7 @@ public class CommonProxy {
         //Custom test
         
     	ModTinktureTypes.registerAll();
+    	ModEntities.init();
     }
 
     public void init(FMLInitializationEvent e) {

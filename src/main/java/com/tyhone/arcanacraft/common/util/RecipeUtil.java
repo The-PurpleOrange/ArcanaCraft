@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack;
 
 public class RecipeUtil {
 	public static boolean doInputsMatch(ArrayList<Object> inputRecipe, ArrayList<ItemStack> inputActual) {
-		ArrayList<Object> inputsRequired = (ArrayList<Object>) new ArrayList(inputRecipe).clone();
+		ArrayList<Object> inputsRequired = (ArrayList<Object>) inputRecipe.clone();
 
 		
 		for(int i = 0; i < inputActual.size(); i++) {
@@ -22,6 +22,7 @@ public class RecipeUtil {
 			int stackI = -1;
 
 			for(int j = 0; j < inputsRequired.size(); j++) {
+				
 				Object required = inputsRequired.get(j);
 				if(required instanceof ItemStack){
 					if(ItemStackUtil.simpleAreStackSizeEqual((ItemStack) required, actual)) {

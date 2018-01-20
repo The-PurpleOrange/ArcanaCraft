@@ -20,6 +20,21 @@ public class InitRecipesInfusionAltar {
 			Object[] inputs = {new OreStack("logWood"), new OreStack("logWood"), new ItemStack(Items.DIAMOND, 1)};
 			TinktureStack[] tinktures = {new TinktureStack(ModTinktureTypes.REBUS, 4)};
 			ArcanacraftCraftingManager.registerInfusionRecipe(new ItemStack(Items.STICK), new OreStack("dustGold"), inputs, tinktures);
+		}{
+			//CEDIUS
+			Object[] inputs = {new ItemStack(ModItems.EVOLITE, 1),new ItemStack(ModItems.EVOLITE, 1),new ItemStack(ModItems.EVOLITE, 1), new ItemStack(Items.DYE, 1, 4), new ItemStack(Items.SPECKLED_MELON, 1), new ItemStack(Items.SPECKLED_MELON, 1), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("blood_drop")), new ItemStack(ModItems.AYRE, 1)};
+			TinktureStack[] tinktures = {new TinktureStack(ModTinktureTypes.ANIMO, 12), new TinktureStack(ModTinktureTypes.IMPIRUS, 4), new TinktureStack(ModTinktureTypes.ALCHEMIC_BASE, 8)};
+			ArcanacraftCraftingManager.registerInfusionRecipe(new ItemStack(ModItems.SHARD, 1, ItemMetaUtil.shard("cedius")), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("star_shard")), inputs, tinktures);
+		}{
+			//AVARICLE
+			Object[] inputs = {new ItemStack(Items.EMERALD, 1), new ItemStack(Items.EMERALD, 1), new ItemStack(Items.EMERALD, 1), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("bone_ash")), new ItemStack(Items.FERMENTED_SPIDER_EYE, 1), new ItemStack(Items.FERMENTED_SPIDER_EYE, 1), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("gold")), new ItemStack(ModItems.AYRE, 1)};
+			TinktureStack[] tinktures = {new TinktureStack(ModTinktureTypes.REBUS, 12), new TinktureStack(ModTinktureTypes.LOCUS, 4), new TinktureStack(ModTinktureTypes.ALCHEMIC_BASE, 8)};
+			ArcanacraftCraftingManager.registerInfusionRecipe(new ItemStack(ModItems.SHARD, 1, ItemMetaUtil.shard("greed")), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("star_shard")), inputs, tinktures);
+		}{
+			//PROSPOROUS
+			Object[] inputs = {new ItemStack(Items.DIAMOND, 1), new ItemStack(Items.DIAMOND, 1), new ItemStack(Items.DIAMOND, 1), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("quartz_dust")), new ItemStack(Items.GOLDEN_APPLE, 1), new ItemStack(Items.GOLDEN_APPLE, 1), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("magicite")), new ItemStack(ModItems.AYRE, 1)};
+			TinktureStack[] tinktures = {new TinktureStack(ModTinktureTypes.AMNIS, 12), new TinktureStack(ModTinktureTypes.ANIMO, 4), new TinktureStack(ModTinktureTypes.ALCHEMIC_BASE, 8)};
+			ArcanacraftCraftingManager.registerInfusionRecipe(new ItemStack(ModItems.SHARD, 1, ItemMetaUtil.shard("prosper")), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("star_shard")), inputs, tinktures);
 		}
 	}
 }

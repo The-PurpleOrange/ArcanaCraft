@@ -4,6 +4,7 @@ import com.tyhone.arcanacraft.client.render.ModTileEntitySpecialRender;
 import com.tyhone.arcanacraft.client.render.TinktureColour;
 import com.tyhone.arcanacraft.common.blocks.base.ModBlockBase;
 import com.tyhone.arcanacraft.common.init.ModBlocks;
+import com.tyhone.arcanacraft.common.init.ModEntities;
 import com.tyhone.arcanacraft.common.init.ModItems;
 import com.tyhone.arcanacraft.common.items.base.ModItemBase;
 import com.tyhone.arcanacraft.common.proxy.CommonProxy;
@@ -24,7 +25,7 @@ public class ClientProxy extends CommonProxy {
         super.preInit(e);
         
         ModTileEntitySpecialRender.preInit();
-        
+        ModEntities.initModels();
     }
 
     @Override

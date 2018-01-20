@@ -15,6 +15,8 @@ public class ModTinktureTypes {
 	private static final List<TinktureType> TINKTURE_TYPES = new ArrayList<>();
 
 	public static final TinktureType EMPTY = new TinktureType("empty", 0x000000);
+	public static final TinktureType AQUA_REGIA = new TinktureType("aqua_regia", 0xff5500);
+	public static final TinktureType ALCHEMIC_BASE = new TinktureType("alchemic_base", 0xd2d2d2);
 	public static final TinktureType IMPIRUS = new TinktureType("impirus", 0xed170b);
 	public static final TinktureType AMNIS = new TinktureType("amnis", 0x0a78ed);
 	public static final TinktureType REBUS = new TinktureType("rebus", 0x239909);

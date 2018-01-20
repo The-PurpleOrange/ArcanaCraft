@@ -45,6 +45,12 @@ public class ItemNeedle extends ModItemBase{
 				case 3:{
 					return jabPlayer(player, new ItemStack(ModItems.NEEDLE, 1, 3), hand, true);
 				}
+				case 4:{
+					if(!player.addItemStackToInventory(new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("blood_drop")))){
+						EntityItem eOutput = new EntityItem(world, player.posX, player.posY+1, player.posZ, new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("blood_drop")));
+						world.spawnEntity(eOutput);
+					}
+				}
 				default: return new ActionResult<ItemStack>(EnumActionResult.PASS, player.getHeldItem(hand));
 			}
 		}
@@ -66,6 +72,16 @@ public class ItemNeedle extends ModItemBase{
 			}
 			case 3:{
 				return jabOther(new ItemStack(ModItems.NEEDLE, 1, 3), stack, attacker, target, true);
+			}
+			case 4:{
+				if(attacker instanceof EntityPlayer){
+					EntityPlayer player = (EntityPlayer) attacker;
+					if(!player.addItemStackToInventory(new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("blood_drop")))){
+						World world = player.getEntityWorld();
+						EntityItem eOutput = new EntityItem(world, player.posX, player.posY+1, player.posZ, new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("blood_drop")));
+						world.spawnEntity(eOutput);
+					}
+				}
 			}
 			default: return false;
 		}

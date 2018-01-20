@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "arcanacraft:empty_tinkture",
+    "count": 3
+  },
+  "pattern": [
+    "g g",
+    " g "
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "g": {
+      "item": "arcanacraft:alchemic_glass"
+    }
+  }
+}

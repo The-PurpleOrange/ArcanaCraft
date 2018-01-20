@@ -2,6 +2,7 @@ package com.tyhone.arcanacraft.common.util;
 
 import java.util.List;
 
+import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.common.handler.OreDictionaryHandler;
 
 import net.minecraft.item.ItemStack;
@@ -35,6 +36,8 @@ public class OreStack {
 	}
 	
 	public static boolean isItemStackFromOre(OreStack oreStack, ItemStack stack){
+		/*Arcanacraft.log("Actual: " + stack.toString());
+		Arcanacraft.log("Required: " + oreStack.getOreDictionaryEntryForOreStack(oreStack) + ":" + oreStack.getCount());*/
 		if(oreStack.getCount()==stack.getCount()){
 			List<ItemStack> ores = OreDictionaryHandler.getOreDictionaryEntries(oreStack.getOre());
 			for(ItemStack ore : ores){

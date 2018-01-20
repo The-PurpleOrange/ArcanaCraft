@@ -68,8 +68,12 @@ public class RenderUtil {
 	    GlStateManager.popAttrib();
 	    GlStateManager.popMatrix();
 	}
-	
+
 	public static void buildQuad(BufferBuilder renderer, float x, float y, float z, float w, float h, float d, EnumFacing face, int hex) {
+		buildQuad(renderer, x, y, z, w, h, d, face, hex, 255);
+	}
+	
+	public static void buildQuad(BufferBuilder renderer, float x, float y, float z, float w, float h, float d, EnumFacing face, int hex, int alpha) {
 		
 		double minU = 0;
 		double maxU = 1;
@@ -84,40 +88,40 @@ public class RenderUtil {
 	    
 		switch(face) {
 		case DOWN:
-			renderer.pos(x, y, z).tex(minU, minU).color(r, g, b, 255).endVertex();
-			renderer.pos(w, y, z).tex(maxU, minV).color(r, g, b, 255).endVertex();
-			renderer.pos(w, y, d).tex(maxU, maxV).color(r, g, b, 255).endVertex();
-			renderer.pos(x, y, d).tex(minU, maxV).color(r, g, b, 255).endVertex();
+			renderer.pos(x, y, z).tex(minU, minU).color(r, g, b, alpha).endVertex();
+			renderer.pos(w, y, z).tex(maxU, minV).color(r, g, b, alpha).endVertex();
+			renderer.pos(w, y, d).tex(maxU, maxV).color(r, g, b, alpha).endVertex();
+			renderer.pos(x, y, d).tex(minU, maxV).color(r, g, b, alpha).endVertex();
 			break;
 		case UP:
-			renderer.pos(x, h, z).tex(minU, minU).color(r, g, b, 255).endVertex();
-			renderer.pos(x, h, d).tex(minU, maxV).color(r, g, b, 255).endVertex();
-			renderer.pos(w, h, d).tex(maxU, maxV).color(r, g, b, 255).endVertex();
-			renderer.pos(w, h, z).tex(maxU, minV).color(r, g, b, 255).endVertex();
+			renderer.pos(x, h, z).tex(minU, minU).color(r, g, b, alpha).endVertex();
+			renderer.pos(x, h, d).tex(minU, maxV).color(r, g, b, alpha).endVertex();
+			renderer.pos(w, h, d).tex(maxU, maxV).color(r, g, b, alpha).endVertex();
+			renderer.pos(w, h, z).tex(maxU, minV).color(r, g, b, alpha).endVertex();
 			break;
 		case NORTH:
-			renderer.pos(x, y, z).tex(minU, maxV).color(r, g, b, 255).endVertex();
-			renderer.pos(x, h, z).tex(minU, minU).color(r, g, b, 255).endVertex();
-			renderer.pos(w, h, z).tex(maxU, minV).color(r, g, b, 255).endVertex();
-			renderer.pos(w, y, z).tex(maxU, maxV).color(r, g, b, 255).endVertex();
+			renderer.pos(x, y, z).tex(minU, maxV).color(r, g, b, alpha).endVertex();
+			renderer.pos(x, h, z).tex(minU, minU).color(r, g, b, alpha).endVertex();
+			renderer.pos(w, h, z).tex(maxU, minV).color(r, g, b, alpha).endVertex();
+			renderer.pos(w, y, z).tex(maxU, maxV).color(r, g, b, alpha).endVertex();
 			break;
 		case SOUTH:
-			renderer.pos(x, y, d).tex(maxU, maxV).color(r, g, b, 255).endVertex();
-			renderer.pos(w, y, d).tex(minU, maxV).color(r, g, b, 255).endVertex();
-			renderer.pos(w, h, d).tex(minU, minU).color(r, g, b, 255).endVertex();
-			renderer.pos(x, h, d).tex(maxU, minV).color(r, g, b, 255).endVertex();
+			renderer.pos(x, y, d).tex(maxU, maxV).color(r, g, b, alpha).endVertex();
+			renderer.pos(w, y, d).tex(minU, maxV).color(r, g, b, alpha).endVertex();
+			renderer.pos(w, h, d).tex(minU, minU).color(r, g, b, alpha).endVertex();
+			renderer.pos(x, h, d).tex(maxU, minV).color(r, g, b, alpha).endVertex();
 			break;
 		case WEST:
-			renderer.pos(x, y, z).tex(maxU, maxV).color(r, g, b, 255).endVertex();
-			renderer.pos(x, y, d).tex(minU, maxV).color(r, g, b, 255).endVertex();
-			renderer.pos(x, h, d).tex(minU, minU).color(r, g, b, 255).endVertex();
-			renderer.pos(x, h, z).tex(maxU, minV).color(r, g, b, 255).endVertex();
+			renderer.pos(x, y, z).tex(maxU, maxV).color(r, g, b, alpha).endVertex();
+			renderer.pos(x, y, d).tex(minU, maxV).color(r, g, b, alpha).endVertex();
+			renderer.pos(x, h, d).tex(minU, minU).color(r, g, b, alpha).endVertex();
+			renderer.pos(x, h, z).tex(maxU, minV).color(r, g, b, alpha).endVertex();
 			break;
 		case EAST:
-			renderer.pos(w, y, z).tex(minU, maxV).color(r, g, b, 255).endVertex();
-			renderer.pos(w, h, z).tex(minU, minU).color(r, g, b, 255).endVertex();
-			renderer.pos(w, h, d).tex(maxU, minV).color(r, g, b, 255).endVertex();
-			renderer.pos(w, y, d).tex(maxU, maxV).color(r, g, b, 255).endVertex();
+			renderer.pos(w, y, z).tex(minU, maxV).color(r, g, b, alpha).endVertex();
+			renderer.pos(w, h, z).tex(minU, minU).color(r, g, b, alpha).endVertex();
+			renderer.pos(w, h, d).tex(maxU, minV).color(r, g, b, alpha).endVertex();
+			renderer.pos(w, y, d).tex(maxU, maxV).color(r, g, b, alpha).endVertex();
 			break;
 		}
 	}

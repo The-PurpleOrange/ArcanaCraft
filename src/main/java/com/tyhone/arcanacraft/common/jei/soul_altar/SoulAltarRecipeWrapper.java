@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.tyhone.arcanacraft.api.recipe.RecipeSoulAltar;
 import com.tyhone.arcanacraft.api.recipe.RecipeTransmutationAltar;
+import com.tyhone.arcanacraft.common.util.NBTItemStack;
 import com.tyhone.arcanacraft.common.util.OreStack;
 
 import mezz.jei.api.ingredients.IIngredients;
@@ -38,6 +39,11 @@ public class SoulAltarRecipeWrapper implements IRecipeWrapper{
 			}
 			else if(input instanceof OreStack){
 				inputs.add(OreStack.getOreDictionaryEntriesForOreStack((OreStack) input));
+			}
+			else if(input instanceof NBTItemStack){
+				ItemStack stack = ((NBTItemStack) input).getStack();
+				stack.setTagCompound(((NBTItemStack) input).getNBT());
+				inputs.add(Arrays.asList(stack));
 			}
 		}
 		

@@ -8,18 +8,23 @@ import com.tyhone.arcanacraft.client.util.RenderUtil;
 import com.tyhone.arcanacraft.common.init.ModTinktureTypes;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityAlembic;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.RenderItem;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
 
 public class RenderTileEntityAlembic extends TileEntitySpecialRenderer{
 
@@ -59,6 +64,9 @@ public class RenderTileEntityAlembic extends TileEntitySpecialRenderer{
 			if(stack[i] != null && stack[i] instanceof ItemStack){
 				RenderUtil.renderItem(te, (ItemStack) stack[i], x+(ipx[i] / 16F), y+(ipy[i] / 16F), z+(ipz[i] / 16F), 1F, true, i == 0 ? 0.2F : 0.15F);
 			}
+			if(stack[i] != null && stack[i] instanceof FluidStack){
+				renderJarFluid(alembic, (FluidStack) stack[i], x, y, z, fspx[i], fspy[i], fspz[i], fepx[i], fepy[i], fepz[i]);
+			}
 		}
 	}
 	
@@ -97,6 +105,53 @@ public class RenderTileEntityAlembic extends TileEntitySpecialRenderer{
 				
 				for(EnumFacing facing : RenderUtil.DIRECTIONS){
 					RenderUtil.buildQuad(buffer, x1, y1, z1, x2, y2, z2, facing, colourHex);
+				}
+			}
+			
+		    tess.draw();
+
+		    GlStateManager.disableBlend();
+		    GlStateManager.popMatrix();
+		    RenderHelper.enableStandardItemLighting();
+		}
+	}
+	
+	public void renderJarFluid(TileEntityAlembic alembic, FluidStack stack, double xPos, double yPos, double zPos, float x, float y, float z, float w, float h, float d){
+
+		if(stack.getFluid() == FluidRegistry.WATER){
+			
+			//int colourHex = stack.getFluid().getColor();
+			int colourHex = 0x3232ff;
+			
+			float pf = 1F;
+			
+			bindTexture(TEXTURE);
+			
+			Tessellator tess = Tessellator.getInstance();
+			BufferBuilder buffer = tess.getBuffer();
+			
+			GlStateManager.pushMatrix();
+
+		    RenderHelper.disableStandardItemLighting();
+		    GlStateManager.enableBlend();
+
+
+		    GlStateManager.translate(xPos, yPos, zPos);
+		    
+			buffer.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX_COLOR);
+
+			{
+				float x1 = x / (float) 16;
+				float x2 = x1 + (w / (float) 16);
+				float y1 = y / (float) 16;
+				float ym = h / (float) 16;
+				float ya = ym*pf;
+				float y2 = y1+ya;
+				float z1 = z / (float) 16;
+				float z2 = z1 + (d / (float) 16);
+				
+				for(EnumFacing facing : RenderUtil.DIRECTIONS){
+					RenderUtil.buildQuad(buffer, x1, y1, z1, x2, y2, z2, facing, colourHex, 175);
 				}
 			}
 			

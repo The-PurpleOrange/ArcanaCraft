@@ -1,0 +1,17 @@
+{
+  "result": {
+    "item": "arcanacraft:needle",
+    "data": 0,
+    "count": 3
+  },
+  "pattern": [
+    "g"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "g": {
+      "item": "arcanacraft:dust",
+      "data": 1
+    }
+  }
+}

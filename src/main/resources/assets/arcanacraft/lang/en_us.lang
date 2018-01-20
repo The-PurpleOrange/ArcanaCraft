@@ -5,7 +5,10 @@ item.arcanacraft:tinkture.name=Tinkture
 item.arcanacraft:red_coal.name=Red Coal
 item.arcanacraft:alchemical_coal.name=Alchemic Coal
 item.arcanacraft:mulch.name=Mulch
+item.arcanacraft:empty_tinkture.name=Empty Tinkture
 item.arcanacraft:ayre.name=Ayre
+item.arcanacraft:evolite.name=Evolite Drop
+item.arcanacraft:gorgon_eye.name=Eye of Gorgon
 item.arcanacraft:hammer.name=Alchemic Hammer
 item.arcanacraft:chalk_metamorphic.name=Metamorphic Chalk
 
@@ -22,6 +25,7 @@ item.arcanacraft:dust.dust_charcoal.name=Charcoal Dust
 item.arcanacraft:dust.dust_iron.name=Iron Dust
 item.arcanacraft:dust.dust_gold.name=Gold Dust
 item.arcanacraft:dust.dust_magicite.name=Magicite Dust
+item.arcanacraft:dust.dust_ender.name=Ender Dust
 
 item.arcanacraft:lens.lens_essence.name=Ethos Lens
 item.arcanacraft:lens.lens_soul.name=Soul Lens
@@ -38,11 +42,14 @@ item.arcanacraft:essence.essence_nether.name=Nether Ethos
 item.arcanacraft:essence.essence_eldritch.name=Eldritch Ethos
 item.arcanacraft:essence.essence_prosper.name=Prosporous Ethos
 item.arcanacraft:essence.essence_greed.name=Avaricle Ethos
+item.arcanacraft:essence.essence_cedius.name=Cedius Ethos
+item.arcanacraft:essence.essence_soul.name=Soulus
 
 item.arcanacraft:shard.shard_nether.name=Nether Shard
 item.arcanacraft:shard.shard_eldritch.name=Eldritch Shard
 item.arcanacraft:shard.shard_prosper.name=Prosporous Shard
 item.arcanacraft:shard.shard_greed.name=Avaricle Shard
+item.arcanacraft:shard.shard_cedius.name=Cedius Shard
 
 item.arcanacraft:ingot.ingot_magicite.name=Magicite Ingot
 item.arcanacraft:ingot.ingot_blood_iron.name=Blood Iron Ingot
@@ -54,6 +61,8 @@ item.arcanacraft:item.item_clean_flesh.name=Clean Flesh
 item.arcanacraft:item.item_blood_drop.name=Blood Drop
 item.arcanacraft:item.item_star_shard.name=Star Shard
 item.arcanacraft:item.item_inert_star.name=Inert Star
+item.arcanacraft:item.item_heart.name=Homunculus Heart
+item.arcanacraft:item.item_heat_core.name=Blazing Core
 
 item.arcanacraft:star.star_eldritch.name=Eldritch Star
 item.arcanacraft:star.star_virtuous.name=Virtuous Star
@@ -62,6 +71,7 @@ item.arcanacraft:needle.needle_bone.name=Bone Needle
 item.arcanacraft:needle.needle_cactus.name=Cactus Spine
 item.arcanacraft:needle.needle_bone_bloodied.name=Bloodied Bone Needle
 item.arcanacraft:needle.needle_cactus_bloodied.name=Bloodied Cactus Spine
+item.arcanacraft:needle.needle_blood_iron.name=Blood Iron Needle
 
 item.arcanacraft:chalk.chalk_charcoal.name=Charcoal Chalk
 item.arcanacraft:chalk.chalk_bone.name=Bone Chalk
@@ -92,11 +102,14 @@ tile.arcanacraft:deconstruction_table.name=Deconstruction Table
 tile.arcanacraft:transmutation_altar.name=Transmutation Altar
 tile.arcanacraft:infusion_altar.name=Infusion Altar
 tile.arcanacraft:soul_altar.name=Soul Altar
+tile.arcanacraft:alembic.name=Alembic
 
 tile.arcanacraft:ritual_circle.name=Ritual Circle
 tile.arcanacraft:grand_ritual_circle.name=Grand Ritual Circle
 
 #TinktureType
+tinkture.arcanacraft:aqua_regia.name=Aqua Regia
+tinkture.arcanacraft:alchemic_base.name=Alchemic Base
 tinkture.arcanacraft:impirus.name=Impirus
 tinkture.arcanacraft:amnis.name=Amnis
 tinkture.arcanacraft:rebus.name=Rebus
@@ -112,6 +125,7 @@ container.nei.arcanacraft:soul_altar.name=Soul Altar
 container.nei.arcanacraft:hammer.name=Alchemic Hammer
 container.nei.arcanacraft:transmutation_altar.name=Transmutation Altar
 container.nei.arcanacraft:infusion_altar.name=Infusion Altar
+container.nei.arcanacraft:alembic.name=Alembic
 
 #Rituals Catergories
 ritual_type.arcanacraft:ritual_type_standard.name=Basic Ritual

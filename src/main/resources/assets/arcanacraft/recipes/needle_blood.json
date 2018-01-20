@@ -1,0 +1,18 @@
+{
+  "result": {
+    "item": "arcanacraft:needle",
+      "data": 4
+  },
+  "pattern": [
+    "b  ",
+    " b ",
+    "  b"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "b": {
+      "item": "arcanacraft:ingot",
+      "data": 1
+    }
+  }
+}

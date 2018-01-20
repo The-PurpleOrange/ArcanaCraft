@@ -12,6 +12,9 @@ import com.tyhone.arcanacraft.common.util.PlayerUtils;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemBucket;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -21,6 +24,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -103,6 +107,10 @@ public class BlockAlembic extends ModBlockTileEntityBase{
 					PlayerUtils.givePlayerItemStack(player, new ItemStack(ModItems.EMPTY_TINKTURE, 1));
                     player.openContainer.detectAndSendChanges();
 				}
+				else if(player.getHeldItem(hand).getItem() == Items.WATER_BUCKET){
+					te.setStack(jar, new FluidStack(FluidRegistry.WATER, 1000));
+					player.setHeldItem(hand, new ItemStack(Items.BUCKET, 1));
+				}
 				else{
 					ItemStack giveStack = player.getHeldItem(hand).copy();
 					giveStack.setCount(1);
@@ -134,6 +142,13 @@ public class BlockAlembic extends ModBlockTileEntityBase{
 					newTinkture.setTagCompound(tag);
 					player.getHeldItem(hand).shrink(1);
 					PlayerUtils.givePlayerItemStack(player, newTinkture);
+                    player.openContainer.detectAndSendChanges();
+					te.cleanStack(jar);
+				}
+			}
+			else if(te.getStack(jar) instanceof FluidStack){
+				if(player.getHeldItem(hand).getItem() == Items.BUCKET){
+					player.setHeldItem(hand, new ItemStack(Items.WATER_BUCKET, 1));
                     player.openContainer.detectAndSendChanges();
 					te.cleanStack(jar);
 				}

@@ -14,6 +14,8 @@ import com.tyhone.arcanacraft.common.items.items.ItemCrystal;
 import com.tyhone.arcanacraft.common.items.items.ItemDust;
 import com.tyhone.arcanacraft.common.items.items.ItemEmptyTinkture;
 import com.tyhone.arcanacraft.common.items.items.ItemEssence;
+import com.tyhone.arcanacraft.common.items.items.ItemEvolite;
+import com.tyhone.arcanacraft.common.items.items.ItemGorgonEye;
 import com.tyhone.arcanacraft.common.items.items.ItemHammer;
 import com.tyhone.arcanacraft.common.items.items.ItemIcons;
 import com.tyhone.arcanacraft.common.items.items.ItemIngot;
@@ -50,6 +52,8 @@ public class ModItems {
 	public static final ModItemBase MULCH = new ItemMulch();
 	public static final ModItemBase STAR = new ItemStar();
 	public static final ModItemBase AYRE = new ItemAyre();
+	public static final ModItemBase EVOLITE = new ItemEvolite();
+	public static final ModItemBase GORGON_EYE = new ItemGorgonEye();
 	public static final ModItemBase NEEDLE = new ItemNeedle();
 	public static final ModItemBase CHALK = new ItemChalk();
 	public static final ModItemBase CHALK_METAMORPHIC = new ItemMetamorphicChalk();

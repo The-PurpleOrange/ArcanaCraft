@@ -68,7 +68,7 @@ public class RenderTileEntityJar extends TileEntitySpecialRenderer{
 				float z2 = 0 + 1 - s;
 				
 				for(EnumFacing facing : RenderUtil.DIRECTIONS){
-					RenderUtil.buildQuad(buffer, x1, y1, z1, x2, y2, z2, facing, hex, pf);
+					RenderUtil.buildQuad(buffer, x1, y1, z1, x2, y2, z2, facing, hex);
 				}
 			}
 			
