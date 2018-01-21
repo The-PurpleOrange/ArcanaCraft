@@ -16,7 +16,6 @@ import com.tyhone.arcanacraft.common.items.items.ItemEmptyTinkture;
 import com.tyhone.arcanacraft.common.items.items.ItemEssence;
 import com.tyhone.arcanacraft.common.items.items.ItemEvolite;
 import com.tyhone.arcanacraft.common.items.items.ItemGorgonEye;
-import com.tyhone.arcanacraft.common.items.items.ItemHammer;
 import com.tyhone.arcanacraft.common.items.items.ItemIcons;
 import com.tyhone.arcanacraft.common.items.items.ItemIngot;
 import com.tyhone.arcanacraft.common.items.items.ItemItem;
@@ -30,6 +29,10 @@ import com.tyhone.arcanacraft.common.items.items.ItemSoul;
 import com.tyhone.arcanacraft.common.items.items.ItemSpiritSkull;
 import com.tyhone.arcanacraft.common.items.items.ItemStar;
 import com.tyhone.arcanacraft.common.items.items.ItemTinkture;
+import com.tyhone.arcanacraft.common.items.items.tools.ItemHammer;
+import com.tyhone.arcanacraft.common.items.items.tools.ItemToolWandExodus;
+import com.tyhone.arcanacraft.common.items.items.tools.ItemToolWandFire;
+import com.tyhone.arcanacraft.common.items.items.tools.ItemToolWandShielding;
 
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -61,10 +64,13 @@ public class ModItems {
 	public static final ModItemBase EMPTY_TINKTURE = new ItemEmptyTinkture();
 	
 	public static final ModItemBase HAMMER = new ItemHammer();
-
 	public static final ModItemBase SPIRIT_SKULL = new ItemSpiritSkull();
 	
 	public static final ModItemBase ICONS = new ItemIcons();
+
+	public static final ModItemBase TOOL_WAND_EXODUS = new ItemToolWandExodus();
+	public static final ModItemBase TOOL_WAND_SHIELDING = new ItemToolWandShielding();
+	public static final ModItemBase TOOL_WAND_FIRE = new ItemToolWandFire();
 
 	
 	private ModItems() {}

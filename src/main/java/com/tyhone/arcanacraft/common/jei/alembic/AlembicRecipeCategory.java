@@ -29,7 +29,7 @@ public class AlembicRecipeCategory implements IRecipeCategory<AlembicRecipeWrapp
     private final IDrawable background;
     
     public AlembicRecipeCategory(IGuiHelper helper){
-		this.background = helper.createDrawable(GuiUtils.getGuiLocation("gui_alembic"), 0, -4, 135, 43);
+		this.background = helper.createDrawable(GuiUtils.getGuiLocation("gui_alembic"), 0, 0, 135, 45);
 	}
 	
 	@Override
@@ -61,10 +61,6 @@ public class AlembicRecipeCategory implements IRecipeCategory<AlembicRecipeWrapp
 		List<List<ItemStack>> inputs = ingredients.getInputs(ItemStack.class);
 		List<List<TinktureStack>> tInputs = ingredients.getInputs(TinktureStack.class);
 		List<List<FluidStack>> fInputs = ingredients.getInputs(FluidStack.class);
-
-		Arcanacraft.log(inputs.toString());
-		Arcanacraft.log(tInputs.toString());
-		Arcanacraft.log(fInputs.toString());
 
 		int[] xPos = {25, 12, 38};
 		int[] yPos = {21, 0, 0};

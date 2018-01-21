@@ -254,6 +254,12 @@ public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
 		}
 		
 		RitualType ritualType = recipe.getRitual().getRitualType();
+
+    	if(!worldIn.isRemote && recipe.getBlockRequirements().size() != ritualType.getRitualRecipePlaceOrder().length){
+    		Arcanacraft.logger.error("Ritual Circle for " + recipe.getRitual().getDisplayName() + " size is invalid, please check the blackmap and block entried are valid");
+    		Arcanacraft.logger.error("BlockList Size: " + recipe.getBlockRequirements().size() + ", should be: " + ritualType.getRitualRecipePlaceOrder().length);
+    		return false;
+    	}
 		
 		for(int place : ritualType.getRitualRecipePlaceOrder()){
 			BlockPos oldPos = PosUtil.combinePos(pos, ritualType.getRitualRecipePosList().get(place));

@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "arcanacraft:item",
+      "count": 8,
+      "data": 2
+  },
+  "pattern": [
+    "b"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "b": {
+      "item": "arcanacraft:fleshy_block"
+    }
+  }
+}

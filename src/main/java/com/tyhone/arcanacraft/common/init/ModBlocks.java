@@ -11,6 +11,7 @@ import com.tyhone.arcanacraft.common.blocks.blocks.BlockAlchemicGlass;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockAlchemicStone;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockAlchemicalCoal;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockChalk;
+import com.tyhone.arcanacraft.common.blocks.blocks.BlockFleshyBlock;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockRedCoal;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockAlchemicArray;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockAlembic;
@@ -39,6 +40,8 @@ public class ModBlocks {
 	public static final ModBlockBase ALCHEMIC_STONE = new BlockAlchemicStone();
 	public static final ModBlockBase ALCHEMIC_GLASS = new BlockAlchemicGlass();
 
+	public static final ModBlockBase FLESHY_BLOCK = new BlockFleshyBlock();
+	
 	public static final ModBlockBase CHALK_BLOCK = new BlockChalk();
 
 	public static final ModBlockBase ALCHEMIC_ARRAY = new BlockAlchemicArray();

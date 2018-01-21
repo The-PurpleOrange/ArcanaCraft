@@ -1,0 +1,25 @@
+{
+  "result": {
+    "item": "arcanacraft:tool_wand_fire"
+  },
+  "pattern": [
+    " te",
+    " bt",
+    "b  "
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "b": {
+      "item": "arcanacraft:item",
+      "data": 9
+    },
+    "e": {
+      "item": "arcanacraft:item",
+      "data": 7
+    },
+    "t": {
+      "item": "arcanacraft:essence",
+      "data": 1
+    }
+  }
+}

@@ -13,6 +13,38 @@ public class InitGrandRitualCircleRecipe {
 	
 	public static void initRecipe(){
 		initSummonChicken();
+		initCreateHomunculus();
+	}
+	
+	private static void initCreateHomunculus(){
+		ArcanacraftRitualCraftingManager.registerGrandRitualCircleRecipe(
+				ModRituals.GRAND_RITUAL_CREATE_HOMUNCULUS,
+			new ItemStack[]{
+					new ItemStack(ModItems.AYRE, 1)
+			},
+			new Object[]{
+					"             ",
+					"    F   F    ",
+					"  Q  RRR  Q  ",
+					"   GO M OG   ",
+					" F OGBBBGO F ",
+					"  R BG GB R  ",
+					"  RMB C BMR  ",
+					"  R BG GB R  ",
+					" F OGBBBGO F ",
+					"   GO M OG   ",
+					"  Q  RRR  Q  ",
+					"    F   F    ",
+					"             ",
+					'C', new ItemStack(ModBlocks.GRAND_RITUAL_CIRCLE),
+					'B', new ItemStack(ModBlocks.CHALK_BLOCK, 1, ItemMetaUtil.chalk("blood")),
+					'O', new ItemStack(ModBlocks.CHALK_BLOCK, 1, ItemMetaUtil.chalk("bone")),
+					'R', new ItemStack(ModBlocks.CHALK_BLOCK, 1, ItemMetaUtil.chalk("charcoal")),
+					'G', new ItemStack(ModBlocks.CHALK_BLOCK, 1, ItemMetaUtil.chalk("magicite")),
+					'M', new ItemStack(ModBlocks.CHALK_BLOCK, 1, ItemMetaUtil.chalk("gold")),
+					'Q', new ItemStack(Blocks.BONE_BLOCK, 1),
+					'F', new ItemStack(ModBlocks.FLESHY_BLOCK, 1)
+			});
 	}
 	
 	private static void initSummonChicken(){
@@ -22,19 +54,19 @@ public class InitGrandRitualCircleRecipe {
 					new ItemStack(ModItems.AYRE, 1)
 			},
 			new Object[]{
-					"K           K",
+					"K     K     K",
 					"             ",
 					"             ",
 					"             ",
 					"    ZHGHZ    ",
 					"    HB BH    ",
-					"    G C G    ",
+					"K   G C G   K",
 					"    HB BH    ",
 					"    ZHGHZ    ",
 					"             ",
 					"             ",
 					"             ",
-					"K           K",
+					"K     K     K",
 					'H', new ItemStack(ModBlocks.CHALK_BLOCK, 1, ItemMetaUtil.chalk("bone")),
 					'B', new ItemStack(ModBlocks.CHALK_BLOCK, 1, ItemMetaUtil.chalk("charcoal")),
 					'G', new ItemStack(ModBlocks.CHALK_BLOCK, 1, ItemMetaUtil.chalk("lapis")),

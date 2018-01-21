@@ -78,6 +78,8 @@ public class RecipeRitualCircle {
 				}
 			}
 		}
+
+		Arcanacraft.logger.error("Ritual Circle for " + ritual.getDisplayName() + " is invalid, and will crash the game");
 		
 		this.blockPosList = blockPosList;
 	}

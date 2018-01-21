@@ -49,7 +49,7 @@ public class InitRecipesAlchemicArray {
 				new ItemStack(ModItems.CHALK, 1, 5),
 				new ItemStack(ModItems.RED_COAL, 1),
 				new ItemStack(ModItems.AYRE, 2),
-				new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("star_shard"))
+				new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("ender_tear"))
 				);
 	}
 }

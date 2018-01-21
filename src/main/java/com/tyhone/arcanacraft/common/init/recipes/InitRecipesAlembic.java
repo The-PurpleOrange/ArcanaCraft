@@ -17,14 +17,19 @@ public class InitRecipesAlembic {
 		ArcanacraftCraftingManager.registerAlembicRecipe(new TinktureStack(ModTinktureTypes.AQUA_REGIA), new FluidStack(FluidRegistry.WATER, 1000), new ItemStack(Items.GUNPOWDER), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("quartz_dust")));
 		ArcanacraftCraftingManager.registerAlembicRecipe(new TinktureStack(ModTinktureTypes.ALCHEMIC_BASE), new TinktureStack(ModTinktureTypes.AQUA_REGIA), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("star_shard")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("soul")));
 
+		ArcanacraftCraftingManager.registerAlembicRecipe(new TinktureStack(ModTinktureTypes.QUARTZ_SOLUTION), new FluidStack(FluidRegistry.WATER, 1000), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("quartz_dust")), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("quartz_dust")));
+		
 		//Tinktures
 		ArcanacraftCraftingManager.registerAlembicRecipe(new TinktureStack(ModTinktureTypes.IMPIRUS),  new TinktureStack(ModTinktureTypes.ALCHEMIC_BASE), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("heat_core")), new ItemStack(Items.GUNPOWDER, 1));
 		ArcanacraftCraftingManager.registerAlembicRecipe(new TinktureStack(ModTinktureTypes.LOCUS), new TinktureStack(ModTinktureTypes.ALCHEMIC_BASE), new ItemStack(ModItems.ALCHEMICAL_COAL, 1), new ItemStack(Items.GOLDEN_APPLE, 1));
-		ArcanacraftCraftingManager.registerAlembicRecipe(new TinktureStack(ModTinktureTypes.REBUS), new TinktureStack(ModTinktureTypes.ALCHEMIC_BASE), new ItemStack(ModItems.INGOT, 1, ItemMetaUtil.ingot("alcharium")), new ItemStack(Items.RABBIT_FOOT, 1));
-		ArcanacraftCraftingManager.registerAlembicRecipe(new TinktureStack(ModTinktureTypes.AMNIS), new TinktureStack(ModTinktureTypes.ALCHEMIC_BASE), new ItemStack(Items.DIAMOND, 1), new ItemStack(Items.GHAST_TEAR, 1));
+		ArcanacraftCraftingManager.registerAlembicRecipe(new TinktureStack(ModTinktureTypes.REBUS), new TinktureStack(ModTinktureTypes.ALCHEMIC_BASE), new ItemStack(Items.EMERALD, 1), new ItemStack(Items.EXPERIENCE_BOTTLE));
+		ArcanacraftCraftingManager.registerAlembicRecipe(new TinktureStack(ModTinktureTypes.AMNIS), new TinktureStack(ModTinktureTypes.ALCHEMIC_BASE), new ItemStack(Items.DIAMOND, 1), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("ender_tear")));
 		ArcanacraftCraftingManager.registerAlembicRecipe(new TinktureStack(ModTinktureTypes.ANIMO), new TinktureStack(ModTinktureTypes.ALCHEMIC_BASE), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("clean_flesh")), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("heart")));
 		ArcanacraftCraftingManager.registerAlembicRecipe(new TinktureStack(ModTinktureTypes.VOIDUS), new TinktureStack(ModTinktureTypes.ALCHEMIC_BASE), new ItemStack(Items.DRAGON_BREATH, 1), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("eldritch")));
 
+		//Crystals
+		ArcanacraftCraftingManager.registerAlembicRecipe(new ItemStack(ModItems.CRYSTAL, 1, ItemMetaUtil.crystal("blood")), new TinktureStack(ModTinktureTypes.QUARTZ_SOLUTION), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("blood_drop")), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("blood_drop")));
+		
 		ArcanacraftCraftingManager.registerAlembicRecipe(new ItemStack(ModItems.ALCHEMICAL_COAL, 1), new ItemStack(ModItems.RED_COAL, 1), new TinktureStack(ModTinktureTypes.ALCHEMIC_BASE), new ItemStack(ModItems.EVOLITE, 1));
 		ArcanacraftCraftingManager.registerAlembicRecipe(new ItemStack(ModItems.GORGON_EYE), new ItemStack(Items.ENDER_EYE, 1), new TinktureStack(ModTinktureTypes.VOIDUS), new ItemStack(ModItems.EVOLITE, 1));
 		

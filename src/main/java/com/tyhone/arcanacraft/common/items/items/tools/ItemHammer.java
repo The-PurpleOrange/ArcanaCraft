@@ -1,4 +1,4 @@
-package com.tyhone.arcanacraft.common.items.items;
+package com.tyhone.arcanacraft.common.items.items.tools;
 
 import java.util.List;
 

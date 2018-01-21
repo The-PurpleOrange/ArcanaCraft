@@ -14,9 +14,11 @@ public class InitRecipesHammer {
 
 		ArcanacraftCraftingManager.registerHammerRecipe(new ItemStack(ModItems.DUST, 1, ItemMetaUtil.dust("charcoal")), new ItemStack(Items.COAL, 1, 1));
 		ArcanacraftCraftingManager.registerHammerRecipe(new ItemStack(ModItems.MULCH, 1), new OreStack("logWood", 1));
-		
+
+		ArcanacraftCraftingManager.registerHammerRecipe(new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("quartz_dust")), new ItemStack(Items.QUARTZ, 1));
 		ArcanacraftCraftingManager.registerHammerRecipe(new ItemStack(ModItems.DUST, 1, ItemMetaUtil.dust("bone")), new ItemStack(Items.BONE));
 		ArcanacraftCraftingManager.registerHammerRecipe(new ItemStack(Items.DYE, 4, 15), new ItemStack(ModItems.DUST, 1, ItemMetaUtil.dust("bone")));
 		ArcanacraftCraftingManager.registerHammerRecipe(new ItemStack(ModItems.NEEDLE, 4, 1), new ItemStack(Blocks.CACTUS));
+		ArcanacraftCraftingManager.registerHammerRecipe(new ItemStack(ModItems.DUST, 1, ItemMetaUtil.dust("blood")), new ItemStack(ModItems.CRYSTAL, 1, ItemMetaUtil.crystal("blood")));
 	}
 }

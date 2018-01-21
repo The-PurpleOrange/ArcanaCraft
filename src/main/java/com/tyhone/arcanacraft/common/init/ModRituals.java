@@ -7,7 +7,7 @@ import com.tyhone.arcanacraft.api.recipe.ArcanacraftRitualCraftingManager;
 import com.tyhone.arcanacraft.api.ritual.Ritual;
 import com.tyhone.arcanacraft.api.ritual.RitualRegistry;
 import com.tyhone.arcanacraft.api.ritual.RitualType;
-import com.tyhone.arcanacraft.common.rituals.GrandRitualSummonChicken;
+import com.tyhone.arcanacraft.common.rituals.GrandRitualCreateHomunculus;
 import com.tyhone.arcanacraft.common.rituals.RitualClearWeather;
 import com.tyhone.arcanacraft.common.rituals.RitualSummonLightning;
 import com.tyhone.arcanacraft.common.rituals.RitualSummonRain;
@@ -40,7 +40,8 @@ public class ModRituals {
 	public static final Ritual RITUAL_CLEAR_WEATHER = new RitualClearWeather("clear_weather", RITUAL_TYPE_STANDARD);
 	public static final Ritual RITUAL_SUMMON_LIGHTNING = new RitualSummonLightning("summon_lightning", RITUAL_TYPE_STANDARD);
 
-	public static final Ritual GRAND_RITUAL_SUMMON_CHICKEN = new GrandRitualSummonChicken("summon_chicken", RITUAL_TYPE_GRAND);
+	public static final Ritual GRAND_RITUAL_CREATE_HOMUNCULUS = new GrandRitualCreateHomunculus("create_homunculus", RITUAL_TYPE_GRAND);
+	public static final Ritual GRAND_RITUAL_SUMMON_CHICKEN = new GrandRitualCreateHomunculus("summon_chicken", RITUAL_TYPE_GRAND);
 
 	private ModRituals() {}
 	

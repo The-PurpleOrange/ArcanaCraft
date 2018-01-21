@@ -1,11 +1,13 @@
 {
   "result": {
-    "item": "arcanacraft:needle",
-      "data": 4
+    "item": "arcanacraft:item",
+      "data": 9,
+      "count": 2
   },
   "pattern": [
-    "b ",
-    " b"
+    "b",
+    "b",
+    "b"
   ],
   "type": "forge:ore_shaped",
   "key": {

@@ -1,6 +1,9 @@
 
 
 #Items
+item.arcanacraft:hammer.name=Alchemic Hammer
+item.arcanacraft:tool_wand_exodus.name=Exodus Wand
+
 item.arcanacraft:tinkture.name=Tinkture
 item.arcanacraft:red_coal.name=Red Coal
 item.arcanacraft:alchemical_coal.name=Alchemic Coal
@@ -63,6 +66,7 @@ item.arcanacraft:item.item_star_shard.name=Star Shard
 item.arcanacraft:item.item_inert_star.name=Inert Star
 item.arcanacraft:item.item_heart.name=Homunculus Heart
 item.arcanacraft:item.item_heat_core.name=Blazing Core
+item.arcanacraft:item.item_ender_tear.name=Ender Tear
 
 item.arcanacraft:star.star_eldritch.name=Eldritch Star
 item.arcanacraft:star.star_virtuous.name=Virtuous Star
@@ -85,6 +89,7 @@ item.arcanacraft:chalk.chalk_magicite.name=Magicite Chalk
 tile.arcanacraft:red_coal_block.name=Red Coal Block
 tile.arcanacraft:alchemical_coal_block.name=Alchemic Coal Block
 tile.arcanacraft:alchemic_glass.name=Alchemic Glass
+tile.arcanacraft:fleshy_block.name=Fleshy Block
 
 tile.arcanacraft:spirit_skull_block.name=Bob
 
@@ -109,6 +114,7 @@ tile.arcanacraft:grand_ritual_circle.name=Grand Ritual Circle
 
 #TinktureType
 tinkture.arcanacraft:aqua_regia.name=Aqua Regia
+tinkture.arcanacraft:quartz_solution.name=Quartz Solution
 tinkture.arcanacraft:alchemic_base.name=Alchemic Base
 tinkture.arcanacraft:impirus.name=Impirus
 tinkture.arcanacraft:amnis.name=Amnis

@@ -1,0 +1,21 @@
+{
+  "result": {
+    "item": "arcanacraft:fleshy_block"
+  },
+  "pattern": [
+    "ggg",
+    "gbg",
+    "ggg"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "g": {
+      "item": "arcanacraft:item",
+      "data": 2
+    },
+    "b": {
+      "item": "arcanacraft:item",
+      "data": 3
+    }
+  }
+}
