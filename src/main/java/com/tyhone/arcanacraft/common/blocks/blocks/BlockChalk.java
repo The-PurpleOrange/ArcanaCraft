@@ -229,6 +229,12 @@ public class BlockChalk extends ModBlockEnum implements IRitualDisplayIgnoreBloc
     }
 
     @Override
+    public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
+    	// TODO Auto-generated method stub
+    	super.updateTick(worldIn, pos, state, rand);
+    }
+    
+    @Override
 	@SideOnly(Side.CLIENT)
     public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand)
     {

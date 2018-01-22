@@ -1,4 +1,4 @@
-package com.tyhone.arcanacraft.common.init;
+ package com.tyhone.arcanacraft.common.init;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -16,6 +16,7 @@ import com.tyhone.arcanacraft.common.blocks.blocks.BlockRedCoal;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockAlchemicArray;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockAlembic;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockDeconstructionTable;
+import com.tyhone.arcanacraft.common.blocks.tiles.BlockElevator;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockGrandRitualCircle;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockInfusionAltar;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockJar;
@@ -26,6 +27,7 @@ import com.tyhone.arcanacraft.common.blocks.tiles.BlockRitualCircle;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockSoulAltar;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockSpiritSkull;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockTransmutationAltar;
+import com.tyhone.arcanacraft.common.blocks.tiles.BlockWardStone;
 
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -41,6 +43,9 @@ public class ModBlocks {
 	public static final ModBlockBase ALCHEMIC_GLASS = new BlockAlchemicGlass();
 
 	public static final ModBlockBase FLESHY_BLOCK = new BlockFleshyBlock();
+
+	public static final ModBlockBase WARD_STONE = new BlockWardStone();
+	public static final ModBlockBase ELEVATOR = new BlockElevator();
 	
 	public static final ModBlockBase CHALK_BLOCK = new BlockChalk();
 

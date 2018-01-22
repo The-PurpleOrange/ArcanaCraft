@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_top",
+  "textures": {
+        "top": "arcanacraft:blocks/ward_stone",
+        "side": "arcanacraft:blocks/alchemic_stone_uniform"
+  }
+}

@@ -4,6 +4,7 @@ import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityAlchemicArray;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityAlembic;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityDeconstructionTable;
+import com.tyhone.arcanacraft.common.tileentity.TileEntityElevator;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityGrandRitualCircle;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityInfusionAltar;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityJar;
@@ -14,6 +15,7 @@ import com.tyhone.arcanacraft.common.tileentity.TileEntityRitualCircle;
 import com.tyhone.arcanacraft.common.tileentity.TileEntitySoulAltar;
 import com.tyhone.arcanacraft.common.tileentity.TileEntitySpiritSkull;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityTransmutationAltar;
+import com.tyhone.arcanacraft.common.tileentity.TileEntityWardStone;
 
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -38,6 +40,10 @@ public class ModTileEntities {
 		
 
 		GameRegistry.registerTileEntity(TileEntitySpiritSkull.class, Arcanacraft.MODID + ".block_spirit_skull");
+		
+
+		GameRegistry.registerTileEntity(TileEntityWardStone.class, Arcanacraft.MODID + ".ward_stone");
+		GameRegistry.registerTileEntity(TileEntityElevator.class, Arcanacraft.MODID + ".elevator");
 	}
 
 }
