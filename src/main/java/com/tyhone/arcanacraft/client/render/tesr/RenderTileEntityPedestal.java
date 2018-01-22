@@ -29,7 +29,7 @@ public class RenderTileEntityPedestal extends TileEntitySpecialRenderer{
 		
 		if(itemStack != null && itemStack.getCount()>0){ //Check if there is an item in slot 0
 
-			RenderUtil.renderItem(te, itemStack, x, y+1.35F, z, partialTicks, true);
+			RenderUtil.renderItem(te, itemStack, x+0.5F, y+1.35F, z+0.5F, partialTicks, true);
 			
 			
             /*GlStateManager.pushMatrix();

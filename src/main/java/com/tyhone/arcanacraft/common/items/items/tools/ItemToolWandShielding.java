@@ -45,10 +45,6 @@ public class ItemToolWandShielding extends ModItemBase{
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
 		player.setActiveHand(hand);
-		
-		//if(!world.isRemote){
-			
-		//}
         return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, player.getHeldItem(hand));
 	}
 	

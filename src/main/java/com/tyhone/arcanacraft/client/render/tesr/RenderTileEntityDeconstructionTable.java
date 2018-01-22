@@ -58,7 +58,7 @@ public class RenderTileEntityDeconstructionTable extends TileEntitySpecialRender
         
 		if(!itemStack.isEmpty()){ //Check if there is an item in slot 0
 			
-			RenderUtil.renderItem(te, itemStack, x, y+1.35F, z, te.GetRotation(), true, true);
+			RenderUtil.renderItem(te, itemStack, x+0.5F, y+1.35F, z+0.5F, te.GetRotation(), true, true);
 			
 			
             /*GlStateManager.pushMatrix();

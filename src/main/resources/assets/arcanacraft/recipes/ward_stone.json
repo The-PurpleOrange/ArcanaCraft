@@ -1,0 +1,33 @@
+{
+  "result": {
+    "item": "arcanacraft:ward_stone",
+    "count": 4
+  },
+  "pattern": [
+    "sas",
+    "bhb",
+    "sms"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "s": {
+      "item": "arcanacraft:alchemic_stone",
+      "data": 32767
+    },
+    "m": {
+      "item": "arcanacraft:ingot",
+      "data": 0
+    },
+    "a": {
+      "item": "arcanacraft:ayre"
+    },
+    "b": {
+      "item": "arcanacraft:ingot",
+      "data": 1
+    },
+    "h": {
+      "item": "arcanacraft:item",
+      "data": 10
+    }
+  }
+}

@@ -7,6 +7,7 @@ import com.tyhone.arcanacraft.common.init.ModRituals;
 import com.tyhone.arcanacraft.common.util.ItemMetaUtil;
 
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 public class InitGrandRitualCircleRecipe {
@@ -20,7 +21,9 @@ public class InitGrandRitualCircleRecipe {
 		ArcanacraftRitualCraftingManager.registerGrandRitualCircleRecipe(
 				ModRituals.GRAND_RITUAL_CREATE_HOMUNCULUS,
 			new ItemStack[]{
-					new ItemStack(ModItems.AYRE, 1)
+					new ItemStack(ModBlocks.FLESHY_BLOCK, 2),
+					new ItemStack(Items.BONE, 5),
+					new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("blood_drop"))
 			},
 			new Object[]{
 					"             ",

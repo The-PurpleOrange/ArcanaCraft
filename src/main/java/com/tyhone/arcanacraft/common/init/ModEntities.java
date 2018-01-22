@@ -19,9 +19,7 @@ public class ModEntities {
 		
 		int id = 1;
 		EntityRegistry.registerModEntity(new ResourceLocation(Arcanacraft.MODID, EntityHomunculus.NAME), EntityHomunculus.class, EntityHomunculus.NAME, id++, Arcanacraft.instance, 32, 3, true, 0x996600, 0x00ff00);
-		
-		EntityRegistry.addSpawn(EntityHomunculus.class, 100, 1, 5, EnumCreatureType.MONSTER, Biomes.PLAINS, Biomes.FOREST, Biomes.FOREST_HILLS);
-		
+		//EntityRegistry.addSpawn(EntityHomunculus.class, 100, 1, 5, EnumCreatureType.MONSTER, Biomes.PLAINS, Biomes.FOREST, Biomes.FOREST_HILLS);
 		LootTableList.register(EntityHomunculus.LOOT);
 	}
 	

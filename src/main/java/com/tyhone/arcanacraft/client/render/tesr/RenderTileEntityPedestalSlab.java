@@ -29,7 +29,7 @@ public class RenderTileEntityPedestalSlab extends TileEntitySpecialRenderer{
 		
 		if(itemStack != null && itemStack.getCount()>0){ //Check if there is an item in slot 0
 
-			RenderUtil.renderItem(te, itemStack, x, y+0.65F, z, partialTicks, true);
+			RenderUtil.renderItem(te, itemStack, x+0.5F, y+0.65F, z+0.5F, partialTicks, true);
 			
             /*GlStateManager.pushMatrix();
             GlStateManager.translate((float)x+0.5F, (float)y+0.65F, (float)z+0.5F);

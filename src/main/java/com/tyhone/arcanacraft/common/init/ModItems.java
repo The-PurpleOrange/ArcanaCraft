@@ -33,6 +33,7 @@ import com.tyhone.arcanacraft.common.items.items.tools.ItemHammer;
 import com.tyhone.arcanacraft.common.items.items.tools.ItemToolWandExodus;
 import com.tyhone.arcanacraft.common.items.items.tools.ItemToolWandFire;
 import com.tyhone.arcanacraft.common.items.items.tools.ItemToolWandShielding;
+import com.tyhone.arcanacraft.common.items.items.tools.ItemTrinketHungerCharm;
 
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -71,6 +72,8 @@ public class ModItems {
 	public static final ModItemBase TOOL_WAND_EXODUS = new ItemToolWandExodus();
 	public static final ModItemBase TOOL_WAND_SHIELDING = new ItemToolWandShielding();
 	public static final ModItemBase TOOL_WAND_FIRE = new ItemToolWandFire();
+
+	public static final ModItemBase TRINKET_HUNGER_CHARM = new ItemTrinketHungerCharm();
 
 	
 	private ModItems() {}
