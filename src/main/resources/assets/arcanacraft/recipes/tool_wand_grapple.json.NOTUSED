@@ -1,0 +1,28 @@
+{
+  "result": {
+    "item": "arcanacraft:tool_wand_grapple"
+  },
+  "pattern": [
+    " te",
+    " bt",
+    "p  "
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "b": {
+      "item": "arcanacraft:ingot",
+      "data": 0
+    },
+    "e": {
+      "item": "minecraft:ender_eye"
+    },
+    "t": {
+      "item": "arcanacraft:essence",
+      "data": 0
+    },
+    "p": {
+      "item": "arcanacraft:item",
+      "data": 4
+    }
+  }
+}

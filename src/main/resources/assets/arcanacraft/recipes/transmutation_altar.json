@@ -1,0 +1,32 @@
+{
+  "result": {
+    "item": "arcanacraft:transmutation_altar"
+  },
+  "pattern": [
+    "mdm",
+    "gsg",
+    "bbb"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "s": {
+      "item": "arcanacraft:alchemic_stone",
+      "data": 32767
+    },
+    "b": {
+      "item": "arcanacraft:blood_stone",
+      "data": 32767
+    },
+    "d": {
+      "item": "arcanacraft:dust",
+      "data": 0
+    },
+    "m": {
+      "item": "arcanacraft:ingot",
+      "data": 0
+    },
+    "g": {
+      "item": "minecraft:gold_ingot"
+    }
+  }
+}

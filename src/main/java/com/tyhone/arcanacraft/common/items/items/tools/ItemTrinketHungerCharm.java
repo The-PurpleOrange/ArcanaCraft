@@ -30,6 +30,7 @@ public class ItemTrinketHungerCharm extends ModItemBase{
 	
 	public ItemTrinketHungerCharm() {
 		super("trinket_hunger_charm");
+		setMaxStackSize(1);
 	}
 	
 	

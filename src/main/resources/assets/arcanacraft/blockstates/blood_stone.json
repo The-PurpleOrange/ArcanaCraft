@@ -1,0 +1,22 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "transform": "forge:default-block",
+    "custom": { "flip-v": true },
+    "model": "arcanacraft:blood_stone"
+  },
+  "variants": {
+    "variant=uniform": [
+      { "model": "arcanacraft:blood_stone/uniform" }
+  ],
+    "variant=tile": [
+      { "model": "arcanacraft:blood_stone/tile" }
+  ],
+  "variant=brick": [
+      { "model": "arcanacraft:blood_stone/brick" }
+  ],
+  "variant=chiseled": [
+      { "model": "arcanacraft:blood_stone/chiseled" }
+  ]
+  }
+}

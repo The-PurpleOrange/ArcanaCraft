@@ -1,0 +1,34 @@
+{
+  "result": {
+    "item": "arcanacraft:soul_altar"
+  },
+  "pattern": [
+    "ese",
+    "omo",
+    "nvn"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "s": {
+      "item": "arcanacraft:soul",
+      "data": 0
+    },
+    "n": {
+      "item": "minecraft:nether_brick"
+    },
+    "e": {
+      "item": "arcanacraft:item",
+      "data": 8
+    },
+    "m": {
+      "item": "arcanacraft:ingot",
+      "data": 0
+    },
+    "o": {
+      "item": "minecraft:obsidian"
+    },
+    "v": {
+      "item": "arcanacraft:evolite"
+    }
+  }
+}

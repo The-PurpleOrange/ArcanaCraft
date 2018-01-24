@@ -15,8 +15,9 @@ import net.minecraft.item.ItemStack;
 public class InitRecipesInfusionAltar {
 	public static void init(){
 		{
+			//INERT STAR
 			ItemStack[] items = {new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("star_shard")), new ItemStack(Items.GHAST_TEAR), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("star_shard")), new ItemStack(Items.GHAST_TEAR), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("star_shard")), new ItemStack(Items.GHAST_TEAR), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("star_shard")), new ItemStack(Items.GHAST_TEAR)};
-			TinktureStack[] tinktures = {new TinktureStack(ModTinktureTypes.LOCUS, 32), new TinktureStack(ModTinktureTypes.IMPIRUS, 32), new TinktureStack(ModTinktureTypes.REBUS, 32), new TinktureStack(ModTinktureTypes.AMNIS, 32)};
+			TinktureStack[] tinktures = {new TinktureStack(ModTinktureTypes.LOCUS, 8), new TinktureStack(ModTinktureTypes.IMPIRUS, 8), new TinktureStack(ModTinktureTypes.REBUS, 8), new TinktureStack(ModTinktureTypes.AMNIS, 8)};
 			ArcanacraftCraftingManager.registerInfusionRecipe(new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("inert_star")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("gold")), items, tinktures);
 		}{
 			//ELEVATOR
@@ -38,6 +39,16 @@ public class InitRecipesInfusionAltar {
 			Object[] inputs = {new ItemStack(Items.DIAMOND, 1), new ItemStack(Items.DIAMOND, 1), new ItemStack(Items.DIAMOND, 1), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("quartz_dust")), new ItemStack(Items.GOLDEN_APPLE, 1), new ItemStack(Items.GOLDEN_APPLE, 1), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("magicite")), new ItemStack(ModItems.AYRE, 1)};
 			TinktureStack[] tinktures = {new TinktureStack(ModTinktureTypes.AMNIS, 12), new TinktureStack(ModTinktureTypes.ANIMO, 4), new TinktureStack(ModTinktureTypes.ALCHEMIC_BASE, 8)};
 			ArcanacraftCraftingManager.registerInfusionRecipe(new ItemStack(ModItems.SHARD, 1, ItemMetaUtil.shard("prosper")), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("star_shard")), inputs, tinktures);
+		}{
+			//HUNGER CHARM
+			Object[] inputs = {new ItemStack(ModItems.SHARD, 1, ItemMetaUtil.shard("cedius")), new ItemStack(Items.ENDER_PEARL), WildStack.W(ModBlocks.ALCHEMIC_STONE, 1), new ItemStack(ModItems.INGOT, 1, ItemMetaUtil.ingot("Alcharium"))};
+			TinktureStack[] tinktures = {new TinktureStack(ModTinktureTypes.ANIMO, 16), new TinktureStack(ModTinktureTypes.VOIDUS, 8)};
+			ArcanacraftCraftingManager.registerInfusionRecipe(new ItemStack(ModItems.TRINKET_HUNGER_CHARM, 1), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("inert_star")), inputs, tinktures);
+		}{
+			//ALCHARIUM
+			Object[] inputs = {new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("cedius")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("greed")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("nether")), new ItemStack(ModItems.ALCHEMICAL_COAL, 1), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("eldritch")), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("inert_star")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("cedius")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("greed"))};
+			TinktureStack[] tinktures = {new TinktureStack(ModTinktureTypes.LOCUS, 16), new TinktureStack(ModTinktureTypes.IMPIRUS, 16), new TinktureStack(ModTinktureTypes.REBUS, 16), new TinktureStack(ModTinktureTypes.AMNIS, 16)};
+			ArcanacraftCraftingManager.registerInfusionRecipe(new ItemStack(ModItems.INGOT, 1, ItemMetaUtil.ingot("alcharium")), new ItemStack(ModItems.INGOT, 1, ItemMetaUtil.ingot("magicite")), inputs, tinktures);
 		}
 	}
 }

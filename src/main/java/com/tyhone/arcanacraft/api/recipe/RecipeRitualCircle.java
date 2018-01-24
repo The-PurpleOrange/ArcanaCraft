@@ -79,7 +79,9 @@ public class RecipeRitualCircle {
 			}
 		}
 
-		Arcanacraft.logger.error("Ritual Circle for " + ritual.getDisplayName() + " is invalid, and will crash the game");
+		if(blockPosList.size() != ritual.getRitualType().getRitualRecipePlaceOrder().length){
+			Arcanacraft.logger.error("Ritual Circle for " + ritual.getDisplayName() + " is invalid, and will crash the game, it is:should be " + blockPosList.size() + ":" + ritual.getRitualType().getRitualRecipePlaceOrder().length);
+		}
 		
 		this.blockPosList = blockPosList;
 	}

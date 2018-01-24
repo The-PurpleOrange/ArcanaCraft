@@ -21,8 +21,8 @@ public class InitGrandRitualCircleRecipe {
 		ArcanacraftRitualCraftingManager.registerGrandRitualCircleRecipe(
 				ModRituals.GRAND_RITUAL_CREATE_HOMUNCULUS,
 			new ItemStack[]{
-					new ItemStack(ModBlocks.FLESHY_BLOCK, 2),
-					new ItemStack(Items.BONE, 5),
+					new ItemStack(ModBlocks.FLESHY_BLOCK, 1),
+					new ItemStack(Items.BONE, 3),
 					new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("blood_drop"))
 			},
 			new Object[]{
