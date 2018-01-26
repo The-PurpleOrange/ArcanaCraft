@@ -1,10 +1,12 @@
 package com.tyhone.arcanacraft.common.tileentity;
 
+import java.util.Random;
+
+import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.api.recipe.RecipeDeconstructionTable;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockDeconstructionTable;
 import com.tyhone.arcanacraft.common.tileentity.base.ModTileEntitySingleInventoryBase;
 
-import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ITickable;
@@ -57,8 +59,13 @@ public class TileEntityDeconstructionTable extends ModTileEntitySingleInventoryB
 					speed = 60D;
 				}
 				SetRotation( GetRotation() + ((int) Math.floor(speed / 2D)));
+				
+				if(this.workTime>=this.maxWorkTime-2){
+					for(int q = 0; q < 8; q++){
+						BlockDeconstructionTable.spawnEffectParticle(world, pos, new Random());
+					}
+				}
 			}
-			//Arcanacraft.log("Rotation: " + GetRotation());
 		}
 	}
 	

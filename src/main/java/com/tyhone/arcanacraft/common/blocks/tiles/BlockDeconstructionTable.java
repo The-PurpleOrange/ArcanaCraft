@@ -8,6 +8,8 @@ import com.tyhone.arcanacraft.common.tileentity.TileEntityDeconstructionTable;
 import com.tyhone.arcanacraft.common.util.ItemStackUtil;
 
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.particle.ParticleBreaking;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -91,15 +93,15 @@ public class BlockDeconstructionTable extends ModBlockTileEntityBase{
 	            spawnEffectParticle(world, pos, rand);
 			}
 		}
-		if(te.getPercentage() > 0.8F){
+		/*if(te.getPercentage() > 0.8F){
 			for(int i = 0; i < 8; i++){
 	            spawnEffectParticle(world, pos, rand);
 			}
-		}
+		}*/
 	}
 
 	@SideOnly(Side.CLIENT)
-	private void spawnEffectParticle(World world, BlockPos pos, Random rand){
+	public static void spawnEffectParticle(World world, BlockPos pos, Random rand){
         double px = (double)pos.getX() + 0.5D + ((double)rand.nextFloat() - 0.5D) * 0.5D;
         double py = (double)((float)pos.getY() + 0.0625F - ((rand.nextFloat() - 0.5D)/3));
         double pz = (double)pos.getZ() + 0.5D + ((double)rand.nextFloat() - 0.5D) * 0.5D;

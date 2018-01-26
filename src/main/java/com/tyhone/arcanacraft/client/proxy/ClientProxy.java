@@ -1,5 +1,6 @@
 package com.tyhone.arcanacraft.client.proxy;
 
+import com.tyhone.arcanacraft.client.TextureStitcherFX;
 import com.tyhone.arcanacraft.client.render.ModTileEntitySpecialRender;
 import com.tyhone.arcanacraft.client.render.TinktureColour;
 import com.tyhone.arcanacraft.common.blocks.base.ModBlockBase;
@@ -11,6 +12,7 @@ import com.tyhone.arcanacraft.common.proxy.CommonProxy;
 
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -23,6 +25,8 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void preInit(FMLPreInitializationEvent e) {
         super.preInit(e);
+        
+        MinecraftForge.EVENT_BUS.register(new TextureStitcherFX());
         
         ModTileEntitySpecialRender.preInit();
         ModEntities.initModels();

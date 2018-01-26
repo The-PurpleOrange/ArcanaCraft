@@ -9,14 +9,14 @@
     "variant=uniform": [
       { "model": "arcanacraft:alchemic_stone/uniform" }
   ],
-    "variant=smooth": [
-      { "model": "arcanacraft:alchemic_stone/smooth" }
-  ],
-  "variant=tile": [
+    "variant=tile": [
       { "model": "arcanacraft:alchemic_stone/tile" }
   ],
-  "variant=smooth_tile": [
-      { "model": "arcanacraft:alchemic_stone/smooth_tile" }
+  "variant=brick": [
+      { "model": "arcanacraft:alchemic_stone/brick" }
+  ],
+  "variant=chiseled": [
+      { "model": "arcanacraft:alchemic_stone/chiseled" }
   ]
   }
 }

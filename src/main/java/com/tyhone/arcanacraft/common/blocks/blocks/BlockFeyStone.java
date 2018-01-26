@@ -3,7 +3,7 @@ package com.tyhone.arcanacraft.common.blocks.blocks;
 import com.tyhone.arcanacraft.common.blocks.base.IEnumMeta;
 import com.tyhone.arcanacraft.common.blocks.base.ModBlockBase;
 import com.tyhone.arcanacraft.common.blocks.base.ModBlockEnum;
-import com.tyhone.arcanacraft.common.blocks.blocks.BlockAlchemicStone.EnumAlchemicStoneType;
+import com.tyhone.arcanacraft.common.blocks.blocks.BlockFeyStone.EnumAlchemicStoneType;
 
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
@@ -19,7 +19,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockAlchemicStone extends ModBlockEnum {
+public class BlockFeyStone extends ModBlockEnum {
 
 	public enum EnumAlchemicStoneType implements IEnumMeta, Comparable<EnumAlchemicStoneType>{
 		UNIFORM,
@@ -58,8 +58,8 @@ public class BlockAlchemicStone extends ModBlockEnum {
 	
 	public static final PropertyEnum VARIANT = PropertyEnum.create("variant", EnumAlchemicStoneType.class);
 	
-	public BlockAlchemicStone() {
-		super("alchemic_stone", EnumAlchemicStoneType.VARIANTS);
+	public BlockFeyStone() {
+		super("fey_stone", EnumAlchemicStoneType.VARIANTS);
         setDefaultState(getDefaultState().withProperty(VARIANT, EnumAlchemicStoneType.UNIFORM));
         //this.setCreativeTab(null);
 	}

@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "arcanacraft:blocks/alchemic_stone/tile"
+    "all": "arcanacraft:blocks/alchemic_stone/brick"
   }
 }

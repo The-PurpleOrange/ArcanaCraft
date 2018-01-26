@@ -33,10 +33,8 @@ public class ItemToolWandIllumination extends ModItemBase{
 			BlockPos placePos = tracePos.getBlockPos().offset(tracePos.sideHit);
 			
 			boolean ported = false;
-			if(!player.isSneaking()){
-				if(world.getBlockState(placePos).getBlock().isReplaceable(world, placePos)){
-					world.setBlockState(placePos, ModBlocks.ALCHEMIC_LIGHT.getDefaultState());
-				}
+			if(world.getBlockState(placePos).getBlock().isReplaceable(world, placePos)){
+				world.setBlockState(placePos, ModBlocks.ALCHEMIC_LIGHT.getDefaultState());
 			}
 		}
         return new ActionResult<ItemStack>(EnumActionResult.FAIL, player.getHeldItem(hand));

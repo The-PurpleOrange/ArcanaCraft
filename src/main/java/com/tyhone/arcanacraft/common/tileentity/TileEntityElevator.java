@@ -17,7 +17,7 @@ public class TileEntityElevator extends ModTileEntityBase implements ITickable{
 	public void update() {
 		int i = 0;
 		for(i = 0; i < 8; i++){
-			if(!world.getBlockState(pos.add(0, i+1, 0)).getBlock().isPassable(world, pos)){
+			if(i != 0 && !world.getBlockState(pos.add(0, i+1, 0)).getBlock().isPassable(world, pos)){
 				break;
 			}
 		}

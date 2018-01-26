@@ -1,10 +1,12 @@
 package com.tyhone.arcanacraft.common.tileentity;
 
 import java.util.List;
+import java.util.Random;
 
-import com.tyhone.arcanacraft.Arcanacraft;
+import com.tyhone.arcanacraft.client.ParticleWind;
 import com.tyhone.arcanacraft.common.tileentity.base.ModTileEntityBase;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,7 +17,7 @@ public class TileEntityWardStone extends ModTileEntityBase implements ITickable{
 
 	@Override
 	public void update() {
-		AxisAlignedBB bounding = new AxisAlignedBB(pos.up()).grow(0, 2, 0);
+		AxisAlignedBB bounding = new AxisAlignedBB(pos.up()).grow(0.1D, 2D, 0.1D);
 		List<Entity> entities = world.getEntitiesWithinAABB(Entity.class, bounding);
 
 		for(Entity entity : entities){
@@ -31,6 +33,10 @@ public class TileEntityWardStone extends ModTileEntityBase implements ITickable{
 				entity.setVelocity(entity.motionX/8, entity.motionY, entity.motionZ/8);
 			}
 		}
+		
+
+        /*ParticleWind wind = new ParticleWind(world, pos.getX()+0.5, pos.getY() + 1F + ((new Random().nextFloat()) * 2), pos.getZ()+0.5, 0, 0, 0, 1F, 0xffffff, 0xffffff);
+        Minecraft.getMinecraft().effectRenderer.addEffect(wind);*/
 	}
 
 }

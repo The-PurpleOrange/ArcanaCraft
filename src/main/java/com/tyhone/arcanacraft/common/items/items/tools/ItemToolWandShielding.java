@@ -1,17 +1,18 @@
 package com.tyhone.arcanacraft.common.items.items.tools;
 
 import java.util.List;
+import java.util.Random;
 
 import javax.annotation.Nullable;
 
-import com.tyhone.arcanacraft.Arcanacraft;
+import com.tyhone.arcanacraft.client.ParticleWind;
 import com.tyhone.arcanacraft.common.items.base.ModItemBase;
 
 import net.minecraft.block.BlockDispenser;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.IItemPropertyGetter;
 import net.minecraft.item.ItemArmor;
@@ -50,7 +51,7 @@ public class ItemToolWandShielding extends ModItemBase{
 	
 	@Override
 	public void onUsingTick(ItemStack stack, EntityLivingBase player, int count){
-		AxisAlignedBB bounding = player.getEntityBoundingBox().grow(3D, 1D, 3D);
+		AxisAlignedBB bounding = player.getEntityBoundingBox().grow(2D, 1D, 2D);
 		List<Entity> entities = player.getEntityWorld().getEntitiesInAABBexcluding(player, bounding, null);
 		for(Entity entity : entities){
 			entity.setVelocity(entity.motionX/4, entity.motionY, entity.motionZ/4);
@@ -63,6 +64,14 @@ public class ItemToolWandShielding extends ModItemBase{
 			}
 			else{
 				entity.setVelocity(entity.motionX/4, entity.motionY, entity.motionZ/4);
+			}
+		}
+		
+		
+		if(player.getEntityWorld().isRemote){
+			for(int i = 0; i < 3; i++){
+				ParticleWind wind = new ParticleWind(player.getEntityWorld(), 0.5, ((new Random().nextFloat()) * 2), 0.5, 0, 0, 0, 1F, 0xffffff, 0xffffff, player);
+				Minecraft.getMinecraft().effectRenderer.addEffect(wind);
 			}
 		}
 	}

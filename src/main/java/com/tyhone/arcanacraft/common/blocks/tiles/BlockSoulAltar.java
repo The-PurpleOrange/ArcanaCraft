@@ -18,17 +18,17 @@ import net.minecraft.world.World;
 
 public class BlockSoulAltar extends ModBlockTileEntityBase{
 
-    protected static final AxisAlignedBB PEDESTAL_AABB = new AxisAlignedBB(0.0625F, 0.0F, 0.0625F, 0.9375F, 1.0F, 0.9375F);
+    //protected static final AxisAlignedBB PEDESTAL_AABB = new AxisAlignedBB(0.0625F, 0.0F, 0.0625F, 0.9375F, 1.0F, 0.9375F);
     
 	public BlockSoulAltar() {
 		super("soul_altar");
 	}
 	
-    @Override
+    /*@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
     {
         return PEDESTAL_AABB;
-    }
+    }*/
 
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
