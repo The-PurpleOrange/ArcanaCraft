@@ -2,12 +2,15 @@ package com.tyhone.arcanacraft.common.items.items.tools;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
+import com.tyhone.arcanacraft.client.ParticleWind;
 import com.tyhone.arcanacraft.common.items.base.ModItemBase;
 import com.tyhone.arcanacraft.common.reference.Names;
 import com.tyhone.arcanacraft.common.util.ResourceLocationHelper;
 
 import it.unimi.dsi.fastutil.Arrays;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.util.ITooltipFlag;
@@ -43,7 +46,7 @@ public class ItemTrinketMagnet extends ModItemBase{
 		
 		if(entity instanceof EntityPlayer){
 			EntityPlayer player = (EntityPlayer) entity;
-			if(isActive(stack)){
+			if(isActive(stack) && !player.isSneaking()){
 				AxisAlignedBB bounding = player.getEntityBoundingBox().grow(8D);
 				List<Entity> entities = player.getEntityWorld().getEntitiesWithinAABB(EntityItem.class, bounding); //getEntitiesInAABBexcluding(player, bounding, null);
 				for(Entity entityItem : entities){
@@ -52,9 +55,16 @@ public class ItemTrinketMagnet extends ModItemBase{
 						double dy = entityItem.posY - player.posY;
 						double dz = entityItem.posZ - player.posZ;
 						float s = 1F;
-						entityItem.motionX = (dx/2)*-1;
-						entityItem.motionY = ((dy/2)*-1)+0.1;
-						entityItem.motionZ = (dz/2)*-1;
+						entityItem.motionX = (dx/5)*-1;
+						entityItem.motionY = ((dy/5)*-1)+0.1;
+						entityItem.motionZ = (dz/5)*-1;
+					}
+					
+					if(world.isRemote && entityItem instanceof EntityItem && entityItem.ticksExisted > 20){
+						ParticleWind wind = new ParticleWind(world, 0.5, 0.2 + ((new Random().nextFloat()) /2), 0.5, 0, 0, 0, 1F, 0x0000ff, 0x0000ff, entityItem, 0.5D, 0.4D, 20);
+						Minecraft.getMinecraft().effectRenderer.addEffect(wind);
+						ParticleWind wind2 = new ParticleWind(world, 0.5, 0.2 + ((new Random().nextFloat()) / 2), 0.5, 0, 0, 0, 1F, 0xff0000, 0xff0000, entityItem, 0.5D, 0.4D, 20);
+						Minecraft.getMinecraft().effectRenderer.addEffect(wind2);
 					}
 				}
 			}

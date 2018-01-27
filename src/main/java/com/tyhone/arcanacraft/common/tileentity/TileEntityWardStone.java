@@ -33,10 +33,6 @@ public class TileEntityWardStone extends ModTileEntityBase implements ITickable{
 				entity.setVelocity(entity.motionX/8, entity.motionY, entity.motionZ/8);
 			}
 		}
-		
-
-        /*ParticleWind wind = new ParticleWind(world, pos.getX()+0.5, pos.getY() + 1F + ((new Random().nextFloat()) * 2), pos.getZ()+0.5, 0, 0, 0, 1F, 0xffffff, 0xffffff);
-        Minecraft.getMinecraft().effectRenderer.addEffect(wind);*/
 	}
 
 }

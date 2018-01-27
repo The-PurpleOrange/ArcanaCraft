@@ -31,12 +31,15 @@ public class ParticleWind extends Particle{
 	double yConstant;
 	double centreZ;
 	
+	double speed;
+	double size;
+	
 	Entity entity;
 	
 	
 	private final ResourceLocation orbRL = ResourceLocationHelper.getModelResourceLocation("entity/orb_fx");
 	
-	public ParticleWind(World world, double xc, double yc, double zc, double xs, double ys, double zs, float scale, int startColour, int endColour, Entity entity) {
+	public ParticleWind(World world, double xc, double yc, double zc, double xs, double ys, double zs, float scale, int startColour, int endColour, Entity entity, double speed, double size, int lifespan) {
 		super(world, entity.posX + xc, entity.posY + yc, entity.posZ + xc, xs, ys, zs);
 		
 		this.entity = entity;
@@ -58,8 +61,11 @@ public class ParticleWind extends Particle{
         this.particleGreen = sg;
         this.particleBlue = sb;
         
+        this.speed = speed;
+        this.size = size;
+        
 		particleGravity = Blocks.FIRE.blockParticleGravity;
-		particleMaxAge = 60;
+		particleMaxAge = lifespan;
 
 		particleScaleMax = scale;
 		particleScale = 0;
@@ -99,8 +105,8 @@ public class ParticleWind extends Particle{
 		
 		//move(motionX*lf, motionY*lf, motionZ*lf);
 
-		this.posX = this.centreX + Math.cos(2D * Math.PI * ((this.particleAge) / 20D) /1.5D)*2;
-		this.posZ = this.centreZ + Math.sin(2D * Math.PI * ((this.particleAge) / 20D) / 1.5D)*2;
+		this.posX = this.centreX + Math.cos(2D * Math.PI * ((this.particleAge) / 20D) / speed)*size;
+		this.posZ = this.centreZ + Math.sin(2D * Math.PI * ((this.particleAge) / 20D) / speed)*size;
 		this.posY = this.centreY;
 		
 		if(this.particleAge++ >= this.particleMaxAge){
@@ -124,7 +130,7 @@ public class ParticleWind extends Particle{
 			this.particleScale = ns;
 		}
 		else if(lf<ss && particleScale < particleScaleMax){
-			this.particleScale +=0.05;
+			this.particleScale = lf * (particleScaleMax/ss);
 		}
 		
 		//this.particleScale = this.particleScaleMax - (lf * this.particleScaleMax);

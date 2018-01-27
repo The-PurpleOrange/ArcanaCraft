@@ -70,7 +70,7 @@ public class ItemToolWandShielding extends ModItemBase{
 		
 		if(player.getEntityWorld().isRemote){
 			for(int i = 0; i < 3; i++){
-				ParticleWind wind = new ParticleWind(player.getEntityWorld(), 0.5, ((new Random().nextFloat()) * 2), 0.5, 0, 0, 0, 1F, 0xffffff, 0xffffff, player);
+				ParticleWind wind = new ParticleWind(player.getEntityWorld(), 0.5, ((new Random().nextFloat()) * 2), 0.5, 0, 0, 0, 1F, 0xffffff, 0xffffff, player, 1.5D, 2D, 60);
 				Minecraft.getMinecraft().effectRenderer.addEffect(wind);
 			}
 		}
