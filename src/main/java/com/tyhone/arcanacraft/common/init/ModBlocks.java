@@ -19,6 +19,7 @@ import com.tyhone.arcanacraft.common.blocks.blocks.BlockSoulStone;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockAlchemicArray;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockAlembic;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockDeconstructionTable;
+import com.tyhone.arcanacraft.common.blocks.tiles.BlockDisapearingBlock;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockElevator;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockGrandRitualCircle;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockInfusionAltar;
@@ -72,7 +73,8 @@ public class ModBlocks {
 	public static final ModBlockBase JAR = new BlockJar();
 	public static final ModBlockBase PEDESTAL = new BlockPedestal();
 	public static final ModBlockBase PEDESTAL_SLAB = new BlockPedestalSlab();
-	
+
+	public static final ModBlockBase DISAPEARING_BLOCK = new BlockDisapearingBlock();
 
 	public static final ModBlockBase SPIRIT_SKULL_BLOCK = new BlockSpiritSkull();
 	

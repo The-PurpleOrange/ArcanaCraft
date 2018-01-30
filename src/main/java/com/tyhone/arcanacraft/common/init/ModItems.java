@@ -34,6 +34,7 @@ import com.tyhone.arcanacraft.common.items.items.tools.ItemToolWandExodus;
 import com.tyhone.arcanacraft.common.items.items.tools.ItemToolWandFire;
 import com.tyhone.arcanacraft.common.items.items.tools.ItemToolWandIllumination;
 import com.tyhone.arcanacraft.common.items.items.tools.ItemToolWandShielding;
+import com.tyhone.arcanacraft.common.items.items.tools.ItemTrinketHoverCharm;
 import com.tyhone.arcanacraft.common.items.items.tools.ItemTrinketHungerCharm;
 import com.tyhone.arcanacraft.common.items.items.tools.ItemTrinketMagnet;
 
@@ -46,7 +47,7 @@ public class ModItems {
 
 	public static final ModItemBase RED_COAL = new ItemRedCoal();
 	public static final ModItemBase ALCHEMICAL_COAL = new ItemAlchemicalCoal();
-	public static final ModItemBase ALCHEMIC_DUST = new ItemAlchemicDust();
+	//public static final ModItemBase ALCHEMIC_DUST = new ItemAlchemicDust();
 	public static final ModItemBase DUST = new ItemDust();
 	public static final ModItemBase LENS = new ItemLens();
 	public static final ModItemBase SOUL = new ItemSoul();
@@ -78,6 +79,7 @@ public class ModItems {
 
 	public static final ModItemBase TRINKET_HUNGER_CHARM = new ItemTrinketHungerCharm();
 	public static final ModItemBase TRINKET_MAGNET = new ItemTrinketMagnet();
+	public static final ModItemBase TRINKET_HOVER_CHARM = new ItemTrinketHoverCharm();
 
 	
 	private ModItems() {}

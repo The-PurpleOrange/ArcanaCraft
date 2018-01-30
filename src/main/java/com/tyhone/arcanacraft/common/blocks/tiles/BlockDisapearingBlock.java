@@ -1,40 +1,57 @@
-package com.tyhone.arcanacraft.common.blocks.blocks;
+package com.tyhone.arcanacraft.common.blocks.tiles;
 
-import com.tyhone.arcanacraft.common.blocks.base.ModBlockBase;
+import java.util.List;
+
+import com.tyhone.arcanacraft.common.blocks.base.ModBlockTileEntityBase;
 import com.tyhone.arcanacraft.common.init.ModBlocks;
+import com.tyhone.arcanacraft.common.tileentity.TileEntityDisapearingBlock;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockAlchemicGlass extends ModBlockBase {
-	
-	
+public class BlockDisapearingBlock extends ModBlockTileEntityBase{
+
+	private static final int timer = 40;
 	private final boolean ignoreSimilarity = false;
 	
-	
-	public BlockAlchemicGlass() {
-		super("alchemic_glass");
+	public BlockDisapearingBlock() {
+		super("disapearing_block");
 	}
+
+	@Override
+	public TileEntity createNewTileEntity(World worldIn, int meta) {
+		TileEntityDisapearingBlock te = new TileEntityDisapearingBlock();
+		te.setTimer(timer);
+		return te;
+	}
+	
+	public static int getTimer(){
+		return timer;
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+    public BlockRenderLayer getBlockLayer()
+    {
+        return BlockRenderLayer.TRANSLUCENT;
+    }   
 	
 	@Override
 	public boolean isFullCube(IBlockState state)
     {
         return false;
     }
-	
-    @Override
-	@SideOnly(Side.CLIENT)
-    public BlockRenderLayer getBlockLayer()
-    {
-        return BlockRenderLayer.TRANSLUCENT;
-    }   
 	
 	@Override
 	public boolean isOpaqueCube(IBlockState state)
@@ -49,7 +66,7 @@ public class BlockAlchemicGlass extends ModBlockBase {
         IBlockState iblockstate = blockAccess.getBlockState(pos.offset(side));
         Block block = iblockstate.getBlock();
 
-        if (this == Blocks.GLASS || this == ModBlocks.ALCHEMIC_GLASS)
+        if (this == ModBlocks.DISAPEARING_BLOCK)
         {
             if (blockState != iblockstate)
             {

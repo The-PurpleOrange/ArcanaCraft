@@ -16,9 +16,9 @@ public class Names {
         public static final ArrayList<String> ESSENCE = al("iron", "gold", "magicite", "nether", "eldritch", "prosper", "greed", "cedius", "soul");
         public static final ArrayList<String> SHARD = al("nether", "eldritch", "prosper", "greed", "cedius");
         public static final ArrayList<String> INGOT = al("magicite", "blood_iron", "alcharium");
-        public static final ArrayList<String> DUST = al("blood", "bone", "charcoal", "iron", "gold", "magicite", "ender");
-        public static final ArrayList<String> CRYSTAL = al("blood");
-        public static final ArrayList<String> ITEM = al("bone_ash", "quartz_dust", "clean_flesh", "blood_drop", "star_shard", "inert_star", "heart", "heat_core", "ender_tear", "blood_rod", "heart_ender");
+        public static final ArrayList<String> DUST = al("blood", "bone", "charcoal", "iron", "gold", "magicite", "ender", "emeradine", "diamond");
+        public static final ArrayList<String> CRYSTAL = al("blood", "emeradine");
+        public static final ArrayList<String> ITEM = al("bone_ash", "quartz_dust", "clean_flesh", "blood_drop", "star_shard", "inert_star", "heart", "heat_core", "ender_tear", "blood_rod", "heart_ender", "emeradine", "catalyst");
         public static final ArrayList<String> STAR = al("mundane", "eldritch", "virtuous");
 		public static final ArrayList<String> NEEDLE = al("bone", "cactus", "bone_bloodied", "cactus_bloodied", "blood_iron");
         

@@ -46,9 +46,11 @@ public class ItemNeedle extends ModItemBase{
 					return jabPlayer(player, new ItemStack(ModItems.NEEDLE, 1, 3), hand, true);
 				}
 				case 4:{
-					if(!player.addItemStackToInventory(new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("blood_drop")))){
-						EntityItem eOutput = new EntityItem(world, player.posX, player.posY+1, player.posZ, new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("blood_drop")));
-						world.spawnEntity(eOutput);
+					for(int i = 0; i < 4; i++){
+						if(!player.addItemStackToInventory(new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("blood_drop")))){
+							EntityItem eOutput = new EntityItem(world, player.posX, player.posY+1, player.posZ, new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("blood_drop")));
+							world.spawnEntity(eOutput);
+						}
 					}
 				}
 				default: return new ActionResult<ItemStack>(EnumActionResult.PASS, player.getHeldItem(hand));
@@ -76,10 +78,12 @@ public class ItemNeedle extends ModItemBase{
 			case 4:{
 				if(attacker instanceof EntityPlayer){
 					EntityPlayer player = (EntityPlayer) attacker;
-					if(!player.addItemStackToInventory(new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("blood_drop")))){
-						World world = player.getEntityWorld();
-						EntityItem eOutput = new EntityItem(world, player.posX, player.posY+1, player.posZ, new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("blood_drop")));
-						world.spawnEntity(eOutput);
+					for(int i = 0; i < 4; i++){
+						if(!player.addItemStackToInventory(new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("blood_drop")))){
+							World world = player.getEntityWorld();
+							EntityItem eOutput = new EntityItem(world, player.posX, player.posY+1, player.posZ, new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("blood_drop")));
+							world.spawnEntity(eOutput);
+						}
 					}
 				}
 			}
@@ -100,10 +104,12 @@ public class ItemNeedle extends ModItemBase{
 				poked = true;
 			}
 			if(poked){
-				if(!player.addItemStackToInventory(new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("blood_drop")))){
-					World world = player.getEntityWorld();
-					EntityItem eOutput = new EntityItem(world, player.posX, player.posY+1, player.posZ, new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("blood_drop")));
-					world.spawnEntity(eOutput);
+				for(int i = 0; i < 2; i++){
+					if(!player.addItemStackToInventory(new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("blood_drop")))){
+						World world = player.getEntityWorld();
+						EntityItem eOutput = new EntityItem(world, player.posX, player.posY+1, player.posZ, new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("blood_drop")));
+						world.spawnEntity(eOutput);
+					}
 				}
 				if(poison){
 					target.addPotionEffect(new PotionEffect(MobEffects.POISON, 80, 0, false, true));
@@ -126,10 +132,12 @@ public class ItemNeedle extends ModItemBase{
 			poked = true;
 		}
 		if(poked){
-			if(!player.addItemStackToInventory(new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("blood_drop")))){
-				World world = player.getEntityWorld();
-				EntityItem eOutput = new EntityItem(world, player.posX, player.posY+1, player.posZ, new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("blood_drop")));
-				world.spawnEntity(eOutput);
+			for(int i = 0; i < 2; i++){
+				if(!player.addItemStackToInventory(new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("blood_drop")))){
+					World world = player.getEntityWorld();
+					EntityItem eOutput = new EntityItem(world, player.posX, player.posY+1, player.posZ, new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("blood_drop")));
+					world.spawnEntity(eOutput);
+				}
 			}
 			if(poison){
 				player.addPotionEffect(new PotionEffect(MobEffects.POISON, 240, 1, false, true));

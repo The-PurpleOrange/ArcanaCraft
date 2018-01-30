@@ -25,5 +25,6 @@ public class InitRecipesTransmutationAltar {
 		ArcanacraftCraftingManager.registerTransmutationRecipes(new ItemStack(ModItems.TRINKET_MAGNET, 1), new ItemStack(ModItems.INGOT, 1, ItemMetaUtil.ingot("magicite")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("iron")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("gold")), new ItemStack(ModItems.AYRE, 1));
 		//ArcanacraftCraftingManager.registerTransmutationRecipes(new ItemStack(ModItems.INGOT, 1, ItemMetaUtil.ingot("alcharium")), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("heart_ender")), new ItemStack(ModItems.EVOLITE), new ItemStack(ModItems.ALCHEMICAL_COAL), new ItemStack(ModItems.INGOT, 1, ItemMetaUtil.item("magicite")));
 		
+		ArcanacraftCraftingManager.registerTransmutationRecipes(new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("emeradine")), new ItemStack(ModItems.CRYSTAL, 1, ItemMetaUtil.crystal("emeradine")), new ItemStack(ModItems.CRYSTAL, 1, ItemMetaUtil.crystal("emeradine")), new ItemStack(ModItems.CRYSTAL, 1, ItemMetaUtil.crystal("emeradine")), new ItemStack(ModItems.CRYSTAL, 1, ItemMetaUtil.crystal("emeradine")));
 	}
 }

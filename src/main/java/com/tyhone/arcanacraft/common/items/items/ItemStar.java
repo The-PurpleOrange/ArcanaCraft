@@ -19,6 +19,6 @@ public class ItemStar  extends ModItemBase{
 	@SideOnly(Side.CLIENT)
     public boolean hasEffect(ItemStack stack)
     {
-        return true;
+    	return stack.getMetadata() != 0;
     }
 }

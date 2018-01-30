@@ -1,0 +1,6 @@
+{
+	"parent": "item/generated",
+	"textures": {
+		"layer0": "arcanacraft:items/tool/trinket/trinket_hover_charm_active"
+	}
+}
