@@ -2,6 +2,6 @@
   "parent": "block/cube_top",
   "textures": {
         "top": "arcanacraft:blocks/elevator",
-        "side": "arcanacraft:blocks/alchemic_stone_uniform"
+        "side": "arcanacraft:blocks/alchemic_stone/uniform"
   }
 }

@@ -1,0 +1,32 @@
+{
+  "result": {
+    "item": "arcanacraft:alchemic_contraption"
+  },
+  "pattern": [
+    "gtg",
+    "ese",
+    "gbg"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "b": {
+      "item": "arcanacraft:ingot",
+      "data": 1
+    },
+    "t": {
+      "item": "arcanacraft:item",
+      "data": 8
+    },
+    "s": {
+      "item": "arcanacraft:soul_stone",
+      "data": 32767
+    },
+    "g": {
+      "item": "arcanacraft:essence",
+      "data": 1
+    },
+    "e": {
+      "item": "arcanacraft:evolite"
+    }
+  }
+}

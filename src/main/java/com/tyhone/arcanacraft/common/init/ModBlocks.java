@@ -6,10 +6,12 @@ import java.util.List;
 
 import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.common.blocks.base.ModBlockBase;
+import com.tyhone.arcanacraft.common.blocks.blocks.BlockAlchemicContraption;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockAlchemicGlass;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockAlchemicLight;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockAlchemicStone;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockAlchemicalCoal;
+import com.tyhone.arcanacraft.common.blocks.blocks.BlockAquelsa;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockBloodStone;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockChalk;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockFeyStone;
@@ -50,6 +52,8 @@ public class ModBlocks {
 	public static final ModBlockBase FEY_STONE = new BlockFeyStone();
 
 	public static final ModBlockBase FLESHY_BLOCK = new BlockFleshyBlock();
+	public static final ModBlockBase ALCHEMIC_CONTRAPTION = new BlockAlchemicContraption();
+	public static final ModBlockBase AQUELSA = new BlockAquelsa();
 
 	public static final ModBlockBase WARD_STONE = new BlockWardStone();
 	public static final ModBlockBase ELEVATOR = new BlockElevator();

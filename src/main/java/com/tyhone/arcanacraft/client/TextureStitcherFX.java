@@ -12,5 +12,8 @@ public class TextureStitcherFX {
 	public void stitcherEventPre(TextureStitchEvent.Pre event){
 		ResourceLocation orbRL = ResourceLocationHelper.getModelResourceLocation("entity/orb_fx");
 		event.getMap().registerSprite(orbRL);
+
+		ResourceLocation starRL = ResourceLocationHelper.getModelResourceLocation("entity/star_fx");
+		event.getMap().registerSprite(starRL);
 	}
 }

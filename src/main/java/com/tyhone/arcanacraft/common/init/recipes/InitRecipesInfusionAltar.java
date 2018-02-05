@@ -54,7 +54,7 @@ public class InitRecipesInfusionAltar {
 			//HUNGER CHARM
 			Object[] inputs = {new ItemStack(ModItems.SHARD, 1, ItemMetaUtil.shard("cedius")), new ItemStack(Items.ENDER_PEARL), WildStack.W(ModBlocks.ALCHEMIC_STONE, 1), new ItemStack(ModItems.INGOT, 1, ItemMetaUtil.ingot("Alcharium"))};
 			TinktureStack[] tinktures = {new TinktureStack(ModTinktureTypes.ANIMO, 16), new TinktureStack(ModTinktureTypes.VOIDUS, 8)};
-			ArcanacraftCraftingManager.registerInfusionRecipe(new ItemStack(ModItems.TRINKET_HUNGER_CHARM, 1), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("inert_star")), inputs, tinktures);
+			ArcanacraftCraftingManager.registerInfusionRecipe(new ItemStack(ModItems.TRINKET_HUNGER_CHARM, 1), new ItemStack(ModItems.STAR, 1, ItemMetaUtil.item("mundane")), inputs, tinktures);
 		}{
 			//ALCHARIUM
 			Object[] inputs = {new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("cedius")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("greed")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("nether")), new ItemStack(ModItems.ALCHEMICAL_COAL, 1), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("eldritch")), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("inert_star")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("cedius")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("greed"))};

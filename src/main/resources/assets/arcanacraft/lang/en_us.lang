@@ -2,7 +2,15 @@
 
 #Items
 item.arcanacraft:hammer.name=Alchemic Hammer
-item.arcanacraft:tool_wand_exodus.name=Exodus Wand
+
+item.arcanacraft:tool_wand_exodus.name=Exodus Rod
+item.arcanacraft:tool_wand_shielding.name=Staff of Winds
+item.arcanacraft:tool_wand_fire.name=Staff of Fire
+item.arcanacraft:tool_wand_illumination.name=Illumination Wand
+
+item.arcanacraft:trinket_magnet.name=Alchemic Magnet
+item.arcanacraft:trinket_hunger_charm.name=Hunger Charm
+item.arcanacraft:trinket_hover_charm.name=Feather of Levis
 
 item.arcanacraft:tinkture.name=Tinkture
 item.arcanacraft:red_coal.name=Red Coal
@@ -21,6 +29,7 @@ item.arcanacraft:icons.icons_ritual_circle.name=Ritual Circle
 item.arcanacraft:spirit_skull.name=Bob
 
 item.arcanacraft:crystal.crystal_blood.name=Blood Crystal
+item.arcanacraft:crystal.crystal_emeradine.name=Emeradine Crystal
 
 item.arcanacraft:dust.dust_blood.name=Blood Dust
 item.arcanacraft:dust.dust_bone.name=Bone Shards
@@ -29,6 +38,8 @@ item.arcanacraft:dust.dust_iron.name=Iron Dust
 item.arcanacraft:dust.dust_gold.name=Gold Dust
 item.arcanacraft:dust.dust_magicite.name=Magicite Dust
 item.arcanacraft:dust.dust_ender.name=Ender Dust
+item.arcanacraft:dust.dust_emeradine.name=Emeradine Dust
+item.arcanacraft:dust.dust_diamond.name=Diamond Dust
 
 item.arcanacraft:lens.lens_essence.name=Ethos Lens
 item.arcanacraft:lens.lens_soul.name=Soul Lens
@@ -67,7 +78,12 @@ item.arcanacraft:item.item_inert_star.name=Inert Star
 item.arcanacraft:item.item_heart.name=Homunculus Heart
 item.arcanacraft:item.item_heat_core.name=Blazing Core
 item.arcanacraft:item.item_ender_tear.name=Ender Tear
+item.arcanacraft:item.item_blood_rod.name=Blood Iron Rod
+item.arcanacraft:item.item_heart_ender.name=Ender Heart
+item.arcanacraft:item.item_emeradine.name=Emeradine
+item.arcanacraft:item.item_catalyst.name=Alchemic Catalyst
 
+item.arcanacraft:star.star_mundane.name=Mundane Star
 item.arcanacraft:star.star_eldritch.name=Eldritch Star
 item.arcanacraft:star.star_virtuous.name=Virtuous Star
 
@@ -90,13 +106,34 @@ tile.arcanacraft:red_coal_block.name=Red Coal Block
 tile.arcanacraft:alchemical_coal_block.name=Alchemic Coal Block
 tile.arcanacraft:alchemic_glass.name=Alchemic Glass
 tile.arcanacraft:fleshy_block.name=Fleshy Block
+tile.arcanacraft:disapearing_block.name=Levis Block
+tile.arcanacraft:alchemic_light.name=Alchemic Light
+tile.arcanacraft:alchemic_contraption.name=Alchemic Contraption
 
 tile.arcanacraft:spirit_skull_block.name=Bob
 
+tile.arcanacraft:ward_stone.name=Warding Stone
+tile.arcanacraft:elevator.name=Alchemic Levitator
+
 tile.arcanacraft:alchemic_stone.uniform.name=Alchemic Stone
 tile.arcanacraft:alchemic_stone.tile.name=Alchemic Stone Tile
-tile.arcanacraft:alchemic_stone.smooth.name=Smooth Alchemic Stone
-tile.arcanacraft:alchemic_stone.smooth_tile.name=Smooth Alchemic Stone Tile
+tile.arcanacraft:alchemic_stone.brick.name=Alchemic Stone Brick
+tile.arcanacraft:alchemic_stone.chiseled.name=Chiseled Alchemic Stone
+
+tile.arcanacraft:blood_stone.uniform.name=Blood Stone
+tile.arcanacraft:blood_stone.tile.name=Blood Stone Tile
+tile.arcanacraft:blood_stone.brick.name=Blood Stone Brick
+tile.arcanacraft:blood_stone.chiseled.name=Chiseled Blood Stone
+
+tile.arcanacraft:soul_stone.uniform.name=Soul Stone
+tile.arcanacraft:soul_stone.tile.name=Soul Stone Tile
+tile.arcanacraft:soul_stone.brick.name=Soul Stone Brick
+tile.arcanacraft:soul_stone.chiseled.name=Chiseled Soul Stone
+
+tile.arcanacraft:fey_stone.uniform.name=Fey Stone
+tile.arcanacraft:fey_stone.tile.name=Fey Stone Tile
+tile.arcanacraft:fey_stone.brick.name=Fey Stone Brick
+tile.arcanacraft:fey_stone.chiseled.name=Chiseled Fey Stone
 
 tile.arcanacraft:pedestal.name=Pedestal
 tile.arcanacraft:pedestal_slab.name=Pedestal Slab
