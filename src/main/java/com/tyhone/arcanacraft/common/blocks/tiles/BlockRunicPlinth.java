@@ -1,6 +1,7 @@
 package com.tyhone.arcanacraft.common.blocks.tiles;
 
 import com.tyhone.arcanacraft.common.blocks.base.ModBlockTileEntityBase;
+import com.tyhone.arcanacraft.common.tileentity.TileEntityRunicPlinth;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
@@ -53,7 +54,7 @@ public class BlockRunicPlinth extends ModBlockTileEntityBase{
 
 	 @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing side, float hitX, float hitY, float hitZ) {
-        if (!world.isRemote) {
+        /*if (!world.isRemote) {
         	TileEntityRunicPlinth te = (TileEntityRunicPlinth) world.getTileEntity(pos);
             if (te.getStack().isEmpty()) {
                 if (!player.getHeldItem(hand).isEmpty()) {
@@ -73,7 +74,7 @@ public class BlockRunicPlinth extends ModBlockTileEntityBase{
                     player.openContainer.detectAndSendChanges();
                 }
             }
-        }
+        }*/
         
         return true;
     }

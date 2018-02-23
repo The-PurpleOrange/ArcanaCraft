@@ -1,14 +1,11 @@
 package com.tyhone.arcanacraft.api.util;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import com.tyhone.arcanacraft.api.tinkture.TinktureRegistry;
 import com.tyhone.arcanacraft.api.tinkture.TinktureStack;
 import com.tyhone.arcanacraft.api.tinkture.TinktureType;
 import com.tyhone.arcanacraft.common.init.ModTinktureTypes;
-
-import net.minecraft.item.ItemStack;
 
 public class TinktureStackUtil {
 	

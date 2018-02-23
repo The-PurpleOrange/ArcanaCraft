@@ -4,8 +4,8 @@
 item.arcanacraft:hammer.name=Alchemic Hammer
 
 item.arcanacraft:tool_wand_exodus.name=Exodus Rod
-item.arcanacraft:tool_wand_shielding.name=Staff of Winds
-item.arcanacraft:tool_wand_fire.name=Staff of Fire
+item.arcanacraft:tool_wand_shielding.name=Rod of Tuitio
+item.arcanacraft:tool_wand_fire.name=Staff of Fire [WIP]
 item.arcanacraft:tool_wand_illumination.name=Illumination Wand
 
 item.arcanacraft:trinket_magnet.name=Alchemic Magnet
@@ -112,6 +112,7 @@ tile.arcanacraft:alchemic_contraption.name=Alchemic Contraption
 
 tile.arcanacraft:spirit_skull_block.name=Bob
 
+tile.arcanacraft:aquelsa.name=Aquelsa
 tile.arcanacraft:ward_stone.name=Warding Stone
 tile.arcanacraft:elevator.name=Alchemic Levitator
 
