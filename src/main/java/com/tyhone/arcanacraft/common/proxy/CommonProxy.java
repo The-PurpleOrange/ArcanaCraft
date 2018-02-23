@@ -34,9 +34,7 @@ public class CommonProxy {
         File directory = e.getModConfigurationDirectory();
         config = new Configuration(new File(directory.getPath(), "modtut.cfg"));
         Config.readConfig();
-        
-        //Custom test
-        
+
     	ModTinktureTypes.registerAll();
     	ModEntities.init();
     }

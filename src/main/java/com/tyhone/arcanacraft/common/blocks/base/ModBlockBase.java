@@ -2,6 +2,7 @@ package com.tyhone.arcanacraft.common.blocks.base;
 
 import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.common.init.ModBlocks;
+import com.tyhone.arcanacraft.common.init.ModTabs;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -28,7 +29,7 @@ public class ModBlockBase extends Block {
 		this.BASE_NAME = regName;
 		setRegistryName(regName);
 		setUnlocalizedName(regName);
-        this.setCreativeTab(CreativeTabs.MATERIALS);
+        this.setCreativeTab(ModTabs.modTab);
         this.setHardness(2f);
         this.setResistance(10f);
 		ModBlocks.register(this);

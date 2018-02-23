@@ -7,6 +7,7 @@ import javax.annotation.Nullable;
 import com.tyhone.arcanacraft.api.tinkture.IEssenceVessel;
 import com.tyhone.arcanacraft.api.tinkture.TinktureRegistry;
 import com.tyhone.arcanacraft.api.tinkture.TinktureType;
+import com.tyhone.arcanacraft.common.init.ModTabs;
 import com.tyhone.arcanacraft.common.init.ModTinktureTypes;
 import com.tyhone.arcanacraft.common.items.base.ModItemBase;
 import com.tyhone.arcanacraft.common.util.PlayerUtils;
@@ -34,6 +35,7 @@ public class ItemTinkture extends ModItemBase implements IEssenceVessel{
 	public ItemTinkture() {
 		super("tinkture");
 		setHasSubtypes(false);
+        this.setCreativeTab(ModTabs.modTab);
 	}
 	
 	@Override

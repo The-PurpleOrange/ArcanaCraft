@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.common.init.ModItems;
+import com.tyhone.arcanacraft.common.init.ModTabs;
 import com.tyhone.arcanacraft.common.util.ResourceLocationHelper;
 
 import net.minecraft.client.renderer.block.model.ModelBakery;
@@ -27,7 +28,7 @@ public class ModItemBase extends Item implements IItemVariantHolder<ModItemBase>
 	public ModItemBase(String name){
 		super();
 		setRegistryName(name);
-        this.setCreativeTab(CreativeTabs.MATERIALS);
+        this.setCreativeTab(ModTabs.modTab);
 		setMaxStackSize(64);
 		setNoRepair();
         setMaxDamage(0);
@@ -42,7 +43,7 @@ public class ModItemBase extends Item implements IItemVariantHolder<ModItemBase>
 	public ModItemBase(String name, ArrayList<String> variants){
 		super();
 		setRegistryName(name);
-        this.setCreativeTab(CreativeTabs.MATERIALS);
+        this.setCreativeTab(ModTabs.modTab);
 		setMaxStackSize(64);
 		setNoRepair();
         setMaxDamage(0);
