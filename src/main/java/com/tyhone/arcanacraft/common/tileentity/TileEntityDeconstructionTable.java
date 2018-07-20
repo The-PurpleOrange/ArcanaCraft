@@ -6,6 +6,7 @@ import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.api.recipe.RecipeDeconstructionTable;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockDeconstructionTable;
 import com.tyhone.arcanacraft.common.tileentity.base.ModTileEntitySingleInventoryBase;
+import com.tyhone.arcanacraft.common.util.ItemStackUtil;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -70,9 +71,15 @@ public class TileEntityDeconstructionTable extends ModTileEntitySingleInventoryB
 	}
 	
 	private void getRecipe() {
-		if(this.recipe != RecipeDeconstructionTable.getRecipe(this.getStack(), getLens())){
+		if(recipe==null){
 			this.recipe = RecipeDeconstructionTable.getRecipe(this.getStack(), getLens());
 			markForClean();
+		}
+		else{
+			if(!(ItemStackUtil.simpleAreStackSizeEqual(recipe.getInput(), this.getStack()) && ItemStackUtil.simpleAreStackSizeEqual(recipe.getLens(), getLens()))){ 
+				this.recipe = RecipeDeconstructionTable.getRecipe(this.getStack(), getLens());
+				markForClean();
+			}
 		}
 	}
 

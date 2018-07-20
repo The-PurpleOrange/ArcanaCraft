@@ -43,6 +43,6 @@ public class InitRecipesDeconstructionTable {
 		ArcanacraftCraftingManager.registerLensDeconstructionRecipe(new ItemStack(ModItems.LENS, 1, ItemMetaUtil.lens("essence")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("prosper")), new ItemStack(ModItems.SHARD, 1, ItemMetaUtil.shard("prosper")));
 		ArcanacraftCraftingManager.registerLensDeconstructionRecipe(new ItemStack(ModItems.LENS, 1, ItemMetaUtil.lens("essence")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("greed")), new ItemStack(ModItems.SHARD, 1, ItemMetaUtil.shard("greed")));
 		ArcanacraftCraftingManager.registerLensDeconstructionRecipe(new ItemStack(ModItems.LENS, 1, ItemMetaUtil.lens("essence")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("cedius")), new ItemStack(ModItems.SHARD, 1, ItemMetaUtil.shard("cedius")));
-		ArcanacraftCraftingManager.registerLensDeconstructionRecipe(new ItemStack(ModItems.LENS, 1, ItemMetaUtil.lens("essence")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("soul")), new ItemStack(ModItems.SOUL, 1, ItemMetaUtil.soul("complete")));
+		ArcanacraftCraftingManager.registerLensDeconstructionRecipe(new ItemStack(ModItems.LENS, 1, ItemMetaUtil.lens("essence")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("soul")), new ItemStack(ModItems.SOUL, 1, ItemMetaUtil.soul("fragment")));
 	}
 }

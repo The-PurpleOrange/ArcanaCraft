@@ -57,16 +57,16 @@ public class InitRecipesInfusionAltar {
 			ArcanacraftCraftingManager.registerInfusionRecipe(new ItemStack(ModItems.TRINKET_HUNGER_CHARM, 1), new ItemStack(ModItems.STAR, 1, ItemMetaUtil.item("mundane")), inputs, tinktures);
 		}{
 			//ALCHARIUM
-			Object[] inputs = {new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("cedius")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("greed")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("nether")), new ItemStack(ModItems.ALCHEMICAL_COAL, 1), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("eldritch")), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("inert_star")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("cedius")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("greed"))};
+			Object[] inputs = {new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("cedius")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("greed")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("nether")), new ItemStack(ModItems.ALCHEMICAL_COAL, 1), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("eldritch")), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("emeradine")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("cedius")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("greed"))};
 			TinktureStack[] tinktures = {new TinktureStack(ModTinktureTypes.LOCUS, 16), new TinktureStack(ModTinktureTypes.IMPIRUS, 16), new TinktureStack(ModTinktureTypes.REBUS, 16), new TinktureStack(ModTinktureTypes.AMNIS, 16)};
 			ArcanacraftCraftingManager.registerInfusionRecipe(new ItemStack(ModItems.INGOT, 1, ItemMetaUtil.ingot("alcharium")), new ItemStack(ModItems.INGOT, 1, ItemMetaUtil.ingot("magicite")), inputs, tinktures);
 		}{
-			//ALCHARIUM
+			//HOVER CHARM
 			Object[] inputs = {new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("eldritch")), new ItemStack(ModItems.ALCHEMICAL_COAL, 1), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("emeradine")), new ItemStack(ModItems.ALCHEMICAL_COAL, 1), new ItemStack(ModItems.INGOT, 1, ItemMetaUtil.ingot("blood_iron")), new ItemStack(ModItems.ALCHEMICAL_COAL, 1), new ItemStack(ModItems.EVOLITE, 1), new ItemStack(ModItems.ALCHEMICAL_COAL, 1)};
 			TinktureStack[] tinktures = {new TinktureStack(ModTinktureTypes.LOCUS, 24), new TinktureStack(ModTinktureTypes.AMNIS, 16)};
 			ArcanacraftCraftingManager.registerInfusionRecipe(new ItemStack(ModItems.TRINKET_HOVER_CHARM, 1), new ItemStack(Items.FEATHER, 1), inputs, tinktures);
 		}{
-			//HOVER CHARM
+			//NOTCH APPLE
 			Object[] inputs = new Object[8];
 			for(int i = 0; i < inputs.length; i++){
 				inputs[i] = new ItemStack(Blocks.GOLD_BLOCK, 1);

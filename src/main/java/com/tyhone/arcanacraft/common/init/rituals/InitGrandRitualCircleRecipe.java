@@ -54,11 +54,13 @@ public class InitGrandRitualCircleRecipe {
 		ArcanacraftRitualCraftingManager.registerGrandRitualCircleRecipe(
 				ModRituals.GRAND_RITUAL_SUMMON_CHICKEN,
 			new ItemStack[]{
-					new ItemStack(ModItems.AYRE, 1)
+					new ItemStack(Items.BONE, 2),
+					new ItemStack(ModItems.ITEM, 2, ItemMetaUtil.item("clean_flesh")),
+					new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("blood_drop")),
 			},
 			new Object[]{
-					"K     K     K",
-					"             ",
+					"      K      ",
+					" K         K ",
 					"             ",
 					"             ",
 					"    ZHGHZ    ",
@@ -68,8 +70,8 @@ public class InitGrandRitualCircleRecipe {
 					"    ZHGHZ    ",
 					"             ",
 					"             ",
-					"             ",
-					"K     K     K",
+					" K         K ",
+					"      K      ",
 					'H', new ItemStack(ModBlocks.CHALK_BLOCK, 1, ItemMetaUtil.chalk("bone")),
 					'B', new ItemStack(ModBlocks.CHALK_BLOCK, 1, ItemMetaUtil.chalk("charcoal")),
 					'G', new ItemStack(ModBlocks.CHALK_BLOCK, 1, ItemMetaUtil.chalk("lapis")),
