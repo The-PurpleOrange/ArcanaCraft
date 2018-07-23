@@ -16,6 +16,9 @@ import com.tyhone.arcanacraft.common.blocks.blocks.BlockBloodStone;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockChalk;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockFeyStone;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockFleshyBlock;
+import com.tyhone.arcanacraft.common.blocks.blocks.BlockLeaves;
+import com.tyhone.arcanacraft.common.blocks.blocks.BlockLog;
+import com.tyhone.arcanacraft.common.blocks.blocks.BlockModSapling;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockRedCoal;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockSoulStone;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockAlchemicArray;
@@ -81,6 +84,10 @@ public class ModBlocks {
 	public static final ModBlockBase DISAPEARING_BLOCK = new BlockDisapearingBlock();
 
 	public static final ModBlockBase SPIRIT_SKULL_BLOCK = new BlockSpiritSkull();
+
+	public static final ModBlockBase EVOLITE_SAPLING = new BlockModSapling();
+	public static final ModBlockBase LOG = new BlockLog();
+	public static final ModBlockBase LEAVES = new BlockLeaves();
 	
 	private ModBlocks() {}
 	

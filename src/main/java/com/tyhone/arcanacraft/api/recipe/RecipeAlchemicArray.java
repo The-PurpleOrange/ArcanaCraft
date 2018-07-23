@@ -1,8 +1,6 @@
 package com.tyhone.arcanacraft.api.recipe;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.common.util.RecipeUtil;
@@ -19,10 +17,12 @@ public class RecipeAlchemicArray {
 		if(inputs == null){
 			Arcanacraft.logger.error("Invalid Alchemic Array recipe added for: " + output);
 		}
+		else {
 		
-		this.output = output;
-
-		this.inputs = (ArrayList<Object>) inputs.clone();
+			this.output = output;
+	
+			this.inputs = (ArrayList<Object>) inputs.clone();
+		}
 	}
 
 	public ArrayList<Object> getInputs() {

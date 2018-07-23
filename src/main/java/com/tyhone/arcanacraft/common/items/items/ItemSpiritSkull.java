@@ -1,6 +1,5 @@
 package com.tyhone.arcanacraft.common.items.items;
 
-import com.tyhone.arcanacraft.common.blocks.tiles.BlockSpiritSkull;
 import com.tyhone.arcanacraft.common.init.ModBlocks;
 import com.tyhone.arcanacraft.common.items.base.ModItemBase;
 import com.tyhone.arcanacraft.common.tileentity.TileEntitySpiritSkull;
@@ -38,67 +37,62 @@ public class ItemSpiritSkull extends ModItemBase{
         {
             return EnumActionResult.FAIL;
         }
-        else
+        
+        
+        if (worldIn.getBlockState(pos).getBlock().isReplaceable(worldIn, pos))
         {
-            if (worldIn.getBlockState(pos).getBlock().isReplaceable(worldIn, pos))
-            {
-                facing = EnumFacing.UP;
-                pos = pos.down();
-            }
-            IBlockState iblockstate = worldIn.getBlockState(pos);
-            Block block = iblockstate.getBlock();
-            boolean flag = block.isReplaceable(worldIn, pos);
+            facing = EnumFacing.UP;
+            pos = pos.down();
+        }
+        IBlockState iblockstate = worldIn.getBlockState(pos);
+        Block block = iblockstate.getBlock();
+        boolean flag = block.isReplaceable(worldIn, pos);
 
-            if (!flag)
-            {
-                if (!worldIn.getBlockState(pos).getMaterial().isSolid() && !worldIn.isSideSolid(pos, facing, true))
-                {
-                    return EnumActionResult.FAIL;
-                }
-
-                pos = pos.offset(facing);
-            }
-
-            ItemStack itemstack = player.getHeldItem(hand);
-
-            if (player.canPlayerEdit(pos, facing, itemstack) && ModBlocks.SPIRIT_SKULL_BLOCK.canPlaceBlockAt(worldIn, pos))
-            {
-                if (worldIn.isRemote)
-                {
-                    return EnumActionResult.SUCCESS;
-                }
-                else
-                {
-                    worldIn.setBlockState(pos, ModBlocks.SPIRIT_SKULL_BLOCK.getDefaultState());//.withProperty(BlockSpiritSkull.FACING, facing), 11);
-                    int i = 0;
-
-                    if (facing == EnumFacing.UP)
-                    {
-                        i = MathHelper.floor((double)(player.rotationYaw * 16.0F / 360.0F) + 0.5D) & 15;
-                    }
-
-                    TileEntity tileentity = worldIn.getTileEntity(pos);
-
-                    if (tileentity instanceof TileEntitySpiritSkull)
-                    {
-                        TileEntitySpiritSkull tileentityskull = (TileEntitySpiritSkull)tileentity;
-
-                        tileentityskull.setSkullRotation(i);
-                    }
-
-                    if (player instanceof EntityPlayerMP)
-                    {
-                        CriteriaTriggers.PLACED_BLOCK.trigger((EntityPlayerMP)player, pos, itemstack);
-                    }
-
-                    itemstack.shrink(1);
-                    return EnumActionResult.SUCCESS;
-                }
-            }
-            else
+        if (!flag)
+        {
+            if (!worldIn.getBlockState(pos).getMaterial().isSolid() && !worldIn.isSideSolid(pos, facing, true))
             {
                 return EnumActionResult.FAIL;
             }
+
+            pos = pos.offset(facing);
         }
+
+        ItemStack itemstack = player.getHeldItem(hand);
+
+        if (player.canPlayerEdit(pos, facing, itemstack) && ModBlocks.SPIRIT_SKULL_BLOCK.canPlaceBlockAt(worldIn, pos))
+        {
+            if (worldIn.isRemote)
+            {
+                return EnumActionResult.SUCCESS;
+            }
+            
+			worldIn.setBlockState(pos, ModBlocks.SPIRIT_SKULL_BLOCK.getDefaultState());//.withProperty(BlockSpiritSkull.FACING, facing), 11);
+			int i = 0;
+
+			if (facing == EnumFacing.UP)
+			{
+			    i = MathHelper.floor((player.rotationYaw * 16.0F / 360.0F) + 0.5D) & 15;
+			}
+
+			TileEntity tileentity = worldIn.getTileEntity(pos);
+
+			if (tileentity instanceof TileEntitySpiritSkull)
+			{
+			    TileEntitySpiritSkull tileentityskull = (TileEntitySpiritSkull)tileentity;
+
+			    tileentityskull.setSkullRotation(i);
+			}
+
+			if (player instanceof EntityPlayerMP)
+			{
+			    CriteriaTriggers.PLACED_BLOCK.trigger((EntityPlayerMP)player, pos, itemstack);
+			}
+
+			itemstack.shrink(1);
+			return EnumActionResult.SUCCESS;
+        }
+        
+        return EnumActionResult.FAIL;
     }
 }

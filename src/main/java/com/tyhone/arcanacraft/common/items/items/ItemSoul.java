@@ -1,6 +1,5 @@
 package com.tyhone.arcanacraft.common.items.items;
 
-import com.tyhone.arcanacraft.api.item.IFocusLens;
 import com.tyhone.arcanacraft.common.items.base.ModItemBase;
 import com.tyhone.arcanacraft.common.reference.Names;
 
@@ -22,7 +21,6 @@ public class ItemSoul extends ModItemBase{
     		default: return false;
     		case 2: return true;
     		case 3: return true;
-    		
     	}
     }
 }

@@ -52,6 +52,7 @@ public class ItemNeedle extends ModItemBase{
 							world.spawnEntity(eOutput);
 						}
 					}
+					break;
 				}
 				default: return new ActionResult<ItemStack>(EnumActionResult.PASS, player.getHeldItem(hand));
 			}
@@ -85,7 +86,9 @@ public class ItemNeedle extends ModItemBase{
 							world.spawnEntity(eOutput);
 						}
 					}
+					return true;
 				}
+				return false;
 			}
 			default: return false;
 		}

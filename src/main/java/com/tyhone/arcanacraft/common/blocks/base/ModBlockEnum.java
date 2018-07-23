@@ -1,7 +1,5 @@
 package com.tyhone.arcanacraft.common.blocks.base;
 
-import org.apache.logging.log4j.Level;
-
 import com.tyhone.arcanacraft.Arcanacraft;
 
 import net.minecraft.block.Block;
