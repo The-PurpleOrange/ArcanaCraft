@@ -69,44 +69,40 @@ public class WorldGenEvoliteTree extends WorldGenAbstractTree{
 				return false;
 			}
 			
-			else {
-				IBlockState state = worldIn.getBlockState(position.down());
+			IBlockState state = worldIn.getBlockState(position.down());
+			
+			if(y < worldIn.getHeight() - i - 1) { //TODO block underneath is able to sustain tree
+				state.getBlock().onPlantGrow(state, worldIn, position.down(), position);
 				
-				if(y < worldIn.getHeight() - i - 1) { //TODO block underneath is able to sustain tree
-					state.getBlock().onPlantGrow(state, worldIn, position.down(), position);
-					int k2 = 3;
-					int l2 = 0;
+				for(int i3 = y - 3 + i; i3 <= y + i; i3++) {
+					int i4 = i3 - (y + i);
+					int j1 = 1 - i4 / 2;
 					
-					for(int i3 = y - 3 + i; i3 <= y + i; i3++) {
-						int i4 = i3 - (y + i);
-						int j1 = 1 - i4 / 2;
+					for(int k1 = x - j1; k1 <= x + j1; k1++) {
+						int l1 = k1 - x;
 						
-						for(int k1 = x - j1; k1 <= x + j1; k1++) {
-							int l1 = k1 - x;
+						for(int i2 = z - j1; i2 <= z + j1; i2++) {
+							int j2 = i2 - z;
 							
-							for(int i2 = z - j1; i2 <= z + j1; i2++) {
-								int j2 = i2 - z;
+							if(Math.abs(l1) != j1 || Math.abs(j2) != j1 || rand.nextInt(2) != 0 && i4 != 0) {
+								BlockPos blockPos = new BlockPos(k1, i3, i2);
+								state = worldIn.getBlockState(blockPos);
 								
-								if(Math.abs(l1) != j1 || Math.abs(j2) != j1 || rand.nextInt(2) != 0 && i4 != 0) {
-									BlockPos blockPos = new BlockPos(k1, i3, i2);
-									state = worldIn.getBlockState(blockPos);
-									
-									if(state.getBlock().isAir(state, worldIn, blockPos) || state.getBlock().isLeaves(state, worldIn, blockPos) || state.getMaterial() == Material.VINE) {
+								if(state.getBlock().isAir(state, worldIn, blockPos) || state.getBlock().isLeaves(state, worldIn, blockPos) || state.getMaterial() == Material.VINE) {
 
-										this.setBlockAndNotifyAdequately(worldIn, blockPos, this.leaves);
-									}
+									this.setBlockAndNotifyAdequately(worldIn, blockPos, this.leaves);
 								}
 							}
 						}
 					}
+				}
+				
+				for(int j3 = 0; j3 < i; j3++) {
+					BlockPos upN = position.up(j3);
+					state = worldIn.getBlockState(upN);
 					
-					for(int j3 = 0; j3 < i; j3++) {
-						BlockPos upN = position.up(j3);
-						state = worldIn.getBlockState(upN);
-						
-						if(state.getBlock().isAir(state, worldIn, upN) || state.getBlock().isLeaves(state, worldIn, upN) || state.getMaterial() == Material.VINE) {
-							this.setBlockAndNotifyAdequately(worldIn, position.up(j3), rand.nextInt(3) != 0 ? this.wood : this.sap);
-						}
+					if(state.getBlock().isAir(state, worldIn, upN) || state.getBlock().isLeaves(state, worldIn, upN) || state.getMaterial() == Material.VINE) {
+						this.setBlockAndNotifyAdequately(worldIn, position.up(j3), rand.nextInt(3) != 0 ? this.wood : this.sap);
 					}
 				}
 			}

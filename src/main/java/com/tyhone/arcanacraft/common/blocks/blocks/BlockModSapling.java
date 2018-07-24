@@ -33,70 +33,65 @@ public class BlockModSapling extends ModBlockBase implements IGrowable, IPlantab
         this.setSoundType(SoundType.PLANT);
 	}
 	
+	@Override
 	public boolean canPlaceBlockAt(World worldIn, BlockPos pos)
     {
-        IBlockState soil = worldIn.getBlockState(pos.down());
         return this.canSustainBush(worldIn.getBlockState(pos.down()));
     }
 
-    /**
-     * Return true if the block can sustain a Bush
-     */
     protected boolean canSustainBush(IBlockState state)
     {
         return state.getBlock() == Blocks.GRASS || state.getBlock() == Blocks.DIRT || state.getBlock() == Blocks.FARMLAND;
     }
 
-    /**
-     * Called when a neighboring block was changed and marks that this state should perform any checks during a neighbor
-     * change. Cases may include when redstone power is updated, cactus blocks popping off due to a neighboring solid
-     * block, etc.
-     */
-    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos)
+    @Override
+	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos)
     {
         super.neighborChanged(state, worldIn, pos, blockIn, fromPos);
         this.checkAndDropBlock(worldIn, pos, state);
     }
 
-    public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand)
+    @Override
+	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand)
     {
         this.checkAndDropBlock(worldIn, pos, state);
     }
 
     protected void checkAndDropBlock(World worldIn, BlockPos pos, IBlockState state)
     {
-        if (!this.canBlockStay(worldIn, pos, state))
+        if (!this.canBlockStay(worldIn, pos))
         {
             this.dropBlockAsItem(worldIn, pos, state, 0);
             worldIn.setBlockState(pos, Blocks.AIR.getDefaultState(), 3);
         }
     }
 
-    public boolean canBlockStay(World worldIn, BlockPos pos, IBlockState state)
+    public boolean canBlockStay(World worldIn, BlockPos pos)
     {
         return this.canSustainBush(worldIn.getBlockState(pos.down()));
     }
 
-    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
+    @Override
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
     {
         return BUSH_AABB;
     }
 
-    @Nullable
+    @Override
+	@Nullable
     public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos)
     {
         return NULL_AABB;
     }
 
-    /**
-     * Used to determine ambient occlusion and culling when rebuilding chunks for render
-     */
-    public boolean isOpaqueCube(IBlockState state)
+    @Override
+	public boolean isOpaqueCube(IBlockState state)
     {
         return false;
     }
 
-    public boolean isFullCube(IBlockState state)
+    @Override
+	public boolean isFullCube(IBlockState state)
     {
         return false;
     }
@@ -108,7 +103,7 @@ public class BlockModSapling extends ModBlockBase implements IGrowable, IPlantab
 
 	@Override
 	public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos, IBlockState state) {
-		return (double)worldIn.rand.nextFloat() < 0.45D;
+		return worldIn.rand.nextFloat() < 0.45D;
 	}
 
 	@Override
@@ -127,7 +122,6 @@ public class BlockModSapling extends ModBlockBase implements IGrowable, IPlantab
         WorldGenerator worldgenerator = new WorldGenEvoliteTree(true);
         int i = 0;
         int j = 0;
-        boolean flag = false;
 
         worldIn.setBlockState(pos, Blocks.AIR.getDefaultState(), 4);
 

@@ -1,6 +1,7 @@
 {
-  "parent": "block/cube_all",
+  "parent": "block/cube_column",
   "textures": {
-    "all": "arcanacraft:blocks/log/evolite_sap"
+    "end": "arcanacraft:blocks/log/evolite_log_top",
+    "side": "arcanacraft:blocks/log/evolite_sap"
   }
 }

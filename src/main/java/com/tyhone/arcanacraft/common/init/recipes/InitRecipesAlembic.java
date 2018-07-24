@@ -16,7 +16,7 @@ public class InitRecipesAlembic {
 	public static void init(){
 
 		ArcanacraftCraftingManager.registerAlembicRecipe(new TinktureStack(ModTinktureTypes.AQUA_REGIA), new FluidStack(FluidRegistry.WATER, 1000), new ItemStack(Items.GUNPOWDER), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("quartz_dust")));
-		ArcanacraftCraftingManager.registerAlembicRecipe(new TinktureStack(ModTinktureTypes.ALCHEMIC_BASE), new TinktureStack(ModTinktureTypes.AQUA_REGIA), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("star_shard")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("soul")));
+		ArcanacraftCraftingManager.registerAlembicRecipe(new TinktureStack(ModTinktureTypes.ALCHEMIC_BASE), new TinktureStack(ModTinktureTypes.AQUA_REGIA), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("star_shard")), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("evolite_sap")));
 
 		ArcanacraftCraftingManager.registerAlembicRecipe(new TinktureStack(ModTinktureTypes.QUARTZ_SOLUTION), new FluidStack(FluidRegistry.WATER, 1000), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("quartz_dust")), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("quartz_dust")));
 		

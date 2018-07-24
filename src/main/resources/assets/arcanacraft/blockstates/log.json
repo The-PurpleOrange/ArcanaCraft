@@ -6,11 +6,35 @@
     "model": "arcanacraft:log"
   },
   "variants": {
-    "variant=evolite_wood": [
-      { "model": "arcanacraft:log/evolite_wood" }
-  ],
-    "variant=evolite_sap": [
-      { "model": "arcanacraft:log/evolite_sap" }
-  ]
+        "axis=y,variant=evolite_wood": [
+          { "model": "arcanacraft:log/evolite_wood" }
+      ],
+        "axis=z,variant=evolite_wood": [
+          { "model": "arcanacraft:log/evolite_wood", "x": 90 }
+      ],
+        "axis=x,variant=evolite_wood": [
+          { "model": "arcanacraft:log/evolite_wood", "x": 90, "y": 90 }
+      ],
+        "axis=none,variant=evolite_wood": [
+          { "model": "arcanacraft:log/evolite_wood_bark" }
+      ],
+        "axis=y,variant=evolite_sap": [
+          { "model": "arcanacraft:log/evolite_sap" }
+      ],
+        "axis=z,variant=evolite_sap": [
+          { "model": "arcanacraft:log/evolite_sap", "x": 90 }
+      ],
+        "axis=x,variant=evolite_sap": [
+          { "model": "arcanacraft:log/evolite_sap", "x": 90, "y": 90 }
+      ],
+        "axis=none,variant=evolite_sap": [
+          { "model": "arcanacraft:log/evolite_sap_bark" }
+      ],
+        "variant=evolite_wood": [
+          { "model": "arcanacraft:log/evolite_wood" }
+      ],
+        "variant=evolite_sap": [
+          { "model": "arcanacraft:log/evolite_sap" }
+      ]
   }
 }
