@@ -6,7 +6,6 @@ import java.util.List;
 
 import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.common.items.base.ModItemBase;
-import com.tyhone.arcanacraft.common.items.items.ItemAlchemicDust;
 import com.tyhone.arcanacraft.common.items.items.ItemAlchemicalCoal;
 import com.tyhone.arcanacraft.common.items.items.ItemAyre;
 import com.tyhone.arcanacraft.common.items.items.ItemChalk;
@@ -28,8 +27,10 @@ import com.tyhone.arcanacraft.common.items.items.ItemShard;
 import com.tyhone.arcanacraft.common.items.items.ItemSoul;
 import com.tyhone.arcanacraft.common.items.items.ItemSpiritSkull;
 import com.tyhone.arcanacraft.common.items.items.ItemStar;
+import com.tyhone.arcanacraft.common.items.items.ItemThaumonuclearBall;
 import com.tyhone.arcanacraft.common.items.items.ItemTinkture;
 import com.tyhone.arcanacraft.common.items.items.tools.ItemHammer;
+import com.tyhone.arcanacraft.common.items.items.tools.ItemToolWandDebug;
 import com.tyhone.arcanacraft.common.items.items.tools.ItemToolWandExodus;
 import com.tyhone.arcanacraft.common.items.items.tools.ItemToolWandFire;
 import com.tyhone.arcanacraft.common.items.items.tools.ItemToolWandIllumination;
@@ -72,6 +73,9 @@ public class ModItems {
 	
 	public static final ModItemBase ICONS = new ItemIcons();
 
+	public static final ModItemBase THAUMONUCLEAR_BALL = new ItemThaumonuclearBall();
+
+	public static final ModItemBase TOOL_WAND_DEBUG = new ItemToolWandDebug();
 	public static final ModItemBase TOOL_WAND_EXODUS = new ItemToolWandExodus();
 	public static final ModItemBase TOOL_WAND_SHIELDING = new ItemToolWandShielding();
 	public static final ModItemBase TOOL_WAND_FIRE = new ItemToolWandFire();

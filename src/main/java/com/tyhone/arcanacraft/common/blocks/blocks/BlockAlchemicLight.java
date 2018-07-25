@@ -85,7 +85,7 @@ public class BlockAlchemicLight extends ModBlockBase {
         ParticleOrb outer2 = new ParticleOrb(world, x, y, z, 0, 0, 0, 2.5F, 0xff510c, 0xff2e00);
         Minecraft.getMinecraft().effectRenderer.addEffect(outer2);
 
-        ParticleOrb inner = new ParticleOrb(world, x, y, z, sx, sy, sz, 2F, 0xffffbc, 0xff510c);
+        ParticleOrb inner = new ParticleOrb(world, x, y, z, sx, sy, sz, 2F, 0xffbcff, 0xff510c);
         Minecraft.getMinecraft().effectRenderer.addEffect(inner);
 
         ParticleOrb inner2 = new ParticleOrb(world, x, y, z, sx, sy, sz, 1.5F, 0xffffff, 0xffffbc);

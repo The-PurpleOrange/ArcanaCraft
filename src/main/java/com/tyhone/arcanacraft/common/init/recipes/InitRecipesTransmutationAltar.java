@@ -20,11 +20,13 @@ public class InitRecipesTransmutationAltar {
 		ArcanacraftCraftingManager.registerTransmutationRecipes(new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("heart_ender")), new ItemStack(Items.ENDER_PEARL), new ItemStack(ModItems.SOUL, 1, ItemMetaUtil.soul("fragment")), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("heart")));
 		ArcanacraftCraftingManager.registerTransmutationRecipes(new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("heat_core")), new ItemStack(Blocks.OBSIDIAN), new ItemStack(Items.BLAZE_ROD), new ItemStack(Items.BLAZE_ROD), new ItemStack(ModItems.RED_COAL));
 		
+		ArcanacraftCraftingManager.registerTransmutationRecipes(new ItemStack(ModItems.THAUMONUCLEAR_BALL, 4), new ItemStack(ModItems.AYRE, 1), new ItemStack(Items.ENDER_PEARL, 1), new ItemStack(ModItems.RED_COAL, 1), new ItemStack(ModItems.AYRE, 1));
+		
 		ArcanacraftCraftingManager.registerTransmutationRecipes(new ItemStack(ModItems.EVOLITE, 1), new ItemStack(Items.MAGMA_CREAM, 1), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("evolite_sap")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("magicite")), new ItemStack(ModItems.CRYSTAL, 1, ItemMetaUtil.crystal("blood")));
 		
 		ArcanacraftCraftingManager.registerTransmutationRecipes(new ItemStack(ModItems.TRINKET_MAGNET, 1), new ItemStack(ModItems.INGOT, 1, ItemMetaUtil.ingot("magicite")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("iron")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("gold")), new ItemStack(ModItems.AYRE, 1));
 		
-		ArcanacraftCraftingManager.registerTransmutationRecipes(new ItemStack(ModItems.DUST, 1, ItemMetaUtil.dust("ender")), new ItemStack(ModItems.DUST, 1, ItemMetaUtil.dust("emeradine")), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("blood_drop")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("magicite")), new ItemStack(ModItems.DUST, 1, ItemMetaUtil.dust("emeradine")));
+		ArcanacraftCraftingManager.registerTransmutationRecipes(new ItemStack(ModItems.DUST, 2, ItemMetaUtil.dust("ender")), new ItemStack(ModItems.DUST, 1, ItemMetaUtil.dust("emeradine")), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("blood_drop")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("magicite")), new ItemStack(ModItems.DUST, 1, ItemMetaUtil.dust("emeradine")));
 		
 		ArcanacraftCraftingManager.registerTransmutationRecipes(new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("emeradine")), new ItemStack(ModItems.CRYSTAL, 1, ItemMetaUtil.crystal("emeradine")), new ItemStack(ModItems.CRYSTAL, 1, ItemMetaUtil.crystal("emeradine")), new ItemStack(ModItems.CRYSTAL, 1, ItemMetaUtil.crystal("emeradine")), new ItemStack(ModItems.CRYSTAL, 1, ItemMetaUtil.crystal("emeradine")));
 	}

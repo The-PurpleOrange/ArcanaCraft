@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.common.blocks.base.ModBlockBase;
 import com.tyhone.arcanacraft.common.init.ModBlocks;
 
@@ -42,7 +43,7 @@ public class BlockLeaves extends ModBlockBase implements net.minecraftforge.comm
         this.setResistance(0f);
         this.setLightOpacity(1);
         this.setSoundType(SoundType.PLANT);
-        this.setDefaultState(this.blockState.getBaseState().withProperty(CHECK_DECAY, Boolean.valueOf(true)).withProperty(DECAYABLE, Boolean.valueOf(true)));
+        this.setDefaultState(this.blockState.getBaseState().withProperty(CHECK_DECAY, Boolean.valueOf(false)).withProperty(DECAYABLE, Boolean.valueOf(true)));
 	} 
 	
 	@Override
@@ -153,7 +154,15 @@ public class BlockLeaves extends ModBlockBase implements net.minecraftforge.comm
 	}
 	
 	@Override
+	public void beginLeavesDecay(IBlockState state, World world, BlockPos pos) {
+		if(state.getValue(CHECK_DECAY)) {
+			world.setBlockState(pos, state.withProperty(CHECK_DECAY, true), 4);
+		}
+	}
+	
+	@Override
 	public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
+		Arcanacraft.log("leaf destroyed");
 		int x = pos.getX();
 		int y = pos.getY();
 		int z = pos.getZ();
@@ -165,8 +174,11 @@ public class BlockLeaves extends ModBlockBase implements net.minecraftforge.comm
 						
 						BlockPos blockpos = pos.add(newX, newY, newZ);
 						IBlockState iblockstate = worldIn.getBlockState(blockpos);
+
+						Arcanacraft.log("Block found at " + blockpos.toString());
 						
 						if(iblockstate.getBlock().isLeaves(iblockstate, worldIn, blockpos)) {
+							Arcanacraft.log("Set decaying");
 							iblockstate.getBlock().beginLeavesDecay(iblockstate, worldIn, blockpos);
 						}
 					}
@@ -177,6 +189,7 @@ public class BlockLeaves extends ModBlockBase implements net.minecraftforge.comm
 	
 	@Override
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
+		
 		if(!worldIn.isRemote) {
 			if(state.getValue(CHECK_DECAY).booleanValue() && state.getValue(DECAYABLE).booleanValue()) {
 				int x = pos.getX();
