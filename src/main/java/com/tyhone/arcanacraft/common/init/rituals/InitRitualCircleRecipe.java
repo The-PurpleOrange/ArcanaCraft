@@ -5,6 +5,7 @@ import com.tyhone.arcanacraft.common.init.ModBlocks;
 import com.tyhone.arcanacraft.common.init.ModItems;
 import com.tyhone.arcanacraft.common.init.ModRituals;
 import com.tyhone.arcanacraft.common.util.ItemMetaUtil;
+import com.tyhone.arcanacraft.common.util.OreStack;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -16,6 +17,7 @@ public class InitRitualCircleRecipe {
 		initSummonLightning();
 		initClearWeather();
 		initWhy();
+		initGrowth();
 	}
 	
 	private static void initSummonRain(){
@@ -95,6 +97,26 @@ public class InitRitualCircleRecipe {
 					'G', new ItemStack(ModBlocks.CHALK_BLOCK, 1, ItemMetaUtil.chalk("blood")),
 					'C', new ItemStack(ModBlocks.RITUAL_CIRCLE),
 					'Z', new ItemStack(ModBlocks.FLESHY_BLOCK, 1)
+			});
+	}
+	
+	private static void initGrowth(){
+		ArcanacraftRitualCraftingManager.registerRitualCircleRecipe(
+				ModRituals.RITUAL_GROWTH,
+			new ItemStack[]{
+					new ItemStack(ModItems.AYRE, 1)
+			},
+			new Object[]{
+					"ZHGHZ",
+					"HB BH",
+					"G C G",
+					"HB BH",
+					"ZHGHZ",
+					'H', new ItemStack(ModBlocks.CHALK_BLOCK, 1, ItemMetaUtil.chalk("lapis")),
+					'B', new ItemStack(ModBlocks.CHALK_BLOCK, 1, ItemMetaUtil.chalk("magicite")),
+					'G', new ItemStack(ModBlocks.CHALK_BLOCK, 1, ItemMetaUtil.chalk("green")),
+					'C', new ItemStack(ModBlocks.RITUAL_CIRCLE),
+					'Z', new ItemStack(Blocks.LEAVES, 1)
 			});
 	}
 }

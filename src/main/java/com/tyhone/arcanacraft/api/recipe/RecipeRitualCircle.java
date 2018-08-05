@@ -56,7 +56,12 @@ public class RecipeRitualCircle {
 			else if(blockData[i] instanceof Character){
 				blockChar.add((Character) blockData[i]);
 				i++;
-				blockInput.add((ItemStack) blockData[i]);
+				if(blockData[i] instanceof OreStack) {
+					blockInput.add(OreStack.getOreDictionaryEntryForOreStack((OreStack) blockData[i]));
+				}
+				else {
+					blockInput.add((ItemStack) blockData[i]);
+				}
 			}
 			else{throw new IllegalArgumentException("Invalid input");}
 		}

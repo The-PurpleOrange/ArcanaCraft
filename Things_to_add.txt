@@ -1,0 +1,7 @@
+Things to add:
+
+Name: ?Harvester Trinket?
+Object: ?Item/Block?
+Function:
+    Harvests crops within a 10x10 area and places them within a chest. 
+    Uses the dropped seed to replace the crop.

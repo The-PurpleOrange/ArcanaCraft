@@ -86,6 +86,7 @@ public class TileEntityRitualCircle extends ModTileEntityBase implements ITickab
 					this.ritual = recipe.getRitual();
 					this.ritualType = this.ritual.getRitualType();
 					this.ritualRecipe = recipe;
+					this.cooldown = ritual.getMaxCooldown();
 					markForClean();
 				}
 				else {

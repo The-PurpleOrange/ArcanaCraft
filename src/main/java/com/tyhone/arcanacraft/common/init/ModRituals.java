@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.tyhone.arcanacraft.api.recipe.ArcanacraftRitualCraftingManager;
-import com.tyhone.arcanacraft.api.ritual.Ritual;
 import com.tyhone.arcanacraft.api.ritual.ArcanacraftRitualManager;
+import com.tyhone.arcanacraft.api.ritual.Ritual;
 import com.tyhone.arcanacraft.api.ritual.RitualType;
 import com.tyhone.arcanacraft.common.rituals.GrandRitualCreateChicken;
 import com.tyhone.arcanacraft.common.rituals.GrandRitualCreateHomunculus;
 import com.tyhone.arcanacraft.common.rituals.RitualClearWeather;
+import com.tyhone.arcanacraft.common.rituals.RitualGrowth;
 import com.tyhone.arcanacraft.common.rituals.RitualPlaceChalk;
 import com.tyhone.arcanacraft.common.rituals.RitualSummonLightning;
 import com.tyhone.arcanacraft.common.rituals.RitualSummonRain;
@@ -61,6 +62,7 @@ public class ModRituals {
 	public static final Ritual RITUAL_SUMMON_LIGHTNING = new RitualSummonLightning("summon_lightning", RITUAL_TYPE_STANDARD);
 
 	public static final Ritual RITUAL_WHY = new RitualWhy("why", RITUAL_TYPE_STANDARD);
+	public static final Ritual RITUAL_GROWTH = new RitualGrowth("growth", RITUAL_TYPE_STANDARD);
 
 	//GRAND
 	public static final Ritual GRAND_RITUAL_CREATE_HOMUNCULUS = new GrandRitualCreateHomunculus("create_homunculus", RITUAL_TYPE_GRAND);
