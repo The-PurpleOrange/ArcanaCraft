@@ -10,6 +10,7 @@ import com.tyhone.arcanacraft.api.ritual.RitualType;
 import com.tyhone.arcanacraft.common.rituals.GrandRitualCreateChicken;
 import com.tyhone.arcanacraft.common.rituals.GrandRitualCreateHomunculus;
 import com.tyhone.arcanacraft.common.rituals.RitualClearWeather;
+import com.tyhone.arcanacraft.common.rituals.RitualPlaceChalk;
 import com.tyhone.arcanacraft.common.rituals.RitualSummonLightning;
 import com.tyhone.arcanacraft.common.rituals.RitualSummonRain;
 
@@ -34,8 +35,22 @@ public class ModRituals {
 			ArcanacraftRitualCraftingManager.getGrandBlockPosList(),
 			ArcanacraftRitualCraftingManager.getGrandPlaceOrder()
 		);
-	//public static final RitualTypeBase RITUAL_TYPE_SOUL_ALTAR = new RitualTypeBase("ritual_type_soul_altar", RitualRegistry.getSoulRitualList());
+	public static final RitualType RITUAL_TYPE_CHALK = new RitualType(
+			"ritual_type_chalk", 
+			RitualRegistry.getChalkList(), 
+			ArcanacraftRitualCraftingManager.getRitualChalkRecipes(), 
+			ArcanacraftRitualCraftingManager.getChalkBlockPosList(), 
+			ArcanacraftRitualCraftingManager.getChalkPlaceOrder()
+		);
 	
+	//public static final RitualTypeBase RITUAL_TYPE_SOUL_ALTAR = new RitualTypeBase("ritual_type_soul_altar", RitualRegistry.getSoulRitualList());
+
+	public static final Ritual CHALK_CHARCOAL = new RitualPlaceChalk("charcoal", RITUAL_TYPE_CHALK);
+	public static final Ritual CHALK_BONE = new RitualPlaceChalk("bone", RITUAL_TYPE_CHALK);
+	public static final Ritual CHALK_BLOOD = new RitualPlaceChalk("blood", RITUAL_TYPE_CHALK);
+	public static final Ritual CHALK_LAPIS = new RitualPlaceChalk("lapis", RITUAL_TYPE_CHALK);
+	public static final Ritual CHALK_GOLD = new RitualPlaceChalk("gold", RITUAL_TYPE_CHALK);
+	public static final Ritual CHALK_MAGICITE = new RitualPlaceChalk("magicite", RITUAL_TYPE_CHALK);
 	
 	public static final Ritual RITUAL_SUMMON_RAIN = new RitualSummonRain("summon_rain", RITUAL_TYPE_STANDARD);
 	public static final Ritual RITUAL_CLEAR_WEATHER = new RitualClearWeather("clear_weather", RITUAL_TYPE_STANDARD);

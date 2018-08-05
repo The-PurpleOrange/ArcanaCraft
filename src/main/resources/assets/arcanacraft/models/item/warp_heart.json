@@ -1,6 +1,6 @@
 {
 	"parent": "item/generated",
 	"textures": {
-		"layer0": "arcanacraft:blocks/mod_sapling"
+		"layer0": "arcanacraft:items/warp_heart"
 	}
 }

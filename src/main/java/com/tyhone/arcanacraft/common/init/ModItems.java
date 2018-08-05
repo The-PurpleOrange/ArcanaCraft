@@ -29,10 +29,12 @@ import com.tyhone.arcanacraft.common.items.items.ItemSpiritSkull;
 import com.tyhone.arcanacraft.common.items.items.ItemStar;
 import com.tyhone.arcanacraft.common.items.items.ItemThaumonuclearBall;
 import com.tyhone.arcanacraft.common.items.items.ItemTinkture;
+import com.tyhone.arcanacraft.common.items.items.ItemWarpHeart;
 import com.tyhone.arcanacraft.common.items.items.tools.ItemHammer;
 import com.tyhone.arcanacraft.common.items.items.tools.ItemToolWandDebug;
 import com.tyhone.arcanacraft.common.items.items.tools.ItemToolWandExodus;
 import com.tyhone.arcanacraft.common.items.items.tools.ItemToolWandFire;
+import com.tyhone.arcanacraft.common.items.items.tools.ItemToolWandGrapple;
 import com.tyhone.arcanacraft.common.items.items.tools.ItemToolWandIllumination;
 import com.tyhone.arcanacraft.common.items.items.tools.ItemToolWandShielding;
 import com.tyhone.arcanacraft.common.items.items.tools.ItemTrinketHoverCharm;
@@ -67,8 +69,9 @@ public class ModItems {
 	public static final ModItemBase CHALK_METAMORPHIC = new ItemMetamorphicChalk();
 	public static final ModItemBase TINKTURE = new ItemTinkture();
 	public static final ModItemBase EMPTY_TINKTURE = new ItemEmptyTinkture();
-	
+
 	public static final ModItemBase HAMMER = new ItemHammer();
+	public static final ModItemBase WARP_HEART = new ItemWarpHeart();
 	public static final ModItemBase SPIRIT_SKULL = new ItemSpiritSkull();
 	
 	public static final ModItemBase ICONS = new ItemIcons();
@@ -76,10 +79,13 @@ public class ModItems {
 	public static final ModItemBase THAUMONUCLEAR_BALL = new ItemThaumonuclearBall();
 
 	public static final ModItemBase TOOL_WAND_DEBUG = new ItemToolWandDebug();
+
+	public static final ModItemBase TOOL_WAND_ILLUMINATION = new ItemToolWandIllumination();
+	public static final ModItemBase TOOL_WAND_GRAPPLE = new ItemToolWandGrapple();
+	
 	public static final ModItemBase TOOL_WAND_EXODUS = new ItemToolWandExodus();
 	public static final ModItemBase TOOL_WAND_SHIELDING = new ItemToolWandShielding();
 	public static final ModItemBase TOOL_WAND_FIRE = new ItemToolWandFire();
-	public static final ModItemBase TOOL_WAND_ILLUMINATION = new ItemToolWandIllumination();
 
 	public static final ModItemBase TRINKET_HUNGER_CHARM = new ItemTrinketHungerCharm();
 	public static final ModItemBase TRINKET_MAGNET = new ItemTrinketMagnet();

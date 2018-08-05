@@ -1,9 +1,6 @@
 package com.tyhone.arcanacraft.api.tinkture;
 
-import com.tyhone.arcanacraft.Arcanacraft;
-import com.tyhone.arcanacraft.api.recipe.ArcanacraftRitualCraftingManager;
 import com.tyhone.arcanacraft.common.init.ModTinktureTypes;
-import com.tyhone.arcanacraft.common.jei.TinktureIngredientRenderer;
 
 import net.minecraft.nbt.NBTTagCompound;
 

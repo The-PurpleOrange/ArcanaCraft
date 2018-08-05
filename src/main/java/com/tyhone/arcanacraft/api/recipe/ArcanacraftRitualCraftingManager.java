@@ -1,6 +1,7 @@
 package com.tyhone.arcanacraft.api.recipe;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.tyhone.arcanacraft.api.ritual.Ritual;
@@ -11,6 +12,10 @@ import net.minecraft.util.math.BlockPos;
 
 public class ArcanacraftRitualCraftingManager {
 
+	private static final int[] chalkPlaceOrder = {
+			0
+		};
+	
 	private static final int[] standardPlaceOrder = {
 		12, 7,  13, 17, 11, 
 		6,  8,  18, 16, 1, 
@@ -35,6 +40,7 @@ public class ArcanacraftRitualCraftingManager {
 		120, 53,  28,  17,  21,   36,   63,  115,  140,  151, 147, 132, 105
 	};
 
+	private static final List<BlockPos> posChalkOrderList = new ArrayList<>(Arrays.asList(new BlockPos(0,0,0)));
 	private static final List<BlockPos> posStandardOrderList = buildPosList();
 	private static final List<BlockPos> posGrandOrderList = buildGrandPosList();
 	
@@ -60,7 +66,8 @@ public class ArcanacraftRitualCraftingManager {
     	return posList;
 	}
 
-	
+
+	private static List<RecipeRitualCircle> chalkRecipe = new ArrayList<RecipeRitualCircle>();
 	private static List<RecipeRitualCircle> standardRitualCircleRecipe = new ArrayList<RecipeRitualCircle>();
 	private static List<RecipeRitualCircle> grandRitualCircleRecipe = new ArrayList<RecipeRitualCircle>();
 	
@@ -70,6 +77,24 @@ public class ArcanacraftRitualCraftingManager {
 		return new BlockPos(x, 0, z);
 	}
 	
+	//RITUAL CIRCLE RECIPES
+	public static RecipeRitualCircle registerRitualChalkRecipe(Ritual ritual, ItemStack[] itemInputs, Object[] blockInputs) {
+		RecipeRitualCircle recipe = new RecipeRitualCircle(ritual, itemInputs, blockInputs);
+		chalkRecipe.add(recipe);
+		return recipe;
+	}
+	public static List<RecipeRitualCircle> getRitualChalkRecipes(){
+		return chalkRecipe;
+	}
+	
+	public static int[] getChalkPlaceOrder(){
+		return chalkPlaceOrder;
+	}
+	
+	public static List<BlockPos> getChalkBlockPosList(){
+		return posChalkOrderList;
+	}
+		
 	//RITUAL CIRCLE RECIPES
 	public static RecipeRitualCircle registerRitualCircleRecipe(Ritual ritual, ItemStack[] itemInputs, Object[] blockInputs) {
 		RecipeRitualCircle recipe = new RecipeRitualCircle(ritual, itemInputs, blockInputs);

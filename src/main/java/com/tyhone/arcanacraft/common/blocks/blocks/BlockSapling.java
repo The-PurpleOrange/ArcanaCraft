@@ -11,10 +11,12 @@ import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -25,12 +27,12 @@ import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockModSapling extends ModBlockBase implements IGrowable, IPlantable{
+public class BlockSapling extends ModBlockBase implements IGrowable, IPlantable{
 	
 	protected static final AxisAlignedBB BUSH_AABB = new AxisAlignedBB(0.30000001192092896D, 0.0D, 0.30000001192092896D, 0.699999988079071D, 0.6000000238418579D, 0.699999988079071D);
 
-	public BlockModSapling() {
-		super("mod_sapling", Material.PLANTS);
+	public BlockSapling() {
+		super("sapling", Material.PLANTS);
         this.setHardness(0f);
         this.setResistance(0f);
         this.setSoundType(SoundType.PLANT);
@@ -102,7 +104,7 @@ public class BlockModSapling extends ModBlockBase implements IGrowable, IPlantab
 	@SideOnly(Side.CLIENT)
 	@Override
 	public BlockRenderLayer getBlockLayer() {
-		return BlockRenderLayer.CUTOUT_MIPPED;
+		return BlockRenderLayer.CUTOUT;
 	}
 
 	@Override
@@ -157,4 +159,9 @@ public class BlockModSapling extends ModBlockBase implements IGrowable, IPlantab
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face)
+    {
+        return BlockFaceShape.UNDEFINED;
+    }
 }

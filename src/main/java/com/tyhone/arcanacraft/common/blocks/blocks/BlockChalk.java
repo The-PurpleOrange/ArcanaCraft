@@ -6,7 +6,7 @@ import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.api.ritual.IRitualDisplayIgnoreBlock;
 import com.tyhone.arcanacraft.common.blocks.base.IEnumMeta;
 import com.tyhone.arcanacraft.common.blocks.base.ModBlockEnum;
-import com.tyhone.arcanacraft.common.blocks.tiles.BlockAlchemicArray;
+import com.tyhone.arcanacraft.common.blocks.tiles.BlockWarpCircle;
 import com.tyhone.arcanacraft.common.init.ModBlocks;
 import com.tyhone.arcanacraft.common.init.ModItems;
 import com.tyhone.arcanacraft.common.util.ItemMetaUtil;
@@ -19,7 +19,6 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
@@ -88,13 +87,40 @@ public class BlockChalk extends ModBlockEnum implements IRitualDisplayIgnoreBloc
 		if (!world.isRemote) {
 
 
+			BlockPos[] warpCircle = {new BlockPos(1, 0, 1), new BlockPos(-1, 0, -1), new BlockPos(1, 0, -1), new BlockPos(-1, 0, 1)};
 			BlockPos[] alchemicArray = {new BlockPos(1, 0, 0), new BlockPos(-1, 0, 0), new BlockPos(0, 0, 1), new BlockPos(0, 0, -1)};
 			BlockPos[] ritualCircle = {
 					new BlockPos(2, 0, 0), new BlockPos(2, 0, -1), new BlockPos(2, 0, 1),
 					new BlockPos(-2, 0, 0), new BlockPos(-2, 0, -1), new BlockPos(-2, 0, 1),
 					new BlockPos(-1, 0, 2), new BlockPos(0, 0, 2), new BlockPos(1, 0, 2),
-					new BlockPos(-1, 0, -2), new BlockPos(0, 0, -2), new BlockPos(1, 0, -2),};
-									
+					new BlockPos(-1, 0, -2), new BlockPos(0, 0, -2), new BlockPos(1, 0, -2),
+				};
+				
+			if(getMetaFromState(world.getBlockState(pos)) != ItemMetaUtil.chalk("magicite")) {
+				boolean wc = true;
+				for(BlockPos poswc : BlockWarpCircle.WARP_CIRCLE_BLOCKPOS_ARRAY) {
+					BlockPos checkPos = PosUtil.combinePos(poswc, pos);
+					if(world.getBlockState(checkPos)!= null) {
+						if(world.getBlockState(checkPos).getBlock() == ModBlocks.CHALK_BLOCK){
+							if(getMetaFromState(world.getBlockState(checkPos)) != BlockWarpCircle.CHALK_META) {
+								wc = false;
+							}
+						}
+						else {
+							wc = false;
+						}
+					}
+				}
+				
+				if(wc) {
+					for(BlockPos poswc : warpCircle) {
+						BlockPos checkPos = PosUtil.combinePos(poswc, pos);
+						world.setBlockToAir(checkPos);
+						world.setBlockState(pos, ModBlocks.WARP_CIRCLE.getDefaultState());
+					}
+					return true;
+				}
+			}
 			
 			boolean aa = true;
 			for(BlockPos posaa : alchemicArray){
@@ -138,18 +164,18 @@ public class BlockChalk extends ModBlockEnum implements IRitualDisplayIgnoreBloc
 				if(rc){
 					for(BlockPos posi : ritualCircle){
 						BlockPos posk = PosUtil.combinePos(posi, pos);
-						world.setBlockState(posk, Blocks.AIR.getDefaultState());
+						world.setBlockToAir(posk);
 					}
 					for(BlockPos posi : alchemicArray){
 						BlockPos posk = PosUtil.combinePos(posi, pos);
-						world.setBlockState(posk, Blocks.AIR.getDefaultState());
+						world.setBlockToAir(posk);
 					}
 					world.setBlockState(pos, ModBlocks.RITUAL_CIRCLE.getDefaultState());
 				}
 				else{
 					for(BlockPos posi : alchemicArray){
 						BlockPos posk = PosUtil.combinePos(posi, pos);
-						world.setBlockState(posk, Blocks.AIR.getDefaultState());
+						world.setBlockToAir(posk);
 					}
 					world.setBlockState(pos, ModBlocks.ALCHEMIC_ARRAY.getDefaultState());
 				}

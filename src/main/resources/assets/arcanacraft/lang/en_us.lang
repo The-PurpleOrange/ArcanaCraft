@@ -2,11 +2,17 @@
 
 #Items
 item.arcanacraft:hammer.name=Alchemic Hammer
+item.arcanacraft:chalk_metamorphic.name=Metamorphic Chalk
+item.arcanacraft:warp_heart.name=Entangled Heart
+item.arcanacraft:thaumonuclear_ball.name=Thaumonuclear Core
 
 item.arcanacraft:tool_wand_exodus.name=Exodus Rod
 item.arcanacraft:tool_wand_shielding.name=Rod of Tuitio
-item.arcanacraft:tool_wand_fire.name=Staff of Fire [WIP]
+item.arcanacraft:tool_wand_fire
+.name=Staff of Fire [WIP]
 item.arcanacraft:tool_wand_illumination.name=Illumination Wand
+item.arcanacraft:tool_wand_debug.name=Wand of Debug-ery
+item.arcanacraft:tool_wand_grapple.name=Rod of Undecided [WIP]
 
 item.arcanacraft:trinket_magnet.name=Alchemic Magnet
 item.arcanacraft:trinket_hunger_charm.name=Hunger Charm
@@ -20,8 +26,6 @@ item.arcanacraft:empty_tinkture.name=Empty Tinkture
 item.arcanacraft:ayre.name=Ayre
 item.arcanacraft:evolite.name=Evolite Drop
 item.arcanacraft:gorgon_eye.name=Eye of Gorgon
-item.arcanacraft:hammer.name=Alchemic Hammer
-item.arcanacraft:chalk_metamorphic.name=Metamorphic Chalk
 
 item.arcanacraft:icons.icons_alchemic_array.name=Alchemical Array
 item.arcanacraft:icons.icons_ritual_circle.name=Ritual Circle
@@ -82,6 +86,7 @@ item.arcanacraft:item.item_blood_rod.name=Blood Iron Rod
 item.arcanacraft:item.item_heart_ender.name=Ender Heart
 item.arcanacraft:item.item_emeradine.name=Emeradine
 item.arcanacraft:item.item_catalyst.name=Alchemic Catalyst
+item.arcanacraft:item.item_evolite_sap.name=Evolite Sap
 
 item.arcanacraft:star.star_mundane.name=Mundane Star
 item.arcanacraft:star.star_eldritch.name=Eldritch Star
@@ -115,6 +120,11 @@ tile.arcanacraft:spirit_skull_block.name=Bob
 tile.arcanacraft:aquelsa.name=Aquelsa
 tile.arcanacraft:ward_stone.name=Warding Stone
 tile.arcanacraft:elevator.name=Alchemic Levitator
+
+tile.arcanacraft:sapling.name=Evolite Sapling
+tile.arcanacraft:log.evolite_wood.name=Evolite Log
+tile.arcanacraft:log.evolite_wood.name=Evolite Sap-Rich Log
+tile.arcanacraft:leaves.name=Evolite Leaves
 
 tile.arcanacraft:alchemic_stone.uniform.name=Alchemic Stone
 tile.arcanacraft:alchemic_stone.tile.name=Alchemic Stone Tile
@@ -171,15 +181,25 @@ container.nei.arcanacraft:transmutation_altar.name=Transmutation Altar
 container.nei.arcanacraft:infusion_altar.name=Infusion Altar
 container.nei.arcanacraft:alembic.name=Alembic
 
-#Rituals Catergories
+#Rituals Categories
+ritual_type.arcanacraft:ritual_type_chalk.name=Chalks
 ritual_type.arcanacraft:ritual_type_standard.name=Basic Ritual
 ritual_type.arcanacraft:ritual_type_grand.name=Grand Ritual
 
 #Ritual Standard
-ritual.arcanacraft:summon_rain.name=Summon Rain
-ritual.arcanacraft:summon_lightning.name=Summon Lightning
-ritual.arcanacraft:clear_weather.name=Clear Weather
+ritual.arcanacraft:ritual_type_chalk.charcoal.name=Charcoal
+ritual.arcanacraft:ritual_type_chalk.bone.name=Bone
+ritual.arcanacraft:ritual_type_chalk.blood.name=Blood
+ritual.arcanacraft:ritual_type_chalk.lapis.name=Lapis
+ritual.arcanacraft:ritual_type_chalk.gold.name=Gold
+ritual.arcanacraft:ritual_type_chalk.magicite.name=Magicite
+
+#Ritual Standard
+ritual.arcanacraft:ritual_type_standard.summon_rain.name=Summon Rain
+ritual.arcanacraft:ritual_type_standard.summon_lightning.name=Summon Lightning
+ritual.arcanacraft:ritual_type_standard.clear_weather.name=Clear Weather
 
 #Ritual Grand
-ritual.arcanacraft:summon_chicken.name=Summon Chicken
+ritual.arcanacraft:ritual_type_grand.summon_chicken.name=Summon Chicken
+ritual.arcanacraft:ritual_type_grand.create_homunculus.name=Summon Homunculus
 

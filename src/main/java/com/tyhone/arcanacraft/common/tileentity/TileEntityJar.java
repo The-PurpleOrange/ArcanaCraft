@@ -1,6 +1,5 @@
 package com.tyhone.arcanacraft.common.tileentity;
 
-import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.api.tinkture.TinktureStack;
 import com.tyhone.arcanacraft.api.tinkture.TinktureType;
 import com.tyhone.arcanacraft.api.util.TinktureStackUtil;
@@ -41,11 +40,10 @@ public class TileEntityJar extends ModTileEntityBase {
 		if((tinktureStack.getAmount() - amount) < 0){
 			return false;
 		}
-		else{
-			tinktureStack.modifyAmount(-amount);
-			markForClean();
-			return true;
-		}
+		
+		tinktureStack.modifyAmount(-amount);
+		markForClean();
+		return true;
 	}
 	
 	public int removeTinktureAmountPartial(int amount){
@@ -71,16 +69,15 @@ public class TileEntityJar extends ModTileEntityBase {
 			if((tinktureStack.getAmount() + amount) > MAX_FLUID){
 				return false;
 			}
-			else{
-				if(tinktureStack.isEmpty()){
-					tinktureStack = new TinktureStack(type, amount);
-				}
-				else{
-					tinktureStack.modifyAmount(amount);
-				}
-				markForClean();
-				return true;
+			
+			if(tinktureStack.isEmpty()){
+				tinktureStack = new TinktureStack(type, amount);
 			}
+			else{
+				tinktureStack.modifyAmount(amount);
+			}
+			markForClean();
+			return true;
 		}
 		return false;
 	}
@@ -90,18 +87,16 @@ public class TileEntityJar extends ModTileEntityBase {
 			if(tinktureStack.getAmount() >= MAX_FLUID){
 				return amount;
 			}
-			else{
-				markForClean();
-				if((tinktureStack.getAmount() + amount) >= MAX_FLUID){
-					int amountLeft = (tinktureStack.getAmount() + amount) - MAX_FLUID;
-					tinktureStack.setAmount(MAX_FLUID);
-					return amountLeft;
-				}
-				else{
-					tinktureStack.modifyAmount(amount);
-					return 0;
-				}
+			
+			markForClean();
+			if((tinktureStack.getAmount() + amount) >= MAX_FLUID){
+				int amountLeft = (tinktureStack.getAmount() + amount) - MAX_FLUID;
+				tinktureStack.setAmount(MAX_FLUID);
+				return amountLeft;
 			}
+			
+			tinktureStack.modifyAmount(amount);
+			return 0;
 		}
 		return amount;
 	}

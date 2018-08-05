@@ -102,7 +102,7 @@ public class WorldGenEvoliteTree extends WorldGenAbstractTree{
 					state = worldIn.getBlockState(upN);
 					
 					if(state.getBlock().isAir(state, worldIn, upN) || state.getBlock().isLeaves(state, worldIn, upN) || state.getMaterial() == Material.VINE) {
-						this.setBlockAndNotifyAdequately(worldIn, position.up(j3), rand.nextInt(3) != 0 ? this.wood : this.sap);
+						this.setBlockAndNotifyAdequately(worldIn, position.up(j3), j3 == 0 ? this.wood : (rand.nextInt(3) != 0 ? this.wood : this.sap));
 					}
 				}
 			}

@@ -1,6 +1,7 @@
 package com.tyhone.arcanacraft.common.init.recipes;
 
 import com.tyhone.arcanacraft.api.recipe.ArcanacraftCraftingManager;
+import com.tyhone.arcanacraft.common.init.ModBlocks;
 import com.tyhone.arcanacraft.common.init.ModItems;
 import com.tyhone.arcanacraft.common.util.ItemMetaUtil;
 import com.tyhone.arcanacraft.common.util.OreStack;
@@ -14,6 +15,7 @@ public class InitRecipesDeconstructionTable {
 	public static void init(){
 		ArcanacraftCraftingManager.registerDeconstructionRecipe(new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("clean_flesh")), new ItemStack(Items.ROTTEN_FLESH, 1));
 		ArcanacraftCraftingManager.registerDeconstructionRecipe(new ItemStack(Items.STRING, 4), WildStack.W(Blocks.WOOL, 1));
+		ArcanacraftCraftingManager.registerDeconstructionRecipe(new ItemStack(ModItems.ITEM, 4, ItemMetaUtil.item("evolite_sap")), new ItemStack(ModBlocks.LOG, 1, 1));
 
 		ArcanacraftCraftingManager.registerDeconstructionRecipe(new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("quartz_dust")), new ItemStack(Items.QUARTZ, 1));
 		ArcanacraftCraftingManager.registerDeconstructionRecipe(new ItemStack(ModItems.DUST, 1, ItemMetaUtil.dust("ender")), new ItemStack(Items.ENDER_PEARL, 1));

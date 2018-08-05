@@ -25,6 +25,8 @@ public class InitRecipesSoulAltar {
 				ArcanacraftCraftingManager.registerSoulInfusionRecipe(new ItemStack(ModItems.SOUL, 1, ItemMetaUtil.soul("eldritch")), new ItemStack(ModItems.SOUL, 1, ItemMetaUtil.soul("complete")), item, item, item, item, item);
 			}
 			
+			ArcanacraftCraftingManager.registerSoulInfusionRecipe(new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("heart_ender")), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("heart")), new ItemStack(ModItems.SOUL, 1, ItemMetaUtil.soul("complete")), new ItemStack(Items.ENDER_PEARL, 1), new ItemStack(Items.ENDER_PEARL, 1), new ItemStack(Items.ENDER_PEARL, 1), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("evolite_sap")));
+			
 			ArcanacraftCraftingManager.registerSoulInfusionRecipe(new ItemStack(ModItems.INGOT, 4, ItemMetaUtil.ingot("blood_iron")), new ItemStack(Blocks.IRON_BLOCK, 1), new ItemStack(ModItems.CRYSTAL, 1, 0), new ItemStack(ModItems.CRYSTAL, 1, 0), new ItemStack(ModItems.CRYSTAL, 1, 0), new ItemStack(ModItems.SOUL, 1, ItemMetaUtil.soul("fragment")), new ItemStack(ModItems.AYRE, 1));
 			
 			ArcanacraftCraftingManager.registerSoulInfusionRecipe(new ItemStack(Items.NETHER_STAR, 1), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("inert_star")), new ItemStack(ModItems.SOUL, 1, ItemMetaUtil.soul("nether")), new ItemStack(ModItems.EVOLITE, 1), new ItemStack(ModItems.EVOLITE, 1), new ItemStack(ModItems.INGOT, 1, ItemMetaUtil.ingot("alcharium")), new ItemStack(ModItems.ALCHEMICAL_COAL, 1));

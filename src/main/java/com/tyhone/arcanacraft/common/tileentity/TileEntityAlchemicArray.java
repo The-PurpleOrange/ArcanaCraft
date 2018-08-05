@@ -3,29 +3,19 @@ package com.tyhone.arcanacraft.common.tileentity;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.api.recipe.RecipeAlchemicArray;
-import com.tyhone.arcanacraft.api.recipe.RecipeRitualCircle;
-import com.tyhone.arcanacraft.api.ritual.Ritual;
-import com.tyhone.arcanacraft.common.rituals.RitualSummonRain;
 import com.tyhone.arcanacraft.common.tileentity.base.ModTileEntityBase;
 import com.tyhone.arcanacraft.common.util.ItemStackUtil;
 
-import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class TileEntityAlchemicArray extends ModTileEntityBase {
 	public void onActivated(EntityPlayer player, World worldObj){
-		List<EntityItem> eItems = worldObj.getEntitiesWithinAABB(EntityItem.class,  this.getRenderBoundingBox().expand(1, 1, 1));
+		List<EntityItem> eItems = worldObj.getEntitiesWithinAABB(EntityItem.class,  this.getRenderBoundingBox().expand(1, 1, 1).expand(-1, -1, -1));
 		List<ItemStack> itemStacks = null;
-		boolean noItems = false;
 		
 		if(eItems.size()>0){
 			
@@ -33,10 +23,6 @@ public class TileEntityAlchemicArray extends ModTileEntityBase {
 			
 			for(EntityItem entityItem : eItems){
 				ItemStack itemStack = entityItem.getItem();
-				Item item = itemStack.getItem();
-				if(item instanceof ItemBlock){
-					item = (ItemBlock) item;
-				}
 				tempItemStacks.add(itemStack.copy());
 			}
 			itemStacks = ItemStackUtil.compactItems(tempItemStacks);

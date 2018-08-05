@@ -17,7 +17,7 @@ public class TileEntityWardStone extends ModTileEntityBase implements ITickable{
 
 	@Override
 	public void update() {
-		AxisAlignedBB bounding = new AxisAlignedBB(pos.up()).grow(0.1D, 2D, 0.1D);
+		AxisAlignedBB bounding = new AxisAlignedBB(pos.up()).grow(0.1D, 3D, 0.1D);
 		List<Entity> entities = world.getEntitiesWithinAABB(Entity.class, bounding);
 
 		for(Entity entity : entities){

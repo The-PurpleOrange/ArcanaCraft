@@ -20,7 +20,7 @@ import net.minecraft.world.World;
 
 public class TileEntityRitualCircle extends ModTileEntityBase {
 	public void onActivated(EntityPlayer player, World worldObj){
-		List<EntityItem> eItems = worldObj.getEntitiesWithinAABB(EntityItem.class,  this.getRenderBoundingBox().expand(1, 1, 1));
+		List<EntityItem> eItems = worldObj.getEntitiesWithinAABB(EntityItem.class,  this.getRenderBoundingBox().expand(1, 1, 1).expand(-1, -1, -1));
 		List<ItemStack> itemStacks = new ArrayList<>();
 		boolean noItems = false;
 		

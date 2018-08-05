@@ -3,8 +3,6 @@ package com.tyhone.arcanacraft.common.reference;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import com.tyhone.arcanacraft.common.items.enums.EnumTinktures;
-
 public class Names {
 
 	public static final class MetaItems{

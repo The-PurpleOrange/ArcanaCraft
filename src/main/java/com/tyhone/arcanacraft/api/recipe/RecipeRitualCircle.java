@@ -100,33 +100,6 @@ public class RecipeRitualCircle {
 		}
 		return flag;
 	}
-	
-	/*public boolean doInputsMatch(ArrayList<ItemStack> inputActual, ArrayList<ItemStack> inputsRecipe) {
-		ArrayList<ItemStack> inputsRequired = (ArrayList<ItemStack>) new ArrayList(inputsRecipe).clone();
-
-		
-		for(int i = 0; i < inputActual.size(); i++) {
-			ItemStack stack = inputActual.get(i);
-			if(stack == null)
-				break;
-
-			int stackI = -1;
-
-			for(int j = 0; j < inputsRequired.size(); j++) {
-				Object input = inputsRequired.get(j);
-				if(ItemStackUtil.simpleAreStackSizeEqual((ItemStack) input, stack)) {
-					stackI = j;
-					break;
-				}
-			}
-
-			if(stackI != -1)
-				inputsRequired.remove(stackI);
-			else return false;
-		}
-
-		return inputsRequired.isEmpty();
-	}*/
 
 	boolean areBlocksEqual(ItemStack stack1, ItemStack stack2) {
 		if(stack1 == null && stack2 == null){

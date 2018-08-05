@@ -27,7 +27,7 @@ public class InitRecipesInfusionAltar {
 			ArcanacraftCraftingManager.registerInfusionRecipe(new ItemStack(ModBlocks.ELEVATOR, 2), WildStack.W(ModBlocks.ALCHEMIC_STONE, 1), inputs, tinktures);
 		}{
 			//NETHER
-			Object[] inputs = {new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("heat_core")), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("heat_core")), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("heat_core")), new ItemStack(Items.NETHERBRICK, 1), new ItemStack(Items.BLAZE_ROD, 1), new ItemStack(Items.BLAZE_ROD, 1), new ItemStack(Items.NETHER_WART, 1), new ItemStack(ModItems.AYRE, 1)};
+			Object[] inputs = {new ItemStack(Items.BLAZE_ROD, 1), new ItemStack(Items.BLAZE_ROD, 1), new ItemStack(Items.BLAZE_ROD, 1), new ItemStack(Items.NETHERBRICK, 1), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("heat_core")), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("heat_core")), new ItemStack(Items.NETHER_WART, 1), new ItemStack(ModItems.AYRE, 1)};
 			TinktureStack[] tinktures = {new TinktureStack(ModTinktureTypes.IMPIRUS, 12), new TinktureStack(ModTinktureTypes.LOCUS, 4), new TinktureStack(ModTinktureTypes.ALCHEMIC_BASE, 8)};
 			ArcanacraftCraftingManager.registerInfusionRecipe(new ItemStack(ModItems.SHARD, 1, ItemMetaUtil.shard("nether")), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("star_shard")), inputs, tinktures);
 		}{

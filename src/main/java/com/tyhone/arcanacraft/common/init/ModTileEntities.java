@@ -16,6 +16,7 @@ import com.tyhone.arcanacraft.common.tileentity.TileEntityRitualCircle;
 import com.tyhone.arcanacraft.common.tileentity.TileEntitySoulAltar;
 import com.tyhone.arcanacraft.common.tileentity.TileEntitySpiritSkull;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityTransmutationAltar;
+import com.tyhone.arcanacraft.common.tileentity.TileEntityTreeTap;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityWardStone;
 
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -38,7 +39,8 @@ public class ModTileEntities {
 		GameRegistry.registerTileEntity(TileEntityAlembic.class, Arcanacraft.MODID + ".alembic");
 		GameRegistry.registerTileEntity(TileEntityPedestal.class, Arcanacraft.MODID + ".pedestal");
 		GameRegistry.registerTileEntity(TileEntityPedestalSlab.class, Arcanacraft.MODID + ".pedestal_slab");
-		
+
+		GameRegistry.registerTileEntity(TileEntityTreeTap.class, Arcanacraft.MODID + ".tree_tap");
 
 		GameRegistry.registerTileEntity(TileEntitySpiritSkull.class, Arcanacraft.MODID + ".block_spirit_skull");
 

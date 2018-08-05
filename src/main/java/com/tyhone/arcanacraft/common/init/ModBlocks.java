@@ -18,7 +18,7 @@ import com.tyhone.arcanacraft.common.blocks.blocks.BlockFeyStone;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockFleshyBlock;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockLeaves;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockLog;
-import com.tyhone.arcanacraft.common.blocks.blocks.BlockModSapling;
+import com.tyhone.arcanacraft.common.blocks.blocks.BlockSapling;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockRedCoal;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockSoulStone;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockAlchemicArray;
@@ -36,7 +36,9 @@ import com.tyhone.arcanacraft.common.blocks.tiles.BlockRitualCircle;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockSoulAltar;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockSpiritSkull;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockTransmutationAltar;
+import com.tyhone.arcanacraft.common.blocks.tiles.BlockTreeTap;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockWardStone;
+import com.tyhone.arcanacraft.common.blocks.tiles.BlockWarpCircle;
 
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -67,6 +69,7 @@ public class ModBlocks {
 	public static final ModBlockBase ALCHEMIC_ARRAY = new BlockAlchemicArray();
 	public static final ModBlockBase RITUAL_CIRCLE = new BlockRitualCircle();
 	public static final ModBlockBase GRAND_RITUAL_CIRCLE = new BlockGrandRitualCircle();
+	public static final ModBlockBase WARP_CIRCLE = new BlockWarpCircle();
 	
 	public static final ModBlockBase LENS_RECEPTACLE = new BlockLensReceptacle();
 	public static final ModBlockBase DECONSTRUCTION_TABLE = new BlockDeconstructionTable();
@@ -81,11 +84,13 @@ public class ModBlocks {
 	public static final ModBlockBase PEDESTAL = new BlockPedestal();
 	public static final ModBlockBase PEDESTAL_SLAB = new BlockPedestalSlab();
 
+	public static final ModBlockBase TREE_TAP = new BlockTreeTap();
+
 	public static final ModBlockBase DISAPEARING_BLOCK = new BlockDisapearingBlock();
 
 	public static final ModBlockBase SPIRIT_SKULL_BLOCK = new BlockSpiritSkull();
 
-	public static final ModBlockBase EVOLITE_SAPLING = new BlockModSapling();
+	public static final ModBlockBase SAPLING = new BlockSapling();
 	public static final ModBlockBase LOG = new BlockLog();
 	public static final ModBlockBase LEAVES = new BlockLeaves();
 	

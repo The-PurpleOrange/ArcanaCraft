@@ -34,6 +34,11 @@ public class RitualType extends net.minecraftforge.registries.IForgeRegistryEntr
 		return "ritual_type." + Arcanacraft.MODID + ":" + ritualName;
     }
 
+	@Deprecated
+	public String getNameShort() {
+		return ritualName;
+	}
+
 	public String getDisplayName(){
         return I18n.translateToLocal(this.getUnlocalizedName() + ".name").trim();
     }

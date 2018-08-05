@@ -79,7 +79,7 @@ public class BlockLeaves extends ModBlockBase implements net.minecraftforge.comm
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
 		
-		return Item.getItemFromBlock(ModBlocks.EVOLITE_SAPLING);
+		return Item.getItemFromBlock(ModBlocks.SAPLING);
 	}
 	
 	@Override

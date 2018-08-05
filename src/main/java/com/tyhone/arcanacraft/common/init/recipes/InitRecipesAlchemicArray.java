@@ -15,6 +15,7 @@ import net.minecraftforge.oredict.OreDictionary;
 public class InitRecipesAlchemicArray {
 	public static void init(){
 		ArcanacraftCraftingManager.registerAlchemicArrayRecipe(new ItemStack(ModItems.AYRE, 1), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("quartz_dust")), new ItemStack(Items.BLAZE_POWDER), new ItemStack(ModItems.RED_COAL), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("blood_drop")));
+		ArcanacraftCraftingManager.registerAlchemicArrayRecipe(new ItemStack(ModItems.ITEM, 2, ItemMetaUtil.item("catalyst")), new ItemStack(ModItems.AYRE, 1), new ItemStack(Items.GLOWSTONE_DUST, 2), new ItemStack(Items.REDSTONE, 2), new ItemStack(Items.GUNPOWDER, 2), new ItemStack(Items.CLAY_BALL, 1));
 		ArcanacraftCraftingManager.registerAlchemicArrayRecipe(new ItemStack(ModItems.ITEM, 2, ItemMetaUtil.item("catalyst")), new ItemStack(ModItems.AYRE, 1), new ItemStack(Items.GLOWSTONE_DUST, 2), new ItemStack(Items.REDSTONE, 2), new ItemStack(Items.GUNPOWDER, 2), new ItemStack(Items.SLIME_BALL, 1));
 		ArcanacraftCraftingManager.registerAlchemicArrayRecipe(new ItemStack(ModItems.RED_COAL, 1), new ItemStack(Items.COAL, 1, 0), new ItemStack(Items.REDSTONE, 4));
 		ArcanacraftCraftingManager.registerAlchemicArrayRecipe(new ItemStack(Items.LEATHER, 1), new ItemStack(ModItems.ITEM, 2, ItemMetaUtil.item("clean_flesh")));

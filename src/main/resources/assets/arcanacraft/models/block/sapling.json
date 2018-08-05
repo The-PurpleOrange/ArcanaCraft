@@ -1,6 +1,6 @@
 {
     "parent": "block/cross",
     "textures": {
-        "cross": "arcanacraft:blocks/mod_sapling"
+        "cross": "arcanacraft:blocks/sapling"
     }
 }

@@ -24,9 +24,14 @@ public class Ritual extends net.minecraftforge.registries.IForgeRegistryEntry.Im
 
 	@Override
 	public String getUnlocalizedName(){
-		return "ritual." + Arcanacraft.MODID + ":" + ritualName;
+		return "ritual." + Arcanacraft.MODID + ":" + ritualType.getNameShort() +"." + ritualName;
     }
 
+	@Deprecated
+	public String getNameShort() {
+		return ritualName;
+	}
+	
 	public String getDisplayName(){
         return I18n.translateToLocal(this.getUnlocalizedName() + ".name").trim();
     }

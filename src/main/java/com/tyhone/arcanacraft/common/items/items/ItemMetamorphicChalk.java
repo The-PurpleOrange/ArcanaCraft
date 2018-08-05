@@ -61,7 +61,6 @@ public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
 		if(player.isSneaking()){
 			String msg = null;
 
-
 			List<RitualType> ritualTypes = RitualRegistry.getRitualTypeList();
 			
 			ItemStack stack = player.getHeldItem(hand);
@@ -164,6 +163,9 @@ public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
 				}
 			}
 			else{
+
+				Arcanacraft.log("Ritual Type" + recipe.getRitual().getRitualType());
+				Arcanacraft.log("Ritual " + recipe.getRitual().getDisplayName());
 				PlayerUtils.sendPlayerMessage(player, worldIn, "Null Ritual Recipe");
 			}
 		}
@@ -306,6 +308,9 @@ public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
 				}
 			}
 		}
+
+		//Arcanacraft.log("Ritual Type" + ritualType.getDisplayName());
+		//Arcanacraft.log("Ritual " + ritual.getDisplayName());
 		
 		return null;
 	}
@@ -351,25 +356,31 @@ public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
 
     	RecipeRitualCircle recipe = getRitualRecipeNBT(stack);
     	if(recipe != null){
-    		tooltip.add(recipe.getRitual().getDisplayName() + "   (Shift for Items)");
-    		tooltip.add(" - " + recipe.getRitual().getRitualType().getDisplayName());
     		
-    		if(!GuiScreen.isShiftKeyDown()){
-    			tooltip.add("Required Blocks");
-
-        		List<ItemStack> blockStack = ItemStackUtil.compactItems(recipe.getBlockRequirements());
-        		for(ItemStack block : blockStack){
-        			if(!(Block.getBlockFromItem(block.getItem()) instanceof IRitualDisplayIgnoreBlock || block.isEmpty())){
-        	    		tooltip.add(" - " + block.getCount() + "x " + block.getDisplayName());
-        			}
-        		}
-    		}else{
-    			tooltip.add("Required Items");
-    			
-	    		List<ItemStack> itemStacks = recipe.getItemStackRequirements();
-	    		for(ItemStack itemStack : itemStacks){
-	    	    	tooltip.add(" - " + itemStack.getCount() + "x " + itemStack.getDisplayName());
+    		if(recipe.getRitual().getRitualType() != ModRituals.RITUAL_TYPE_CHALK){
+	    		tooltip.add(recipe.getRitual().getDisplayName() + "   (Shift for Items)");
+	    		tooltip.add(" - " + recipe.getRitual().getRitualType().getDisplayName());
+	    		
+	    		if(!GuiScreen.isShiftKeyDown()){
+	    			tooltip.add("Required Blocks");
+	
+	        		List<ItemStack> blockStack = ItemStackUtil.compactItems(recipe.getBlockRequirements());
+	        		for(ItemStack block : blockStack){
+	        			if(!(Block.getBlockFromItem(block.getItem()) instanceof IRitualDisplayIgnoreBlock || block.isEmpty())){
+	        	    		tooltip.add(" - " + block.getCount() + "x " + block.getDisplayName());
+	        			}
+	        		}
+	    		}else{
+	    			tooltip.add("Required Items");
+	    			
+		    		List<ItemStack> itemStacks = recipe.getItemStackRequirements();
+		    		for(ItemStack itemStack : itemStacks){
+		    	    	tooltip.add(" - " + itemStack.getCount() + "x " + itemStack.getDisplayName());
+		    		}
 	    		}
+    		} else {
+	    		tooltip.add("Current Chalk");
+    			tooltip.add(recipe.getRitual().getDisplayName());
     		}
     	}
     }

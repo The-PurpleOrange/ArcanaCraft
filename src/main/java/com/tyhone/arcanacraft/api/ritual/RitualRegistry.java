@@ -10,6 +10,7 @@ public class RitualRegistry {
 	public static HashMap<RitualType, List<Ritual>> hashRitualTypeMap = new HashMap<RitualType, List<Ritual>>();
 	public static List<RitualType> ritualTypesList = new ArrayList<RitualType>();
 	
+	public static List<Ritual> chalkList = new ArrayList<Ritual>();
 	public static List<Ritual> ritualList = new ArrayList<Ritual>();
 	public static List<Ritual> grandRitualList = new ArrayList<Ritual>();
 	//public static List<RitualBase> soulRitualList = new ArrayList<RitualBase>();
@@ -65,6 +66,16 @@ public class RitualRegistry {
 	}
 
 	
+	//CHALK RITUAL
+	public static void registerChalk(Ritual ritual) {
+		ritual.getRitualType().getRitualList().add(ritual);
+	}
+	
+	public static List<Ritual> getChalkList(){
+		return chalkList;
+	}
+
+	
 	//STANDARD RITUAL
 	public static void registerRitual(Ritual ritual) {
 		ritual.getRitualType().getRitualList().add(ritual);
@@ -77,7 +88,8 @@ public class RitualRegistry {
 	
 	//GRAND RITUAL
 	public static void registerGrandRitual(Ritual ritual) {
-		grandRitualList.add(ritual);
+		ritual.getRitualType().getRitualList().add(ritual);
+		//grandRitualList.add(ritual);
 	}
 	
 	public static List<Ritual> getGrandRitualList(){
