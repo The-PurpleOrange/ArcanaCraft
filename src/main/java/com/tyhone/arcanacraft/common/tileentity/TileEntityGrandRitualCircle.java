@@ -1,24 +1,29 @@
 package com.tyhone.arcanacraft.common.tileentity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.tyhone.arcanacraft.api.recipe.ArcanacraftRitualCraftingManager;
 import com.tyhone.arcanacraft.api.recipe.RecipeRitualCircle;
-import com.tyhone.arcanacraft.common.tileentity.base.ModTileEntityBase;
-import com.tyhone.arcanacraft.common.util.ItemStackUtil;
 
-import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class TileEntityGrandRitualCircle extends ModTileEntityBase {
+public class TileEntityGrandRitualCircle extends TileEntityRitualCircle{
+	
+	@Override
+	public int getScanRadius() {
+		return 6;
+	}
+	
+	@Override
+	public List<RecipeRitualCircle> getRecipeList(){
+		return ArcanacraftRitualCraftingManager.getGrandRitualCircleRecipes();
+	}
+}
+
+/*public class TileEntityGrandRitualCircle extends ModTileEntityBase implements ITickable{
 	public void onActivated(EntityPlayer player, World worldObj){
 		List<EntityItem> eItems = worldObj.getEntitiesWithinAABB(EntityItem.class,  this.getRenderBoundingBox().expand(1, 1, 1));
 		List<ItemStack> itemStacks = new ArrayList<>();
@@ -38,9 +43,9 @@ public class TileEntityGrandRitualCircle extends ModTileEntityBase {
 			}
 			itemStacks = ItemStackUtil.compactItems(tempItemStacks);
 			
-			/*for(ItemStack i : itemStacks){
+			for(ItemStack i : itemStacks){
 				Arcanacraft.logger.info(i.getDisplayName() + ", " + i.getMetadata() + ", " + i.getCount());
-			}*/
+			}
 		}else{
 			noItems = true;
 		}
@@ -76,4 +81,10 @@ public class TileEntityGrandRitualCircle extends ModTileEntityBase {
 			}
 		}
 	}
-}
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
+}*/

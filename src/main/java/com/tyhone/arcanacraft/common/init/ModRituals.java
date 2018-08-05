@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.tyhone.arcanacraft.api.recipe.ArcanacraftRitualCraftingManager;
 import com.tyhone.arcanacraft.api.ritual.Ritual;
-import com.tyhone.arcanacraft.api.ritual.RitualRegistry;
+import com.tyhone.arcanacraft.api.ritual.ArcanacraftRitualManager;
 import com.tyhone.arcanacraft.api.ritual.RitualType;
 import com.tyhone.arcanacraft.common.rituals.GrandRitualCreateChicken;
 import com.tyhone.arcanacraft.common.rituals.GrandRitualCreateHomunculus;
@@ -13,6 +13,7 @@ import com.tyhone.arcanacraft.common.rituals.RitualClearWeather;
 import com.tyhone.arcanacraft.common.rituals.RitualPlaceChalk;
 import com.tyhone.arcanacraft.common.rituals.RitualSummonLightning;
 import com.tyhone.arcanacraft.common.rituals.RitualSummonRain;
+import com.tyhone.arcanacraft.common.rituals.RitualWhy;
 
 public class ModRituals {
 
@@ -23,21 +24,21 @@ public class ModRituals {
 
 	public static final RitualType RITUAL_TYPE_STANDARD = new RitualType(
 			"ritual_type_standard", 
-			RitualRegistry.getRitualList(), 
+			ArcanacraftRitualManager.getRitualList(), 
 			ArcanacraftRitualCraftingManager.getRitualCircleRecipes(), 
 			ArcanacraftRitualCraftingManager.getStandardBlockPosList(),
 			ArcanacraftRitualCraftingManager.getStandardPlaceOrder()
 		);
 	public static final RitualType RITUAL_TYPE_GRAND = new RitualType(
 			"ritual_type_grand", 
-			RitualRegistry.getGrandRitualList(), 
+			ArcanacraftRitualManager.getGrandRitualList(), 
 			ArcanacraftRitualCraftingManager.getGrandRitualCircleRecipes(),
 			ArcanacraftRitualCraftingManager.getGrandBlockPosList(),
 			ArcanacraftRitualCraftingManager.getGrandPlaceOrder()
 		);
 	public static final RitualType RITUAL_TYPE_CHALK = new RitualType(
 			"ritual_type_chalk", 
-			RitualRegistry.getChalkList(), 
+			ArcanacraftRitualManager.getChalkList(), 
 			ArcanacraftRitualCraftingManager.getRitualChalkRecipes(), 
 			ArcanacraftRitualCraftingManager.getChalkBlockPosList(), 
 			ArcanacraftRitualCraftingManager.getChalkPlaceOrder()
@@ -45,19 +46,27 @@ public class ModRituals {
 	
 	//public static final RitualTypeBase RITUAL_TYPE_SOUL_ALTAR = new RitualTypeBase("ritual_type_soul_altar", RitualRegistry.getSoulRitualList());
 
+	//CHALK
 	public static final Ritual CHALK_CHARCOAL = new RitualPlaceChalk("charcoal", RITUAL_TYPE_CHALK);
 	public static final Ritual CHALK_BONE = new RitualPlaceChalk("bone", RITUAL_TYPE_CHALK);
+	public static final Ritual CHALK_GREEN = new RitualPlaceChalk("green", RITUAL_TYPE_CHALK);
 	public static final Ritual CHALK_BLOOD = new RitualPlaceChalk("blood", RITUAL_TYPE_CHALK);
 	public static final Ritual CHALK_LAPIS = new RitualPlaceChalk("lapis", RITUAL_TYPE_CHALK);
 	public static final Ritual CHALK_GOLD = new RitualPlaceChalk("gold", RITUAL_TYPE_CHALK);
 	public static final Ritual CHALK_MAGICITE = new RitualPlaceChalk("magicite", RITUAL_TYPE_CHALK);
 	
+	//STANDARD
 	public static final Ritual RITUAL_SUMMON_RAIN = new RitualSummonRain("summon_rain", RITUAL_TYPE_STANDARD);
 	public static final Ritual RITUAL_CLEAR_WEATHER = new RitualClearWeather("clear_weather", RITUAL_TYPE_STANDARD);
 	public static final Ritual RITUAL_SUMMON_LIGHTNING = new RitualSummonLightning("summon_lightning", RITUAL_TYPE_STANDARD);
 
+	public static final Ritual RITUAL_WHY = new RitualWhy("why", RITUAL_TYPE_STANDARD);
+
+	//GRAND
 	public static final Ritual GRAND_RITUAL_CREATE_HOMUNCULUS = new GrandRitualCreateHomunculus("create_homunculus", RITUAL_TYPE_GRAND);
 	public static final Ritual GRAND_RITUAL_SUMMON_CHICKEN = new GrandRitualCreateChicken("summon_chicken", RITUAL_TYPE_GRAND);
+
+	public static final Ritual GRAND_RITUAL_WHY = new RitualWhy("grand_why", RITUAL_TYPE_GRAND);
 
 	private ModRituals() {}
 	
@@ -76,11 +85,11 @@ public class ModRituals {
 	
 	public static void init(){
 		for(Ritual ritual : getRituals()){
-			RitualRegistry.registerRitual(ritual);
+			ArcanacraftRitualManager.registerRitual(ritual);
 		}
 		for(RitualType ritualType : RITUAL_TYPES){
-			RitualRegistry.registerRitualType(ritualType);
-			RitualRegistry.registerRitualType(ritualType, ritualType.getRitualList());
+			ArcanacraftRitualManager.registerRitualType(ritualType);
+			ArcanacraftRitualManager.registerRitualType(ritualType, ritualType.getRitualList());
 		}
 	}
 }

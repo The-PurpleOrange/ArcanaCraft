@@ -1,7 +1,7 @@
 {
   "result": {
     "item": "arcanacraft:chalk",
-      "data": 3
+      "data": 2
   },
   "pattern": [
     "  d",
@@ -18,7 +18,7 @@
     },
     "d": {
       "item": "minecraft:dye",
-      "data": 4
+      "data": 2
     }
   }
 }

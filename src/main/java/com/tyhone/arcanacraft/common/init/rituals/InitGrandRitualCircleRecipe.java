@@ -15,6 +15,7 @@ public class InitGrandRitualCircleRecipe {
 	public static void initRecipe(){
 		initSummonChicken();
 		initCreateHomunculus();
+		initWhy();
 	}
 	
 	private static void initCreateHomunculus(){
@@ -77,6 +78,35 @@ public class InitGrandRitualCircleRecipe {
 					'G', new ItemStack(ModBlocks.CHALK_BLOCK, 1, ItemMetaUtil.chalk("lapis")),
 					'C', new ItemStack(ModBlocks.GRAND_RITUAL_CIRCLE),
 					'Z', new ItemStack(Blocks.LAPIS_BLOCK, 1),
+					'K', new ItemStack(Blocks.GLOWSTONE, 1)
+			});
+	}
+	
+	private static void initWhy(){
+		ArcanacraftRitualCraftingManager.registerGrandRitualCircleRecipe(
+				ModRituals.GRAND_RITUAL_WHY,
+			new ItemStack[]{
+					new ItemStack(ModItems.AYRE, 1)
+			},
+			new Object[]{
+					"      K      ",
+					" K         K ",
+					"             ",
+					"             ",
+					"    ZHGHZ    ",
+					"    HB BH    ",
+					"K   G C G   K",
+					"    HB BH    ",
+					"    ZHGHZ    ",
+					"             ",
+					"             ",
+					" K         K ",
+					"      K      ",
+					'H', new ItemStack(ModBlocks.CHALK_BLOCK, 1, ItemMetaUtil.chalk("bone")),
+					'B', new ItemStack(ModBlocks.CHALK_BLOCK, 1, ItemMetaUtil.chalk("charcoal")),
+					'G', new ItemStack(ModBlocks.CHALK_BLOCK, 1, ItemMetaUtil.chalk("lapis")),
+					'C', new ItemStack(ModBlocks.GRAND_RITUAL_CIRCLE),
+					'Z', new ItemStack(ModBlocks.FLESHY_BLOCK, 1),
 					'K', new ItemStack(Blocks.GLOWSTONE, 1)
 			});
 	}

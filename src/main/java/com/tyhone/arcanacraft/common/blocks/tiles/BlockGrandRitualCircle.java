@@ -2,12 +2,10 @@ package com.tyhone.arcanacraft.common.blocks.tiles;
 
 import java.util.Random;
 
-import com.tyhone.arcanacraft.api.recipe.ArcanacraftRitualCraftingManager;
 import com.tyhone.arcanacraft.api.ritual.IRitualBuilder;
 import com.tyhone.arcanacraft.api.ritual.IRitualCircle;
 import com.tyhone.arcanacraft.common.blocks.base.ModBlockTileEntityBase;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityGrandRitualCircle;
-import com.tyhone.arcanacraft.common.tileentity.TileEntityRitualCircle;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;

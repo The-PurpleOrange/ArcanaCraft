@@ -35,6 +35,16 @@
 	    { "model": "arcanacraft:chalk_block/charcoal/charcoal_7" },
 	    { "model": "arcanacraft:chalk_block/charcoal/charcoal_8" }
 	],
+	"variant=green": [
+	    { "model": "arcanacraft:chalk_block/green/green_1" },
+	    { "model": "arcanacraft:chalk_block/green/green_2" },
+	    { "model": "arcanacraft:chalk_block/green/green_3" },
+	    { "model": "arcanacraft:chalk_block/green/green_4" },
+	    { "model": "arcanacraft:chalk_block/green/green_5" },
+	    { "model": "arcanacraft:chalk_block/green/green_6" },
+	    { "model": "arcanacraft:chalk_block/green/green_7" },
+	    { "model": "arcanacraft:chalk_block/green/green_8" }
+	],
 	"variant=blood": [
 	    { "model": "arcanacraft:chalk_block/blood/blood_1" },
 	    { "model": "arcanacraft:chalk_block/blood/blood_2" },

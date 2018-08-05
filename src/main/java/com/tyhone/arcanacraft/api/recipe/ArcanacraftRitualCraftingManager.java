@@ -134,13 +134,23 @@ public class ArcanacraftRitualCraftingManager {
 	
 	//OTHER
 
-	//GET RITUAL RECIPE FROM LIST
+	//GET RITUAL RECIPE FROM COMPONENETS
 	public static RecipeRitualCircle getRecipe(List<ItemStack> itemStacks, List<ItemStack> blockStacks, List<RecipeRitualCircle> recipeList){
 		for(RecipeRitualCircle recipe : recipeList){
 			if(recipe.matchesBlocks(blockStacks)){
 				if(itemStacks!=null && RecipeUtil.doInputsMatch((ArrayList<Object>) recipe.getItemRequirements(), (ArrayList<ItemStack>) itemStacks)){
 					return recipe;
 				}
+			}
+		}
+		return null;
+	}
+	
+	//GET RITUAL RECIPE FROM RITUAL
+	public static RecipeRitualCircle getRecipe(Ritual ritual, List<RecipeRitualCircle> recipeList) {
+		for(RecipeRitualCircle recipe : recipeList) {
+			if(recipe.getRitual() == ritual) {
+				return recipe;
 			}
 		}
 		return null;

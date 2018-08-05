@@ -38,6 +38,7 @@ public class BlockChalk extends ModBlockEnum implements IRitualDisplayIgnoreBloc
 	public enum EnumChalkType implements IEnumMeta, Comparable<EnumChalkType>{
 		CHARCOAL,
 		BONE,
+		GREEN,
 		BLOOD,
 		LAPIS,
 		GOLD,
@@ -268,13 +269,11 @@ public class BlockChalk extends ModBlockEnum implements IRitualDisplayIgnoreBloc
 
         if (meta == ItemMetaUtil.chalk("magicite") && world.getTotalWorldTime() % 5 == 0)
         {
-            double d0 = (double)pos.getX() + 0.5D + ((double)rand.nextFloat() - 0.5D) * 0.5D;
-            double d1 = (double)((float)pos.getY() + 0.0625F);
-            double d2 = (double)pos.getZ() + 0.5D + ((double)rand.nextFloat() - 0.5D) * 0.5D;
-            double f1 = 0.1;
-            double f2 = 0.2;
-            double f3 = 0.3;
-            world.spawnParticle(EnumParticleTypes.SPELL_WITCH, d0, d1, d2, f1, d2, f3);
+        	double x = pos.getX() + 0.5D + (rand.nextFloat() - 0.5D) * 0.5D;
+            double y = pos.getY() + 0.0625F;
+            double z = pos.getZ() + 0.5D + (rand.nextFloat() - 0.5D) * 0.5D;
+            
+            world.spawnParticle(EnumParticleTypes.SPELL_WITCH, x, y, z, 0, 0.2, 0);
         }
     }
     

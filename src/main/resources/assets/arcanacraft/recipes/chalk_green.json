@@ -1,7 +1,7 @@
 {
   "result": {
     "item": "arcanacraft:chalk",
-      "data": 5
+      "data": 4
   },
   "pattern": [
     "  d",
@@ -17,8 +17,8 @@
       "item": "minecraft:potion"
     },
     "d": {
-      "type": "forge:ore_dict",
-      "ore": "dustGold"
+      "item": "minecraft:dye",
+      "data": 4
     }
   }
 }

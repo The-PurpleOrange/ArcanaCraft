@@ -51,4 +51,20 @@ public class Ritual extends net.minecraftforge.registries.IForgeRegistryEntry.Im
 		Arcanacraft.logger.error("TRIED TO PREFORM RITUAL IN BASE CLASS");
 		return false;
 	}
+	
+	@Override
+	public boolean preformRepeatingRitual(World world, BlockPos pos) {
+		Arcanacraft.logger.error("TRIED TO PREFORM REPEATING RITUAL IN BASE CLASS");
+		return false;
+	}
+
+	@Override
+	public Boolean repeatable() {
+		return false;
+	}
+	
+	@Override
+	public int getMaxCooldown() {
+		return 0;
+	}
 }

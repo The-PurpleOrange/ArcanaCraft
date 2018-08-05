@@ -1,9 +1,10 @@
 package com.tyhone.arcanacraft.client.render.tesr;
 
+import java.util.Random;
+
 import org.lwjgl.opengl.GL11;
 
 import com.tyhone.arcanacraft.Arcanacraft;
-import com.tyhone.arcanacraft.common.tileentity.TileEntityAlchemicArray;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityRitualCircle;
 
 import net.minecraft.client.renderer.BufferBuilder;
@@ -14,7 +15,10 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
 public class RenderTileEntityRitualCircle extends TileEntitySpecialRenderer{
 
@@ -28,6 +32,9 @@ public class RenderTileEntityRitualCircle extends TileEntitySpecialRenderer{
 	@Override
 	public void render(TileEntity te, double x, double y, double z, float partialTicks, int destroyStage, float alpha){
 		TileEntityRitualCircle ritualCircle = (TileEntityRitualCircle) te;
+		if(ritualCircle.isCasting()) {
+			spawnCastingParticles(te.getWorld(), te.getPos());
+		}
 		
         renderCircle(te, x, y, z, partialTicks);
 	}
@@ -69,4 +76,16 @@ public class RenderTileEntityRitualCircle extends TileEntitySpecialRenderer{
         GlStateManager.popMatrix();
 	}
 
+	
+	public void spawnCastingParticles(World world, BlockPos pos) {
+		Random rand = new Random();
+
+		if(rand.nextInt(6) == 0) {
+			double x = pos.getX() + 0.5D + ((rand.nextFloat() - 0.5D) * 1.2);
+	        double y = pos.getY() + 0.0625F;
+	        double z = pos.getZ() + 0.5D + ((rand.nextFloat() - 0.5D) * 1.2);
+	        
+	        world.spawnParticle(EnumParticleTypes.SPELL_WITCH, x, y, z, 0, 0.2, 0);
+		}
+	}
 }

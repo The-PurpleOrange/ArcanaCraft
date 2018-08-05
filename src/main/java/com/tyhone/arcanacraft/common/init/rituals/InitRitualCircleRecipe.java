@@ -15,6 +15,7 @@ public class InitRitualCircleRecipe {
 		initSummonRain();
 		initSummonLightning();
 		initClearWeather();
+		initWhy();
 	}
 	
 	private static void initSummonRain(){
@@ -74,6 +75,26 @@ public class InitRitualCircleRecipe {
 					'G', new ItemStack(ModBlocks.CHALK_BLOCK, 1, ItemMetaUtil.chalk("lapis")),
 					'C', new ItemStack(ModBlocks.RITUAL_CIRCLE),
 					'Z', new ItemStack(Blocks.GLOWSTONE, 1)
+			});
+	}
+	
+	private static void initWhy(){
+		ArcanacraftRitualCraftingManager.registerRitualCircleRecipe(
+				ModRituals.RITUAL_WHY,
+			new ItemStack[]{
+					new ItemStack(ModItems.AYRE, 1)
+			},
+			new Object[]{
+					"ZHGHZ",
+					"HB BH",
+					"G C G",
+					"HB BH",
+					"ZHGHZ",
+					'H', new ItemStack(ModBlocks.CHALK_BLOCK, 1, ItemMetaUtil.chalk("bone")),
+					'B', new ItemStack(ModBlocks.CHALK_BLOCK, 1, ItemMetaUtil.chalk("charcoal")),
+					'G', new ItemStack(ModBlocks.CHALK_BLOCK, 1, ItemMetaUtil.chalk("blood")),
+					'C', new ItemStack(ModBlocks.RITUAL_CIRCLE),
+					'Z', new ItemStack(ModBlocks.FLESHY_BLOCK, 1)
 			});
 	}
 }

@@ -7,7 +7,7 @@ public class Names {
 
 	public static final class MetaItems{
 		
-		public static final ArrayList<String> CHALK = al("charcoal", "bone", "blood", "lapis", "gold", "magicite");
+		public static final ArrayList<String> CHALK = al("charcoal", "bone", "green", "blood", "lapis", "gold", "magicite");
         public static final ArrayList<String> ALCHEMIC_DUST = al("mundane", "salient", "lavarice", "avaricle");
         public static final ArrayList<String> SOUL = al("fragment", "complete", "nether", "eldritch");
         public static final ArrayList<String> LENS = al("essence", "soul");

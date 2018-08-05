@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class RitualRegistry {
+public class ArcanacraftRitualManager {
 
 	
 	public static HashMap<RitualType, List<Ritual>> hashRitualTypeMap = new HashMap<RitualType, List<Ritual>>();

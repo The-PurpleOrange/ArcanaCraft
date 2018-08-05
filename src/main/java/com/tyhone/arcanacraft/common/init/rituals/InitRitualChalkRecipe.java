@@ -13,6 +13,7 @@ public class InitRitualChalkRecipe {
 	public static void initRecipe(){
 		initChalk(ModRituals.CHALK_CHARCOAL);
 		initChalk(ModRituals.CHALK_BONE);
+		initChalk(ModRituals.CHALK_GREEN);
 		initChalk(ModRituals.CHALK_BLOOD);
 		initChalk(ModRituals.CHALK_LAPIS);
 		initChalk(ModRituals.CHALK_GOLD);
