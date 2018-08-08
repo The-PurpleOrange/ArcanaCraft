@@ -1,0 +1,202 @@
+package com.tyhone.arcanacraft.common.items.items.tools;
+
+import com.google.common.collect.Multimap;
+import com.tyhone.arcanacraft.Arcanacraft;
+import com.tyhone.arcanacraft.common.items.base.ModItemBase;
+import com.tyhone.arcanacraft.common.util.ItemStackUtil;
+
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockBush;
+import net.minecraft.block.BlockCrops;
+import net.minecraft.block.IGrowable;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
+import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.NonNullList;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+
+public class ItemToolScytheMagic extends ModItemBase{
+
+	private final float speed;
+	protected Item.ToolMaterial toolMaterial;
+	
+	public ItemToolScytheMagic() {
+		super("tool_scythe_magic");
+		this.toolMaterial = ToolMaterial.IRON;
+		this.maxStackSize = 1;
+		this.setMaxDamage(6400);
+		this.speed = this.toolMaterial.getAttackDamage() + 1.0F;
+	}
+	
+	@Override
+	public boolean onBlockStartBreak(ItemStack itemstack, BlockPos pos, EntityPlayer player) {
+		World world = player.getEntityWorld();
+		//ItemStack itemstack = player.getHeldItem(hand);
+
+		IBlockState state = world.getBlockState(pos);
+		Block block = state.getBlock();
+        if(block instanceof BlockCrops || block instanceof BlockBush){
+			for(int hoeX = -2; hoeX < 3; hoeX++) {
+				for(int hoeZ = -2; hoeZ < 3; hoeZ++) {
+					for(int hoeY = -2; hoeY < 3; hoeY++) {
+						state = world.getBlockState(pos.add(hoeX, hoeY, hoeZ));
+						block = state.getBlock();
+						if(block instanceof BlockCrops || block instanceof BlockBush){
+							//Arcanacraft.log("Harvesting"); //TODO remove
+							harvest(itemstack, player, EnumFacing.DOWN, world, pos.add(hoeX, hoeY, hoeZ), true);
+							Arcanacraft.log("Its a plant");
+				        }
+					}
+				}
+			}
+        }
+        
+        else if(block.isLeaves(state, world, pos)) {
+        	for(int hoeX = -2; hoeX < 3; hoeX++) {
+				for(int hoeZ = -2; hoeZ < 3; hoeZ++) {
+					for(int hoeY = -2; hoeY < 3; hoeY++) {
+						if(!player.canPlayerEdit(pos.add(0, 1, 0), EnumFacing.DOWN, itemstack)) {
+							Arcanacraft.log("Its a leaf");
+							return false;
+						}
+						
+						world.destroyBlock(pos, true);
+					}
+				}
+			}
+        }
+        
+		return super.onBlockStartBreak(itemstack, pos, player);
+	}
+	
+	/*@Override
+	public boolean canHarvestBlock(IBlockState blockIn) {
+		return false;
+	}*/
+	
+	/*@Override
+	public boolean onBlockDestroyed(ItemStack stack, World world, IBlockState state, BlockPos pos, EntityLivingBase entityLiving) {
+		Arcanacraft.log(world.getBlockState(pos).toString());
+		
+		if(world.isRemote) {
+			world.markBlocksDirtyVertical(pos.getX(), pos.getZ(), pos.getY(), pos.getY());
+			world.scheduleUpdate(pos, world.getBlockState(pos).getBlock(), 5);
+		}
+		return false;
+	}*/
+	
+	@Override
+    public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
+    {
+        ItemStack itemstack = player.getHeldItem(hand);
+
+		IBlockState state = worldIn.getBlockState(pos);
+		Block block = state.getBlock();
+        if(block instanceof IGrowable){
+			for(int hoeX = -2; hoeX < 3; hoeX++) {
+				for(int hoeZ = -2; hoeZ < 3; hoeZ++) {
+					for(int hoeY = -2; hoeY < 3; hoeY++) {
+						if(block instanceof IGrowable) {
+							//Arcanacraft.log("Harvesting"); //TODO remove
+							harvest(itemstack, player, facing, worldIn, pos.add(hoeX, hoeY, hoeZ), false);
+						}
+					}
+				}
+			}
+        }
+
+		return EnumActionResult.PASS;
+    }
+	
+	private boolean harvest(ItemStack stack, EntityPlayer player, EnumFacing facing, World world, BlockPos pos, boolean destroyBlocks) {
+		
+		IBlockState state = world.getBlockState(pos);
+		Block block = state.getBlock();
+		if(!player.canPlayerEdit(pos, facing, stack)) {
+			//Arcanacraft.log("Its not a IGrowable"); //TODO remove
+			return false;
+		}
+		
+		if(destroyBlocks) {
+			world.destroyBlock(pos, !player.isCreative());
+			return true;
+		}
+
+		if(block instanceof IGrowable) {
+			IGrowable igrowable = (IGrowable)block;
+			
+			if(!igrowable.canGrow(world, pos, state, world.isRemote)) {
+				//Arcanacraft.log("Can grow"); //TODO remove
+				NonNullList<ItemStack> drops = NonNullList.create();;
+				block.getDrops(drops, world, pos, state, 0);
+				Item blockItem = Item.getItemFromBlock(block);
+				boolean removedSeedFlag = false;
+				for(ItemStack drop : drops) {
+					if(!removedSeedFlag && ItemStackUtil.simpleAreItemStacksEqual(drop, new ItemStack(blockItem, 1, block.getMetaFromState(state)), false)) {
+						drop.shrink(1);
+						removedSeedFlag = true;
+					}
+					if(!drop.isEmpty()) {
+						if(!world.isRemote) {
+							EntityItem eDrop = new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), drop);
+							world.spawnEntity(eDrop);
+						}
+						if(world.isRemote) {
+					        world.playSound(player, pos, SoundEvents.BLOCK_GRASS_BREAK, SoundCategory.BLOCKS, 1.0F, 1.0F);
+						}
+					}
+				}
+				world.setBlockState(pos, block.getDefaultState(), 3);
+			}
+			
+			else {
+				//Arcanacraft.log("Cant grow"); //TODO remove
+			}
+		}
+		
+        stack.damageItem(1, player);
+		return true;
+	}
+	
+	@Override
+	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
+		stack.damageItem(1, attacker);
+		return true;
+	}
+	
+	@Override
+	public boolean isFull3D() {
+		return true;
+	}
+
+	public String getMaterialName(){
+		return this.toolMaterial.toString();
+	}
+	
+	@Override
+	public Multimap<String, AttributeModifier> getItemAttributeModifiers(EntityEquipmentSlot equipmentSlot)
+    {
+        Multimap<String, AttributeModifier> multimap = super.getItemAttributeModifiers(equipmentSlot);
+
+        if (equipmentSlot == EntityEquipmentSlot.MAINHAND)
+        {
+            multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier", 0.0D, 0));
+            multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, "Weapon modifier", (double)(this.speed - 4.0F), 0));
+        }
+
+        return multimap;
+    }
+	
+}

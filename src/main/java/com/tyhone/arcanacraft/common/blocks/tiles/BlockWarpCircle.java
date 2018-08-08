@@ -7,7 +7,7 @@ import com.tyhone.arcanacraft.common.blocks.base.ModBlockBase;
 import com.tyhone.arcanacraft.common.blocks.base.ModBlockTileEntityBase;
 import com.tyhone.arcanacraft.common.init.ModBlocks;
 import com.tyhone.arcanacraft.common.init.ModItems;
-import com.tyhone.arcanacraft.common.items.items.ItemWarpHeart;
+import com.tyhone.arcanacraft.common.items.items.tools.ItemToolWarpHeart;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityAlchemicArray;
 import com.tyhone.arcanacraft.common.util.ItemMetaUtil;
 import com.tyhone.arcanacraft.common.util.PosUtil;

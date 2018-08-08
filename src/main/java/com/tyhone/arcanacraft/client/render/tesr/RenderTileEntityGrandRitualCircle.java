@@ -7,6 +7,7 @@ import org.lwjgl.opengl.GL11;
 import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityGrandRitualCircle;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderItem;
@@ -78,7 +79,7 @@ public class RenderTileEntityGrandRitualCircle extends TileEntitySpecialRenderer
 	
 	public void spawnCastingParticles(World world, BlockPos pos) {
 		Random rand = new Random();
-		if(rand.nextInt(3) == 0) {
+		if(rand.nextInt(128) == 0 && !Minecraft.getMinecraft().isGamePaused()) {
 			double x = pos.getX() + 0.5D + ((rand.nextFloat() - 0.5D) * 1.6);
 	        double y = pos.getY() + 0.0625F;
 	        double z = pos.getZ() + 0.5D + ((rand.nextFloat() - 0.5D) * 1.6);

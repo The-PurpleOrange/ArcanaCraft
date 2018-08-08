@@ -7,6 +7,7 @@ import org.lwjgl.opengl.GL11;
 import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityRitualCircle;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderItem;
@@ -14,6 +15,7 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
@@ -80,7 +82,7 @@ public class RenderTileEntityRitualCircle extends TileEntitySpecialRenderer{
 	public void spawnCastingParticles(World world, BlockPos pos) {
 		Random rand = new Random();
 
-		if(rand.nextInt(6) == 0) {
+		if(rand.nextInt(192) == 0 && !Minecraft.getMinecraft().isGamePaused()) {
 			double x = pos.getX() + 0.5D + ((rand.nextFloat() - 0.5D) * 1.2);
 	        double y = pos.getY() + 0.0625F;
 	        double z = pos.getZ() + 0.5D + ((rand.nextFloat() - 0.5D) * 1.2);

@@ -1,4 +1,4 @@
-package com.tyhone.arcanacraft.common.items.items;
+package com.tyhone.arcanacraft.common.items.items.tools;
 
 import java.util.Random;
 
@@ -8,6 +8,7 @@ import com.tyhone.arcanacraft.common.util.TeleportUtils;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -24,14 +25,14 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemWarpHeart extends ModItemBase{
+public class ItemToolWarpHeart extends ModItemBase{
 
 	private final String NBT_BOUND = "bound";
 	private final String NBT_POS_ARRAY = "int_array";
 	private final String NBT_DIMENSION = "dimension";
 	
-	public ItemWarpHeart() {
-		super("warp_heart");
+	public ItemToolWarpHeart() {
+		super("tool_warp_heart");
 		this.maxStackSize = 1;
 	}
 	
@@ -84,7 +85,7 @@ public class ItemWarpHeart extends ModItemBase{
 	@Override
 	public ItemStack onItemUseFinish(ItemStack stack, World world, EntityLivingBase player) {
 		if(isBound(stack)) {
-			world.playSound((EntityPlayer) player, player.posX, player.posY, player.posZ, new SoundEvent(new ResourceLocation("entity.endermen.teleport")), SoundCategory.PLAYERS, 1F, player.world.rand.nextFloat() * 0.1F + 0.9F);
+			world.playSound((EntityPlayer) player, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_ENDERMEN_TELEPORT, SoundCategory.PLAYERS, 1F, player.world.rand.nextFloat() * 0.1F + 0.9F);
 			BlockPos warpPos = getWarpPos(stack);
 			TeleportUtils.warp(player, warpPos, player.dimension, getDimension(stack));
 		}
