@@ -9,6 +9,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.BlockCrops;
 import net.minecraft.block.IGrowable;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -56,7 +57,6 @@ public class ItemToolScytheMagic extends ModItemBase{
 						if(block instanceof BlockCrops || block instanceof BlockBush){
 							//Arcanacraft.log("Harvesting"); //TODO remove
 							harvest(itemstack, player, EnumFacing.DOWN, world, pos.add(hoeX, hoeY, hoeZ), true);
-							Arcanacraft.log("Its a plant");
 				        }
 					}
 				}
@@ -67,12 +67,10 @@ public class ItemToolScytheMagic extends ModItemBase{
         	for(int hoeX = -2; hoeX < 3; hoeX++) {
 				for(int hoeZ = -2; hoeZ < 3; hoeZ++) {
 					for(int hoeY = -2; hoeY < 3; hoeY++) {
-						if(!player.canPlayerEdit(pos.add(0, 1, 0), EnumFacing.DOWN, itemstack)) {
-							Arcanacraft.log("Its a leaf");
-							return false;
+						BlockPos leafPos = pos.add(hoeX, hoeY, hoeZ);
+						if(world.getBlockState(leafPos).getMaterial() == Material.LEAVES && player.canPlayerEdit(leafPos, EnumFacing.DOWN, itemstack)) {
+							world.destroyBlock(leafPos, true);
 						}
-						
-						world.destroyBlock(pos, true);
 					}
 				}
 			}

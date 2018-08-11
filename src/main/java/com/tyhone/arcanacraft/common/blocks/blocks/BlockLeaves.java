@@ -162,7 +162,6 @@ public class BlockLeaves extends ModBlockBase implements net.minecraftforge.comm
 	
 	@Override
 	public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
-		Arcanacraft.log("leaf destroyed");
 		int x = pos.getX();
 		int y = pos.getY();
 		int z = pos.getZ();
@@ -174,11 +173,8 @@ public class BlockLeaves extends ModBlockBase implements net.minecraftforge.comm
 						
 						BlockPos blockpos = pos.add(newX, newY, newZ);
 						IBlockState iblockstate = worldIn.getBlockState(blockpos);
-
-						Arcanacraft.log("Block found at " + blockpos.toString());
 						
 						if(iblockstate.getBlock().isLeaves(iblockstate, worldIn, blockpos)) {
-							Arcanacraft.log("Set decaying");
 							iblockstate.getBlock().beginLeavesDecay(iblockstate, worldIn, blockpos);
 						}
 					}

@@ -12,6 +12,7 @@ import com.tyhone.arcanacraft.common.init.ModRitualRecipes;
 import com.tyhone.arcanacraft.common.init.ModRituals;
 import com.tyhone.arcanacraft.common.init.ModTileEntities;
 import com.tyhone.arcanacraft.common.init.ModTinktureTypes;
+import com.tyhone.arcanacraft.common.reference.PickaxeOreValues;
 import com.tyhone.arcanacraft.common.util.BlockUtils;
 
 import net.minecraft.block.Block;
@@ -47,6 +48,7 @@ public class CommonProxy {
     }
 
     public void postInit(FMLPostInitializationEvent e) {
+    	PickaxeOreValues.init();
         if (config.hasChanged()) {
             config.save();
         }

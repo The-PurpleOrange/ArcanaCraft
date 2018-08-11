@@ -31,6 +31,7 @@ import com.tyhone.arcanacraft.common.items.items.ItemThaumonuclearBall;
 import com.tyhone.arcanacraft.common.items.items.ItemTinkture;
 import com.tyhone.arcanacraft.common.items.items.tools.ItemHammer;
 import com.tyhone.arcanacraft.common.items.items.tools.ItemToolHoeMagic;
+import com.tyhone.arcanacraft.common.items.items.tools.ItemToolPickaxeMagic;
 import com.tyhone.arcanacraft.common.items.items.tools.ItemToolScytheMagic;
 import com.tyhone.arcanacraft.common.items.items.tools.ItemToolWandDebug;
 import com.tyhone.arcanacraft.common.items.items.tools.ItemToolWandExodus;
@@ -79,6 +80,7 @@ public class ModItems {
 
 	public static final ModItemBase THAUMONUCLEAR_BALL = new ItemThaumonuclearBall();
 
+	public static final ModItemBase TOOL_PICKAXE_MAGIC = new ItemToolPickaxeMagic();
 	public static final ModItemBase TOOL_HOE_MAGIC = new ItemToolHoeMagic();
 	public static final ModItemBase TOOL_SCYTHE_MAGIC = new ItemToolScytheMagic();
 	
