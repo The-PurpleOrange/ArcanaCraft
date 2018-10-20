@@ -18,8 +18,8 @@ import com.tyhone.arcanacraft.common.blocks.blocks.BlockFeyStone;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockFleshyBlock;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockLeaves;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockLog;
-import com.tyhone.arcanacraft.common.blocks.blocks.BlockSapling;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockRedCoal;
+import com.tyhone.arcanacraft.common.blocks.blocks.BlockSapling;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockSoulStone;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockAlchemicArray;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockAlembic;
@@ -32,6 +32,7 @@ import com.tyhone.arcanacraft.common.blocks.tiles.BlockJar;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockLensReceptacle;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockPedestal;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockPedestalSlab;
+import com.tyhone.arcanacraft.common.blocks.tiles.BlockReapearingBlock;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockRitualCircle;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockSoulAltar;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockSpiritSkull;
@@ -87,6 +88,7 @@ public class ModBlocks {
 	public static final ModBlockBase TREE_TAP = new BlockTreeTap();
 
 	public static final ModBlockBase DISAPEARING_BLOCK = new BlockDisapearingBlock();
+	public static final ModBlockBase REAPEARING_BLOCK = new BlockReapearingBlock();
 
 	public static final ModBlockBase SPIRIT_SKULL_BLOCK = new BlockSpiritSkull();
 

@@ -53,6 +53,7 @@ public class Config {
 		cfg.addCustomCategoryComment(CATEGORY_BLOCK_VALUES, "Pickaxe sense Block values");
 		blockMap = decodeBlockValues(cfg);
 		cfg.addCustomCategoryComment(CATEGORY_ORE_VALUES, "Pickaxe sense OreDict values");
+		oreMap = decodeOreValues(cfg);
 	}
 	
 	private static Map<Integer, String> decodeValueTiers(Configuration cfg){

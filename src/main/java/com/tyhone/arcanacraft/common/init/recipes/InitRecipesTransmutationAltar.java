@@ -26,6 +26,8 @@ public class InitRecipesTransmutationAltar {
 		
 		ArcanacraftCraftingManager.registerTransmutationRecipes(new ItemStack(ModItems.TRINKET_MAGNET, 1), new ItemStack(ModItems.INGOT, 1, ItemMetaUtil.ingot("magicite")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("iron")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("gold")), new ItemStack(ModItems.AYRE, 1));
 		
+		ArcanacraftCraftingManager.registerTransmutationRecipes(new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("inert_star")), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("star_shard")), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("star_shard")), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("star_shard")), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("star_shard")));
+		
 		ArcanacraftCraftingManager.registerTransmutationRecipes(new ItemStack(ModItems.DUST, 2, ItemMetaUtil.dust("ender")), new ItemStack(ModItems.DUST, 1, ItemMetaUtil.dust("emeradine")), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("blood_drop")), new ItemStack(ModItems.AYRE, 1), new ItemStack(ModItems.DUST, 1, ItemMetaUtil.dust("emeradine")));
 		
 		ArcanacraftCraftingManager.registerTransmutationRecipes(new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("emeradine")), new ItemStack(ModItems.CRYSTAL, 1, ItemMetaUtil.crystal("emeradine")), new ItemStack(ModItems.CRYSTAL, 1, ItemMetaUtil.crystal("emeradine")), new ItemStack(ModItems.CRYSTAL, 1, ItemMetaUtil.crystal("emeradine")), new ItemStack(ModItems.CRYSTAL, 1, ItemMetaUtil.crystal("emeradine")));

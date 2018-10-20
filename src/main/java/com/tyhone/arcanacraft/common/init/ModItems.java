@@ -9,6 +9,7 @@ import com.tyhone.arcanacraft.common.items.base.ModItemBase;
 import com.tyhone.arcanacraft.common.items.items.ItemAlchemicalCoal;
 import com.tyhone.arcanacraft.common.items.items.ItemAyre;
 import com.tyhone.arcanacraft.common.items.items.ItemChalk;
+import com.tyhone.arcanacraft.common.items.items.ItemComponenets;
 import com.tyhone.arcanacraft.common.items.items.ItemCrystal;
 import com.tyhone.arcanacraft.common.items.items.ItemDust;
 import com.tyhone.arcanacraft.common.items.items.ItemEmptyTinkture;
@@ -32,6 +33,7 @@ import com.tyhone.arcanacraft.common.items.items.ItemTinkture;
 import com.tyhone.arcanacraft.common.items.items.tools.ItemHammer;
 import com.tyhone.arcanacraft.common.items.items.tools.ItemToolHoeMagic;
 import com.tyhone.arcanacraft.common.items.items.tools.ItemToolPickaxeMagic;
+import com.tyhone.arcanacraft.common.items.items.tools.ItemToolScythe;
 import com.tyhone.arcanacraft.common.items.items.tools.ItemToolScytheMagic;
 import com.tyhone.arcanacraft.common.items.items.tools.ItemToolWandDebug;
 import com.tyhone.arcanacraft.common.items.items.tools.ItemToolWandExodus;
@@ -44,6 +46,7 @@ import com.tyhone.arcanacraft.common.items.items.tools.ItemTrinketHoverCharm;
 import com.tyhone.arcanacraft.common.items.items.tools.ItemTrinketHungerCharm;
 import com.tyhone.arcanacraft.common.items.items.tools.ItemTrinketMagnet;
 
+import net.minecraft.item.Item.ToolMaterial;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @GameRegistry.ObjectHolder(Arcanacraft.MODID)
@@ -66,6 +69,7 @@ public class ModItems {
 	public static final ModItemBase STAR = new ItemStar();
 	public static final ModItemBase AYRE = new ItemAyre();
 	public static final ModItemBase EVOLITE = new ItemEvolite();
+	public static final ModItemBase COMPONENTS = new ItemComponenets();
 	public static final ModItemBase GORGON_EYE = new ItemGorgonEye();
 	public static final ModItemBase NEEDLE = new ItemNeedle();
 	public static final ModItemBase CHALK = new ItemChalk();
@@ -83,6 +87,11 @@ public class ModItems {
 	public static final ModItemBase TOOL_PICKAXE_MAGIC = new ItemToolPickaxeMagic();
 	public static final ModItemBase TOOL_HOE_MAGIC = new ItemToolHoeMagic();
 	public static final ModItemBase TOOL_SCYTHE_MAGIC = new ItemToolScytheMagic();
+
+	public static final ModItemBase TOOL_SCYTHE_STONE = new ItemToolScythe("stone", ToolMaterial.STONE);
+	public static final ModItemBase TOOL_SCYTHE_IRON = new ItemToolScythe("iron", ToolMaterial.IRON);
+	public static final ModItemBase TOOL_SCYTHE_GOLD = new ItemToolScythe("gold", ToolMaterial.GOLD);
+	public static final ModItemBase TOOL_SCYTHE_DIAMOND = new ItemToolScythe("diamond", ToolMaterial.DIAMOND);
 	
 	public static final ModItemBase TOOL_WAND_DEBUG = new ItemToolWandDebug();
 

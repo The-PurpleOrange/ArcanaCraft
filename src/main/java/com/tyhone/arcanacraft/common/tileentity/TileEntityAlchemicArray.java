@@ -13,6 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 public class TileEntityAlchemicArray extends ModTileEntityBase {
+	
 	public void onActivated(EntityPlayer player, World worldObj){
 		List<EntityItem> eItems = worldObj.getEntitiesWithinAABB(EntityItem.class,  this.getRenderBoundingBox().expand(1, 1, 1).expand(-1, -1, -1));
 		List<ItemStack> itemStacks = null;

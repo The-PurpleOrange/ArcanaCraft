@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "arcanacraft:tool_scythe_gold"
+  },
+  "pattern": [
+    "iii",
+    " si",
+    " s "
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "s": {
+      "item": "minecraft:stick"
+    },
+    "i": {
+      "item": "minecraft:gold_ingot"
+    }
+  }
+}

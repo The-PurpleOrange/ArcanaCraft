@@ -15,12 +15,12 @@ import net.minecraft.item.ItemStack;
 
 public class InitRecipesInfusionAltar {
 	public static void init(){
-		{
+		/*{
 			//INERT STAR
-			ItemStack[] items = {new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("star_shard")), new ItemStack(Items.GHAST_TEAR), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("star_shard")), new ItemStack(Items.GHAST_TEAR), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("star_shard")), new ItemStack(Items.GHAST_TEAR), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("star_shard")), new ItemStack(Items.GHAST_TEAR)};
+			ItemStack[] items = {new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("star_shard")), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("catalyst")), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("star_shard")), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("catalyst")), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("star_shard")), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("catalyst")), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("star_shard")), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("catalyst"))};
 			TinktureStack[] tinktures = {new TinktureStack(ModTinktureTypes.LOCUS, 8), new TinktureStack(ModTinktureTypes.IMPIRUS, 8), new TinktureStack(ModTinktureTypes.REBUS, 8), new TinktureStack(ModTinktureTypes.AMNIS, 8)};
 			ArcanacraftCraftingManager.registerInfusionRecipe(new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("inert_star")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("gold")), items, tinktures);
-		}{
+		}*/{
 			//ELEVATOR
 			Object[] inputs = {new ItemStack(Items.ENDER_PEARL, 1), new ItemStack(ModItems.AYRE, 1), new ItemStack(ModItems.INGOT, 1, ItemMetaUtil.ingot("magicite")), new ItemStack(ModItems.INGOT, 1, ItemMetaUtil.ingot("magicite")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("gold")), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("heart_ender")), new ItemStack(ModItems.RED_COAL, 1)};
 			TinktureStack[] tinktures = {new TinktureStack(ModTinktureTypes.LOCUS, 2)};

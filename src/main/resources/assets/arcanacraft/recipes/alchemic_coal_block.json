@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "arcanacraft:alchemical_coal_block"
+  },
+  "pattern": [
+    "ggg",
+    "ggg",
+    "ggg"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "g": {
+      "item": "arcanacraft:alchemical_coal"
+    }
+  }
+}

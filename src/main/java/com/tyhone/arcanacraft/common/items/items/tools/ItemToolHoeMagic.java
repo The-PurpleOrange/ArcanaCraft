@@ -2,6 +2,7 @@ package com.tyhone.arcanacraft.common.items.items.tools;
 
 import com.google.common.collect.Multimap;
 import com.tyhone.arcanacraft.Arcanacraft;
+import com.tyhone.arcanacraft.common.items.ModToolMaterial;
 import com.tyhone.arcanacraft.common.items.base.ModItemBase;
 
 import net.minecraft.block.Block;
@@ -31,9 +32,9 @@ public class ItemToolHoeMagic extends ModItemBase{
 	
 	public ItemToolHoeMagic() {
 		super("tool_hoe_magic");
-		this.toolMaterial = ToolMaterial.IRON;
+		this.toolMaterial = ModToolMaterial.EMERADINE;
 		this.maxStackSize = 1;
-		this.setMaxDamage(this.toolMaterial.getMaxUses());
+		this.setMaxDamage(this.toolMaterial.getMaxUses()*6);
 		this.speed = this.toolMaterial.getAttackDamage() + 1.0F;
 	}
 	

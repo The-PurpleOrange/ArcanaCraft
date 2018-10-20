@@ -23,7 +23,8 @@ public class ModTinktureTypes {
 	public static final TinktureType REBUS = new TinktureType("rebus", 0x239909);
 	public static final TinktureType LOCUS = new TinktureType("locus", 0xfcec0a);
 	public static final TinktureType ANIMO = new TinktureType("animo", 0xf495e1);
-	public static final TinktureType VOIDUS = new TinktureType("voidus", 0x400080);
+	public static final TinktureType VOIDUS = new TinktureType("voidus", 0x322051);
+	public static final TinktureType PURA = new TinktureType("pura", 0xFFF69E);
 	public static final TinktureType EVOLITE_SAP = new TinktureType("evolite_sap", 0x96FA42);
 	
 	private ModTinktureTypes() {}

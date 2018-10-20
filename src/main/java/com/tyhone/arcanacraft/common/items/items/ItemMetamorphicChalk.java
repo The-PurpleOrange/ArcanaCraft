@@ -156,11 +156,12 @@ public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
 			ItemStack stack = player.getHeldItem(hand);
 			RecipeRitualCircle recipe = getRitualRecipeNBT(stack);
 			if(recipe!=null){
-				if(checkArea(recipe, player, worldIn, pos, hand)){
+				cleanArea(recipe, player, worldIn, pos);
+				//if(checkArea(recipe, player, worldIn, pos, hand)){
 					if(drawCircle(recipe, player, worldIn, pos, hand, false)){
 						return EnumActionResult.SUCCESS;
 					}
-				}
+				//}
 			}
 			else{
 				PlayerUtils.sendPlayerMessage(player, worldIn, "Null Ritual Recipe");
@@ -291,6 +292,44 @@ public class ItemMetamorphicChalk extends ModItemBase implements IRitualBuilder{
 			}
 		}
     	return true;
+	}
+	
+	private boolean cleanArea(RecipeRitualCircle recipe, EntityPlayer player, World worldIn, BlockPos pos) {
+		if(recipe==null){
+			return false;
+		}
+		
+		RitualType ritualType = recipe.getRitual().getRitualType();
+		
+		for(int place : ritualType.getRitualRecipePlaceOrder()){
+			BlockPos oldPos = PosUtil.combinePos(pos, ritualType.getRitualRecipePosList().get(place));
+			final BlockPos placePos = (worldIn.getBlockState(pos).getBlock() instanceof IRitualCircle) ? oldPos : PosUtil.combinePos(oldPos, new BlockPos(0, 1, 0));
+
+        	if(placePos == null){
+        		Arcanacraft.logger.error("Null BlockPos for ritual recipe " + recipe.getRitual().getDisplayName());
+        		Arcanacraft.logger.error("Please report this to Tyhone");
+        		return false;
+        	}
+        	ItemStack itemStack = recipe.getBlockRequirements().get(place);
+    		
+			if(!itemStack.isEmpty()){
+				if(!worldIn.isSideSolid(placePos.add(0, -1, 0), EnumFacing.UP)){
+					worldIn.setBlockState(placePos.add(0, -1, 0), Blocks.COBBLESTONE.getDefaultState());
+    			}
+	        	if(worldIn.getBlockState(placePos).getBlock() != Blocks.AIR){
+	        		if(!worldIn.getBlockState(placePos).getBlock().isReplaceable(worldIn, placePos)){
+	        			
+				    	ItemStack itemStack1 = recipe.getBlockRequirements().get(place);
+				    	Block block = worldIn.getBlockState(placePos).getBlock();
+				    	ItemStack itemStack2 = new ItemStack(block, 1, block.getMetaFromState(worldIn.getBlockState(placePos)));
+						if(!(ItemStackUtil.simpleAreStacksEqual(itemStack1, itemStack2))){
+							worldIn.setBlockToAir(placePos);
+						}
+					}
+	        	}
+			}
+		}
+		return true;
 	}
 	
 	private RecipeRitualCircle getRitualRecipeNBT(ItemStack stack){

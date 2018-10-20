@@ -1,0 +1,15 @@
+{
+  "result": {
+    "item": "arcanacraft:red_coal",
+      "count": 9
+  },
+  "pattern": [
+    "b"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "b": {
+      "item": "arcanacraft:red_coal_block"
+    }
+  }
+}

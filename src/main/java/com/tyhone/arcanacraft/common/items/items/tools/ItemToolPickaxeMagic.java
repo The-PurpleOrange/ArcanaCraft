@@ -5,6 +5,7 @@ import java.util.Set;
 
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Sets;
+import com.tyhone.arcanacraft.common.items.ModToolMaterial;
 import com.tyhone.arcanacraft.common.items.base.ModItemBase;
 import com.tyhone.arcanacraft.common.reference.PickaxeOreValues;
 import com.tyhone.arcanacraft.common.util.BlockUtils;
@@ -37,15 +38,15 @@ public class ItemToolPickaxeMagic extends ModItemBase{
 	private final float attackSpeed;
 	protected Item.ToolMaterial toolMaterial;
 
-	private final int MAX_MINE_BLOCKS = 16;
+	private final int MAX_MINE_BLOCKS = 17;
 
 	private ArrayList<BlockPos> mineCheckList = new ArrayList<BlockPos>();
 	private ArrayList<BlockPos> mineList = new ArrayList<BlockPos>();
 	
 	public ItemToolPickaxeMagic() {
 		super("tool_pickaxe_magic");
-		this.toolMaterial = ToolMaterial.IRON;
-		this.efficiency = 4.0F;
+		this.toolMaterial = ModToolMaterial.EMERADINE;
+		this.efficiency = this.toolMaterial.getEfficiency();
 		this.maxStackSize = 1;
 		this.setMaxDamage(this.toolMaterial.getMaxUses());
         this.attackDamage = this.toolMaterial.getAttackDamage() + 1F;
@@ -55,6 +56,10 @@ public class ItemToolPickaxeMagic extends ModItemBase{
 	
 	@Override
 	public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+		
+		PlayerUtils.sendPlayerMessage(player, world, "Harvest Level: " + this.toolMaterial.getHarvestLevel());//  .getHarvestLevel(player.getHeldItem(hand), toolClass, player, world.get));
+		PlayerUtils.sendPlayerMessage(player, world, "Tool Class: " + this.getToolClasses(player.getHeldItem(hand)));
+		PlayerUtils.sendPlayerMessage(player, world, "can harvest: " + this.canHarvestBlock(world.getBlockState(pos)));
 		
 		int max = 12;
 		int min = 1;
@@ -99,7 +104,12 @@ public class ItemToolPickaxeMagic extends ModItemBase{
 			for(int checkY = yLow; checkY <= yHigh; checkY++) {
 				for(int checkZ = zLow; checkZ <= zHigh; checkZ++) {
 					if(!world.isAirBlock(pos.add(checkX, checkY, checkZ))) {
-						int newPower = PickaxeOreValues.compareAgainstBlockMap(world.getBlockState(pos.add(checkX, checkY, checkZ)));
+						int newPower = PickaxeOreValues.compareAgainstOreMap(world.getBlockState(pos.add(checkX, checkY, checkZ)));
+						if(newPower > power) {
+							power = newPower;
+						}
+						
+						newPower = PickaxeOreValues.compareAgainstBlockMap(world.getBlockState(pos.add(checkX, checkY, checkZ)));
 						if(newPower > power) {
 							power = newPower;
 						}
@@ -197,11 +207,15 @@ public class ItemToolPickaxeMagic extends ModItemBase{
 	@Override
 	public boolean canHarvestBlock(IBlockState blockIn)
     {
+		if(1==1) {
+			return true;
+		}
+		
         Block block = blockIn.getBlock();
 
         if (block == Blocks.OBSIDIAN)
         {
-            return this.toolMaterial.getHarvestLevel() == 3;
+            return this.toolMaterial.getHarvestLevel() >= 3;
         }
         else if (block != Blocks.DIAMOND_BLOCK && block != Blocks.DIAMOND_ORE)
         {
@@ -279,29 +293,6 @@ public class ItemToolPickaxeMagic extends ModItemBase{
     {
         return this.toolMaterial.getEnchantability();
     }
-    
-	/*@Override
-    public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
-    {
-        ItemStack itemstack = player.getHeldItem(hand);
-
-		IBlockState state = worldIn.getBlockState(pos);
-		Block block = state.getBlock();
-        if(block == Blocks.GRASS || block == Blocks.GRASS_PATH || block == Blocks.DIRT || block == Blocks.FARMLAND){
-			if(player.isSneaking()) {
-				till(itemstack, player, facing, worldIn, pos);
-			}
-			else {
-				for(int hoeX = -2; hoeX < 3; hoeX++) {
-					for(int hoeZ = -2; hoeZ < 3; hoeZ++) {
-						till(itemstack, player, facing, worldIn, pos.add(hoeX, 0, hoeZ));
-					}
-				}
-			}
-        }
-
-		return EnumActionResult.PASS;
-    }*/
 	
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {

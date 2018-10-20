@@ -2,7 +2,6 @@ package com.tyhone.arcanacraft.common.items.items.tools;
 
 import com.google.common.collect.Multimap;
 import com.tyhone.arcanacraft.Arcanacraft;
-import com.tyhone.arcanacraft.common.items.ModToolMaterial;
 import com.tyhone.arcanacraft.common.items.base.ModItemBase;
 import com.tyhone.arcanacraft.common.util.ItemStackUtil;
 
@@ -29,14 +28,14 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class ItemToolScytheMagic extends ModItemBase{
+public class ItemToolScythe extends ModItemBase{
 
 	private final float speed;
 	protected Item.ToolMaterial toolMaterial;
 	
-	public ItemToolScytheMagic() {
-		super("tool_scythe_magic");
-		this.toolMaterial = ModToolMaterial.EMERADINE;
+	public ItemToolScythe(String material, ToolMaterial toolMaterial) {
+		super("tool_scythe_" + material);
+		this.toolMaterial = toolMaterial;
 		this.maxStackSize = 1;
 		this.setMaxDamage(this.toolMaterial.getMaxUses()*6);
 		this.speed = this.toolMaterial.getAttackDamage() + 1.0F;
@@ -58,9 +57,9 @@ public class ItemToolScytheMagic extends ModItemBase{
 					harvest(itemstack, player, EnumFacing.DOWN, world, pos, true);
 		        }
         	}else {
-				for(int hoeX = -2; hoeX < 3; hoeX++) {
-					for(int hoeZ = -2; hoeZ < 3; hoeZ++) {
-						for(int hoeY = -2; hoeY < 3; hoeY++) {
+				for(int hoeX = -1; hoeX < 2; hoeX++) {
+					for(int hoeZ = -1; hoeZ < 2; hoeZ++) {
+						for(int hoeY = -1; hoeY < 2; hoeY++) {
 							state = world.getBlockState(pos.add(hoeX, hoeY, hoeZ));
 							block = state.getBlock();
 							if(block instanceof BlockCrops || block instanceof BlockBush){
@@ -81,16 +80,16 @@ public class ItemToolScytheMagic extends ModItemBase{
 					world.destroyBlock(pos, true);
 				}
         	}else {
-	        	for(int hoeX = -2; hoeX < 3; hoeX++) {
-					for(int hoeZ = -2; hoeZ < 3; hoeZ++) {
-						for(int hoeY = -2; hoeY < 3; hoeY++) {
+	        	for(int hoeX = -1; hoeX < 2; hoeX++) {
+					for(int hoeZ = -1; hoeZ < 2; hoeZ++) {
+						for(int hoeY = -1; hoeY < 2; hoeY++) {
 							BlockPos leafPos = pos.add(hoeX, hoeY, hoeZ);
 							if(world.getBlockState(leafPos).getMaterial() == Material.LEAVES && player.canPlayerEdit(leafPos, EnumFacing.DOWN, itemstack)) {
 								world.destroyBlock(leafPos, true);
 							}
 						}
 					}
-	        	}
+				}
 			}
         }
         
@@ -124,9 +123,9 @@ public class ItemToolScytheMagic extends ModItemBase{
         	if(player.isSneaking()) {
 				harvest(itemstack, player, facing, worldIn, pos, false);
         	}else {
-				for(int hoeX = -2; hoeX < 3; hoeX++) {
-					for(int hoeZ = -2; hoeZ < 3; hoeZ++) {
-						for(int hoeY = -2; hoeY < 3; hoeY++) {
+				for(int hoeX = -1; hoeX < 2; hoeX++) {
+					for(int hoeZ = -1; hoeZ < 2; hoeZ++) {
+						for(int hoeY = -1; hoeY < 2; hoeY++) {
 							if(block instanceof IGrowable) {
 								//Arcanacraft.log("Harvesting"); //TODO remove
 								harvest(itemstack, player, facing, worldIn, pos.add(hoeX, hoeY, hoeZ), false);
@@ -134,7 +133,7 @@ public class ItemToolScytheMagic extends ModItemBase{
 						}
 					}
 				}
-			}
+        	}
         }
 
 		return EnumActionResult.PASS;
@@ -170,7 +169,7 @@ public class ItemToolScytheMagic extends ModItemBase{
 					}
 					if(!drop.isEmpty()) {
 						if(!world.isRemote) {
-							EntityItem eDrop = new EntityItem(world, player.posX, player.posY, player.posZ, drop);
+							EntityItem eDrop = new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), drop);
 							world.spawnEntity(eDrop);
 						}
 						if(world.isRemote) {

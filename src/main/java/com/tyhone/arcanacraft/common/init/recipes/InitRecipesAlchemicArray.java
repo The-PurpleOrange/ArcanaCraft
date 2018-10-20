@@ -22,6 +22,9 @@ public class InitRecipesAlchemicArray {
 		ArcanacraftCraftingManager.registerAlchemicArrayRecipe(new ItemStack(ModItems.INGOT, 1, ItemMetaUtil.ingot("magicite")), new ItemStack (Items.IRON_INGOT), new ItemStack(ModItems.AYRE, 1));
 		ArcanacraftCraftingManager.registerAlchemicArrayRecipe(new ItemStack(ModItems.DUST, 2, ItemMetaUtil.dust("emeradine")), new ItemStack (Items.EMERALD), new ItemStack(ModItems.AYRE, 1), new ItemStack(ModItems.DUST, 2, ItemMetaUtil.dust("diamond")));
 		
+		ArcanacraftCraftingManager.registerAlchemicArrayRecipe(new ItemStack(ModItems.COMPONENTS, 1, ItemMetaUtil.component("iustare")), new ItemStack (ModItems.ITEM, 1, ItemMetaUtil.item("inert_star")), new ItemStack(ModItems.ESSENCE, 2, ItemMetaUtil.essence("gold")), new ItemStack(ModItems.CRYSTAL, 1, ItemMetaUtil.crystal("emeradine")));
+		ArcanacraftCraftingManager.registerAlchemicArrayRecipe(new ItemStack(ModItems.COMPONENTS, 1, ItemMetaUtil.component("iniquis")), new ItemStack (ModItems.ITEM, 1, ItemMetaUtil.item("ender_tear")), new ItemStack(ModItems.ESSENCE, 2, ItemMetaUtil.essence("iron")), new ItemStack(ModItems.CRYSTAL, 1, ItemMetaUtil.crystal("emeradine")));
+				
 		ArcanacraftCraftingManager.registerAlchemicArrayRecipe(new ItemStack(ModBlocks.ALCHEMIC_STONE, 8), new ItemStack(Blocks.STONE, 8), new ItemStack(ModItems.AYRE, 1));
 		ArcanacraftCraftingManager.registerAlchemicArrayRecipe(new ItemStack(ModBlocks.BLOOD_STONE, 8), new ItemStack(Blocks.STONE, 8), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("blood_drop")));
 		ArcanacraftCraftingManager.registerAlchemicArrayRecipe(new ItemStack(ModBlocks.SOUL_STONE, 8), new ItemStack(Blocks.STONE, 8), new ItemStack(ModItems.SOUL, 1, ItemMetaUtil.soul("fragment")));

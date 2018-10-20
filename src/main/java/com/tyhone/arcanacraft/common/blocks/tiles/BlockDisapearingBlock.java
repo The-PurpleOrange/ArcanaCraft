@@ -22,8 +22,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockDisapearingBlock extends ModBlockTileEntityBase{
 
-	private static final int timer = 40;
-	private final boolean ignoreSimilarity = false;
+	private static final int TIMER = 40;
+	private final boolean IGNORE_SIMILAR = false;
 	
 	public BlockDisapearingBlock() {
 		super("disapearing_block");
@@ -32,12 +32,12 @@ public class BlockDisapearingBlock extends ModBlockTileEntityBase{
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		TileEntityDisapearingBlock te = new TileEntityDisapearingBlock();
-		te.setTimer(timer);
+		te.setTimer(TIMER);
 		return te;
 	}
 	
 	public static int getTimer(){
-		return timer;
+		return TIMER;
 	}
 	
 	@Override
@@ -79,6 +79,6 @@ public class BlockDisapearingBlock extends ModBlockTileEntityBase{
             }
         }
 
-        return !this.ignoreSimilarity && block == this ? false : super.shouldSideBeRendered(blockState, blockAccess, pos, side);
+        return !this.IGNORE_SIMILAR && block == this ? false : super.shouldSideBeRendered(blockState, blockAccess, pos, side);
     }
 }

@@ -12,6 +12,7 @@ import com.tyhone.arcanacraft.common.tileentity.TileEntityJar;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityLensReceptacle;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityPedestal;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityPedestalSlab;
+import com.tyhone.arcanacraft.common.tileentity.TileEntityReapearingBlock;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityRitualCircle;
 import com.tyhone.arcanacraft.common.tileentity.TileEntitySoulAltar;
 import com.tyhone.arcanacraft.common.tileentity.TileEntitySpiritSkull;
@@ -45,6 +46,7 @@ public class ModTileEntities {
 		GameRegistry.registerTileEntity(TileEntitySpiritSkull.class, Arcanacraft.MODID + ".block_spirit_skull");
 
 		GameRegistry.registerTileEntity(TileEntityDisapearingBlock.class, Arcanacraft.MODID + ".disapearing_block");
+		GameRegistry.registerTileEntity(TileEntityReapearingBlock.class, Arcanacraft.MODID + ".reapearing_block");
 
 		GameRegistry.registerTileEntity(TileEntityWardStone.class, Arcanacraft.MODID + ".ward_stone");
 		GameRegistry.registerTileEntity(TileEntityElevator.class, Arcanacraft.MODID + ".elevator");

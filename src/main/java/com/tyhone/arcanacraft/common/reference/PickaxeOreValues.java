@@ -4,12 +4,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.Config;
+import com.tyhone.arcanacraft.common.util.ItemStackUtil;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class PickaxeOreValues {
 	public static Map<String, Integer> oreMap = new HashMap<>();
@@ -36,6 +38,23 @@ public class PickaxeOreValues {
 		blockMap.put(Blocks.COAL_ORE.getUnlocalizedName(), 16);
 	}*/
 	
+	
+	public static int compareAgainstOreMap(IBlockState blockState) {
+		if(!Config.oreMap.isEmpty()) {
+			ItemStack blockStack = new ItemStack(blockState.getBlock(), 1, blockState.getBlock().getMetaFromState(blockState));
+			for(Entry<String, Integer> entry : Config.oreMap.entrySet()) {
+				NonNullList<ItemStack> itemStackList = OreDictionary.getOres(entry.getKey());
+				for(ItemStack itemStack : itemStackList) {
+					if(ItemStackUtil.simpleAreItemStacksEqual(blockStack, itemStack, false)) {
+						return entry.getValue();
+					}
+				}
+			}
+		}
+		
+		return 0;
+	}
+	
 	public static int compareAgainstBlockMap(IBlockState blockState) {
 		Block block = blockState.getBlock();
 		int meta = block.getMetaFromState(blockState);
@@ -51,10 +70,6 @@ public class PickaxeOreValues {
 			return Config.valueTierMap.get(value);
 		}
 		return "NULL VALUE KEY FOUND";
-	}
-	
-	public static int compareAgainstOreMap() {
-		return 0;
 	}
 	
 	public static int getHighestValue(int value) {

@@ -14,11 +14,11 @@
       "data": 0
     },
     "e": {
-      "item": "minecraft:ender_eye"
+      "item": "arcanacraft:crystal",
+      "data": 1
     },
     "t": {
-      "item": "arcanacraft:essence",
-      "data": 0
+      "item": "minecraft:iron_ingot"
     },
     "p": {
       "item": "arcanacraft:item",
