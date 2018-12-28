@@ -27,7 +27,7 @@ public class ModBlockBase extends Block {
 		super(material);
 		this.BASE_NAME = regName;
 		setRegistryName(regName);
-		setUnlocalizedName(regName);
+		setTranslationKey(regName);
         this.setCreativeTab(ModTabs.modTab);
         this.setHardness(2f);
         this.setResistance(10f);
@@ -35,13 +35,13 @@ public class ModBlockBase extends Block {
 	}
 	
 	@Override
-	public String getUnlocalizedName(){
+	public String getTranslationKey(){
 		return "tile." + Arcanacraft.MODID + ":" + BASE_NAME;
 	}
 	
 	@SideOnly(Side.CLIENT)
 	public void initItemModel() {
-		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName().toString()));
+		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName().toString(), "inventory"));
 	}
 	
     @Override

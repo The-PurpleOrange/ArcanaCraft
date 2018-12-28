@@ -32,13 +32,24 @@ public class ItemToolScythe extends ModItemBase{
 
 	private final float speed;
 	protected Item.ToolMaterial toolMaterial;
+	private final int radius;
 	
-	public ItemToolScythe(String material, ToolMaterial toolMaterial) {
+	public ItemToolScythe(String material, ToolMaterial toolMaterial, int radius) {
 		super("tool_scythe_" + material);
 		this.toolMaterial = toolMaterial;
+		this.radius = radius;
 		this.maxStackSize = 1;
 		this.setMaxDamage(this.toolMaterial.getMaxUses()*6);
 		this.speed = this.toolMaterial.getAttackDamage() + 1.0F;
+	}
+	
+	public ItemToolScythe(String material, ToolMaterial toolMaterial) {
+		this(material, toolMaterial, 2);
+		/*super("tool_scythe_" + material);
+		this.toolMaterial = toolMaterial;
+		this.maxStackSize = 1;
+		this.setMaxDamage(this.toolMaterial.getMaxUses()*6);
+		this.speed = this.toolMaterial.getAttackDamage() + 1.0F;*/
 	}
 	
 	@Override
@@ -57,9 +68,9 @@ public class ItemToolScythe extends ModItemBase{
 					harvest(itemstack, player, EnumFacing.DOWN, world, pos, true);
 		        }
         	}else {
-				for(int hoeX = -1; hoeX < 2; hoeX++) {
-					for(int hoeZ = -1; hoeZ < 2; hoeZ++) {
-						for(int hoeY = -1; hoeY < 2; hoeY++) {
+				for(int hoeX = -radius; hoeX <= radius; hoeX++) {
+					for(int hoeZ = -radius; hoeZ <= radius; hoeZ++) {
+						for(int hoeY = -radius; hoeY <= radius; hoeY++) {
 							state = world.getBlockState(pos.add(hoeX, hoeY, hoeZ));
 							block = state.getBlock();
 							if(block instanceof BlockCrops || block instanceof BlockBush){
@@ -78,14 +89,16 @@ public class ItemToolScythe extends ModItemBase{
 				block = state.getBlock();
 				if(world.getBlockState(pos).getMaterial() == Material.LEAVES && player.canPlayerEdit(pos, EnumFacing.DOWN, itemstack)) {
 					world.destroyBlock(pos, true);
+					itemstack.damageItem(1, player);
 				}
         	}else {
-	        	for(int hoeX = -1; hoeX < 2; hoeX++) {
-					for(int hoeZ = -1; hoeZ < 2; hoeZ++) {
-						for(int hoeY = -1; hoeY < 2; hoeY++) {
+        		for(int hoeX = -radius; hoeX <= radius; hoeX++) {
+					for(int hoeZ = -radius; hoeZ <= radius; hoeZ++) {
+						for(int hoeY = -radius; hoeY <= radius; hoeY++) {
 							BlockPos leafPos = pos.add(hoeX, hoeY, hoeZ);
 							if(world.getBlockState(leafPos).getMaterial() == Material.LEAVES && player.canPlayerEdit(leafPos, EnumFacing.DOWN, itemstack)) {
 								world.destroyBlock(leafPos, true);
+								itemstack.damageItem(1, player);
 							}
 						}
 					}
@@ -123,9 +136,9 @@ public class ItemToolScythe extends ModItemBase{
         	if(player.isSneaking()) {
 				harvest(itemstack, player, facing, worldIn, pos, false);
         	}else {
-				for(int hoeX = -1; hoeX < 2; hoeX++) {
-					for(int hoeZ = -1; hoeZ < 2; hoeZ++) {
-						for(int hoeY = -1; hoeY < 2; hoeY++) {
+        		for(int hoeX = -radius; hoeX <= radius; hoeX++) {
+					for(int hoeZ = -radius; hoeZ <= radius; hoeZ++) {
+						for(int hoeY = -radius; hoeY <= radius; hoeY++) {
 							if(block instanceof IGrowable) {
 								//Arcanacraft.log("Harvesting"); //TODO remove
 								harvest(itemstack, player, facing, worldIn, pos.add(hoeX, hoeY, hoeZ), false);
@@ -150,6 +163,7 @@ public class ItemToolScythe extends ModItemBase{
 		
 		if(destroyBlocks) {
 			world.destroyBlock(pos, !player.isCreative());
+	        stack.damageItem(1, player);
 			return true;
 		}
 
@@ -169,15 +183,16 @@ public class ItemToolScythe extends ModItemBase{
 					}
 					if(!drop.isEmpty()) {
 						if(!world.isRemote) {
-							EntityItem eDrop = new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), drop);
+							EntityItem eDrop = new EntityItem(world, pos.getX()+0.5F, pos.getY(), pos.getZ()+0.5F, drop);
 							world.spawnEntity(eDrop);
-						}
-						if(world.isRemote) {
-					        world.playSound(player, pos, SoundEvents.BLOCK_GRASS_BREAK, SoundCategory.BLOCKS, 1.0F, 1.0F);
 						}
 					}
 				}
+				if(world.isRemote) {
+			        world.playSound(player, pos, SoundEvents.BLOCK_GRASS_BREAK, SoundCategory.BLOCKS, 1.0F, 1.0F);
+				}
 				world.setBlockState(pos, block.getDefaultState(), 3);
+		        stack.damageItem(1, player);
 			}
 			
 			else {
@@ -185,7 +200,6 @@ public class ItemToolScythe extends ModItemBase{
 			}
 		}
 		
-        stack.damageItem(1, player);
 		return true;
 	}
 	

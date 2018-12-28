@@ -2,7 +2,11 @@ package com.tyhone.arcanacraft.common.util;
 
 import java.util.List;
 
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.ForgeModContainer;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.UniversalBucket;
 
 public class ItemStackUtil {
 
@@ -91,5 +95,24 @@ public class ItemStackUtil {
 			}
 		}
 		return itemStacks;
+	}
+	
+	public static boolean isItemStackBucket(Object stack) {
+		if(stack instanceof ItemStack) {
+			ItemStack itemStack = (ItemStack) stack;
+			return isItemStackBucket(itemStack);
+		}
+		return false;
+	}
+	
+	public static boolean isItemStackBucket(ItemStack stack) {
+		if (stack.getItem() == Items.LAVA_BUCKET || 
+			stack.getItem() == Items.WATER_BUCKET || 
+			stack.getItem() == Items.MILK_BUCKET || 
+			stack.getItem() == UniversalBucket.getFilledBucket(ForgeModContainer.getInstance().universalBucket, FluidRegistry.WATER).getItem())
+		{
+			return true;
+		}
+		return false;
 	}
 }

@@ -1,0 +1,31 @@
+{
+  "result": {
+    "item": "arcanacraft:vacuum_chest"
+  },
+  "pattern": [
+    "mtm",
+    "gcg",
+    "mim"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "t": {
+      "item": "arcanacraft:trinket_magnet"
+    },
+    "c": {
+      "item": "arcanacraft:heavy_chest"
+    },
+    "i": {
+      "item": "arcanacraft:plate",
+      "data": 0
+    },
+    "g": {
+      "item": "arcanacraft:plate",
+      "data": 1
+    },
+    "m": {
+      "item": "arcanacraft:plate",
+      "data": 2
+    }
+  }
+}

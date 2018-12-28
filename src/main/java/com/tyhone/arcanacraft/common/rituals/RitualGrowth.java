@@ -32,7 +32,7 @@ public class RitualGrowth extends Ritual{
 	
 	@Override
 	public boolean preformRepeatingRitual(World world, BlockPos pos) {
-		if(!world.isRemote){
+		if(!world.isRemote && world.rand.nextInt(6) == 0){
 			int chance = world.rand.nextInt(4) == 0 ? 2 : 1;
 			for(int i = 0; i < chance; i++) {
 				boolean grownFlag = false;

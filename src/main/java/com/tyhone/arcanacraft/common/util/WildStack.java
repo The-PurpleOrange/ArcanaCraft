@@ -140,5 +140,5 @@ public class WildStack {
 		}else{
 			return null;
 		}
-	} 
+	}
 }

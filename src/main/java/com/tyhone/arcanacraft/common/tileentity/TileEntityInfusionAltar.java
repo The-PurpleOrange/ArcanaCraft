@@ -10,6 +10,7 @@ import com.tyhone.arcanacraft.common.init.ModBlocks;
 import com.tyhone.arcanacraft.common.tileentity.base.ModTileEntityBase;
 import com.tyhone.arcanacraft.common.tileentity.base.ModTileEntitySingleInventoryBase;
 import com.tyhone.arcanacraft.common.util.BlockUtils;
+import com.tyhone.arcanacraft.common.util.ItemStackUtil;
 import com.tyhone.arcanacraft.common.util.PosUtil;
 
 import net.minecraft.init.Blocks;
@@ -123,7 +124,11 @@ public class TileEntityInfusionAltar extends ModTileEntityBase implements ITicka
 			
 			TileEntity te = world.getTileEntity(PosUtil.combinePos(pos, pedestalPos));
 			if(te != null && (te instanceof TileEntityPedestal || te instanceof TileEntityPedestalSlab)){
-				((ModTileEntitySingleInventoryBase) te).setStack(ItemStack.EMPTY);
+				if(ItemStackUtil.isItemStackBucket(((ModTileEntitySingleInventoryBase) te).getStack())) {
+					((ModTileEntitySingleInventoryBase) te).setStack(new ItemStack(Items.BUCKET, 1));
+				}else {
+					((ModTileEntitySingleInventoryBase) te).setStack(ItemStack.EMPTY);
+				}
 			}
 			
             /*TileEntityPedestal te = (TileEntityPedestal) world.getTileEntity(PosUtil.combinePos(pos, pedestalPos));

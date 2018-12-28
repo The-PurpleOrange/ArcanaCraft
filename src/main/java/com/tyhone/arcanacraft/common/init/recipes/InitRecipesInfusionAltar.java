@@ -22,7 +22,7 @@ public class InitRecipesInfusionAltar {
 			ArcanacraftCraftingManager.registerInfusionRecipe(new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("inert_star")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("gold")), items, tinktures);
 		}*/{
 			//ELEVATOR
-			Object[] inputs = {new ItemStack(Items.ENDER_PEARL, 1), new ItemStack(ModItems.AYRE, 1), new ItemStack(ModItems.INGOT, 1, ItemMetaUtil.ingot("magicite")), new ItemStack(ModItems.INGOT, 1, ItemMetaUtil.ingot("magicite")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("gold")), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("heart_ender")), new ItemStack(ModItems.RED_COAL, 1)};
+			Object[] inputs = {new ItemStack(ModItems.AYRE, 1), new ItemStack(ModItems.INGOT, 1, ItemMetaUtil.ingot("magicite")), new ItemStack(ModItems.INGOT, 1, ItemMetaUtil.ingot("magicite")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("gold")), new ItemStack(ModItems.GEARBOX, 1, ItemMetaUtil.gearbox("advanced")), new ItemStack(ModItems.RED_COAL, 1)};
 			TinktureStack[] tinktures = {new TinktureStack(ModTinktureTypes.LOCUS, 2)};
 			ArcanacraftCraftingManager.registerInfusionRecipe(new ItemStack(ModBlocks.ELEVATOR, 2), WildStack.W(ModBlocks.ALCHEMIC_STONE, 1), inputs, tinktures);
 		}{

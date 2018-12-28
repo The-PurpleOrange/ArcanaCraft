@@ -5,9 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.tyhone.arcanacraft.api.recipe.RecipeAlembic;
-import com.tyhone.arcanacraft.api.recipe.RecipeInfusionAltar;
 import com.tyhone.arcanacraft.api.tinkture.TinktureStack;
-import com.tyhone.arcanacraft.common.init.ModTinktureTypes;
 import com.tyhone.arcanacraft.common.util.NBTItemStack;
 import com.tyhone.arcanacraft.common.util.OreStack;
 

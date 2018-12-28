@@ -25,15 +25,22 @@ public class InitRecipesDeconstructionTable {
 		ArcanacraftCraftingManager.registerDeconstructionRecipe(new ItemStack(ModItems.DUST, 1, ItemMetaUtil.dust("gold")), new ItemStack(Items.GOLD_INGOT));
 		ArcanacraftCraftingManager.registerDeconstructionRecipe(new ItemStack(ModItems.DUST, 1, ItemMetaUtil.dust("magicite")), new ItemStack(ModItems.INGOT, 1, ItemMetaUtil.ingot("magicite")));
 		ArcanacraftCraftingManager.registerDeconstructionRecipe(new ItemStack(ModItems.DUST, 1, ItemMetaUtil.dust("blood")), new ItemStack(ModItems.CRYSTAL, 1, ItemMetaUtil.crystal("blood")));
-		ArcanacraftCraftingManager.registerDeconstructionRecipe(new ItemStack(ModItems.DUST, 1, ItemMetaUtil.dust("diamond")), new ItemStack(Items.DIAMOND, 1));
 		
-
 		ArcanacraftCraftingManager.registerDeconstructionRecipe(new ItemStack(Items.COAL, 3), new ItemStack(Blocks.COAL_ORE, 1));
 		ArcanacraftCraftingManager.registerDeconstructionRecipe(new ItemStack(Items.REDSTONE, 6), new ItemStack(Blocks.REDSTONE_ORE, 1));
 		ArcanacraftCraftingManager.registerDeconstructionRecipe(new ItemStack(Items.DYE, 8, 4), new ItemStack(Blocks.LAPIS_ORE, 1));
 		ArcanacraftCraftingManager.registerDeconstructionRecipe(new ItemStack(Items.DIAMOND, 2), new ItemStack(Blocks.DIAMOND_ORE, 1));
 		ArcanacraftCraftingManager.registerDeconstructionRecipe(new ItemStack(Items.EMERALD, 2), new ItemStack(Blocks.EMERALD_ORE, 1));
 		ArcanacraftCraftingManager.registerDeconstructionRecipe(new ItemStack(Items.QUARTZ, 4), new ItemStack(Blocks.QUARTZ_ORE, 1));
+
+		ArcanacraftCraftingManager.registerLensDeconstructionRecipe(new ItemStack(ModItems.LENS, 1, ItemMetaUtil.lens("lucrative")), new ItemStack(ModItems.DUST, 3, ItemMetaUtil.dust("iron")), new ItemStack(Blocks.IRON_ORE));
+		ArcanacraftCraftingManager.registerLensDeconstructionRecipe(new ItemStack(ModItems.LENS, 1, ItemMetaUtil.lens("lucrative")), new ItemStack(ModItems.DUST, 3, ItemMetaUtil.dust("gold")), new ItemStack(Blocks.GOLD_ORE));
+		ArcanacraftCraftingManager.registerLensDeconstructionRecipe(new ItemStack(ModItems.LENS, 1, ItemMetaUtil.lens("lucrative")), new ItemStack(Items.COAL, 5), new ItemStack(Blocks.COAL_ORE, 1));
+		ArcanacraftCraftingManager.registerLensDeconstructionRecipe(new ItemStack(ModItems.LENS, 1, ItemMetaUtil.lens("lucrative")), new ItemStack(Items.REDSTONE, 9), new ItemStack(Blocks.REDSTONE_ORE, 1));
+		ArcanacraftCraftingManager.registerLensDeconstructionRecipe(new ItemStack(ModItems.LENS, 1, ItemMetaUtil.lens("lucrative")), new ItemStack(Items.DYE, 12, 4), new ItemStack(Blocks.LAPIS_ORE, 1));
+		ArcanacraftCraftingManager.registerLensDeconstructionRecipe(new ItemStack(ModItems.LENS, 1, ItemMetaUtil.lens("lucrative")), new ItemStack(Items.DIAMOND, 3), new ItemStack(Blocks.DIAMOND_ORE, 1));
+		ArcanacraftCraftingManager.registerLensDeconstructionRecipe(new ItemStack(ModItems.LENS, 1, ItemMetaUtil.lens("lucrative")), new ItemStack(Items.EMERALD, 3), new ItemStack(Blocks.EMERALD_ORE, 1));
+		ArcanacraftCraftingManager.registerLensDeconstructionRecipe(new ItemStack(ModItems.LENS, 1, ItemMetaUtil.lens("lucrative")), new ItemStack(Items.QUARTZ, 6), new ItemStack(Blocks.QUARTZ_ORE, 1));
 		
 		ArcanacraftCraftingManager.registerLensDeconstructionRecipe(new ItemStack(ModItems.LENS, 1, ItemMetaUtil.lens("soul")), new ItemStack(ModItems.SOUL, 1, 0), new ItemStack(Blocks.SOUL_SAND));
 		
@@ -45,6 +52,6 @@ public class InitRecipesDeconstructionTable {
 		ArcanacraftCraftingManager.registerLensDeconstructionRecipe(new ItemStack(ModItems.LENS, 1, ItemMetaUtil.lens("essence")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("prosper")), new ItemStack(ModItems.SHARD, 1, ItemMetaUtil.shard("prosper")));
 		ArcanacraftCraftingManager.registerLensDeconstructionRecipe(new ItemStack(ModItems.LENS, 1, ItemMetaUtil.lens("essence")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("greed")), new ItemStack(ModItems.SHARD, 1, ItemMetaUtil.shard("greed")));
 		ArcanacraftCraftingManager.registerLensDeconstructionRecipe(new ItemStack(ModItems.LENS, 1, ItemMetaUtil.lens("essence")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("cedius")), new ItemStack(ModItems.SHARD, 1, ItemMetaUtil.shard("cedius")));
-		ArcanacraftCraftingManager.registerLensDeconstructionRecipe(new ItemStack(ModItems.LENS, 1, ItemMetaUtil.lens("essence")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("soul")), new ItemStack(ModItems.SOUL, 1, ItemMetaUtil.soul("fragment")));
+		ArcanacraftCraftingManager.registerLensDeconstructionRecipe(new ItemStack(ModItems.LENS, 1, ItemMetaUtil.lens("essence")), new ItemStack(ModItems.ESSENCE, 1, ItemMetaUtil.essence("soul")), new ItemStack(ModItems.SOUL, 1, ItemMetaUtil.soul("complete")));
 	}
 }

@@ -33,6 +33,7 @@ public class ItemToolScytheMagic extends ModItemBase{
 
 	private final float speed;
 	protected Item.ToolMaterial toolMaterial;
+	private int radius = 4;
 	
 	public ItemToolScytheMagic() {
 		super("tool_scythe_magic");
@@ -58,9 +59,9 @@ public class ItemToolScytheMagic extends ModItemBase{
 					harvest(itemstack, player, EnumFacing.DOWN, world, pos, true);
 		        }
         	}else {
-				for(int hoeX = -2; hoeX < 3; hoeX++) {
-					for(int hoeZ = -2; hoeZ < 3; hoeZ++) {
-						for(int hoeY = -2; hoeY < 3; hoeY++) {
+				for(int hoeX = -radius; hoeX <= radius; hoeX++) {
+					for(int hoeZ = -radius; hoeZ <= radius; hoeZ++) {
+						for(int hoeY = -radius; hoeY <= radius; hoeY++) {
 							state = world.getBlockState(pos.add(hoeX, hoeY, hoeZ));
 							block = state.getBlock();
 							if(block instanceof BlockCrops || block instanceof BlockBush){
@@ -79,14 +80,16 @@ public class ItemToolScytheMagic extends ModItemBase{
 				block = state.getBlock();
 				if(world.getBlockState(pos).getMaterial() == Material.LEAVES && player.canPlayerEdit(pos, EnumFacing.DOWN, itemstack)) {
 					world.destroyBlock(pos, true);
+					itemstack.damageItem(1, player);
 				}
         	}else {
-	        	for(int hoeX = -2; hoeX < 3; hoeX++) {
-					for(int hoeZ = -2; hoeZ < 3; hoeZ++) {
-						for(int hoeY = -2; hoeY < 3; hoeY++) {
+        		for(int hoeX = -radius; hoeX <= radius; hoeX++) {
+					for(int hoeZ = -radius; hoeZ <= radius; hoeZ++) {
+						for(int hoeY = -radius; hoeY <= radius; hoeY++) {
 							BlockPos leafPos = pos.add(hoeX, hoeY, hoeZ);
 							if(world.getBlockState(leafPos).getMaterial() == Material.LEAVES && player.canPlayerEdit(leafPos, EnumFacing.DOWN, itemstack)) {
 								world.destroyBlock(leafPos, true);
+								itemstack.damageItem(1, player);
 							}
 						}
 					}
@@ -124,9 +127,9 @@ public class ItemToolScytheMagic extends ModItemBase{
         	if(player.isSneaking()) {
 				harvest(itemstack, player, facing, worldIn, pos, false);
         	}else {
-				for(int hoeX = -2; hoeX < 3; hoeX++) {
-					for(int hoeZ = -2; hoeZ < 3; hoeZ++) {
-						for(int hoeY = -2; hoeY < 3; hoeY++) {
+        		for(int hoeX = -radius; hoeX <= radius; hoeX++) {
+					for(int hoeZ = -radius; hoeZ <= radius; hoeZ++) {
+						for(int hoeY = -radius; hoeY <= radius; hoeY++) {
 							if(block instanceof IGrowable) {
 								//Arcanacraft.log("Harvesting"); //TODO remove
 								harvest(itemstack, player, facing, worldIn, pos.add(hoeX, hoeY, hoeZ), false);
@@ -145,12 +148,13 @@ public class ItemToolScytheMagic extends ModItemBase{
 		IBlockState state = world.getBlockState(pos);
 		Block block = state.getBlock();
 		if(!player.canPlayerEdit(pos, facing, stack)) {
-			//Arcanacraft.log("Its not a IGrowable"); //TODO remove
+			//Arcanacraft.log("Its not a editable"); //TODO remove
 			return false;
 		}
 		
 		if(destroyBlocks) {
 			world.destroyBlock(pos, !player.isCreative());
+	        stack.damageItem(1, player);
 			return true;
 		}
 
@@ -170,15 +174,16 @@ public class ItemToolScytheMagic extends ModItemBase{
 					}
 					if(!drop.isEmpty()) {
 						if(!world.isRemote) {
-							EntityItem eDrop = new EntityItem(world, player.posX, player.posY, player.posZ, drop);
+							EntityItem eDrop = new EntityItem(world, player.posX+0.5F, player.posY, player.posZ+0.5F, drop);
 							world.spawnEntity(eDrop);
-						}
-						if(world.isRemote) {
-					        world.playSound(player, pos, SoundEvents.BLOCK_GRASS_BREAK, SoundCategory.BLOCKS, 1.0F, 1.0F);
 						}
 					}
 				}
+				if(world.isRemote) {
+			        world.playSound(player, pos, SoundEvents.BLOCK_GRASS_BREAK, SoundCategory.BLOCKS, 1.0F, 1.0F);
+				}
 				world.setBlockState(pos, block.getDefaultState(), 3);
+		        stack.damageItem(1, player);
 			}
 			
 			else {
@@ -186,7 +191,6 @@ public class ItemToolScytheMagic extends ModItemBase{
 			}
 		}
 		
-        stack.damageItem(1, player);
 		return true;
 	}
 	

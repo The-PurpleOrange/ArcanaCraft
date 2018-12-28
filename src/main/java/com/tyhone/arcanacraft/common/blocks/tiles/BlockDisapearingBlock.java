@@ -42,7 +42,7 @@ public class BlockDisapearingBlock extends ModBlockTileEntityBase{
 	
 	@Override
 	@SideOnly(Side.CLIENT)
-    public BlockRenderLayer getBlockLayer()
+    public BlockRenderLayer getRenderLayer()
     {
         return BlockRenderLayer.TRANSLUCENT;
     }   

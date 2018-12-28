@@ -4,9 +4,9 @@
     "count": 4
   },
   "pattern": [
-    "sas",
+    "sms",
     "bhb",
-    "sms"
+    "sas"
   ],
   "type": "forge:ore_shaped",
   "key": {
@@ -15,8 +15,8 @@
       "data": 32767
     },
     "m": {
-      "item": "arcanacraft:ingot",
-      "data": 0
+      "item": "arcanacraft:plate",
+      "data": 2
     },
     "a": {
       "item": "arcanacraft:ayre"

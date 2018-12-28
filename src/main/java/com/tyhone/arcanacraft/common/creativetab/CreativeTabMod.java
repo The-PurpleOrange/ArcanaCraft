@@ -12,9 +12,9 @@ public class CreativeTabMod extends CreativeTabs{
 	public CreativeTabMod() {
 		super(Arcanacraft.MODID);
 	}
-	
+
 	@Override
-	public ItemStack getTabIconItem() {
+	public ItemStack createIcon() {
 		return new ItemStack(ModItems.ALCHEMICAL_COAL);
 	}
 

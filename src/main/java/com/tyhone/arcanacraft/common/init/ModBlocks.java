@@ -16,6 +16,7 @@ import com.tyhone.arcanacraft.common.blocks.blocks.BlockBloodStone;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockChalk;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockFeyStone;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockFleshyBlock;
+import com.tyhone.arcanacraft.common.blocks.blocks.BlockGrowthBlock;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockLeaves;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockLog;
 import com.tyhone.arcanacraft.common.blocks.blocks.BlockRedCoal;
@@ -27,7 +28,9 @@ import com.tyhone.arcanacraft.common.blocks.tiles.BlockDeconstructionTable;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockDisapearingBlock;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockElevator;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockGrandRitualCircle;
+import com.tyhone.arcanacraft.common.blocks.tiles.BlockHeavyChest;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockInfusionAltar;
+import com.tyhone.arcanacraft.common.blocks.tiles.BlockInlayTable;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockJar;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockLensReceptacle;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockPedestal;
@@ -38,6 +41,8 @@ import com.tyhone.arcanacraft.common.blocks.tiles.BlockSoulAltar;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockSpiritSkull;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockTransmutationAltar;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockTreeTap;
+import com.tyhone.arcanacraft.common.blocks.tiles.BlockVacuumChest;
+import com.tyhone.arcanacraft.common.blocks.tiles.BlockVacuumChestEnder;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockWardStone;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockWarpCircle;
 
@@ -60,6 +65,7 @@ public class ModBlocks {
 	public static final ModBlockBase FLESHY_BLOCK = new BlockFleshyBlock();
 	public static final ModBlockBase ALCHEMIC_CONTRAPTION = new BlockAlchemicContraption();
 	public static final ModBlockBase AQUELSA = new BlockAquelsa();
+	public static final ModBlockBase GROWTH_BLOCK = new BlockGrowthBlock();
 
 	public static final ModBlockBase WARD_STONE = new BlockWardStone();
 	public static final ModBlockBase ELEVATOR = new BlockElevator();
@@ -80,6 +86,12 @@ public class ModBlocks {
 	public static final ModBlockBase SOUL_ALTAR = new BlockSoulAltar();
 
 	public static final ModBlockBase ALEMBIC = new BlockAlembic();
+
+	public static final ModBlockBase INLAY_TABLE = new BlockInlayTable();
+
+	public static final ModBlockBase HEAVY_CHEST = new BlockHeavyChest();
+	public static final ModBlockBase VACUUM_CHEST = new BlockVacuumChest();
+	public static final ModBlockBase VACUUM_CHEST_ENDER = new BlockVacuumChestEnder();
 	
 	public static final ModBlockBase JAR = new BlockJar();
 	public static final ModBlockBase PEDESTAL = new BlockPedestal();

@@ -2,6 +2,7 @@ package com.tyhone.arcanacraft.common.init.recipes;
 
 import com.tyhone.arcanacraft.api.recipe.ArcanacraftCraftingManager;
 import com.tyhone.arcanacraft.api.tinkture.TinktureStack;
+import com.tyhone.arcanacraft.common.init.ModBlocks;
 import com.tyhone.arcanacraft.common.init.ModItems;
 import com.tyhone.arcanacraft.common.init.ModTinktureTypes;
 import com.tyhone.arcanacraft.common.util.ItemMetaUtil;
@@ -22,10 +23,15 @@ public class InitRecipesAlembic {
 		ArcanacraftCraftingManager.registerAlembicRecipe(new TinktureStack(ModTinktureTypes.QUARTZ_SOLUTION), new FluidStack(FluidRegistry.WATER, 1000), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("quartz_dust")), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("quartz_dust")));
 		
 		ArcanacraftCraftingManager.registerAlembicRecipe(new ItemStack(ModItems.TOOL_WARP_HEART), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("heart_ender")), new TinktureStack(ModTinktureTypes.VOIDUS), new ItemStack(ModItems.INGOT, 1, ItemMetaUtil.ingot("voidium")));
+		ArcanacraftCraftingManager.registerAlembicRecipe(new ItemStack(ModItems.COMPONENTS, 1, ItemMetaUtil.component("balance")), new ItemStack(ModItems.THAUMONUCLEAR_BALL), new TinktureStack(ModTinktureTypes.VOIDUS), new TinktureStack(ModTinktureTypes.PURA));
+
+		ArcanacraftCraftingManager.registerAlembicRecipe(new ItemStack(ModBlocks.AQUELSA, 1), new ItemStack(ModBlocks.ALCHEMIC_GLASS), new FluidStack(FluidRegistry.WATER, 1000), new TinktureStack(ModTinktureTypes.AMNIS));
+		ArcanacraftCraftingManager.registerAlembicRecipe(new ItemStack(ModBlocks.GROWTH_BLOCK, 1), new ItemStack(Blocks.DIRT, 1, 0), new ItemStack(ModItems.MULCH), new TinktureStack(ModTinktureTypes.REBUS));
 		
 		//Lenses
 		ArcanacraftCraftingManager.registerAlembicRecipe(new ItemStack(ModItems.LENS, 1, ItemMetaUtil.lens("essence")), new ItemStack(Blocks.GLASS_PANE, 1), new ItemStack(Items.GLOWSTONE_DUST, 1), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("catalyst")));
-		ArcanacraftCraftingManager.registerAlembicRecipe(new ItemStack(ModItems.LENS, 1, ItemMetaUtil.lens("soul")), new ItemStack(Blocks.GLASS_PANE, 1), new ItemStack(ModItems.DUST, 1, ItemMetaUtil.dust("ender")), new ItemStack(Items.NETHER_STAR, 1));
+		ArcanacraftCraftingManager.registerAlembicRecipe(new ItemStack(ModItems.LENS, 1, ItemMetaUtil.lens("soul")), new ItemStack(Blocks.GLASS_PANE, 1), new ItemStack(ModItems.DUST, 1, ItemMetaUtil.dust("ender")), new ItemStack(ModItems.SOUL, 1, ItemMetaUtil.soul("complete")));
+		ArcanacraftCraftingManager.registerAlembicRecipe(new ItemStack(ModItems.LENS, 1, ItemMetaUtil.lens("lucrative")), new ItemStack(Blocks.GLASS_PANE, 1), new ItemStack(ModItems.SHARD, 1, ItemMetaUtil.shard("prosper")), new ItemStack(ModItems.SHARD, 1, ItemMetaUtil.shard("greed")));
 		
 		//Tinktures
 		ArcanacraftCraftingManager.registerAlembicRecipe(new TinktureStack(ModTinktureTypes.IMPIRUS),  new TinktureStack(ModTinktureTypes.ALCHEMIC_BASE), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("heat_core")), new ItemStack(Items.GUNPOWDER, 1));
@@ -39,10 +45,11 @@ public class InitRecipesAlembic {
 		//Crystals
 		ArcanacraftCraftingManager.registerAlembicRecipe(new ItemStack(ModItems.CRYSTAL, 1, ItemMetaUtil.crystal("blood")), new TinktureStack(ModTinktureTypes.QUARTZ_SOLUTION), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("blood_drop")), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("blood_drop")));
 		ArcanacraftCraftingManager.registerAlembicRecipe(new ItemStack(ModItems.CRYSTAL, 1, ItemMetaUtil.crystal("emeradine")), new TinktureStack(ModTinktureTypes.QUARTZ_SOLUTION), new ItemStack(ModItems.DUST, 1, ItemMetaUtil.dust("emeradine")), new ItemStack(ModItems.DUST, 1, ItemMetaUtil.dust("emeradine")));
+		ArcanacraftCraftingManager.registerAlembicRecipe(new ItemStack(ModItems.CRYSTAL, 1, ItemMetaUtil.crystal("arcane")), new TinktureStack(ModTinktureTypes.QUARTZ_SOLUTION), new ItemStack(ModItems.DUST, 1, ItemMetaUtil.dust("gold")), new ItemStack(ModItems.DUST, 1, ItemMetaUtil.dust("magicite")));
 		ArcanacraftCraftingManager.registerAlembicRecipe(new ItemStack(Items.ENDER_PEARL, 1), new TinktureStack(ModTinktureTypes.QUARTZ_SOLUTION), new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("evolite_sap")), new ItemStack(ModItems.DUST, 1, ItemMetaUtil.dust("ender")));
 		
 		ArcanacraftCraftingManager.registerAlembicRecipe(new ItemStack(ModItems.ALCHEMICAL_COAL, 1), new ItemStack(ModItems.RED_COAL, 1), new TinktureStack(ModTinktureTypes.ALCHEMIC_BASE), new ItemStack(ModItems.EVOLITE, 1));
-		ArcanacraftCraftingManager.registerAlembicRecipe(new ItemStack(ModItems.GORGON_EYE), new ItemStack(Items.ENDER_EYE, 1), new TinktureStack(ModTinktureTypes.VOIDUS), new ItemStack(ModItems.EVOLITE, 1));
+		ArcanacraftCraftingManager.registerAlembicRecipe(new ItemStack(ModItems.GORGON_EYE), new ItemStack(Items.ENDER_EYE, 1), new TinktureStack(ModTinktureTypes.PURA), new ItemStack(ModItems.EVOLITE, 1));
 		ArcanacraftCraftingManager.registerAlembicRecipe(new ItemStack(ModItems.INGOT, 1, ItemMetaUtil.ingot("voidium")), new TinktureStack(ModTinktureTypes.VOIDUS), new ItemStack(ModItems.EVOLITE, 1), new ItemStack(ModItems.INGOT, 1, ItemMetaUtil.ingot("magicite")));
 		ArcanacraftCraftingManager.registerAlembicRecipe(new ItemStack(ModItems.INGOT, 1, ItemMetaUtil.ingot("purum")), new TinktureStack(ModTinktureTypes.PURA), new ItemStack(ModItems.EVOLITE, 1), new ItemStack(ModItems.INGOT, 1, ItemMetaUtil.ingot("magicite")));
 	}

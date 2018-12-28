@@ -1,0 +1,23 @@
+{
+  "result": {
+    "item": "arcanacraft:heavy_chest"
+  },
+  "pattern": [
+    "iti",
+    "ici",
+    "iii"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "t": {
+      "item": "minecraft:iron_trapdoor"
+    },
+    "c": {
+      "item": "minecraft:chest"
+    },
+    "i": {
+      "item": "arcanacraft:plate",
+      "data": 0
+    }
+  }
+}

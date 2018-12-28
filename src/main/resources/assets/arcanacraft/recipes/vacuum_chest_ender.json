@@ -1,0 +1,32 @@
+{
+  "result": {
+    "item": "arcanacraft:vacuum_chest_ender"
+  },
+  "pattern": [
+    "btb",
+    "mcm",
+    "bib"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "t": {
+      "item": "arcanacraft:star",
+      "data": 0
+    },
+    "c": {
+      "item": "arcanacraft:vacuum_chest"
+    },
+    "i": {
+      "item": "arcanacraft:plate",
+      "data": 0
+    },
+    "b": {
+      "item": "arcanacraft:plate",
+      "data": 3
+    },
+    "m": {
+      "item": "arcanacraft:gearbox",
+      "data": 2
+    }
+  }
+}

@@ -4,7 +4,9 @@ import com.tyhone.arcanacraft.client.render.tesr.RenderTileEntityAlchemicArray;
 import com.tyhone.arcanacraft.client.render.tesr.RenderTileEntityAlembic;
 import com.tyhone.arcanacraft.client.render.tesr.RenderTileEntityDeconstructionTable;
 import com.tyhone.arcanacraft.client.render.tesr.RenderTileEntityGrandRitualCircle;
+import com.tyhone.arcanacraft.client.render.tesr.RenderTileEntityHeavyChest;
 import com.tyhone.arcanacraft.client.render.tesr.RenderTileEntityInfusionAltar;
+import com.tyhone.arcanacraft.client.render.tesr.RenderTileEntityInlayTable;
 import com.tyhone.arcanacraft.client.render.tesr.RenderTileEntityJar;
 import com.tyhone.arcanacraft.client.render.tesr.RenderTileEntityLensReceptacle;
 import com.tyhone.arcanacraft.client.render.tesr.RenderTileEntityPedestal;
@@ -16,7 +18,9 @@ import com.tyhone.arcanacraft.common.tileentity.TileEntityAlchemicArray;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityAlembic;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityDeconstructionTable;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityGrandRitualCircle;
+import com.tyhone.arcanacraft.common.tileentity.TileEntityHeavyChest;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityInfusionAltar;
+import com.tyhone.arcanacraft.common.tileentity.TileEntityInlayTable;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityJar;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityLensReceptacle;
 import com.tyhone.arcanacraft.common.tileentity.TileEntityPedestal;
@@ -48,6 +52,9 @@ public class ModTileEntitySpecialRender {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySoulAltar.class, new RenderTileEntitySoulAltar(renderManager, renderItem));
 
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAlembic.class, new RenderTileEntityAlembic(renderManager, renderItem));
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityInlayTable.class, new RenderTileEntityInlayTable(renderManager, renderItem));
+		
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityHeavyChest.class, new RenderTileEntityHeavyChest(renderManager, renderItem));
 		
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityJar.class, new RenderTileEntityJar(renderManager, renderItem));
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPedestal.class, new RenderTileEntityPedestal(renderManager, renderItem));

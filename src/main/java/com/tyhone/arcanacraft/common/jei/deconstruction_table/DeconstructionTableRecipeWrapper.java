@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.tyhone.arcanacraft.api.recipe.RecipeDeconstructionTable;
+import com.tyhone.arcanacraft.common.init.ModItems;
 import com.tyhone.arcanacraft.common.util.NBTItemStack;
 import com.tyhone.arcanacraft.common.util.OreStack;
 

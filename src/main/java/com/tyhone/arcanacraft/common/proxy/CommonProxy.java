@@ -2,7 +2,9 @@ package com.tyhone.arcanacraft.common.proxy;
 
 import java.io.File;
 
+import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.Config;
+import com.tyhone.arcanacraft.common.handler.GuiHandler;
 import com.tyhone.arcanacraft.common.handler.OreDictionaryHandler;
 import com.tyhone.arcanacraft.common.init.ModBlocks;
 import com.tyhone.arcanacraft.common.init.ModEntities;
@@ -25,6 +27,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 @Mod.EventBusSubscriber
 public class CommonProxy {
@@ -45,8 +48,9 @@ public class CommonProxy {
     	OreDictionaryHandler.registerOreDictionary();
     	ModRecipes.init();
     	ModRituals.init();
-    	ModToolMaterial.initRepairMaaterial();
+    	ModToolMaterial.initRepairMaterial();
     	ModRitualRecipes.init();
+    	NetworkRegistry.INSTANCE.registerGuiHandler(Arcanacraft.instance, new GuiHandler());
     }
 
     public void postInit(FMLPostInitializationEvent e) {

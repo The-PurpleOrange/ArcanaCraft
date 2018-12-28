@@ -79,7 +79,7 @@ public class EntityThaumonuclearBall extends EntityThrowable{
 				}
 			}
 
-			Arcanacraft.log(eItems.toString());
+			//Arcanacraft.log(eItems.toString());
 			if(!eItems.isEmpty()) {
 				for(EntityItem eitem : eItems) {
 					this.world.spawnEntity(eitem);

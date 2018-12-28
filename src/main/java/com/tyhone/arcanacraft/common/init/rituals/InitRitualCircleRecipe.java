@@ -116,6 +116,7 @@ public class InitRitualCircleRecipe {
 					'B', new ItemStack(ModBlocks.CHALK_BLOCK, 1, ItemMetaUtil.chalk("magicite")),
 					'G', new ItemStack(ModBlocks.CHALK_BLOCK, 1, ItemMetaUtil.chalk("green")),
 					'C', new ItemStack(ModBlocks.RITUAL_CIRCLE),
+					//'Z', new OreStack("treeLeaves")
 					'Z', new ItemStack(Blocks.LEAVES, 1)
 			});
 	}

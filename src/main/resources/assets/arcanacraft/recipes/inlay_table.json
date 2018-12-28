@@ -1,0 +1,27 @@
+{
+  "result": {
+    "item": "arcanacraft:inlay_table"
+  },
+  "pattern": [
+    "wbw",
+    "wiw",
+    "sss"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "s": {
+      "item": "minecraft:stonebrick",
+      "data": 32767
+    },
+    "b": {
+      "item": "minecraft:iron_block"
+    },
+    "w": {
+      "item": "minecraft:planks",
+      "data": 32767
+    },
+    "i": {
+      "item": "minecraft:iron_ingot"
+    }
+  }
+}

@@ -55,8 +55,11 @@ public class OreStack {
 	}
 	
 	public static ItemStack getOreDictionaryEntryForOreStack(OreStack oreStack){
-		
-		return OreDictionaryHandler.getOreDictionaryEntry(oreStack.getOre());
+		ItemStack itemStack = OreDictionaryHandler.getOreDictionaryEntry(oreStack.getOre());
+		if (itemStack.getMetadata() == OreDictionary.WILDCARD_VALUE) {
+			itemStack.setItemDamage(0);
+		}
+		return itemStack;
 	}
 	
 	public static List<ItemStack> getOreDictionaryEntriesForOreStack(OreStack oreStack){

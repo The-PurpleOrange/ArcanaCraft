@@ -6,11 +6,16 @@ import com.tyhone.arcanacraft.api.recipe.RecipeDeconstructionTable;
 import com.tyhone.arcanacraft.api.tinkture.TinktureStack;
 import com.tyhone.arcanacraft.common.tileentity.base.ModTileEntityBase;
 
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ITickable;
+import net.minecraftforge.common.ForgeModContainer;
 import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.UniversalBucket;
 
 public class TileEntityAlembic extends ModTileEntityBase implements ITickable{
 
@@ -33,8 +38,16 @@ public class TileEntityAlembic extends ModTileEntityBase implements ITickable{
 				RecipeAlembic recipe = RecipeAlembic.getRecipe(objectStack[0], objectStack[1], objectStack[2]);
 				if(recipe != null){
 					cleanStack(0);
-					cleanStack(1);
-					cleanStack(2);
+					if(checkIfBucket(1)) {
+						setStack(1, new ItemStack(Items.BUCKET, 1));
+					}else {
+						cleanStack(1);
+					}
+					if(checkIfBucket(2)) {
+						setStack(2, new ItemStack(Items.BUCKET, 1));
+					}else {
+						cleanStack(2);
+					}
 					setStack(0, recipe.getOutput());
 					markForClean();
 				}
@@ -63,6 +76,20 @@ public class TileEntityAlembic extends ModTileEntityBase implements ITickable{
 			this.objectStack[i] = null;
 			markForClean();
 		}
+	}
+	
+	private boolean checkIfBucket(int slot) {
+		if(getStack(slot) instanceof ItemStack) {
+			ItemStack stack = (ItemStack) getStack(1);
+			if (stack.getItem() == Items.LAVA_BUCKET || 
+				stack.getItem() == Items.WATER_BUCKET || 
+				stack.getItem() == Items.MILK_BUCKET || 
+				stack.getItem() == UniversalBucket.getFilledBucket(ForgeModContainer.getInstance().universalBucket, FluidRegistry.WATER).getItem())
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 	
     @Override

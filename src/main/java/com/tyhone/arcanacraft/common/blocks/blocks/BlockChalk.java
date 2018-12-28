@@ -206,7 +206,7 @@ public class BlockChalk extends ModBlockEnum implements IRitualDisplayIgnoreBloc
 
     @Override
 	@SideOnly(Side.CLIENT)
-    public BlockRenderLayer getBlockLayer()
+    public BlockRenderLayer getRenderLayer()
     {
         return BlockRenderLayer.TRANSLUCENT;
     }

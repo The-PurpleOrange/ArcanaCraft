@@ -37,7 +37,7 @@ public class ModBlockEnum extends ModBlockBase{
 				return "tile." + Arcanacraft.MODID + ":" + BASE_NAME + "." + VARIANTS[itemStack.getMetadata()];
 			}
 		}
-		return super.getUnlocalizedName();
+		return super.getTranslationKey();
 	}
 	
 

@@ -16,5 +16,8 @@ public class ItemMetaUtil {
 	public static int crystal(String name){ return Names.MetaItems.CRYSTAL.indexOf(name); }
 	public static int item(String name){ return Names.MetaItems.ITEM.indexOf(name); }
 	public static int star(String name) { return Names.MetaItems.STAR.indexOf(name); }
-	public static int component(String name) { return Names.MetaItems.COMPONENETS.indexOf(name); }
+	public static int component(String name) { return Names.MetaItems.COMPONENET.indexOf(name); }
+	public static int plate(String name) { return Names.MetaItems.PLATE.indexOf(name); }
+	public static int nugget(String name) { return Names.MetaItems.NUGGET.indexOf(name); }
+	public static int gearbox(String name) { return Names.MetaItems.GEARBOX.indexOf(name); }
 }

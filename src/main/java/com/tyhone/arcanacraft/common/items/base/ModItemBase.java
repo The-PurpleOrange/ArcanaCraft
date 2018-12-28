@@ -19,7 +19,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 
-//Uses temporary Pahi-style code from Pahimar for Item Variants, will be replaced in future
 public class ModItemBase extends Item implements IItemVariantHolder<ModItemBase>{
 	
 	private final String BASE_NAME;
@@ -67,7 +66,7 @@ public class ModItemBase extends Item implements IItemVariantHolder<ModItemBase>
 	}
 
 	@Override
-	public String getUnlocalizedName(ItemStack stack)
+	public String getTranslationKey(ItemStack stack)
     {
 		if(getHasSubtypes() && stack.getMetadata() < VARIANTS.length){
 			return ("item." + Arcanacraft.MODID + ":" + BASE_NAME + "." + VARIANTS[stack.getMetadata()]);

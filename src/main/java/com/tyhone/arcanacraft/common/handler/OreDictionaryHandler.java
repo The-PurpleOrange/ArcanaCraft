@@ -17,6 +17,8 @@ public class OreDictionaryHandler {
 	public static void registerOreDictionary(){
 		OreDictionary.registerOre("dustIron", new ItemStack(ModItems.DUST, 1, ItemMetaUtil.dust("iron")));
 		OreDictionary.registerOre("dustGold", new ItemStack(ModItems.DUST, 1, ItemMetaUtil.dust("gold")));
+		OreDictionary.registerOre("dustQuartz", new ItemStack(ModItems.ITEM, 1, ItemMetaUtil.item("quartz_dust")));
+		OreDictionary.registerOre("dustEnder", new ItemStack(ModItems.DUST, 1, ItemMetaUtil.dust("ender")));
 		
 		//Being Selfish, dont want to repeat recipes
 		OreDictionary.registerOre("arcanacraftFruit", Items.APPLE);
@@ -30,7 +32,7 @@ public class OreDictionaryHandler {
 	
 	public static ItemStack getOreDictionaryEntry(String string){
 		List<ItemStack> list = getOreDictionaryEntries(string);
-		if(list.size()>0){
+		if(list != null && list.size()>0){
 			return list.get(0);
 		}
 		return ItemStack.EMPTY;
@@ -38,7 +40,7 @@ public class OreDictionaryHandler {
 	
 	public static List<ItemStack> getOreDictionaryEntries(String string){
 		List<ItemStack> ores = OreDictionary.getOres(string, false);
-		if(ores.size()>0){
+		if(ores != null && ores.size()>0){
 			return ores;
 		}
 		return null;

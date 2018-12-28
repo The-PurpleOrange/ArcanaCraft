@@ -127,13 +127,12 @@ public class ItemToolPickaxeMagic extends ModItemBase{
 		
 		if(!player.isSneaking()) {
 			World world = player.getEntityWorld();
-			ItemStack stack = player.getActiveItemStack();
 	
 			IBlockState state = world.getBlockState(pos);
 			
 			if(!world.isRemote && canHarvestBlock(state)) {
 				buildList(world, pos, player);
-				destroyBlocks(world, player, stack);
+				destroyBlocks(world, player, itemstack);
 			}
 		}
 		return super.onBlockStartBreak(itemstack, pos, player);
@@ -143,7 +142,6 @@ public class ItemToolPickaxeMagic extends ModItemBase{
 		IBlockState state = world.getBlockState(pos);
 		this.mineCheckList.add(pos);
 		while(this.mineList.size() < MAX_MINE_BLOCKS && !this.mineCheckList.isEmpty()) {
-			
 			addAreaToList(world, state);
 			this.mineCheckList.remove(0);
 		}
@@ -192,11 +190,9 @@ public class ItemToolPickaxeMagic extends ModItemBase{
 	
 	private void destroyBlocks(World world, EntityPlayer player, ItemStack stack) {
 		if(!this.mineList.isEmpty()) {
-			int i = 0;
 			for(BlockPos pos : this.mineList) {
 				world.destroyBlock(pos, !player.isCreative());
 		        stack.damageItem(1, player);
-		        i++;
 			}
 		}
 		this.mineCheckList.clear();

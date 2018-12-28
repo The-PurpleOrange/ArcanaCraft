@@ -9,6 +9,7 @@ import com.tyhone.arcanacraft.api.recipe.RecipeAlembic;
 import com.tyhone.arcanacraft.api.recipe.RecipeDeconstructionTable;
 import com.tyhone.arcanacraft.api.recipe.RecipeHammer;
 import com.tyhone.arcanacraft.api.recipe.RecipeInfusionAltar;
+import com.tyhone.arcanacraft.api.recipe.RecipeInlayTable;
 import com.tyhone.arcanacraft.api.recipe.RecipeSoulAltar;
 import com.tyhone.arcanacraft.api.recipe.RecipeTransmutationAltar;
 import com.tyhone.arcanacraft.api.tinkture.TinktureRegistry;
@@ -27,6 +28,8 @@ import com.tyhone.arcanacraft.common.jei.hammer.HammerRecipeCategory;
 import com.tyhone.arcanacraft.common.jei.hammer.HammerRecipeWrapper;
 import com.tyhone.arcanacraft.common.jei.infusion_altar.InfusionAltarRecipeCategory;
 import com.tyhone.arcanacraft.common.jei.infusion_altar.InfusionAltarRecipeWrapper;
+import com.tyhone.arcanacraft.common.jei.inlay_table.InlayTableRecipeCategory;
+import com.tyhone.arcanacraft.common.jei.inlay_table.InlayTableRecipeWrapper;
 import com.tyhone.arcanacraft.common.jei.soul_altar.SoulAltarRecipeCategory;
 import com.tyhone.arcanacraft.common.jei.soul_altar.SoulAltarRecipeWrapper;
 import com.tyhone.arcanacraft.common.jei.transmutation_altar.TransmutationAltarRecipeCategory;
@@ -75,7 +78,8 @@ public class JEIArcanacraftPlugin implements IModPlugin {
 				new TransmutationAltarRecipeCategory(helpers.getGuiHelper()),
 				new SoulAltarRecipeCategory(helpers.getGuiHelper()),
 				new InfusionAltarRecipeCategory(helpers.getGuiHelper()),
-				new AlembicRecipeCategory(helpers.getGuiHelper())
+				new AlembicRecipeCategory(helpers.getGuiHelper()),
+				new InlayTableRecipeCategory(helpers.getGuiHelper())
 		);
 	}
 	
@@ -90,6 +94,7 @@ public class JEIArcanacraftPlugin implements IModPlugin {
 		registry.handleRecipes(RecipeSoulAltar.class, SoulAltarRecipeWrapper::new, SoulAltarRecipeCategory.NAME);
 		registry.handleRecipes(RecipeInfusionAltar.class, InfusionAltarRecipeWrapper::new, InfusionAltarRecipeCategory.NAME);
 		registry.handleRecipes(RecipeAlembic.class, AlembicRecipeWrapper::new, AlembicRecipeCategory.NAME);
+		registry.handleRecipes(RecipeInlayTable.class, InlayTableRecipeWrapper::new, InlayTableRecipeCategory.NAME);
 
 		registry.addRecipes(ArcanacraftCraftingManager.getHammerRecipes(), HammerRecipeCategory.NAME);
 		registry.addRecipes(ArcanacraftCraftingManager.getAlchemicArrayRecipes(), AlchemicArrayRecipeCategory.NAME);
@@ -98,19 +103,23 @@ public class JEIArcanacraftPlugin implements IModPlugin {
 		registry.addRecipes(ArcanacraftCraftingManager.getSoulAltarRecipes(), SoulAltarRecipeCategory.NAME);
 		registry.addRecipes(ArcanacraftCraftingManager.getInfusionAltarRecipes(), InfusionAltarRecipeCategory.NAME);
 		registry.addRecipes(ArcanacraftCraftingManager.getAlembicRecipes(), AlembicRecipeCategory.NAME);
+		registry.addRecipes(ArcanacraftCraftingManager.getInlayTableRecipes(), InlayTableRecipeCategory.NAME);
 
 		registry.addRecipeCatalyst(new ItemStack(ModItems.HAMMER), HammerRecipeCategory.NAME);
 		registry.addRecipeCatalyst(new ItemStack(ModItems.ICONS, 1, 0), AlchemicArrayRecipeCategory.NAME);
+		//registry.addRecipeCatalyst(new ItemStack(ModBlocks.DECONSTRUCTION_TABLE), AlchemicArrayRecipeCategory.NAME);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.DECONSTRUCTION_TABLE), DeconstructionTableRecipeCategory.NAME);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.TRANSMUTATION_ALTAR), TransmutationAltarRecipeCategory.NAME);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.SOUL_ALTAR), SoulAltarRecipeCategory.NAME);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.INFUSION_ALTAR), InfusionAltarRecipeCategory.NAME);
 		registry.addRecipeCatalyst(new ItemStack(ModItems.TINKTURE), InfusionAltarRecipeCategory.NAME);
 		registry.addRecipeCatalyst(new ItemStack(ModBlocks.ALEMBIC), AlembicRecipeCategory.NAME);
+		registry.addRecipeCatalyst(new ItemStack(ModBlocks.INLAY_TABLE), InlayTableRecipeCategory.NAME);
+		registry.addRecipeCatalyst(new ItemStack(ModItems.HAMMER), InlayTableRecipeCategory.NAME);
 		
 		
 		IIngredientBlacklist blacklist = registry.getJeiHelpers().getIngredientBlacklist();
-		blacklist.addIngredientToBlacklist(new ItemStack(ModItems.ICONS, 1, OreDictionary.WILDCARD_VALUE));
+		//blacklist.addIngredientToBlacklist(new ItemStack(ModItems.ICONS, 1, OreDictionary.WILDCARD_VALUE));
 		blacklist.addIngredientToBlacklist(new ItemStack(ModBlocks.ALCHEMIC_ARRAY));
 		blacklist.addIngredientToBlacklist(new ItemStack(ModBlocks.RITUAL_CIRCLE));
 		blacklist.addIngredientToBlacklist(new ItemStack(ModBlocks.GRAND_RITUAL_CIRCLE));

@@ -3,6 +3,7 @@ package com.tyhone.arcanacraft.common.jei.deconstruction_table;
 import java.util.List;
 
 import com.tyhone.arcanacraft.Arcanacraft;
+import com.tyhone.arcanacraft.common.init.ModItems;
 import com.tyhone.arcanacraft.common.util.GuiUtils;
 
 import mezz.jei.api.IGuiHelper;
@@ -11,6 +12,7 @@ import mezz.jei.api.gui.IGuiItemStackGroup;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeCategory;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.translation.I18n;
 

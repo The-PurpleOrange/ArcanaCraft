@@ -6,6 +6,6 @@ import com.tyhone.arcanacraft.common.reference.Names;
 public class ItemComponenets extends ModItemBase{
 
 	public ItemComponenets() {
-		super("components", Names.MetaItems.COMPONENETS);
+		super("components", Names.MetaItems.COMPONENET);
 	}
 }

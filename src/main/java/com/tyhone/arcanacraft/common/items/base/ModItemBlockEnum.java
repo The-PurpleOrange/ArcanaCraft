@@ -23,7 +23,7 @@ public class ModItemBlockEnum extends ItemBlock{
 	}
 	
 	@Override
-	public String getUnlocalizedName(ItemStack stack){
-		return (block != null) ? this.block.getUnlocalizedName(stack) : super.getUnlocalizedName(stack);
+	public String getTranslationKey(ItemStack stack){
+		return (block != null) ? this.block.getUnlocalizedName(stack) : super.getTranslationKey(stack);
 	}
 }

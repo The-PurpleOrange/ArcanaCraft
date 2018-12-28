@@ -3,29 +3,25 @@
     "item": "arcanacraft:deconstruction_table"
   },
   "pattern": [
-    "bdb",
-    "sos",
-    "sgs"
+    "iii",
+    "gcg",
+    "sss"
   ],
   "type": "forge:ore_shaped",
   "key": {
     "s": {
-      "item": "arcanacraft:alchemic_stone",
+      "item": "minecraft:stonebrick",
       "data": 32767
     },
     "g": {
-      "item": "minecraft:gold_block"
+      "item": "arcanacraft:plate",
+      "data": 1
     },
-    "b": {
-      "item": "arcanacraft:item",
-      "data": 3
+    "c": {
+      "item": "minecraft:coal_block"
     },
-    "d": {
-      "item": "arcanacraft:item",
-      "data": 0
-    },
-    "o": {
-      "item": "minecraft:stone_slab",
+    "i": {
+      "item": "arcanacraft:plate",
       "data": 0
     }
   }

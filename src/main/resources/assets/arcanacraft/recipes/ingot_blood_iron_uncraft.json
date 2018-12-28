@@ -1,0 +1,17 @@
+{
+  "result": {
+    "item": "arcanacraft:nugget",
+    "data": 1,
+    "count": 9
+  },
+  "pattern": [
+    "b"
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "b": {
+      "item": "arcanacraft:ingot",
+      "data": 1
+    }
+  }
+}
