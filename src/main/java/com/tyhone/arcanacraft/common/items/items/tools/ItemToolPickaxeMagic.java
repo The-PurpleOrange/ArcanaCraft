@@ -7,8 +7,8 @@ import com.google.common.collect.Multimap;
 import com.google.common.collect.Sets;
 import com.tyhone.arcanacraft.common.items.ModToolMaterial;
 import com.tyhone.arcanacraft.common.items.base.ModItemBase;
-import com.tyhone.arcanacraft.common.reference.PickaxeOreValues;
 import com.tyhone.arcanacraft.common.util.BlockUtils;
+import com.tyhone.arcanacraft.common.util.PickaxeOreValues;
 import com.tyhone.arcanacraft.common.util.PlayerUtils;
 import com.tyhone.arcanacraft.common.util.PosUtil;
 

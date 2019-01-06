@@ -15,8 +15,8 @@ import com.tyhone.arcanacraft.common.init.ModRituals;
 import com.tyhone.arcanacraft.common.init.ModTileEntities;
 import com.tyhone.arcanacraft.common.init.ModTinktureTypes;
 import com.tyhone.arcanacraft.common.items.ModToolMaterial;
-import com.tyhone.arcanacraft.common.reference.PickaxeOreValues;
 import com.tyhone.arcanacraft.common.util.BlockUtils;
+import com.tyhone.arcanacraft.common.util.ValidateConfig;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -37,7 +37,7 @@ public class CommonProxy {
 
     public void preInit(FMLPreInitializationEvent e) {
         File directory = e.getModConfigurationDirectory();
-        config = new Configuration(new File(directory.getPath(), "modtut.cfg"));
+        config = new Configuration(new File(directory.getPath(), "Arcanacraft.cfg"));
         Config.readConfig();
 
     	ModTinktureTypes.registerAll();
@@ -54,7 +54,7 @@ public class CommonProxy {
     }
 
     public void postInit(FMLPostInitializationEvent e) {
-    	PickaxeOreValues.init();
+    	ValidateConfig.init();
         if (config.hasChanged()) {
             config.save();
         }

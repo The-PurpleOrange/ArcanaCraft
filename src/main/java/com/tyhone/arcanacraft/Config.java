@@ -1,9 +1,7 @@
 package com.tyhone.arcanacraft;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import com.tyhone.arcanacraft.common.proxy.CommonProxy;
 import com.tyhone.arcanacraft.common.reference.ConfigDefaults;
@@ -15,17 +13,17 @@ public class Config {
 	private static final String CATEGORY_GENERAL = "general";
 	
 	public static boolean testValue = true;
-	
 
+	//QUARRY
+	private static final String CATEGORY_QUARRY_VALUES = "quarryOreDictWeights";
+	public static Map<String, Integer> quarryOreMap = new HashMap<>();
+	public static int quarryOreMapTotalValue = 0;
 
-	private static final String CATEGORY_VALUE_TIERS = "valueTiers";
-	public static Map<Integer, String> valueTierMap = new HashMap<>();
-	
-	private static final String CATEGORY_BLOCK_VALUES = "blockValues";
-	public static Map<String, Integer> blockMap = new HashMap<>();
-	
-	private static final String CATEGORY_ORE_VALUES = "oreValues";
-	public static Map<String, Integer> oreMap = new HashMap<>();
+	//PICKAXE
+	private static final String CATEGORY_VALUE_TIERS = "pickaxeOreSense";
+	public static Map<Integer, String> pickaxeValueTierMap = new HashMap<>();
+	public static Map<String, Integer> pickaxeBlockMap = new HashMap<>();
+	public static Map<String, Integer> pickaxeOreMap = new HashMap<>();
 	
 	
 	
@@ -46,20 +44,38 @@ public class Config {
 	private static void initGeneralConfig(Configuration cfg) {
 		cfg.addCustomCategoryComment(CATEGORY_GENERAL, "General configuration");
 		testValue = cfg.getBoolean("testCFG", CATEGORY_GENERAL, testValue, "Boolean test cfg setting");
-		
 
-		cfg.addCustomCategoryComment(CATEGORY_VALUE_TIERS, "Pickaxe sense value tiers");
-		valueTierMap = decodeValueTiers(cfg);
-		cfg.addCustomCategoryComment(CATEGORY_BLOCK_VALUES, "Pickaxe sense Block values");
-		blockMap = decodeBlockValues(cfg);
-		cfg.addCustomCategoryComment(CATEGORY_ORE_VALUES, "Pickaxe sense OreDict values");
-		oreMap = decodeOreValues(cfg);
+		cfg.addCustomCategoryComment(CATEGORY_QUARRY_VALUES, "Quarry Ore weights");
+		quarryOreMap = decodeQuarryOreValues(cfg);
+
+		cfg.addCustomCategoryComment(CATEGORY_VALUE_TIERS, "Magic Pickaxe OreSense Ability configuration");
+		pickaxeValueTierMap = decodePickaxeValueTiers(cfg);
+		pickaxeBlockMap = decodePickaxeBlockValues(cfg);
+		pickaxeOreMap = decodePickaxeOreValues(cfg);
 	}
 	
-	private static Map<Integer, String> decodeValueTiers(Configuration cfg){
+	private static Map<String, Integer> decodeQuarryOreValues(Configuration cfg){
+		Map<String, Integer> map = new HashMap<>();
+		
+		String[] values = cfg.getStringList(CATEGORY_QUARRY_VALUES+"Name", CATEGORY_QUARRY_VALUES, ConfigDefaults.QUARRY_ORES, "Quarry Ore Weights: [Ore|Weight] (Higher weight means more chance of spawning)");
+		if(values.length>0) {
+			for(String value : values) {
+				String[] parts = value.split("\\|");
+				try {
+					map.put(parts[0], Integer.parseInt(parts[1]));
+				} catch(Exception e) {
+					Arcanacraft.log("Error passing in quarryOreDictWeights for: " + value + " : " + e);
+				}
+			}
+		}
+		
+		return map;
+	}
+	
+	private static Map<Integer, String> decodePickaxeValueTiers(Configuration cfg){
 		Map<Integer, String> map = new HashMap<>();
 		
-		String[] values = cfg.getStringList("pickaxeValueTiers", CATEGORY_VALUE_TIERS, ConfigDefaults.VALUE_TIERS, "Pickaxe Value Tiers: [value|Descriptions]");
+		String[] values = cfg.getStringList(CATEGORY_VALUE_TIERS+"ValueTiers", CATEGORY_VALUE_TIERS, ConfigDefaults.PICKAXE_VALUE_TIERS, "Pickaxe Value Tiers: [value|Descriptions]");
 		if(values.length>0) {
 			for(String value : values) {
 				String[] parts = value.split("\\|");
@@ -74,10 +90,10 @@ public class Config {
 		return map;
 	}
 	
-	private static Map<String, Integer> decodeBlockValues(Configuration cfg){
+	private static Map<String, Integer> decodePickaxeBlockValues(Configuration cfg){
 		Map<String, Integer> map = new HashMap<>();
 		
-		String[] values = cfg.getStringList("pickaxeBlockValues", CATEGORY_BLOCK_VALUES, ConfigDefaults.BLOCK_VALUES, "Pickaxe Block Values: [registryName#meta|value]");
+		String[] values = cfg.getStringList(CATEGORY_VALUE_TIERS+"BlockValues", CATEGORY_VALUE_TIERS, ConfigDefaults.PICKAXE_BLOCK_VALUES, "Pickaxe Block Values: [registryName#meta|value]");
 		if(values.length>0) {
 			for(String value : values) {
 				String[] parts = value.split("\\|");
@@ -97,10 +113,10 @@ public class Config {
 		return map;
 	}
 	
-	private static Map<String, Integer> decodeOreValues(Configuration cfg){
+	private static Map<String, Integer> decodePickaxeOreValues(Configuration cfg){
 		Map<String, Integer> map = new HashMap<>();
 		
-		String[] values = cfg.getStringList("pickaxeOreDictValues", CATEGORY_ORE_VALUES, ConfigDefaults.ORE_VALUES, "Pickaxe OreDictionary Values: [oreDictName|value]");
+		String[] values = cfg.getStringList(CATEGORY_VALUE_TIERS+"OreValues", CATEGORY_VALUE_TIERS, ConfigDefaults.PICKAXE_ORE_VALUES, "Pickaxe OreDictionary Values: [oreDictName|value]");
 		if(values.length>0) {
 			for(String value : values) {
 				String[] parts = value.split("\\|");

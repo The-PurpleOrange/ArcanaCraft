@@ -95,7 +95,7 @@ public class TileEntityVacuumChest extends ModTileEntityLockableLootBase impleme
 				this.addItemStack(-1, stack);
 			}
 			
-			if(entityItem instanceof EntityItem && entityItem.ticksExisted > 40 && !((EntityItem) entityItem).cannotPickup()){
+			if(entityItem instanceof EntityItem /*&& entityItem.ticksExisted > 40*/ && !((EntityItem) entityItem).cannotPickup()){
 				double dx = entityItem.posX - pos.getX()-0.5D;
 				double dy = entityItem.posY - pos.getY();
 				double dz = entityItem.posZ - pos.getZ()-0.5D;
@@ -104,7 +104,7 @@ public class TileEntityVacuumChest extends ModTileEntityLockableLootBase impleme
 				entityItem.motionZ = (dz/5)*-1;
 			}
 			
-			if(world.isRemote && entityItem instanceof EntityItem && entityItem.ticksExisted > 20){
+			if(world.isRemote && entityItem instanceof EntityItem /*&& entityItem.ticksExisted > 20*/){
 				ParticleWind wind = new ParticleWind(world, 0.5, 0.2 + ((new Random().nextFloat()) /2), 0.5, 0, 0, 0, 1F, 0x0000ff, 0x0000ff, entityItem, 0.5D, 0.4D, 20);
 				Minecraft.getMinecraft().effectRenderer.addEffect(wind);
 				ParticleWind wind2 = new ParticleWind(world, 0.5, 0.2 + ((new Random().nextFloat()) / 2), 0.5, 0, 0, 0, 1F, 0xff0000, 0xff0000, entityItem, 0.5D, 0.4D, 20);

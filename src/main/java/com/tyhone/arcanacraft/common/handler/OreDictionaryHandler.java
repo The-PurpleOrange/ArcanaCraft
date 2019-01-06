@@ -1,14 +1,17 @@
 package com.tyhone.arcanacraft.common.handler;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.tyhone.arcanacraft.Arcanacraft;
 import com.tyhone.arcanacraft.common.init.ModItems;
 import com.tyhone.arcanacraft.common.util.ItemMetaUtil;
-import com.tyhone.arcanacraft.common.util.ItemStackUtil;
-import com.tyhone.arcanacraft.common.util.WildStack;
 
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -36,6 +39,14 @@ public class OreDictionaryHandler {
 			return list.get(0);
 		}
 		return ItemStack.EMPTY;
+	}
+	
+	public static Block getBlockFromOreDictionaryEntry(String string){
+		ItemStack itemStack = getOreDictionaryEntry(string);
+		if(itemStack.getItem() instanceof ItemBlock) {
+			return Block.getBlockFromItem(itemStack.getItem());
+		}
+		return Blocks.AIR;
 	}
 	
 	public static List<ItemStack> getOreDictionaryEntries(String string){

@@ -5,7 +5,22 @@ import com.tyhone.arcanacraft.common.init.ModBlocks;
 import net.minecraft.init.Blocks;
 
 public class ConfigDefaults {
-	public static final String[] VALUE_TIERS = { 
+	
+
+//AQUARRY CONFIGS
+	public static final String[] QUARRY_ORES = {
+			"oreEmerald|3",
+			"oreDiamond|7",
+			"oreRedstone|28",
+			"oreLapis|15",
+			"oreGold|20",
+			"oreIron|55",
+			"oreCoal|85"
+		};
+
+	
+// PICKAXE CONFIGS
+	public static final String[] PICKAXE_VALUE_TIERS = { 
 			"0|Nothing of value", 
 			"16|A tingle of power", 
 			"32|a tremor of power", 
@@ -16,7 +31,7 @@ public class ConfigDefaults {
 			"2056|Uncalulable power" 
 		};
 	
-	public static final String[] ORE_VALUES = { 
+	public static final String[] PICKAXE_ORE_VALUES = { 
 			"oreEmerald|256",
 			"oreDiamond|128",
 			"oreRedstone|80",
@@ -27,7 +42,7 @@ public class ConfigDefaults {
 			"oreQuartz|32"
 		};
 	
-	public static final String[] BLOCK_VALUES = {
+	public static final String[] PICKAXE_BLOCK_VALUES = {
 			Blocks.GLOWSTONE.getRegistryName() + "|16"
 		};
 }

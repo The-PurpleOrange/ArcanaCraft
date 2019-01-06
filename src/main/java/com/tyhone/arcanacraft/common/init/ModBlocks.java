@@ -35,6 +35,7 @@ import com.tyhone.arcanacraft.common.blocks.tiles.BlockJar;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockLensReceptacle;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockPedestal;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockPedestalSlab;
+import com.tyhone.arcanacraft.common.blocks.tiles.BlockQuarryTable;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockReapearingBlock;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockRitualCircle;
 import com.tyhone.arcanacraft.common.blocks.tiles.BlockSoulAltar;
@@ -88,6 +89,8 @@ public class ModBlocks {
 	public static final ModBlockBase ALEMBIC = new BlockAlembic();
 
 	public static final ModBlockBase INLAY_TABLE = new BlockInlayTable();
+
+	public static final ModBlockBase QUARRY_TABLE = new BlockQuarryTable();
 
 	public static final ModBlockBase HEAVY_CHEST = new BlockHeavyChest();
 	public static final ModBlockBase VACUUM_CHEST = new BlockVacuumChest();
